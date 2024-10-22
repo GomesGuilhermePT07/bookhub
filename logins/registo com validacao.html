@@ -52,7 +52,7 @@
                         <label for="o">Outro</label>
                     </div>
                 </div>                
-                <button type="submit"><b>Enviar</b></button>
+                <button class="sub" type="submit"><b>Enviar</b></button>
             </form>
         </div>
     </body>
@@ -65,7 +65,6 @@
         const toggleIcons = document.querySelectorAll('.password-toggle-icon i');
 
         form.addEventListener('submit', (event) => {
-            event.preventDefault();
             nameValidate();
             emailValidate();
             mainPasswordValidate();
