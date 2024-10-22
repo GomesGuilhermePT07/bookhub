@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <title>Login | BH</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            :root {
+                --color-dark1: #181818;
+                --color-red1: #e52b4b;
+                --color-blue1: #426877;
+                --color-white: #ffffff;
+                --color-grey: #707070;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-image: linear-gradient(30deg, #e52b4b, #f3a69e, #83d0f0, #426877);
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                color: var(--color-white);
+            }
+
+            .login-container {
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 15px;
+                border-radius: 15px;
+                width: 90%;
+                max-width: 400px;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            .input-container {
+                position: relative;
+                margin-bottom: 10px;
+            }
+
+            .input-container i {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                bottom: 0%;
+                transform: translateY(-50%);
+                color: var(--color-grey);
+            }
+
+            .inputs {
+                font-size: 15px;
+                padding: 10px 10px 10px 35px;
+                outline: none;
+                border-radius: 5px;
+                background-color: var(--color-dark1);
+                border: 2px solid var(--color-dark1);
+                color: var(--color-white);
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 10px;
+                transition: .3s;
+            }
+
+            .inputs:focus {
+                border-color: var(--color-blue1);
+            }
+
+            .box-select {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            .box-select div {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                width: calc(50% - 10px);
+            }
+
+            .checkbox-label {
+                font-size: 17px;
+            }
+
+            .box-select input[type="checkbox"] {
+                appearance: none;
+                background-color: var(--color-dark1);
+                border: 2px solid var(--color-dark1);
+                border-radius: 3px;
+                width: 18px;
+                height: 18px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 0.3s ease, border-color 0.3s ease;
+            }
+
+            .box-select input[type="checkbox"]:checked {
+                background-color: var(--color-blue1);
+                border-color: var(--color-blue1);
+            }
+
+            .box-select input[type="checkbox"]:checked::before {
+                content: "✓";
+                color: var(--color-white);
+                font-size: 14px;
+                display: block;
+                text-align: center;
+            }
+
+            .tarefa {
+                text-align: left;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .data {
+                text-align: left;
+                font-size: 18px;
+            }
+
+            .date-input {
+                padding-left: 10px;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+
+            .show-password {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 12.7px;
+                margin-bottom: 8px;
+                margin-top: -1rem;
+                color: var(--color-grey);
+                justify-content: flex-start;
+            }
+
+            .show-password input[type="checkbox"] {
+                appearance: none;
+                background-color: var(--color-dark1);
+                border: 2px solid var(--color-dark1);
+                border-radius: 3px;
+                width: 14px;
+                height: 14px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background-color 0.3s ease, border-color 0.3s ease;
+            }
+
+            .show-password input[type="checkbox"]:checked {
+                background-color: var(--color-blue1);
+                border-color: var(--color-blue1);
+            }
+
+            .show-password input[type="checkbox"]:checked::before {
+                content: "✓";
+                color: var(--color-white);
+                font-size: 12px;
+                display: block;
+                text-align: center;
+            }
+
+            .forgot-password {
+                text-align: right;
+                margin-top: -24px;
+                margin-bottom: 10px;
+                margin-right: 2px;
+                font-size: 12.7px;
+            }
+
+            .forgot-password a {
+                color: var(--color-grey);
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .forgot-password a:hover {
+                color: var(--color-blue1);
+                text-decoration: underline;
+            }
+
+            button {
+                background-color: dodgerblue;
+                border: none;
+                padding: 15px;
+                width: 100%;
+                border-radius: 10px;
+                color: #fff;
+                font-size: 15px;
+                margin-top: 10px;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: deepskyblue;
+                cursor: pointer;
+            }
+
+            .registo {
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                margin-top: 15px;
+                display: block;
+            }
+
+            .registo a {
+                color: #83d0f0;
+                text-decoration: none;
+            }
+
+            .registo a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <h1>Login📚</h1>
+            <form action="login.php" method="POST">
+                <div class="input-container">
+                    <i class="fa fa-user"></i>
+                    <input type="text" placeholder="Nome Completo" class="inputs required">
+                </div>
+                <div class="input-container">
+                    <i class="fa fa-key"></i>
+                    <input type="password" placeholder="Password" class="inputs required" id="password">
+                </div>
+                <div class="show-password">
+                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+                    <label for="showPassword">Mostrar password</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="esqueci-me_da_password.html">Esqueci-me da password</a>
+                </div>
+                <p class="tarefa">O que vem fazer à biblioteca?</p>
+                <div class="box-select">
+                    <div>
+                        <input type="checkbox" id="ler" value="ler" name="oquefazer">
+                        <label for="ler" class="checkbox-label">Ler</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="estudar" value="estudar" name="oquefazer">
+                        <label for="estudar" class="checkbox-label">Estudar</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="fazer_trabalhos" value="fazer_trabalhos" name="oquefazer">
+                        <label for="fazer_trabalhos" class="checkbox-label">Fazer trabalhos</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="requisitar_livros" value="requisitar_livros" name="oquefazer">
+                        <label for="requisitar_livros" class="checkbox-label">Requisitar livros</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="outros" value="outros" name="oquefazer">
+                        <label for="outros" class="checkbox-label">Outros</label>
+                    </div>
+                </div>
+                <p class="data">Data:</p>
+                <input type="date" class="inputs date-input" name="data_entrada" min="2023-01-01" max="2030-12-31">
+                <button type="submit">Entrar</button>
+                <p class="registo">Ainda não é membro? <a href="registo com validacao.html">Registe-se</a></p>
+            </form>
+        </div>
+        <script>
+            function togglePasswordVisibility() {
+                const passwordField = document.getElementById('password');
+                passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+            }
+        </script>
+    </body>
+</html>
