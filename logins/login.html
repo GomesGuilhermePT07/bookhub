@@ -47,7 +47,7 @@
                 top: 50%;
                 bottom: 0%;
                 transform: translateY(-50%);
-                color: var(--color-grey);
+                color: var(--color-blue1);
             }
 
             .inputs {
@@ -129,6 +129,7 @@
                 padding-left: 10px;
                 margin-bottom: 15px;
                 text-align: left;
+                color: var(--color-white);
             }
 
             .show-password {
@@ -265,7 +266,14 @@
                     </div>
                 </div>
                 <p class="data">Data:</p>
-                <input type="date" class="inputs date-input" name="data_entrada" min="2023-01-01" max="2030-12-31">
+                <input type="date" class="inputs date-input" name="data_entrada" id="data_entrada">
+                    <script>
+                        const today = new Date().toISOString().split('T')[0];
+                        const dateInput = document.getElementById('data_entrada');
+                        dateInput.min = today;
+                        dateInput.max = today;
+                        dateInput.value = today;
+                    </script>
                 <button type="submit">Entrar</button>
                 <p class="registo">Ainda não é membro? <a href="../logins/registo com validacao.html">Registe-se</a></p>
             </form>
