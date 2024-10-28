@@ -1,0 +1,225 @@
+:root {
+    --color-dark1: #181818;
+    --color-red1: #e52b4b;
+    --color-blue1: #426877;
+    --color-white: #ffffff;
+    --color-grey: #707070;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(30deg, #e52b4b, #f3a69e, #83d0f0, #426877);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--color-white);
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    bottom: 0%;
+    transform: translateY(-50%);
+    color: var(--color-blue1);
+}
+
+.inputs {
+    font-size: 15px;
+    padding: 10px 10px 10px 35px;
+    outline: none;
+    border-radius: 5px;
+    background-color: var(--color-dark1);
+    border: 2px solid var(--color-dark1);
+    color: var(--color-white);
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    transition: .3s;
+}
+
+.inputs:focus {
+    border-color: var(--color-blue1);
+}
+
+.box-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.box-select div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: calc(50% - 10px);
+}
+
+.checkbox-label {
+    font-size: 17px;
+}
+
+.box-select input[type="checkbox"] {
+    appearance: none;
+    background-color: var(--color-dark1);
+    border: 2px solid var(--color-dark1);
+    border-radius: 3px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.box-select input[type="checkbox"]:checked {
+    background-color: var(--color-blue1);
+    border-color: var(--color-blue1);
+}
+
+.box-select input[type="checkbox"]:checked::before {
+    content: "✓";
+    color: var(--color-white);
+    font-size: 14px;
+    display: block;
+    text-align: center;
+}
+
+.tarefa {
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.data {
+    text-align: left;
+    font-size: 18px;
+}
+
+.date-input {
+    padding-left: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+    color: var(--color-white);
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.7px;
+    margin-bottom: 8px;
+    margin-top: -1rem;
+    color: var(--color-grey);
+    justify-content: flex-start;
+}
+
+.show-password input[type="checkbox"] {
+    appearance: none;
+    background-color: var(--color-dark1);
+    border: 2px solid var(--color-dark1);
+    border-radius: 3px;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.show-password input[type="checkbox"]:checked {
+    background-color: var(--color-blue1);
+    border-color: var(--color-blue1);
+}
+
+.show-password input[type="checkbox"]:checked::before {
+    content: "✓";
+    color: var(--color-white);
+    font-size: 12px;
+    display: block;
+    text-align: center;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: -24px;
+    margin-bottom: 10px;
+    margin-right: 2px;
+    font-size: 12.7px;
+}
+
+.forgot-password a {
+    color: var(--color-grey);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+    color: var(--color-blue1);
+    text-decoration: underline;
+}
+
+button {
+    background-color: dodgerblue;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: deepskyblue;
+    cursor: pointer;
+}
+
+.registo {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+    display: block;
+}
+
+.registo a {
+    color: #83d0f0;
+    text-decoration: none;
+}
+
+.registo a:hover {
+    text-decoration: underline;
+}
+
+.logo{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+.logo-img{
+    width: 280px;
+    height: auto;
+}
