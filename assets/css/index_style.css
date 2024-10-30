@@ -73,6 +73,12 @@ nav{
     transition: .4s;
 }
 
+.nav-links:not(:hover){
+    font-size: 20px;
+    color: var(--color-white);
+    transition: .4s;
+}
+
 .box-btn-action{
     display: flex;
     gap: 2rem;
