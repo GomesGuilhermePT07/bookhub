@@ -7,10 +7,10 @@
     --color-grey1: #d4d4d4;
 }
 
-header{
-    background-color: var(--color-grey1);
+body{
+    background-color: var(--color-white);
 }
 
-main{
-    background-color: var(--color-white);
+header{
+    background-color: var(--color-grey);
 }
