@@ -1,0 +1,16 @@
+:root{
+    --color-dark1: #181818;
+    --color-red1: #e52b4b;
+    --color-blue1: #426877;
+    --color-white: #ffffff;
+    --color-grey: #707070;
+    --color-grey1: #d4d4d4;
+}
+
+header{
+    background-color: var(--color-grey1);
+}
+
+main{
+    background-color: var(--color-white);
+}
