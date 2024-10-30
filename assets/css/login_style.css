@@ -1,3 +1,7 @@
+*{
+    flex-wrap: wrap;
+}
+
 :root {
     --color-dark1: #181818;
     --color-red1: #e52b4b;
@@ -61,7 +65,6 @@ body {
 
 .box-select {
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 10px;
     text-align: left;
