@@ -1,5 +1,13 @@
 @import url('https://fonts.google.apis.com/css2?family=Lato');
 
+*{
+    font-family: 'Lato';
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
 :root{
     --color-white: #fff;
     --color-dark1: #181818;
@@ -8,14 +16,6 @@
     --color-error: #e63636;
     --color-blue1: #426877;
     --color-blue2: #83d0f0;
-}
-
-*{
-    font-family: 'Lato';
-    letter-spacing: 1px;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
 }
 
 body{
