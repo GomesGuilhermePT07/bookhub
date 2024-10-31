@@ -1,3 +1,5 @@
+@import url('https://fonts.google.apis.com/css2?family=Lato');
+
 :root{
     --color-white: #fff;
     --color-dark1: #181818;
@@ -9,13 +11,14 @@
 }
 
 *{
+    font-family: 'Lato';
+    letter-spacing: 1px;
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(var(--color-white), var(--color-dark3));
     color: var(--color-white);
     display: flex;

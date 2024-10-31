@@ -1,4 +1,8 @@
+@import url('https://fonts.google.apis.com/css2?family=Lato');
+
 *{
+    font-family: 'Lato';
+    letter-spacing: 1px;
     flex-wrap: wrap;
 }
 
@@ -11,7 +15,6 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(30deg, #e52b4b, #f3a69e, #83d0f0, #426877);
     margin: 0;
     display: flex;
@@ -202,7 +205,6 @@ button:hover {
 
 .registo {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
     margin-top: 15px;
     display: block;
 }
