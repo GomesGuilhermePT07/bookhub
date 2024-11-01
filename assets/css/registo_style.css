@@ -27,6 +27,11 @@ body{
     height: 100vh;
 }
 
+h1{
+
+    letter-spacing: 2px;
+}
+
 .password-toggle-icon{
     position: absolute;
     top: 50%;
