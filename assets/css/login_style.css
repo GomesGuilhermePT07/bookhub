@@ -28,6 +28,7 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     padding: 15px;
     border-radius: 15px;
+    margin-top: 30px;
     width: 90%;
     max-width: 400px;
     box-sizing: border-box;
@@ -118,6 +119,7 @@ body {
 }
 
 .data {
+    margin-top: 10px;
     text-align: left;
     font-size: 18px;
 }
@@ -140,18 +142,20 @@ body {
     justify-content: flex-start;
 }
 
-.show-password input[type="checkbox"] {
+.show-password input[type="checkbox"],
+.box-select input[type="checkbox"] {
     appearance: none;
     background-color: var(--color-dark1);
     border: 2px solid var(--color-dark1);
     border-radius: 3px;
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    position: relative;
 }
 
 .show-password input[type="checkbox"]:checked {
@@ -159,10 +163,15 @@ body {
     border-color: var(--color-blue1);
 }
 
-.show-password input[type="checkbox"]:checked::before {
+.show-password input[type="checkbox"]:checked::before,
+.box-select input[type="checkbox"]:checked::before {
     content: "✓";
     color: var(--color-white);
     font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: block;
     text-align: center;
 }

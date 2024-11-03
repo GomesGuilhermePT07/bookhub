@@ -53,6 +53,14 @@
                         <label for="outros" class="checkbox-label">Outros</label>
                     </div>
                 </div>
+                <div class="input-container">
+                    <i class="fa fa-key"></i>
+                    <input type="password" placeholder="Código Secreto" class="inputs required" id="codigo_secreto">
+                </div>
+                <div class="show-password">
+                    <input type="checkbox" id="showSecretCode" onclick="toggleSecretCodeVisibility()">
+                    <label for="showSecretCode">Mostrar Código Secreto</label>
+                </div>
                 <p class="data">Data:</p>
                 <input type="date" class="inputs date-input" name="data_entrada" id="data_entrada">
                     <script>
@@ -70,6 +78,11 @@
             function togglePasswordVisibility() {
                 const passwordField = document.getElementById('password');
                 passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+            }
+
+            function toggleSecretCodeVisibility() {
+                const secretCodeField = document.getElementById('codigo_secreto');
+                secretCodeField.type = secretCodeField.type === 'password' ? 'text' : 'password';
             }
         </script>
     </body>
