@@ -1,33 +1,35 @@
 <?php
-// Conexão com a base de dados
-$servername = "localhost";
-$username = "root";
-$password = "usbw";
-$dbname = "bookhub";
+// Configurações do banco de dados
+$servername = "localhost";  // ou "127.0.0.1"
+$username = "root";         // Username do banco (padrão para PHPMyAdmin é "root")
+$password = "";             // Password do banco (deixa vazio se o MySQL estiver sem senha)
+$dbname = "bookhub";        // Nome da base de dados que criaste
 
+// Conexão ao banco de dados
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificação da conexão
+// Verifica se a conexão está bem-sucedida
 if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
+    die("Falha na conexão: " . $conn->connect_error);
 }
 
-// Receber os dados do formulário
+// Recebe os dados do formulário
 $nome_completo = $_POST['nome_completo'];
 $email = $_POST['email'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografar a senha
+$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Encripta a senha
 $genero = $_POST['genero'];
 
-// Inserir os dados na tabela 'utilizadores'
+// Inserção dos dados na tabela
 $sql = "INSERT INTO utilizadores (nome_completo, email, senha, genero) VALUES ('$nome_completo', '$email', '$senha', '$genero')";
 
 if ($conn->query($sql) === TRUE) {
-    // Redirecionar para a página de login após o registo
-    header("Location: login.html");
+    echo "Registo efetuado com sucesso!";
+    header("Location: login.html"); // Redireciona para a página de login
     exit();
 } else {
-    echo "Erro ao registar: " . $conn->error;
+    echo "Erro: " . $sql . "<br>" . $conn->error;
 }
 
+// Fecha a conexão
 $conn->close();
 ?>
