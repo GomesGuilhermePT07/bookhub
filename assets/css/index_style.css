@@ -10,39 +10,28 @@
 
 :root{
     --color-dark1: #181818;
-    --color-dark2: #414141;
-    --color-dark3: #a3a3a3;
     --color-red1: #e52b4b;
-    /*--color-blue1: #426877;*/
-    --color-blue1: #7d9ab3;
-    --color-blue2: #8fa7bb;
-    --color-blue3: #9aafc2;
-    --color-blue4: #b7c6d4;
-    --color-blue5: #cad5df;
-    --color-blue6: #d8e0e7;
-    --color-blue7: #e9edf1;
-    --color-blue8: #f3f5f8;
+    --color-header: #fce16b;
+    --color-letters-header: #696969;
+    --color-footer: #ede6d6;
     --color-white: #ffffff;
-    /*--color-grey: #707070;
-    --color-grey1: #d4d4d4;
-    --color-grey2: #dddddd;*/
 }
 
 body{
-    background-color: var(--color-blue8);
+    background-color: var(--color-white);
     height: 100vh;
 }
 
 header{
-    font-size: 50px;
     font-weight: bold;
     display: flex;
     justify-content: space-around;
+    border-bottom: 2px solid var(--color-dark1);
     align-items: center;
     gap: 1rem;
     padding: .8rem;
     min-height: 60px;
-    background-color: var(--color-blue4);
+    background-color: var(--color-header);
 }
 
 .box-img-header{
@@ -63,50 +52,37 @@ nav{
 }
 
 .nav-links{
+    font-size: 22px;
     text-decoration: none;
     color: var(--color-white);
 }
 
 .nav-links:hover{
-    font-size: 25px;
-    color: var(--color-blue1);
+    color: var(--color-dark1);
     transition: .4s;
 }
 
 .nav-links:not(:hover){
-    font-size: 20px;
     color: var(--color-white);
     transition: .4s;
 }
 
-.box-btn-action{
-    display: flex;
-    gap: 2rem;
-}
-
-button{
-    padding: .6rem;
-    font-size: .9rem;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.btn-action{
-    background-color: transparent;
-    border: 1.5px solid var(--color-white);
-    color: var(--color-white);
-}
-
-.btn-action:hover{
-    background-color: var(--color-blue1);
-    transition: .4s;
-}
-
-.btn-action-ref{
+.btn-action-ref, .btn-action-ref1{
+    font-size: 18px;
     text-decoration: none;
     color: var(--color-white);
 }
 
-.btn-action-ref:hover{
+.btn-action-ref1{
+    margin-left: -7rem;
+}
+
+.btn-action-ref:hover, .btn-action-ref1:hover{
     color: var(--color-dark1);
+    transition: .4s;
+}
+
+.btn-action-ref:not(:hover), .btn-action-ref1:not(:hover){
+    color: var(--color-white);
+    transition: .4s;
 }
