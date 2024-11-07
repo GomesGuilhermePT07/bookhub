@@ -1,8 +1,9 @@
 @import url('https://fonts.google.apis.com/css2?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 *{
     letter-spacing: 1px;
-    font-family: 'Lato';
+    font-family: 'Merriweather', serif;
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
@@ -10,11 +11,16 @@
 
 :root{
     --color-dark1: #181818;
+    --color-dark2: #a4a4a4;
+    --color-header2: #f9f9f9;
     --color-red1: #e52b4b;
-    --color-header: #fce16b;
-    --color-letters-header: #696969;
     --color-footer: #ede6d6;
     --color-white: #ffffff;
+    --color-blue1: #007bff;
+    --color-blue2: #0056b3;
+    /*--color-header1: #d3d3d3;
+    --color-header2: #f2f2f2;
+    --color-header3: #e8f0ff;*/
 }
 
 body{
@@ -23,15 +29,17 @@ body{
 }
 
 header{
-    font-weight: bold;
+    font-weight: normal;
     display: flex;
     justify-content: space-around;
-    border-bottom: 2px solid var(--color-dark1);
     align-items: center;
     gap: 1rem;
-    padding: .8rem;
-    min-height: 60px;
-    background-color: var(--color-header);
+    padding: .5rem 1rem;
+    min-height: 50px;
+    background-color: var(--color-header2);
+    border-bottom: 1px solid var(--color-blue1);
+    opacity: 0.9;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .box-img-header{
@@ -52,37 +60,37 @@ nav{
 }
 
 .nav-links{
-    font-size: 22px;
+    font-size: 17px;
     text-decoration: none;
-    color: var(--color-white);
-}
-
-.nav-links:hover{
     color: var(--color-dark1);
-    transition: .4s;
-}
-
-.nav-links:not(:hover){
-    color: var(--color-white);
-    transition: .4s;
+    font-weight: 400;
+    transition: color 0.3s ease;
 }
 
 .btn-action-ref, .btn-action-ref1{
-    font-size: 18px;
+    font-size: 13px;
     text-decoration: none;
-    color: var(--color-white);
+    color: var(--color-dark1);
 }
 
 .btn-action-ref1{
-    margin-left: -7rem;
-}
-
-.btn-action-ref:hover, .btn-action-ref1:hover{
-    color: var(--color-dark1);
-    transition: .4s;
-}
-
-.btn-action-ref:not(:hover), .btn-action-ref1:not(:hover){
+    text-decoration: none;
     color: var(--color-white);
-    transition: .4s;
+    background-color: var(--color-blue1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: -7rem;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-action-ref1:hover{
+    background-color: var(--color-blue2);
+}
+
+footer{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
