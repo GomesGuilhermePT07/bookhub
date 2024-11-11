@@ -67,10 +67,19 @@ nav{
     transition: color 0.3s ease;
 }
 
+.nav-links:hover{
+    color: var(--color-blue1);
+}
+
 .btn-action-ref, .btn-action-ref1{
-    font-size: 13px;
+    font-size: 14px;
     text-decoration: none;
     color: var(--color-dark1);
+}
+
+.btn-action-ref:hover{
+    color: var(--color-blue2);
+    transition: .4s;
 }
 
 .btn-action-ref1{
