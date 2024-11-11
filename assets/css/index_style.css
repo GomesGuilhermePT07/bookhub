@@ -43,7 +43,7 @@ header{
 }
 
 .box-img-header{
-    margin-left: -4%;
+    margin-left: -10%;
     height: 100%;
 }
 
@@ -77,6 +77,10 @@ nav{
     color: var(--color-dark1);
 }
 
+.btn-action-ref{
+    margin-right: -1rem;
+}
+
 .btn-action-ref:hover{
     color: var(--color-blue2);
     transition: .4s;
@@ -88,7 +92,8 @@ nav{
     background-color: var(--color-blue1);
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: -7rem;
+    margin-left: -15rem;
+    margin-right: -6rem;
     display: inline-block;
     transition: background-color 0.3s ease;
 }
