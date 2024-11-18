@@ -1,11 +1,17 @@
-const button = document.querySelector("button");
+const button = document.getElementById("openModal");
 const modal = document.querySelector("dialog");
-const buttonClose = document.querySelector("dialog button");
+const closeModal = document.getElementById("closeModal");
+const saveBook = document.getElementById("saveBook");
 
 button.onclick = function(){
     modal.showModal();
-}
+};
 
-buttonClose.onclick = function(){
+closeModal.onclick = function(){
+    modal.close();
+};
+
+saveBook.onclick = function(){
+    alert("Livro salvo com sucesso!");
     modal.close();
 }

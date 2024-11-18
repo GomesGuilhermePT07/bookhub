@@ -29,14 +29,29 @@
     <main>
         <h2>ISTO É O MAIN</h2>
         <section class="first-section">
-            <button>Adicionar livro</button>
-
-            <dialog>
+            <button id="openModal">Adicionar Livro</button>
+            <dialog class="modal">
                 <h2>Adicionar Livro</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button>Guardar Livro</button>
+                <form id="bookForm">
+                    <label for="title">Título do Livro:</label>
+                    <input type="text" id="title" name="title" required>
+                    
+                    <label for="edition">Edição:</label>
+                    <input type="text" id="edition" name="edition" required>
+                    
+                    <label for="author">Autor:</label>
+                    <input type="text" id="author" name="author" required>
+                    
+                    <label for="genre">Gênero:</label>
+                    <input type="text" id="genre" name="genre" required>
+
+                    <div class="modal buttons">
+                        <button type="button" id="saveBook">Guardar livro</button>
+                        <button type="button" id="closeModal">Fechar</button>
+                    </div>
+                </form>
             </dialog>
-            <script src="/assets/js/modal.js"></script>
+            <script src="../Módulo Projeto/assets/js/modal.js"></script>
             <p>esta é a parte dos livros</p>
         </section>
 

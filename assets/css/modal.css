@@ -1,10 +1,66 @@
+:root {
+    --color-dark1: #181818;
+    --color-dark2: #a4a4a4;
+    --color-header2: #f9f9f9;
+    --color-red1: #e52b4b;
+    --color-footer: #ede6d6;
+    --color-white: #ffffff;
+    --color-blue1: #007bff;
+    --color-blue2: #0056b3;
+}
+
 dialog::backdrop{
-    background-color: rgb(0 0 0 / .5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 dialog{
-    border: none;
     border-radius: .5rem;
-    box-shadow: 0 0 1em rgb(0 0 0 / .3);
-    width: 80%;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+    width: 50%;
+    max-width: 400px;
+    padding: 20px;
+    position: relative;
+    top: 20%;
+    transform: translateX(100%);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-blue1);
+}
+
+.modal h2{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.modal label{
+    display: block;
+    margin-top: .5rem;
+    font-weight: bold;
+}
+
+.modal input{
+    width: 100%;
+    padding: 5px;
+    margin-top: .25rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-dark2);
+    border-radius: 4px;
+}
+
+.modal-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.modal-buttons button{
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--color-blue1);
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.modal-buttons button:hover{
+    background-color: var(--color-blue2);
 }
