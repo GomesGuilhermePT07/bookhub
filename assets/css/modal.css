@@ -37,10 +37,6 @@ dialog{
     border: 2px solid var(--color-blue1);
 }
 
-.modal{
-    margin-top: 1px;
-}
-
 .modal h2{
     text-align: center;
     margin-bottom: 1rem;
@@ -54,16 +50,43 @@ dialog{
 
 .modal input{
     width: 100%;
-    padding: 5px;
-    margin-top: -30px;
+    padding: 8px 10px;
     margin-bottom: 1rem;
     border: none;
     border-bottom: 1.7px solid var(--color-blue1);
     outline: none;
+    color: var(--color-dark1);
     background: none;
     font-size: 15px;
     letter-spacing: 1px;
     border-radius: 4px;
+}
+
+.labelInput{
+    position: absolute;
+    left: 10px;
+    top: 0%;
+    pointer-events: none;
+    transition: .3s ease-in-out;
+    color: var(--color-dark1);
+    font-size: 15px;
+}
+
+.modal-buttons-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.inputUser{
+    position: relative;
+}
+
+.modal input:focus ~ .labelInput, 
+.modal input:valid ~ .labelInput{
+    top: -20px;
+    font-size: 12px;
+    color: var(--color-blue1);
 }
 
 .modal-buttons, .modal-buttons1{

@@ -33,26 +33,36 @@
             <dialog class="modal">
                 <h2>Adicionar Livro</h2>
                 <form id="bookForm">
-                    <label for="idbn">Código ISBN:</label>
-                    <input type="text" id="isbn" name="isbn" required>
+                    <div class="inputUser">
+                        <input type="text" id="isbn" name="isbn" class="modal-input" required>
+                        <label for="isbn" class="labelInput">Código ISBN</label>
+                    </div>
+                
+                    <div class="inputUser">
+                        <input type="text" id="title" name="title" class="modal-input" required>
+                        <label for="title" class="labelInput">Título do Livro</label>
+                    </div>
+                
+                    <div class="inputUser">
+                        <input type="text" id="edition" name="edition" class="modal-input" required>
+                        <label for="edition" class="labelInput">Autor</label>
+                    </div>
+                
+                    <div class="inputUser">
+                        <input type="text" id="author" name="author" class="modal-input" required>
+                        <label for="author" class="labelInput">Edição</label>
+                    </div>
+                
+                    <div class="inputUser">
+                        <input type="text" id="genre" name="genre" class="modal-input" required>
+                        <label for="genre" class="labelInput">Resumo</label>
+                    </div>
 
-                    <label for="title">Título do Livro:</label>
-                    <input type="text" id="title" name="title" required>
-                    
-                    <label for="edition">Edição:</label>
-                    <input type="text" id="edition" name="edition" required>
-                    
-                    <label for="author">Autor:</label>
-                    <input type="text" id="author" name="author" required>
-                    
-                    <label for="genre">Gênero:</label>
-                    <input type="text" id="genre" name="genre" required>
-
-                    <div class="modal buttons">
+                    <div class="modal-buttons-container">
                         <button type="button" id="saveBook" class="modal-buttons">Guardar livro</button>
                         <button type="button" id="closeModal" class="modal-buttons1">Fechar</button>
                     </div>
-                </form>
+                </form>                
             </dialog>
             <script src="../Módulo Projeto/assets/js/modal.js"></script>
             <p>esta é a parte dos livros</p>
