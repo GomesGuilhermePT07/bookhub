@@ -32,37 +32,50 @@
             <button id="openModal">Adicionar Livro</button>
             <dialog class="modal">
                 <h2>Adicionar Livro</h2>
-                <form id="bookForm">
-                    <div class="inputUser">
-                        <input type="text" id="isbn" name="isbn" class="modal-input" required>
-                        <label for="isbn" class="labelInput">Código ISBN</label>
+                <div class="modal-content">
+                    <div class="modal-left"> <!--Coluna da esquerda-->
+                        <div class="book-image-container">
+                            <img id="bookImage" src="https://via.placeholder.com/150" alt="Imagem do Livro">
+                        </div>
+                        <div class="book-summary">
+                            <label for="summary" class="summary-label">Resumo</label>
+                            <textarea id="summary" name="summary" rows="4" placeholder="Insira o resumo aqui..." required></textarea>
+                        </div>
                     </div>
-                
-                    <div class="inputUser">
-                        <input type="text" id="title" name="title" class="modal-input" required>
-                        <label for="title" class="labelInput">Título do Livro</label>
+                    <div class="modal-right">
+                        <form id="bookForm">
+                            <div class="inputUser">
+                                <input type="text" id="isbn" name="isbn" class="modal-input" required>
+                                <label for="isbn" class="labelInput">Código ISBN</label>
+                            </div>
+                        
+                            <div class="inputUser">
+                                <input type="text" id="title" name="title" class="modal-input" required>
+                                <label for="title" class="labelInput">Título do Livro</label>
+                            </div>
+                        
+                            <div class="inputUser">
+                                <input type="text" id="edition" name="edition" class="modal-input" required>
+                                <label for="edition" class="labelInput">Autor</label>
+                            </div>
+                        
+                            <div class="inputUser">
+                                <input type="text" id="author" name="author" class="modal-input" required>
+                                <label for="author" class="labelInput">Edição</label>
+                            </div>
+                        
+                            <div class="inputUser">
+                                <input type="text" id="genre" name="genre" class="modal-input" required>
+                                <label for="genre" class="labelInput">Resumo</label>
+                            </div>
+        
+                            <div class="modal-buttons-container">
+                                <button type="button" id="saveBook" class="modal-buttons">Guardar livro</button>
+                                <button type="button" id="closeModal" class="modal-buttons1">Fechar</button>
+                            </div>
+                        </form>
                     </div>
-                
-                    <div class="inputUser">
-                        <input type="text" id="edition" name="edition" class="modal-input" required>
-                        <label for="edition" class="labelInput">Autor</label>
-                    </div>
-                
-                    <div class="inputUser">
-                        <input type="text" id="author" name="author" class="modal-input" required>
-                        <label for="author" class="labelInput">Edição</label>
-                    </div>
-                
-                    <div class="inputUser">
-                        <input type="text" id="genre" name="genre" class="modal-input" required>
-                        <label for="genre" class="labelInput">Resumo</label>
-                    </div>
-
-                    <div class="modal-buttons-container">
-                        <button type="button" id="saveBook" class="modal-buttons">Guardar livro</button>
-                        <button type="button" id="closeModal" class="modal-buttons1">Fechar</button>
-                    </div>
-                </form>                
+                </div>                
             </dialog>
             <script src="../Módulo Projeto/assets/js/modal.js"></script>
             <p>esta é a parte dos livros</p>
