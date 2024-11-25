@@ -35,12 +35,20 @@
                 <div class="modal-content">
                     <div class="modal-left"> <!--Coluna da esquerda-->
                         <div class="book-image-container">
-                            <img id="bookImage" src="https://via.placeholder.com/150" alt="Imagem do Livro">
+                            <img id="bookImage" src="https://via.placeholder.com/128x186" alt="Imagem do Livro">
                         </div>
                         <div class="book-summary">
                             <label for="summary" class="summary-label">Resumo</label>
                             <textarea id="summary" name="summary" rows="4" placeholder="Insira o resumo aqui..." required></textarea>
+                            <button id="viewFullText" class="view-icon-btn" title="Ver resumo completo">
+                                <i class="fas fa-eye"></i>
+                            </button>
                         </div>
+                        <dialog id="textModal" class="text-modal">
+                            <h2>Resumo completo do livro</h2>
+                            <p id="fullTextContent"></p>
+                            <button id="closeTextModal" class="modal-close-btn">Fechar</button>
+                        </dialog>
                     </div>
                     <div class="modal-right">
                         <form id="bookForm">
