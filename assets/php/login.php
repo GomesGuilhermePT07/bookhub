@@ -4,7 +4,7 @@ session_start();
 // Conexão com a base de dados
 $servername = "localhost";
 $username = "root";
-$password = "usbw";
+$password = "";
 $dbname = "bookhub";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -31,13 +31,15 @@ if ($result->num_rows > 0) {
         $_SESSION['nome_completo'] = $row['nome_completo'];
         
         // Redirecionar para index.html
-        header("Location: index.html");
+        header("Location: ../Módulo Projeto/index.html");
         exit();
     } else {
         echo "Senha incorreta.";
     }
 } else {
-    echo "Utilizador não encontrado.";
+    // Se o utilizador não for encontrado, redireciona para a página de registro
+    header("Location: ../logins/registo com validacao.html");
+    exit();
 }
 
 $conn->close();
