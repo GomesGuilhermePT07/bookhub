@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
 
         // Preparar a consulta de inserção
-        $sql = "INSERT INTO utilizadores (nome_completo, email, password, genero, admin) VALUES ('$nome_completo', '$email', '$password_hash', '$genero', 0)";
+        $sql = "INSERT INTO usuarios (nome_completo, email, senha, genero) VALUES ('$nome_completo', '$email', '$senha_hash', '$genero')";
 
         if ($conn->query($sql) === TRUE) {
             echo "Registo efetuado com sucesso!";
