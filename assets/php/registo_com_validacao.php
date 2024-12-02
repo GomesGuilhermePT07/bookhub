@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";         // Nome de utilizador padrão no phpMyAdmin do USBWebserver
 $password = "";             // A senha padrão é vazia para USBWebserver
-$dbname = "utilizadores";   // Nome da base de dados
+$dbname = "bookhub";   // Nome da base de dados
 
 // Criar conexão com o banco de dados
 $conn = new mysqli($servername, $username, $password, $dbname);
