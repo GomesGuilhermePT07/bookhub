@@ -52,7 +52,7 @@
                         <label for="o">Outro</label>
                     </div>
                 </div>                
-                <button type="submit"><b>Enviar</b></button>
+                <button><b>Enviar</b></button>
             </form>
         </div>
     </body>
