@@ -1,46 +1,34 @@
 <?php
 session_start();
+require 'config.php';
 
-// Conexão com a base de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bookhub";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $nome_completo = $conn->real_escape_string(trim($_POST['nome_completo']));
+    $senha = trim($_POST['senha']);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $sql = "SELECT * FROM utilizadores WHERE nome_completo = '$nome_completo'";
+    $result = $conn->query($sql);
 
-// Verificação da conexão
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
 
-// Receber os dados do formulário
-$nome_completo = $_POST['nome_completo'];
-$senha = $_POST['senha'];
+        // Validar a senha
+        if(password_verify($senha, $row['senha'])){
+            $_SESSION['nome_completo'] = $row['nome_completo'];
 
-// Buscar o utilizador pelo nome
-$sql = "SELECT * FROM utilizadores WHERE nome_completo = '$nome_completo'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    
-    // Verificar a senha
-    if (password_verify($senha, $row['senha'])) {
-        // Armazenar o nome do utilizador na sessão
-        $_SESSION['nome_completo'] = $row['nome_completo'];
-        
-        // Redirecionar para index.html
-        header("Location: ../Módulo Projeto/index.html");
-        exit();
+            // Verificar se é administrador
+            if($row['admin'] == 1){
+                header("Location: ../admin/index.html"); // Página do administrador
+            } else {
+                header("Location: ../Módulo Projeto/index.html"); // Página do utilizador comum
+            }
+            exit();
+        } else {
+            echo "Senha incorreta.";
+        }
     } else {
-        echo "Senha incorreta.";
+        echo "Utilizador não encontrado.";
     }
-} else {
-    // Se o utilizador não for encontrado, redireciona para a página de registro
-    header("Location: ../logins/registo com validacao.html");
-    exit();
 }
-
 $conn->close();
 ?>

@@ -1,12 +1,12 @@
 <?php
-    $servername = "localhost";
+    $dsn = "mysql:host=localhost;dbname=bookhub";
     $username = "root";
-    $password = ""; // Altere para a sua password do MySQL
-    $dbname = "bookhub";
+    $password = "usbw";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Conexão falhou: " . $conn->connect_error);
+    try {
+        $pdo = new PDO($dsn, $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e){
+        echo "Connection failed: " . $e->getMessage();
     }
 ?>

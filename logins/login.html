@@ -17,11 +17,11 @@
             <form action="../assets/php/login.php" method="POST">
                 <div class="input-container">
                     <i class="fa fa-user"></i>
-                    <input type="text" placeholder="Nome Completo" class="inputs required">
+                    <input type="text" placeholder="Nome Completo" class="inputs required" name="nome_completo" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key"></i>
-                    <input type="password" placeholder="Password" class="inputs required" id="password">
+                    <input type="password" placeholder="Password" class="inputs required" id="password" name="senha" required>
                 </div>
                 <div class="show-password">
                     <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key"></i>
-                    <input type="password" placeholder="Código Secreto" class="inputs required" id="codigo_secreto">
+                    <input type="password" placeholder="Código Secreto" class="inputs required" id="codigo_secreto" name="cod_secreto">
                 </div>
                 <div class="show-password">
                     <input type="checkbox" id="showSecretCode" onclick="toggleSecretCodeVisibility()">

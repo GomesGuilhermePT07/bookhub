@@ -1,68 +1,29 @@
 <?php
-// Parâmetros de conexão
-$servername = "localhost";
-$username = "root";         // Nome de utilizador padrão no phpMyAdmin do USBWebserver
-$password = "";             // A senha padrão é vazia para USBWebserver
-$dbname = "bookhub";   // Nome da base de dados
 
-// Criar conexão com o banco de dados
-$conn = new mysqli($servername, $username, $password, $dbname);
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        // Obter e validar os dados do formulário
+        $nome_completo = $_POST["nome_completo"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $genero = $_POST["genero"] ? $_POST["genero"] : "";
 
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
+        try{
+            require_once "config.php";
 
-// Verificar se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obter e sanitizar os dados do formulário
-    $nome_completo = $conn->real_escape_string(trim($_POST['nome_completo']));
-    $email = $conn->real_escape_string(trim($_POST['email']));
-    $senha = $conn->real_escape_string(trim($_POST['senha']));
-    $genero = isset($_POST['genero']) ? $_POST['genero'] : '';
+            $query = "INSERT INTO utilizadores (nome_completo, email, password, genero) VALUES (?, ?, ?, ?);";
+            
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$nome_completo, $email, $password, $genero]);
 
-    // Validação dos campos
-    $erros = [];
+            $pdo = null;
+            $stmt = null;
 
-    if (strlen($nome_completo) < 5) {
-        $erros[] = "O nome deve ter no mínimo 5 caracteres.";
-    }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $erros[] = "Digite um email válido.";
-    }
-
-    if (strlen($senha) < 8) {
-        $erros[] = "A senha deve ter no mínimo 8 caracteres.";
-    }
-
-    if (!in_array($genero, ['m', 'f', 'o'])) {
-        $erros[] = "Género inválido.";
-    }
-
-    // Se não houver erros, insira o utilizador na base de dados
-    if (empty($erros)) {
-        // Hash da senha para segurança
-        $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
-
-        // Preparar a consulta de inserção
-        $sql = "INSERT INTO utilizadores (nome_completo, email, senha, genero) VALUES ('$nome_completo', '$email', '$senha_hash', '$genero')";
-
-        if ($conn->query($sql) === TRUE) {
-            // Redireciona para o login
             header("Location: ../logins/login.html");
-            exit();
-        } else {
-            echo "Erro ao registrar o utilizador: " . $conn->error;
+
+            die();
+        } catch (PDOException $e){
+            die("Query failed: " . $e->getMessage());
         }
     } else {
-        // Mostrar mensagens de erro
-        foreach ($erros as $erro) {
-            echo "<p>$erro</p>";
-        }
+            header("Location: ../logins/registo_com_validacao.html");
     }
-}
-
-// Fechar a conexão com o banco de dados
-$conn->close();
-?>
