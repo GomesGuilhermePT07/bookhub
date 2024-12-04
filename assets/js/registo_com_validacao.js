@@ -6,7 +6,6 @@ const passwordFields = document.querySelectorAll('input[type="password"]');
 const toggleIcons = document.querySelectorAll('.password-toggle-icon i');
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
     nameValidate();
     emailValidate();
     mainPasswordValidate();
