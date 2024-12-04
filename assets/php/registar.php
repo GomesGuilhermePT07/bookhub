@@ -29,5 +29,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         die("Query failed: " . $e->getMessage());
     }
 }else{
-    header("Location: ../logins/registo_com_validacao.php");
+    header("Location: ../../logins/registo_com_validacao.php");
 }
