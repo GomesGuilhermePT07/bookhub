@@ -10,10 +10,17 @@
         try{
             require_once "config.php";
 
-            $query = "INSERT INTO utilizadores (nome_completo, email, password, genero) VALUES (?, ?, ?, ?);";
+            $query = "INSERT INTO utilizadores (nome_completo, email, password, genero) 
+                      VALUES (:nome_completo, :email, :password, :genero);";
             
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$nome_completo, $email, $password, $genero]);
+
+            $stmt->bindParam(":nome_completo", $nome_completo);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":genero", $genero);
+
+            $stmt->execute();
 
             $pdo = null;
             $stmt = null;
