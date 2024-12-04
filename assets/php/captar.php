@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once "config.php";
 
         $query = "INSERT INTO utilizadores (nome_completo, email, password, genero)
-                  VALUES (:username, :email, :password, :genero);";
+                  VALUES (:nome_completo, :email, :password, :genero);";
 
         $stmt = $pdo->prepare($query);
 

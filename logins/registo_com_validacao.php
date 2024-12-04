@@ -14,7 +14,7 @@
         </div>
         <div class="content">
             <h1>Registo📚</h1>
-            <form id="form" action="../assets/php/registar.php" method="POST"> 
+            <form id="form" action="../assets/php/captar.php" method="POST"> 
                 <div>
                     <input type="text" placeholder="Nome Completo" class="inputs required" oninput="nameValidate()" name="nome_completo">
                     <span class="span-required">O nome deve ter no mínimo 5 caracteres</span>
