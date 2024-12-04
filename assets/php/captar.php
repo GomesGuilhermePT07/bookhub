@@ -1,6 +1,6 @@
 <?php
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["nome_completo"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -9,12 +9,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     try{
         require_once "config.php";
 
-        $query = "INSERT INTO utilizadores (username, email, password, genero)
+        $query = "INSERT INTO utilizadores (nome_completo, email, password, genero)
                   VALUES (:username, :email, :password, :genero);";
 
         $stmt = $pdo->prepare($query);
 
-        $stmt->bindParam(":username", $username);
+        $stmt->bindParam(":nome_completo", $username);
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":password", $password);
         $stmt->bindParam(":genero", $genero);
@@ -25,9 +25,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt = null;
 
         die();
-    }catch (PDOException $e){
+    } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-}else{
-    header("Location: ../../logins/registo_com_validacao.php");
+} else {
+    header("Location: ../registo_com_validacao.php");
 }
