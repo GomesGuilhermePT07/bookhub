@@ -52,7 +52,7 @@
                         <label for="o">Outro</label>
                     </div>
                 </div>                
-                <button><b>Enviar</b></button>
+                <button class="btn"><b>Enviar</b></button>
             </form>
         </div>
         <script src="../assets/js/registo_com_validacao.js"></script>
