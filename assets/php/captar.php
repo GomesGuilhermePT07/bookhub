@@ -24,10 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
         $stmt = null;
 
+        header("Location: ../../logins/login.html");
+
         die();
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
 } else {
-    header("Location: ../registo_com_validacao.php");
+    header("Location: ../../logins/registo_com_validacao.php");
 }
