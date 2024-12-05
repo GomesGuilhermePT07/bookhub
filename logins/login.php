@@ -14,14 +14,14 @@
         </div>
         <div class="login-container">
             <h1>Login📚</h1>
-            <form action="../assets/php/login.php" method="POST">
+            <form action="../assets/php/captar_login.php" method="POST">
                 <div class="input-container">
                     <i class="fa fa-user"></i>
                     <input type="email" placeholder="E-mail" class="inputs required" name="email" required>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key"></i>
-                    <input type="password" placeholder="Password" class="inputs required" id="password" name="senha" required>
+                    <input type="password" placeholder="Password" class="inputs required" id="password" name="password" required>
                 </div>
                 <div class="show-password">
                     <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
