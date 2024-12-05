@@ -1,34 +1,37 @@
 <?php
-session_start();
-require 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $conn->real_escape_string(trim($_POST['email']));
-    $senha = trim($_POST['senha']);
+    
+    try{
+        session_start();
+        require_once "captar.php"; 
 
-    // Alterar a consulta para buscar pelo email
-    $sql = "SELECT * FROM utilizadores WHERE email = '$email'";
-    $result = $conn->query($sql);
+        $email = $pdo->quote(trim($_POST["email"])); 
+        $password = trim($_POST["password"]);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+        // Consultar o banco de dados para verificar se o email existe
+        $sql = "SELECT * FROM utilizadores WHERE email = $email;";
+        $result = $pdo->query($sql);
 
-        // Validar a senha
-        if (password_verify($senha, $row['password'])) { // Certifique-se de que a coluna de senha é 'password'
-            $_SESSION['nome_completo'] = $row['nome_completo'];
+        if ($result->rowCount() > 0) {
+            $row = $result->fetch(PDO::FETCH_ASSOC);
 
-            // Verificar se é administrador
-            if ($row['admin'] == 1) {
-                header("Location: ../admin/index.html"); // Página do administrador
+            // Validar a senha
+            if (password_verify(:password, $password)) { // Certifique-se de que a coluna de senha é 'password'
+                // Iniciar a sessão
+                $_SESSION["email"] = :email;
+                $_SESSION["password"] = :password; 
+
+                // Redirecionar para a página principal
+                header("Location: ../../index.html");
+                exit();
             } else {
-                header("Location: ../Módulo Projeto/index.html"); // Página do utilizador comum
+                echo "Password incorreta.";
             }
-            exit();
         } else {
-            echo "Senha incorreta.";
+            echo "Utilizador não encontrado.";
         }
-    } else {
-        echo "Utilizador não encontrado.";
+    } catch (PDOException $e){
+        echo "Erro ao conectar à base de dados: " . $e->getMessage();
     }
 }
-$conn->close();
