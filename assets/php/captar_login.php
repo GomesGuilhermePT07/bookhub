@@ -18,7 +18,10 @@ try{
 
         if ($email) {
             if (password_verify($password, $email["password"])){
-                header("Location: ../../index.html");
+                header("Location: ../../index.php");
+                session_start();
+                $_SESSION["loggedin"] = true;
+                $_SESSION["email"] = $email["email"];
             } else {
                 echo "Senha incorreta. Tente novamente.";
             }
