@@ -1,37 +1,32 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    try{
-        session_start();
-        require_once "captar.php"; 
+include "config.php";
 
-        $email = $pdo->quote(trim($_POST["email"])); 
-        $password = trim($_POST["password"]);
+try{
 
-        // Consultar o banco de dados para verificar se o email existe
-        $sql = "SELECT * FROM utilizadores WHERE email = $email;";
-        $result = $pdo->query($sql);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        if ($result->rowCount() > 0) {
-            $row = $result->fetch(PDO::FETCH_ASSOC);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
-            // Validar a senha
-            if (password_verify(:password, $password)) { // Certifique-se de que a coluna de senha é 'password'
-                // Iniciar a sessão
-                $_SESSION["email"] = :email;
-                $_SESSION["password"] = :password; 
+        $sql = "SELECT * FROM utilizadores WHERE email = :email";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([":email" => $email]);
+        $email = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                // Redirecionar para a página principal
+        if ($email) {
+            if (password_verify($password, $email["password"])){
                 header("Location: ../../index.html");
-                exit();
             } else {
-                echo "Password incorreta.";
+                echo "Senha incorreta. Tente novamente.";
             }
         } else {
-            echo "Utilizador não encontrado.";
+            header("Location: ../../logins/login.php");
+            alert("Utilizador não encontrado. Verifique as credenciais ou registe-se.");
         }
-    } catch (PDOException $e){
-        echo "Erro ao conectar à base de dados: " . $e->getMessage();
     }
+} catch (PDOException $e){
+    echo "Erro ao conectar à base de dados: " . $e->getMessage();
 }

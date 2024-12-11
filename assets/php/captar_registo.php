@@ -9,6 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try{
         require_once "config.php";
 
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         $query = "INSERT INTO utilizadores (nome_completo, email, password, genero)
                   VALUES (:nome_completo, :email, :password, :genero);";
 
@@ -16,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt->bindParam(":nome_completo", $username);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":password", $password);
+        $stmt->bindParam(":password", $hashedPassword);
         $stmt->bindParam(":genero", $genero);
 
         $stmt->execute();
@@ -24,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../../logins/login.html");
+        header("Location: ../../logins/login.php");
 
         die();
     } catch (PDOException $e) {
