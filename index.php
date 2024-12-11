@@ -17,7 +17,7 @@ session_start();
 <body>
     <header>
         <div class="box-img-header">
-            <a href="../Módulo Projeto/index.html">
+            <a href="../Módulo Projeto/index.php">
                 <img class="img-logo" src="../Módulo Projeto/assets/img/Logotipo_Bookhub.png" alt="Logo BOOKhub">
             </a>
         </div>
@@ -26,8 +26,12 @@ session_start();
             <a href="#" class="nav-links">Lista de desejos</a>
             <a href="#" class="nav-links">Carrinho</a>
         </nav>
+        <?php if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true): ?>
             <a href="../Módulo Projeto/logins/registo_com_validacao.php" class="btn-action-ref">Registar</a>
             <a href="../Módulo Projeto/logins/login.php" class="btn-action-ref1">Entrar</a>
+        <?php else: ?>
+            <a href="detalhes_conta.html" class="btn-action-ref"> Ver detalhes da conta</a>
+            <a href="../Módulo Projeto/logins/logout.php" class="btn-action-ref1">Terminar sessão</a>
     </header>
 
     <main>
