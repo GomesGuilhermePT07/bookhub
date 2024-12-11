@@ -31,7 +31,7 @@ session_start();
             <a href="logins/login.php" class="btn-action-ref1">Entrar</a>
         <?php else: ?>
             <a href="detalhes_conta.html" class="btn-action-ref">Ver Conta</a>
-            <a href="logins/logout.php" class="btn-action-ref1">Terminar Sessão</a>
+            <a href="logins/logout.php" class="btn-action-logout">Sair</a>
         <?php endif; ?>
     </header>
 

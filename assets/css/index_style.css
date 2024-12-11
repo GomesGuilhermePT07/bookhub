@@ -13,7 +13,8 @@
     --color-dark1: #181818;
     --color-dark2: #a4a4a4;
     --color-header2: #f9f9f9;
-    --color-red1: #e52b4b;
+    --color-red1: #e52b2b;
+    --color-red2: #b12121;
     --color-footer: #ede6d6;
     --color-white: #ffffff;
     --color-blue1: #007bff;
@@ -97,6 +98,22 @@ nav{
 
 .btn-action-ref1:hover{
     background-color: var(--color-blue2);
+}
+
+.btn-action-logout{
+    text-decoration: none;
+    color: var(--color-white);
+    background-color: var(--color-red1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: -15rem;
+    margin-right: -6rem;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-action-logout:hover{
+    background-color: var(--color-red2);
 }
 
 footer{
