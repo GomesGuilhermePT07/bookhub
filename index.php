@@ -108,7 +108,7 @@ session_start();
     </main>
 
     <footer>
-        <h2>ISTO É O FOOTER</h2>
+        <p>&copy; 2024 BOOKhub. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>
