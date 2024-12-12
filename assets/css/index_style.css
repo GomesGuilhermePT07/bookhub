@@ -101,6 +101,7 @@ nav{
 }
 
 .btn-action-logout{
+    font-size: 14px;
     text-decoration: none;
     color: var(--color-white);
     background-color: var(--color-red1);
