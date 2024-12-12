@@ -10,18 +10,39 @@ try{
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $codigo_secreto = $_POST["cod_secreto"];
 
         $sql = "SELECT * FROM utilizadores WHERE email = :email";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([":email" => $email]);
-        $email = $stmt->fetch(PDO::FETCH_ASSOC);
+        $utilizador = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($email) {
-            if (password_verify($password, $email["password"])){
+        if ($utilizador) {
+            if (password_verify($password, $utilizador["password"])){
                 header("Location: ../../index.php");
                 session_start();
                 $_SESSION["loggedin"] = true;
-                $_SESSION["email"] = $email["email"];
+                $_SESSION["email"] = $utilizador["email"];
+
+                // Verificar o código secreto
+                if ($codigo_secreto === "1234"){
+                    $_SESSION["admin"] = true;
+
+                    // Atualizar a coluna "admin" na base de dados conforme o código inserido pelo utilizador
+                    $updateSql = "UPDATE utilizadores SET admin = 1 WHERE email = :email;";
+                    $updateStmt = $pdo->prepare($updateSql);
+                    $updateStmt->execute([":email" => $utilizador["email"]]);
+
+                    header("Location: ../../admin/dashboard.php"); // Redireciona para o painel do administrador
+                } else {
+                    $_SESSION["admin"] = false;
+
+                    // Atualizar a coluna "admin" na base de dados caso o utilizador erre o código
+                    $updateSql = "UPDATE utilizadores SET admin = 0 WHERE email = :email;";
+                    $updateStmt = $pdo->prepare($updateSql);
+                    $updateStmt->execute([":email" => $utilizador["email"]]);
+                    header("Location: ../../index.php"); // Redireciona para o site normal como utilizador comum
+                }
             } else {
                 echo "Senha incorreta. Tente novamente.";
             }
