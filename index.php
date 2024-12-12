@@ -24,6 +24,7 @@ session_start();
         <nav>
             <a href="#" class="nav-links">Livros</a>
             <a href="#" class="nav-links">Lista de desejos</a>
+            <a href="#" class="nav-links">Workshops</a>
             <a href="#" class="nav-links">Carrinho</a>
         </nav>
         <?php if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true): ?>
