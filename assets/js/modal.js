@@ -13,6 +13,9 @@ const bookAuthorInput = document.getElementById("author");
 const bookEditionInput = document.getElementById("edition");
 const bookPagesInput = document.getElementById("genre");
 const bookImage = document.getElementById("bookImage");
+const bookListContainer = document.createElement("div"); // Contêiner para exibir os livros
+bookListContainer.id = "book-list";
+document.body.appendChild(bookListContainer);
 
 // Criar o botão "Salvar alterações" dentro do modal de texto completo
 const saveTextModalBtn = document.createElement("button");
@@ -49,8 +52,8 @@ async function fetchBookDetails(isbn) {
 
             // Preencher os campos do modal com os dados do livro
             bookTitleInput.value = book.title || "Não disponível";
-            bookAuthorInput.value = book.authors ? book.authors.join(", ") : "Não disponível"; // Autor corrigido
-            bookEditionInput.value = book.publishedDate || "Não disponível"; // Edição corrigida
+            bookAuthorInput.value = book.authors ? book.authors.join(", ") : "Não disponível";
+            bookEditionInput.value = book.publishedDate || "Não disponível";
             bookPagesInput.value = book.pageCount || "Não disponível";
             textarea.value = book.description || "Resumo não disponível";
 
@@ -123,6 +126,47 @@ closeTextModalBtn.addEventListener("click", () => {
 
 // Simulação do salvamento do livro
 saveBook.onclick = function () {
-    alert("Livro salvo com sucesso!");
-    modal.close();
+    const title = bookTitleInput.value;
+    const author = bookAuthorInput.value;
+    const edition = bookEditionInput.value;
+    const pages = bookPagesInput.value;
+    const summary = textarea.value;
+    const thumbnail = bookImage.src;
+
+    if (title && author && edition && pages && summary) {
+        // Criar a estrutura HTML para o livro
+        const bookHtml = `
+            <div class="book-item">
+                <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
+                <h5>${title}</h5>
+                <p>Autor: ${author}</p>
+                <p>Edição: ${edition}</p>
+                <p>Páginas: ${pages}</p>
+                <p>Resumo: ${summary}</p>
+                <button class="remove-book">Remover</button>
+            </div>
+        `;
+        bookListContainer.innerHTML += bookHtml;
+
+        alert("Livro adicionado com sucesso!");
+        modal.close(); // Fecha o modal principal
+
+        // Limpar os campos do modal
+        isbnInput.value = "";
+        bookTitleInput.value = "";
+        bookAuthorInput.value = "";
+        bookEditionInput.value = "";
+        bookPagesInput.value = "";
+        textarea.value = "";
+        bookImage.src = "https://via.placeholder.com/128x186";
+    } else {
+        alert("Por favor, preencha todos os campos.");
+    }
 };
+
+// Evento para remover um livro
+bookListContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("remove-book")) {
+        event.target.closest(".book-item").remove();
+    }
+});
