@@ -140,7 +140,7 @@ saveBook.onclick = function () {
                 <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
                 <h5>${title}</h5>
                 <p>${author}</p>
-                <!--<button class="remove-book">Remover</button>-->
+                <button class="remove-book">Remover</button>
             </div>
         `;
         bookListContainer.innerHTML += bookHtml;
