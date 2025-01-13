@@ -140,9 +140,6 @@ saveBook.onclick = function () {
                 <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
                 <h5>${title}</h5>
                 <p>Autor: ${author}</p>
-                <p>Edição: ${edition}</p>
-                <p>Páginas: ${pages}</p>
-                <p>Resumo: ${summary}</p>
                 <button class="remove-book">Remover</button>
             </div>
         `;
