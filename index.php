@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" href="../Módulo Projeto/assets/css/modal.css">
     <link rel="stylesheet" href="../Módulo Projeto/assets/css/apresentar_livro.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
     <title>BOOKhub</title>
 </head>
 <body>
