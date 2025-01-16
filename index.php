@@ -11,9 +11,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../Módulo Projeto/assets/css/index_style.css">
     <link rel="stylesheet" href="../Módulo Projeto/assets/css/modal.css">
-    <link rel="stylesheet" href="../Módulo Projeto/assets/css/apresentar_livro.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
     <title>BOOKhub</title>
 </head>
 <body>
@@ -39,69 +37,7 @@ session_start();
     </header>
 
     <main>
-        <!-- <h2>ISTO É O MAIN</h2> -->
-        <?php
-            // Conexão ao banco de dados
-            $servername = "localhost";
-            $username = "root"; // Substitua pelo seu usuário do MySQL
-            $password = "usbw"; // Substitua pela sua senha do MySQL
-            $dbname = "bookhub";
-
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            if ($conn->connect_error) {
-                die("Erro de conexão: " . $conn->connect_error);
-            }
-
-            // Inserção de livro na base de dados (via AJAX)
-            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'add') {
-                $isbn = $_POST['isbn'];
-                $title = $_POST['title'];
-                $edition = $_POST['edition'];
-                $author = $_POST['author'];
-                $pages = $_POST['pages'];
-                $description = $_POST['description'];
-
-                $stmt = $conn->prepare("INSERT INTO livros (cod_isbn, titulo, edicao, autor, paginas, descricao) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("ssssss", $isbn, $title, $edition, $author, $pages, $description);
-
-                if ($stmt->execute()) {
-                    echo "Livro adicionado com sucesso.";
-                } else {
-                    echo "Erro ao adicionar livro: " . $stmt->error;
-                }
-
-                $stmt->close();
-                exit;
-            }
-
-            // Remoção de livro na base de dados (via AJAX)
-            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'remove') {
-                $isbn = $_POST['isbn'];
-
-                $stmt = $conn->prepare("DELETE FROM livros WHERE cod_isbn = ?");
-                $stmt->bind_param("s", $isbn);
-
-                if ($stmt->execute()) {
-                    echo "Livro removido com sucesso.";
-                } else {
-                    echo "Erro ao remover livro: " . $stmt->error;
-                }
-
-                $stmt->close();
-                exit;
-            }
-
-            // Consulta inicial para carregar livros
-            $livros = [];
-            $result = $conn->query("SELECT * FROM livros");
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $livros[] = $row;
-                }
-            }
-            $conn->close();
-            ?>
+        <h2>ISTO É O MAIN</h2>
         <section class="first-section">
             <button id="openModal">Adicionar Livro</button>
             <dialog class="modal">
@@ -159,31 +95,21 @@ session_start();
                     </div>
                 </div>                
             </dialog>
-            <div id="book-list">
-                <?php foreach ($livros as $livro): ?>
-                    <div class="book-item" data-isbn="<?= $livro['cod_isbn'] ?>">
-                        <img src="https://via.placeholder.com/128x186" alt="Capa do Livro" class="book-thumbnail">
-                        <h5><?= htmlspecialchars($livro['titulo']) ?></h5>
-                        <p><?= htmlspecialchars($livro['autor']) ?></p>
-                        <button class="remove-book">Remover</button>
-                    </div>
-                <?php endforeach; ?>
-            </div>
             <script src="../Módulo Projeto/assets/js/modal.js"></script>
-            <!-- <p>esta é a parte dos livros</p> -->
+            <p>esta é a parte dos livros</p>
         </section>
 
         <section class="second-section">
-            <!-- <p>esta é a parte </p> -->
+            <p>esta é a parte </p>
         </section>
 
         <section class="third-section">
-            <!-- <p>esta é a parte </p> -->
+            <p>esta é a parte </p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
+        <p>&copy; 2024 BOOKhub. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>

@@ -44,7 +44,7 @@ closeModal.onclick = function () {
 // Função para buscar os detalhes do livro da Google Books API
 async function fetchBookDetails(isbn) {
     try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+        const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}");
         const data = await response.json();
 
         if (data.totalItems > 0) {
@@ -135,14 +135,16 @@ saveBook.onclick = function () {
 
     if (title && author && edition && pages && summary) {
         // Criar a estrutura HTML para o livro
-        const bookHtml = `
+        const bookHtml = 
             <div class="book-item">
-                <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
+                <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail"></img>
                 <h5>${title}</h5>
-                <p>${author}</p>
+                <p>Autor: ${author}</p>
+                <p>Edição: ${edition}</p>
+                <p>Páginas: ${pages}</p>
+                <p>Resumo: ${summary}</p>
                 <button class="remove-book">Remover</button>
             </div>
-        `;
         bookListContainer.innerHTML += bookHtml;
 
         alert("Livro adicionado com sucesso!");
@@ -160,75 +162,6 @@ saveBook.onclick = function () {
         alert("Por favor, preencha todos os campos.");
     }
 };
-
-saveBook.onclick = async function(){
-    const isbn = isbnInput.value.trim();
-    const title = bookTitleInput.value.trim();
-    const author = bookAuthorInput.value.trim();
-    const edition = bookEditionInput.value.trim();
-    const pages = bookPagesInput.value.trim();
-    const summary = textarea.value.trim();
-
-    if (isbn && title && author && edition && pages && summary){
-        try {
-            const response = await fetch("index.php", {
-                method: "POST",
-                header: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams({
-                    action: "add",
-                    isbn,
-                    title,
-                    edition,
-                    author,
-                    pages,
-                    description: summary
-                })
-            });
-            const result = await response.text();
-            alert(result);
-
-            // Atualiza o site sem refresh
-            const bookHtml = `
-                <div class="book-item" data-isbn="${isbn}">
-                    <img src="https://via.placeholder.com/128x186" alt="Capa do Livro" class="book-thumbnail">
-                    <h5>${title}</h5>
-                    <p>${author}</p>
-                    <button class="remove-book">Remover</button>
-                </div>
-            `;
-            bookListContainer.innerHTML += bookHtml;
-            modal.close(); 
-        } catch (error) {
-            console.error("Erro ao adicionar livro. Tente novamente.");
-        }
-    } else {
-        alert ("Por favor, preencha todos os campos.");
-    }
-};
-
-// Remover livro do banco de dados
-bookListContainer.addEventListener("click", async (event) => {
-    if (event.target.classList.contains("remove-book")) {
-        const bookItem = event.target.closest(".book-item");
-        const isbn = bookItem.dataset.isbn;
-
-        try {
-            const response = await fetch("index.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams({ action: "remove", isbn })
-            });
-            const result = await response.text();
-            alert(result);
-
-            // Remove o livro do DOM
-            bookItem.remove();
-        } catch (error) {
-            console.error("Erro ao remover livro:", error);
-            alert("Erro ao remover livro. Tente novamente.");
-        }
-    }
-});
 
 // Evento para remover um livro
 bookListContainer.addEventListener("click", (event) => {
