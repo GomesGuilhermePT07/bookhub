@@ -44,7 +44,7 @@ closeModal.onclick = function () {
 // Função para buscar os detalhes do livro da Google Books API
 async function fetchBookDetails(isbn) {
     try {
-        const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}");
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
         const data = await response.json();
 
         if (data.totalItems > 0) {
@@ -135,16 +135,17 @@ saveBook.onclick = function () {
 
     if (title && author && edition && pages && summary) {
         // Criar a estrutura HTML para o livro
-        const bookHtml = 
-            <div class="book-item">
-                <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail"></img>
-                <h5>${title}</h5>
-                <p>Autor: ${author}</p>
-                <p>Edição: ${edition}</p>
-                <p>Páginas: ${pages}</p>
-                <p>Resumo: ${summary}</p>
-                <button class="remove-book">Remover</button>
-            </div>
+        const bookHtml = `
+        <div class="book-item">
+            <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
+            <h5>${title}</h5>
+            <p>Autor: ${author}</p>
+            <p>Edição: ${edition}</p>
+            <p>Páginas: ${pages}</p>
+            <p>Resumo: ${summary}</p>
+            <button class="remove-book">Remover</button>
+        </div>`;
+
         bookListContainer.innerHTML += bookHtml;
 
         alert("Livro adicionado com sucesso!");
