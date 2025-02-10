@@ -1,6 +1,6 @@
 <?php
 
 $host = "localhost";
-$dbname = "bookhub";
+$dbname = "bookhubjb";
 $dbusername = "root";
 $dbpassword = "usbw";
