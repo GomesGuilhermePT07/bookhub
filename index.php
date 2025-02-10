@@ -9,9 +9,9 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../Módulo Projeto/assets/css/index_style.css">
-    <link rel="stylesheet" href="../Módulo Projeto/assets/css/modal.css">
-    <link rel="stylesheet" href="../Módulo Projeto/assets/css/apresentar_livro.css">
+    <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
+    <link rel="stylesheet" href="../ModuloProjeto/assets/css/modal.css">
+    <link rel="stylesheet" href="../ModuloProjeto/assets/css/apresentar_livro.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <title>BOOKhub</title>
 </head>
@@ -96,7 +96,7 @@ session_start();
                     </div>
                 </div>                
             </dialog>
-            <script src="../Módulo Projeto/assets/js/modal.js"></script>
+            <script src="../ModuloProjeto/assets/js/modal.js"></script>
             <p>esta é a parte dos livros</p>
         </section>
 
@@ -110,7 +110,7 @@ session_start();
     </main>
 
     <footer>
-        <p>&copy; 2024 BOOKhub. Todos os direitos reservados.</p>
+        <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>

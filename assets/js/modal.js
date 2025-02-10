@@ -57,7 +57,7 @@ async function fetchBookDetails(isbn) {
             bookPagesInput.value = book.pageCount || "Não disponível";
             textarea.value = book.description || "Resumo não disponível";
 
-            // Alterar a imagem da capa do livro
+            // Alterar a imagem da capa do livro 
             if (book.imageLinks && book.imageLinks.thumbnail) {
                 bookImage.src = book.imageLinks.thumbnail;
             } else {
