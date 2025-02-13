@@ -62,7 +62,7 @@ session_start();
                         </dialog>
                     </div>
                     <div class="modal-right">
-                        <form id="bookForm">
+                        <form id="bookForm" method="POST" action="captar_livro.php">
                             <div class="inputUser">
                                 <input type="text" id="isbn" name="isbn" class="modal-input" required>
                                 <label for="isbn" class="labelInput">Código ISBN</label>
