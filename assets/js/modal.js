@@ -132,6 +132,7 @@ saveBook.onclick = function () {
     const pages = bookPagesInput.value;
     const summary = textarea.value;
     const thumbnail = bookImage.src;
+    const quantity = document.getElementById("quantity").value;
 
     if (title && author && edition && pages && summary) {
         // Criar a estrutura HTML para o livro
@@ -143,6 +144,7 @@ saveBook.onclick = function () {
             <p>Edição: ${edition}</p>
             <p>Páginas: ${pages}</p>
             <p>Resumo: ${summary}</p>
+            <p>Quantidade: ${quantity}</p>
             <button class="remove-book">Remover</button>
         </div>`;
 
@@ -159,6 +161,7 @@ saveBook.onclick = function () {
         bookPagesInput.value = "";
         textarea.value = "";
         bookImage.src = "https://via.placeholder.com/128x186";
+        document.getElementById("quantity").value = 1; // Reseta a quantidade para 1 automaticamente
     } else {
         alert("Por favor, preencha todos os campos.");
     }
