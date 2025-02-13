@@ -87,6 +87,11 @@ session_start();
                                 <input type="text" id="genre" name="genre" class="modal-input" required>
                                 <label for="genre" class="labelInput">Nº de páginas</label>
                             </div>
+
+                            <div class="inputUser">
+                                <input type="number" id="quantity" name="quantity" class="modal-input" min="1" value="1" required>
+                                <label for="quantity" class="labelInput">Quantidade</label>
+                            </div>
         
                             <div class="modal-buttons-container">
                                 <button type="button" id="saveBook" class="modal-buttons">Guardar livro</button>
