@@ -136,7 +136,7 @@ saveBook.onclick = function () {
     const pages = bookPagesInput.value;
     const summary = textarea.value;
     const thumbnail = bookImage.src;
-    const quantity = quantity.value;
+    const quantityValue = quantity.value;
 
     if (title && author && edition && pages && summary) {
         // Criar a estrutura HTML para o livro
@@ -148,7 +148,7 @@ saveBook.onclick = function () {
             <p>Edição: ${edition}</p>
             <p>Páginas: ${pages}</p>
             <p>Resumo: ${summary}</p>
-            <p>Quantidade: ${quantity}</p>
+            <p>Quantidade: ${quantityValue}</p>
             <button class="remove-book">Remover</button>
         </div>`;
 
