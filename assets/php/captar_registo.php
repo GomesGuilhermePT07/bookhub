@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try{
         require_once "config.php";
 
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+        $pdo = new PDO("mysql:host=$host;port=3307;dbname=$dbname", $dbusername, $dbpassword);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
