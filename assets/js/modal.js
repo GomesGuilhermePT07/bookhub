@@ -89,6 +89,7 @@ isbnInput.addEventListener("input", () => {
         textarea.value = "";
         bookImage.src ="https://via.placeholder.com/128x186"; // Resetar a imagem
         bookImage.alt = "Imagem do livro"; // Texto alternativo
+        quantity.value = 1; // Reseta a quantidade para 1
     }
 });
 
