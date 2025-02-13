@@ -4,18 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes da Conta</title>
-    <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
+    <!-- <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .user-info {
+            margin-bottom: 15px;
+        }
+        .user-info label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .user-info p {
+            margin: 0;
+            padding: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .actions button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <div class="container">
+        <h1>Detalhes da Conta</h1>
+
+        <div class="user-info">
+            <label>Nome:</label>
+            <p>João Silva</p>
+        </div>
+
+        <div class="user-info">
+            <label>Email:</label>
+            <p>joao.silva@example.com</p>
+        </div>
+
+        <div class="user-info">
+            <label>Data de Registo:</label>
+            <p>01/01/2023</p>
+        </div>
+
+        <div class="user-info">
+            <label>Último Login:</label>
+            <p>10/10/2023 15:30</p>
+        </div>
+
+        <div class="user-info">
+            <label>Estado da Conta:</label>
+            <p>Ativa</p>
+        </div>
+
+        <div class="actions">
+            <button onclick="editarPerfil()">Editar Perfil</button>
+            <button onclick="alterarSenha()">Alterar Senha</button>
+        </div>
+    </div>
+    <script>
+        function editarPerfil() {
+            alert('Funcionalidade de edição de perfil ainda não implementada.');
+        }
+
+        function alterarSenha() {
+            alert('Funcionalidade de alteração de senha ainda não implementada.');
+        }
+    </script>
+    <!-- <header>
         <h1>Detalhes da Conta</h1>
     </header>
     <main>
         <p>Aqui estão os detalhes da sua conta.</p>
         <!-- Adicione mais informações conforme necessário -->
-    </main>
+    <!-- </main>
     <footer>
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
-    </footer>
+    </footer>  -->
 </body>
 </html>
