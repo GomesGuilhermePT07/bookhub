@@ -13,6 +13,7 @@ const bookAuthorInput = document.getElementById("author");
 const bookEditionInput = document.getElementById("edition");
 const bookPagesInput = document.getElementById("genre");
 const bookImage = document.getElementById("bookImage");
+const quantity = document.getElementById("quantity");
 const bookListContainer = document.createElement("div"); // Contêiner para exibir os livros
 bookListContainer.id = "book-list";
 document.body.appendChild(bookListContainer);
@@ -132,7 +133,7 @@ saveBook.onclick = function () {
     const pages = bookPagesInput.value;
     const summary = textarea.value;
     const thumbnail = bookImage.src;
-    const quantity = document.getElementById("quantity").value;
+    const quantity = quantity.value;
 
     if (title && author && edition && pages && summary) {
         // Criar a estrutura HTML para o livro
@@ -161,7 +162,7 @@ saveBook.onclick = function () {
         bookPagesInput.value = "";
         textarea.value = "";
         bookImage.src = "https://via.placeholder.com/128x186";
-        document.getElementById("quantity").value = 1; // Reseta a quantidade para 1 automaticamente
+        quantity.value = 1; // Reseta a quantidade para 1 automaticamente
     } else {
         alert("Por favor, preencha todos os campos.");
     }
