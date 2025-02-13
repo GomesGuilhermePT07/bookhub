@@ -38,7 +38,7 @@ session_start();
     </header>
 
     <main>
-        <h2>ISTO É O MAIN</h2>
+        <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
             <button id="openModal">Adicionar Livro</button>
             <dialog class="modal">
@@ -97,20 +97,20 @@ session_start();
                 </div>                
             </dialog>
             <script src="../ModuloProjeto/assets/js/modal.js"></script>
-            <p>esta é a parte dos livros</p>
+            <!-- <p>esta é a parte dos livros</p> -->
         </section>
 
         <section class="second-section">
-            <p>esta é a parte </p>
+            <!-- <p>esta é a parte </p> -->
         </section>
 
         <section class="third-section">
-            <p>esta é a parte </p>
+            <!-- <p>esta é a parte </p> -->
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
+        <!-- <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p> -->
     </footer>
 </body>
 </html>
