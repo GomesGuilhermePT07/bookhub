@@ -40,6 +40,7 @@ button.onclick = function () {
 // Fechar o modal principal
 closeModal.onclick = function () {
     modal.close();
+    quantity.value = 1; // Reseta a quantidade para 1
 };
 
 // Função para buscar os detalhes do livro da Google Books API
