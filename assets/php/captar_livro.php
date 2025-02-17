@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = $_POST['title'];
     $edicao = $_POST['edition'];
     $autor = $_POST['author'];
-    $numero_paginas = $_POST['genre'];
+    $numero_paginas = $_POST['numero_paginas'];
     $quantidade = $_POST['quantity'];
     $resumo = $_POST['summary'];
 
