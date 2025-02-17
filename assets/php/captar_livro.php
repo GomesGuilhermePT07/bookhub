@@ -6,7 +6,7 @@ session_start(); // Iniciar a sessão
 require_once 'config.php';
 
 // Verificar se o formulário foi submetido
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($SERVER["REQUEST_METHOD"] == "POST") {
     // Capturar os dados do formulário
     $cod_isbn = $_POST['isbn'];
     $titulo = $_POST['title'];
