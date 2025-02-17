@@ -84,8 +84,8 @@ session_start();
                             </div>
                         
                             <div class="inputUser">
-                                <input type="text" id="genre" name="genre" class="modal-input" required>
-                                <label for="genre" class="labelInput">Nº de páginas</label>
+                                <input type="text" id="numero_paginas" name="numero_paginas" class="modal-input" required>
+                                <label for="numero_paginas" class="labelInput">Nº de páginas</label>
                             </div>
 
                             <div class="inputUser">
