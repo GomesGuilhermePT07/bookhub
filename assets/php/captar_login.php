@@ -33,7 +33,7 @@ try{
                     $updateStmt = $pdo->prepare($updateSql);
                     $updateStmt->execute([":email" => $utilizador["email"]]);
 
-                    header("Location: ../../admin/dashboard.php"); // Redireciona para o painel do administrador
+                    header("Location: ../../index.php"); // Redireciona para o painel do administrador
                 } else {
                     $_SESSION["admin"] = false;
 
