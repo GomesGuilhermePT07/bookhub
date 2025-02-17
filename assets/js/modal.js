@@ -11,7 +11,7 @@ const isbnInput = document.getElementById("isbn");
 const bookTitleInput = document.getElementById("title");
 const bookAuthorInput = document.getElementById("author");
 const bookEditionInput = document.getElementById("edition");
-const bookPagesInput = document.getElementById("numero_paginas");
+const bookPagesInput = document.getElementById("genre");
 const bookImage = document.getElementById("bookImage");
 const quantity = document.getElementById("quantidade");
 const bookListContainer = document.createElement("div"); // Contêiner para exibir os livros
@@ -153,8 +153,6 @@ saveBook.onclick = function () {
         </div>`;
 
         bookListContainer.innerHTML += bookHtml;
-
-        document.getElementById("bookForm").submit();
 
         alert("Livro adicionado com sucesso!");
         modal.close(); // Fecha o modal principal
