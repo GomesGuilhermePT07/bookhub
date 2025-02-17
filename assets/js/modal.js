@@ -154,6 +154,8 @@ saveBook.onclick = function () {
 
         bookListContainer.innerHTML += bookHtml;
 
+        document.getElementById("bookForm").submit();
+
         alert("Livro adicionado com sucesso!");
         modal.close(); // Fecha o modal principal
 
