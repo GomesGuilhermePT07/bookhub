@@ -1,10 +1,4 @@
 <?php
-
-echo "<pre>";
-var_dump($_POST);
-echo "</pre>";
-exit();
-
 session_start(); // Iniciar a sessão
 
 
