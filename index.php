@@ -101,7 +101,7 @@ session_start();
                     </div>
                 </div>                
             </dialog>
-            <script src="../ModuloProjeto/assets/js/modal.js"></script>
+            <script src="../ModuloProjeto/assets/js/modal_teste.js"></script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
 
