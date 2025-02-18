@@ -36,6 +36,7 @@ button.onclick = function () {
     bookImage.src = "https://via.placeholder.com/128x186"; // Resetar imagem para o padrão
     quantity.value = 1; // Define a quantidade para 1
     modal.showModal();
+    console.log("O modal foi aberto")
 };
 
 // Fechar o modal principal
