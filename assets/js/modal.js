@@ -1,180 +1,188 @@
-const button = document.getElementById("openModal");
-const modal = document.querySelector("dialog");
-const closeModal = document.getElementById("closeModal");
-const saveBook = document.getElementById("saveBook");
-const viewFullTextBtn = document.getElementById("viewFullText");
-const textModal = document.getElementById("textModal");
-const closeTextModalBtn = document.getElementById("closeTextModal");
-const fullTextContent = document.getElementById("fullTextContent");
-const textarea = document.getElementById("summary");
-const isbnInput = document.getElementById("isbn");
-const bookTitleInput = document.getElementById("title");
-const bookAuthorInput = document.getElementById("author");
-const bookEditionInput = document.getElementById("edition");
-const bookPagesInput = document.getElementById("numero_paginas");
-const bookImage = document.getElementById("bookImage");
-const quantity = document.getElementById("quantity");
-const bookListContainer = document.createElement("div"); // Contêiner para exibir os livros
-bookListContainer.id = "book-list";
-document.body.appendChild(bookListContainer);
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("openModal");
+    const modal = document.querySelector("dialog");
+    const closeModal = document.getElementById("closeModal");
+    const saveBook = document.getElementById("saveBook");
+    const viewFullTextBtn = document.getElementById("viewFullText");
+    const textModal = document.getElementById("textModal");
+    const closeTextModalBtn = document.getElementById("closeTextModal");
+    const fullTextContent = document.getElementById("fullTextContent");
+    const textarea = document.getElementById("summary");
+    const isbnInput = document.getElementById("isbn");
+    const bookTitleInput = document.getElementById("title");
+    const bookAuthorInput = document.getElementById("author");
+    const bookEditionInput = document.getElementById("edition");
+    const bookPagesInput = document.getElementById("numero_paginas");
+    const bookImage = document.getElementById("bookImage");
+    const quantity = document.getElementById("quantity");
+    const bookListContainer = document.createElement("div");
 
-// Criar o botão "Salvar alterações" dentro do modal de texto completo
-const saveTextModalBtn = document.createElement("button");
-saveTextModalBtn.textContent = "Salvar alterações";
-saveTextModalBtn.classList.add("modal-save-btn");
-saveTextModalBtn.style.marginTop = "10px"; // Ajuste de estilo
-textModal.appendChild(saveTextModalBtn); // Anexa o botão ao modal de texto completo
+    bookListContainer.id = "book-list";
+    document.body.appendChild(bookListContainer);
 
-// Abrir o modal principal
-button.onclick = function () {
-    isbnInput.value = "";
-    bookTitleInput.value = "";
-    bookAuthorInput.value = "";
-    bookEditionInput.value = "";
-    bookPagesInput.value = "";
-    textarea.value = "";
-    bookImage.src = "https://via.placeholder.com/128x186"; // Resetar imagem para o padrão
-    quantity.value = 1; // Define a quantidade para 1
-    modal.showModal();
-    console.log("O modal foi aberto")
-};
+    // Criar botão para salvar alterações do resumo
+    if (textModal) {
+        const saveTextModalBtn = document.createElement("button");
+        saveTextModalBtn.textContent = "Salvar alterações";
+        saveTextModalBtn.classList.add("modal-save-btn");
+        saveTextModalBtn.style.marginTop = "10px";
+        textModal.appendChild(saveTextModalBtn);
 
-// Fechar o modal principal
-closeModal.onclick = function () {
-    modal.close();
-    quantity.value = 1; // Reseta a quantidade para 1
-};
-
-// Função para buscar os detalhes do livro da Google Books API
-async function fetchBookDetails(isbn) {
-    try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
-        const data = await response.json();
-
-        if (data.totalItems > 0) {
-            const book = data.items[0].volumeInfo;
-
-            // Preencher os campos do modal com os dados do livro
-            bookTitleInput.value = book.title || "Não disponível";
-            bookAuthorInput.value = book.authors ? book.authors.join(", ") : "Não disponível";
-            bookEditionInput.value = book.publishedDate || "Não disponível";
-            bookPagesInput.value = book.pageCount || "Não disponível";
-            textarea.value = book.description || "Resumo não disponível";
-
-            // Alterar a imagem da capa do livro 
-            if (book.imageLinks && book.imageLinks.thumbnail) {
-                bookImage.src = book.imageLinks.thumbnail;
-            } else {
-                bookImage.src = "https://via.placeholder.com/128x186"; // Imagem padrão
+        saveTextModalBtn.addEventListener("click", () => {
+            const editableTextarea = document.getElementById("editableTextarea");
+            if (editableTextarea && textarea) {
+                textarea.value = editableTextarea.value;
+                alert("Resumo atualizado com sucesso!");
+                textModal.close();
             }
-        } else {
-            alert("Nenhum livro encontrado com este ISBN.");
+        });
+    }
+
+    if (button && modal) {
+        button.onclick = function () {
+            if (isbnInput) isbnInput.value = "";
+            if (bookTitleInput) bookTitleInput.value = "";
+            if (bookAuthorInput) bookAuthorInput.value = "";
+            if (bookEditionInput) bookEditionInput.value = "";
+            if (bookPagesInput) bookPagesInput.value = "";
+            if (textarea) textarea.value = "";
+            if (bookImage) bookImage.src = "https://via.placeholder.com/128x186";
+            if (quantity) quantity.value = 1;
+            modal.showModal();
+            console.log("O modal foi aberto");
+        };
+    }
+
+    if (closeModal && modal) {
+        closeModal.onclick = function () {
+            modal.close();
+            if (quantity) quantity.value = 1;
+        };
+    }
+
+    // Buscar detalhes do livro
+    async function fetchBookDetails(isbn) {
+        try {
+            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+            const data = await response.json();
+
+            if (data.totalItems > 0) {
+                const book = data.items[0].volumeInfo;
+
+                if (bookTitleInput) bookTitleInput.value = book.title || "Não disponível";
+                if (bookAuthorInput) bookAuthorInput.value = book.authors ? book.authors.join(", ") : "Não disponível";
+                if (bookEditionInput) bookEditionInput.value = book.publishedDate || "Não disponível";
+                if (bookPagesInput) bookPagesInput.value = book.pageCount || "Não disponível";
+                if (textarea) textarea.value = book.description || "Resumo não disponível";
+
+                if (book.imageLinks && book.imageLinks.thumbnail && bookImage) {
+                    bookImage.src = book.imageLinks.thumbnail;
+                } else if (bookImage) {
+                    bookImage.src = "https://via.placeholder.com/128x186";
+                }
+            } else {
+                alert("Nenhum livro encontrado com este ISBN.");
+            }
+        } catch (error) {
+            console.error("Erro ao buscar os detalhes do livro:", error);
+            alert("Erro ao buscar os detalhes do livro. Tente novamente.");
         }
-    } catch (error) {
-        console.error("Erro ao buscar os detalhes do livro:", error);
-        alert("Erro ao buscar os detalhes do livro. Tente novamente.");
     }
-}
 
-// Detectar mudanças no campo ISBN e buscar os dados automaticamente
-isbnInput.addEventListener("input", () => {
-    const isbn = isbnInput.value.trim();
-
-    if (isbn.length >= 10) { // ISBN deve ter ao menos 10 caracteres
-        fetchBookDetails(isbn);
-    } else {
-        // Limpar os dados se o ISBN for apagado ou for inferior a 10 caracteres
-        bookTitleInput.value = "";
-        bookAuthorInput.value = "";
-        bookEditionInput.value = "";
-        bookPagesInput.value = "";
-        textarea.value = "";
-        bookImage.src ="https://via.placeholder.com/128x186"; // Resetar a imagem
-        bookImage.alt = "Imagem do livro"; // Texto alternativo
-        quantity.value = 1; // Reseta a quantidade para 1
+    // Buscar dados ao digitar o ISBN
+    if (isbnInput) {
+        isbnInput.addEventListener("input", () => {
+            const isbn = isbnInput.value.trim();
+            if (isbn.length >= 10) {
+                fetchBookDetails(isbn);
+            } else {
+                if (bookTitleInput) bookTitleInput.value = "";
+                if (bookAuthorInput) bookAuthorInput.value = "";
+                if (bookEditionInput) bookEditionInput.value = "";
+                if (bookPagesInput) bookPagesInput.value = "";
+                if (textarea) textarea.value = "";
+                if (bookImage) bookImage.src = "https://via.placeholder.com/128x186";
+                if (quantity) quantity.value = 1;
+            }
+        });
     }
-});
 
-// Abrir o modal para exibir e editar o texto
-viewFullTextBtn.addEventListener("click", () => {
-    const text = textarea.value.trim();
-
-    if (text) {
-        fullTextContent.textContent = ""; // Limpa o conteúdo anterior
-        const editableTextarea = document.createElement("textarea"); // Cria um textarea editável
-        editableTextarea.value = text; // Define o texto existente no textarea
-        editableTextarea.id = "editableTextarea";
-        editableTextarea.style.width = "100%";
-        editableTextarea.style.height = "200px";
-        editableTextarea.style.resize = "none";
-        fullTextContent.appendChild(editableTextarea); // Adiciona o textarea ao modal
-        textModal.showModal(); // Abre o modal
-    } else {
-        alert("O campo de resumo está vazio!");
+    // Abrir modal de resumo
+    if (viewFullTextBtn && textModal && fullTextContent) {
+        viewFullTextBtn.addEventListener("click", () => {
+            if (textarea) {
+                const text = textarea.value.trim();
+                if (text) {
+                    fullTextContent.innerHTML = "";
+                    const editableTextarea = document.createElement("textarea");
+                    editableTextarea.value = text;
+                    editableTextarea.id = "editableTextarea";
+                    editableTextarea.style.width = "100%";
+                    editableTextarea.style.height = "200px";
+                    editableTextarea.style.resize = "none";
+                    fullTextContent.appendChild(editableTextarea);
+                    textModal.showModal();
+                } else {
+                    alert("O campo de resumo está vazio!");
+                }
+            }
+        });
     }
-});
 
-// Salvar as alterações do modal de texto completo no textarea principal
-saveTextModalBtn.addEventListener("click", () => {
-    const editableTextarea = document.getElementById("editableTextarea");
-    if (editableTextarea) {
-        textarea.value = editableTextarea.value; // Atualiza o resumo original
-        alert("Resumo atualizado com sucesso!");
-        textModal.close(); // Fecha o modal
+    // Fechar modal de resumo
+    if (closeTextModalBtn && textModal) {
+        closeTextModalBtn.addEventListener("click", () => {
+            textModal.close();
+        });
     }
-});
 
-// Fechar o modal de texto completo
-closeTextModalBtn.addEventListener("click", () => {
-    textModal.close(); // Fecha o modal
-});
+    // Salvar livro
+    if (saveBook) {
+        saveBook.onclick = function () {
+            if (!bookTitleInput || !bookAuthorInput || !bookEditionInput || !bookPagesInput || !textarea || !bookImage || !quantity) return;
 
-// Simulação do salvamento do livro
-saveBook.onclick = function () {
-    const title = bookTitleInput.value;
-    const author = bookAuthorInput.value;
-    const edition = bookEditionInput.value;
-    const pages = bookPagesInput.value;
-    const summary = textarea.value;
-    const thumbnail = bookImage.src;
-    const quantity = quantity.value;
+            const title = bookTitleInput.value;
+            const author = bookAuthorInput.value;
+            const edition = bookEditionInput.value;
+            const pages = bookPagesInput.value;
+            const summary = textarea.value;
+            const thumbnail = bookImage.src;
+            const quantityValue = quantity.value;
 
-    if (title && author && edition && pages && summary) {
-        // Criar a estrutura HTML para o livro
-        const bookHtml = `
-        <div class="book-item">
-            <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
-            <h5>${title}</h5>
-            <p>Autor: ${author}</p>
-            <p>Edição: ${edition}</p>
-            <p>Páginas: ${pages}</p>
-            <p>Resumo: ${summary}</p>
-            <p>Quantidade: ${quantity}</p>
-            <button class="remove-book">Remover</button>
-        </div>`;
+            if (title && author && edition && pages && summary) {
+                const bookHtml = `
+                <div class="book-item">
+                    <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
+                    <h5>${title}</h5>
+                    <p>Autor: ${author}</p>
+                    <p>Edição: ${edition}</p>
+                    <p>Páginas: ${pages}</p>
+                    <p>Resumo: ${summary}</p>
+                    <p>Quantidade: ${quantityValue}</p>
+                    <button class="remove-book">Remover</button>
+                </div>`;
 
-        bookListContainer.innerHTML += bookHtml;
+                bookListContainer.innerHTML += bookHtml;
+                alert("Livro adicionado com sucesso!");
+                modal.close();
 
-        alert("Livro adicionado com sucesso!");
-        modal.close(); // Fecha o modal principal
-
-        // Limpar os campos do modal
-        isbnInput.value = "";
-        bookTitleInput.value = "";
-        bookAuthorInput.value = "";
-        bookEditionInput.value = "";
-        bookPagesInput.value = "";
-        textarea.value = "";
-        bookImage.src = "https://via.placeholder.com/128x186";
-        quantity.value = 1; // Reseta a quantidade para 1 automaticamente
-    } else {
-        alert("Por favor, preencha todos os campos.");
+                bookTitleInput.value = "";
+                bookAuthorInput.value = "";
+                bookEditionInput.value = "";
+                bookPagesInput.value = "";
+                textarea.value = "";
+                bookImage.src = "https://via.placeholder.com/128x186";
+                quantity.value = 1;
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        };
     }
-};
 
-// Evento para remover um livro
-bookListContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("remove-book")) {
-        event.target.closest(".book-item").remove();
-    }
+    // Remover livro
+    bookListContainer.addEventListener("click", (event) => {
+        if (event.target.classList.contains("remove-book")) {
+            event.target.closest(".book-item").remove();
+        }
+    });
 });
