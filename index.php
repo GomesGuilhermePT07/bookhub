@@ -53,7 +53,7 @@
         <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
             <button id="openModal">Adicionar Livro</button>
-            <form action="./assets/php/teste.php" method="POST" id="bookForm">
+            <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
             <dialog class="modal">
                 <h2>Adicionar Livro</h2>
                 <div class="modal-content">
