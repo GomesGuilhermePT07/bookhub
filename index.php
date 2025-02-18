@@ -1,5 +1,16 @@
 <?php
 // session_start();
+
+    if(isset($_POST['submit'])){
+        print_r($_POST['isbn']);
+        print_r($_POST['title']);
+        print_r($_POST['edition']);
+        print_r($_POST['author']);
+        print_r($_POST['numero_paginas']);
+        print_r($_POST['quantity']);
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +52,7 @@
         <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
             <button id="openModal">Adicionar Livro</button>
-            <form action="assets/php/captar_livro.php" method="POST" id="bookForm">
+            <form action="index.php" method="POST" id="bookForm">
             <dialog class="modal">
                 <h2>Adicionar Livro</h2>
                 <div class="modal-content">
