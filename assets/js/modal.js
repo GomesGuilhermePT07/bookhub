@@ -27,6 +27,7 @@ textModal.appendChild(saveTextModalBtn); // Anexa o botão ao modal de texto com
 
 // Abrir o modal principal
 button.onclick = function () {
+    modal.showModal();
     isbnInput.value = "";
     bookTitleInput.value = "";
     bookAuthorInput.value = "";
@@ -35,7 +36,6 @@ button.onclick = function () {
     textarea.value = "";
     bookImage.src = "https://via.placeholder.com/128x186"; // Resetar imagem para o padrão
     quantity.value = 1; // Define a quantidade para 1
-    modal.showModal();
     console.log("O modal foi aberto")
 };
 
