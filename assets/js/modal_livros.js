@@ -138,7 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Salvar livro
     if (saveBook) {
-        saveBook.onclick = function () {
+        
+        saveBook.onclick = async function (e) {
+            e.preventDefault();
+
             if (!bookTitleInput || !bookAuthorInput || !bookEditionInput || !bookPagesInput || !textarea || !bookImage || !quantity) return;
 
             const title = bookTitleInput.value;
@@ -150,6 +153,34 @@ document.addEventListener("DOMContentLoaded", function () {
             const quantityValue = quantity.value;
 
             if (title && author && edition && pages && summary) {
+                // Fazer POST SERVER
+                const isbn = document.querySelector("#isbn").value
+                const formData = new FormData();
+                formData.append("isbn", isbn);
+                formData.append("title", title);
+                formData.append("edition", edition);
+                formData.append("author", author);
+                formData.append("numero_paginas", pages);
+                formData.append("quantity", quantityValue);
+                formData.append("summary", summary);
+
+                try {
+                    const response = await fetch("http://localhost:8080//ModuloProjeto/assets/php/teste.php", {
+                      method: "POST",
+                      body: formData,
+                    });
+
+                    if (response.ok && response.status == 200) {
+                        console.log("Criado com sucesso!")
+                    } else {
+                        console.log("Algum erro ocorreu!")
+                    }
+
+                } catch (e) {
+                    console.error(e);
+                }
+
+
                 const bookHtml = `
                 <div class="book-item">
                     <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">

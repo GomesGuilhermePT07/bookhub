@@ -37,8 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':quantidade', $quantidade);
         $stmt->bindParam(':resumo', $resumo);
 
-        $_SESSION['mensagem'] = "Código Isbn: " . $cod_isbn;
-
         if(empty($cod_isbn) || empty($titulo) || empty($edicao) || empty($autor) || empty($numero_paginas) || empty($quantidade)) {
             // $_SESSION['mensagem'] = "Preencha todos os campos!";
             header("Location: index.php");
@@ -55,8 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (PDOException $e) {
         // Redirecionar de volta para o index.php com uma mensagem de erro
         $_SESSION['mensagem'] = "Erro ao adicionar o livro: " . $e->getMessage();
-        header("Location: index.php");
-        exit();
     }
 
     // Fechar a sessão
