@@ -41,6 +41,7 @@ session_start();
         <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
             <button id="openModal">Adicionar Livro</button>
+            <form action="assets/php/captar_livro.php" method="POST" id="bookForm">
             <dialog class="modal">
                 <h2>Adicionar Livro</h2>
                 <div class="modal-content">
@@ -62,45 +63,44 @@ session_start();
                         </dialog>
                     </div>
                     <div class="modal-right">
-                        <form id="bookForm" method="POST" action="assets/php/captar_livro.php">
-                            <div class="inputUser">
-                                <input type="text" id="isbn" name="isbn" class="modal-input" required>
-                                <label for="isbn" class="labelInput">Código ISBN</label>
-                            </div>
-                        
-                            <div class="inputUser">
-                                <input type="text" id="title" name="title" class="modal-input" required>
-                                <label for="title" class="labelInput">Título do Livro</label>
-                            </div>
-                        
-                            <div class="inputUser">
-                                <input type="text" id="edition" name="edition" class="modal-input" required>
-                                <label for="edition" class="labelInput">Edição</label>
-                            </div>
-                        
-                            <div class="inputUser">
-                                <input type="text" id="author" name="author" class="modal-input" required>
-                                <label for="author" class="labelInput">Autor</label>
-                            </div>
-                        
-                            <div class="inputUser">
-                                <input type="text" id="numero_paginas" name="numero_paginas" class="modal-input" required>
-                                <label for="numero_paginas" class="labelInput">Nº de páginas</label>
-                            </div>
+                        <div class="inputUser">
+                            <input type="text" id="isbn" name="isbn" class="modal-input" required>
+                            <label for="isbn" class="labelInput">Código ISBN</label>
+                        </div>
+                    
+                        <div class="inputUser">
+                            <input type="text" id="title" name="title" class="modal-input" required>
+                            <label for="title" class="labelInput">Título do Livro</label>
+                        </div>
+                    
+                        <div class="inputUser">
+                            <input type="text" id="edition" name="edition" class="modal-input" required>
+                            <label for="edition" class="labelInput">Edição</label>
+                        </div>
+                    
+                        <div class="inputUser">
+                            <input type="text" id="author" name="author" class="modal-input" required>
+                            <label for="author" class="labelInput">Autor</label>
+                        </div>
+                    
+                        <div class="inputUser">
+                            <input type="text" id="numero_paginas" name="numero_paginas" class="modal-input" required>
+                            <label for="numero_paginas" class="labelInput">Nº de páginas</label>
+                        </div>
 
-                            <div class="inputUser">
-                                <input type="number" id="quantity" name="quantity" class="modal-input" min="1" value="1" required>
-                                <label for="quantity" class="labelInput">Quantidade</label>
-                            </div>
-        
-                            <div class="modal-buttons-container">
-                                <button type="submit" id="saveBook" class="modal-buttons">Guardar livro</button>
-                                <button type="button" id="closeModal" class="modal-buttons1">Fechar</button>
-                            </div>
-                        </form>
+                        <div class="inputUser">
+                            <input type="number" id="quantity" name="quantity" class="modal-input" min="1" value="1" required>
+                            <label for="quantity" class="labelInput">Quantidade</label>
+                        </div>
+    
+                        <div class="modal-buttons-container">
+                            <button type="submit" id="saveBook" class="modal-buttons">Guardar livro</button>
+                            <button type="button" id="closeModal" class="modal-buttons1">Fechar</button>
+                        </div>
                     </div>
                 </div>                
             </dialog>
+            </form>
             <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
