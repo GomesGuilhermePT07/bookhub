@@ -17,19 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantidade = $_POST['quantity'];
     $resumo = $_POST['summary'];
 
-    if($cod_isbn){
-        print_r($cod_isbn);
-    } else {
-        echo "O campo ISBN é obrigatório.";
-    }
-    // Conectar à base de dados
+    
     try {
         $conn = new PDO("mysql:host=$host;port=3307;dbname=$dbname", $dbusername, $dbpassword);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Preparar a query SQL para inserir os dados
         $sql = "INSERT INTO livros (cod_isbn, titulo, edicao, autor, numero_paginas, quantidade, resumo)
-                VALUES (:cod_isbn, :titulo, :edicao, :autor, :numero_paginas, :quantidade, :resumo)";
+                VALUES (:cod_isbn, :titulo, :edicao, :autor, :numero_paginas, :quantidade, :resumo);";
         
         $stmt = $conn->prepare($sql);
 
@@ -42,14 +37,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':quantidade', $quantidade);
         $stmt->bindParam(':resumo', $resumo);
 
-        // Executar a query
-        $stmt->execute();
+        $_SESSION['mensagem'] = "Código Isbn: " . $cod_isbn;
 
         if(empty($cod_isbn) || empty($titulo) || empty($edicao) || empty($autor) || empty($numero_paginas) || empty($quantidade)) {
-            $_SESSION['mensagem'] = "Preencha todos os campos!";
+            // $_SESSION['mensagem'] = "Preencha todos os campos!";
             header("Location: index.php");
             exit();
         }
+
+        // Executar a query
+        $stmt->execute();
 
         // Redirecionar de volta para o index.php com uma mensagem de sucesso
         $_SESSION['mensagem'] = "Livro adicionado com sucesso!";
