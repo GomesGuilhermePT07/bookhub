@@ -94,7 +94,7 @@ session_start();
                             </div>
         
                             <div class="modal-buttons-container">
-                                <button type="button" id="saveBook" class="modal-buttons">Guardar livro</button>
+                                <button type="submit" id="saveBook" class="modal-buttons">Guardar livro</button>
                                 <button type="button" id="closeModal" class="modal-buttons1">Fechar</button>
                             </div>
                         </form>
