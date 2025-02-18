@@ -17,6 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantidade = $_POST['quantity'];
     $resumo = $_POST['summary'];
 
+    if($cod_isbn){
+        print_r($cod_isbn);
+    } else {
+        echo "O campo ISBN é obrigatório.";
+    }
     // Conectar à base de dados
     try {
         $conn = new PDO("mysql:host=$host;port=3307;dbname=$dbname", $dbusername, $dbpassword);
