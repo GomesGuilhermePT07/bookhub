@@ -28,7 +28,4 @@
     $stmt->bindParam(':resumo', $resumo);
 
     $stmt->execute();
-
-
-    echo "Teste"
 ?>
