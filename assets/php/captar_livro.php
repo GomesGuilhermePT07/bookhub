@@ -39,6 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Executar a query
         $stmt->execute();
 
+        if(empty($cod_isbn) || empty($titulo) || empty($edicao) || empty($autor) || empty($numero_paginas) || empty($quantidade)) {
+            $_SESSION['mensagem'] = "Preencha todos os campos!";
+            header("Location: index.php");
+            exit();
+        }
+
         // Redirecionar de volta para o index.php com uma mensagem de sucesso
         $_SESSION['mensagem'] = "Livro adicionado com sucesso!";
         header("Location: index.php");
