@@ -36,6 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Executar a query
         $stmt->execute();
 
+        if($stmt){
+            echo "Livro cadastrado com sucesso!";
+        } else {
+            die("Query failed: " . $stmt->errorInfo());
+        }
+
         if(empty($cod_isbn) || empty($titulo) || empty($edicao) || empty($autor) || empty($numero_paginas) || empty($quantidade)) {
             $_SESSION['mensagem'] = "Preencha todos os campos!";
             header("Location: index.php");
