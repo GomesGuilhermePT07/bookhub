@@ -89,7 +89,7 @@ session_start();
                             </div>
 
                             <div class="inputUser">
-                                <input type="number" id="quantidade" name="quantity" class="modal-input" min="1" value="1" required>
+                                <input type="number" id="quantity" name="quantity" class="modal-input" min="1" value="1" required>
                                 <label for="quantity" class="labelInput">Quantidade</label>
                             </div>
         

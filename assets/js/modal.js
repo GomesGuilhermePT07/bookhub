@@ -13,7 +13,7 @@ const bookAuthorInput = document.getElementById("author");
 const bookEditionInput = document.getElementById("edition");
 const bookPagesInput = document.getElementById("genre");
 const bookImage = document.getElementById("bookImage");
-const quantity = document.getElementById("quantidade");
+const quantity = document.getElementById("quantity");
 const bookListContainer = document.createElement("div"); // Contêiner para exibir os livros
 bookListContainer.id = "book-list";
 document.body.appendChild(bookListContainer);
