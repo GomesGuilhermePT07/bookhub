@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 formData.append("summary", summary);
 
                 try {
-                    const response = await fetch("http://localhost:8080//ModuloProjeto/assets/php/teste.php", {
+                    const response = await fetch("http://localhost:8080//ModuloProjeto/assets/php/captar_livro.php", {
                       method: "POST",
                       body: formData,
                     });
