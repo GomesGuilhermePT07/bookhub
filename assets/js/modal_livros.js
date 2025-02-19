@@ -20,6 +20,33 @@ document.addEventListener("DOMContentLoaded", function () {
     bookListContainer.id = "book-list";
     document.body.appendChild(bookListContainer);
 
+    async function carregarLivros() {
+        try{
+            const response = await fetch("../php/listar_livros.php");
+            const livros = await response.json();
+
+            if (livros.error) {
+                console.error(livros.error);
+                return;
+            }
+
+            livros.forEach(livro => {
+                const bookHtml = `
+                <div class="book-item">
+                    <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
+                    <h5>${title}</h5>
+                    <p>Autor: ${author}</p>
+                    <button class="remove-book">Remover</button>
+                </div>`;
+                bookListContainer.innerHTML += bookHtml;
+            });
+        } catch (error) {
+            console.error("Erro ao carregar livros: ", error);
+        }
+    }
+
+    carregarLivros();
+
     // Criar botão para salvar alterações do resumo
     if (textModal) {
         const saveTextModalBtn = document.createElement("button");
