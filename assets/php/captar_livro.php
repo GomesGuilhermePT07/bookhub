@@ -54,21 +54,6 @@
 
             $_SESSION['message'] = "Novo livro registado com sucesso!";
         }
-
-        // $sql = "INSERT INTO livros (cod_isbn, titulo, edicao, autor, numero_paginas, quantidade, resumo)
-        //         VALUES (:cod_isbn, :titulo, :edicao, :autor, :numero_paginas, :quantidade, :resumo);";
-
-        // $stmt = $conn->prepare($sql);
-
-        // $stmt->bindParam(':cod_isbn', $cod_isbn);
-        // $stmt->bindParam(':titulo', $titulo);
-        // $stmt->bindParam(':edicao', $edicao);
-        // $stmt->bindParam(':autor', $autor);
-        // $stmt->bindParam(':numero_paginas', $numero_paginas);
-        // $stmt->bindParam(':quantidade', $quantidade);
-        // $stmt->bindParam(':resumo', $resumo);
-
-        // $stmt->execute();
     } catch (PDOException $e) {
         $_SESSION['message'] = "Erro: " . $e.getMessage();
     }
