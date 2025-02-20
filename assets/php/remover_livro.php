@@ -10,7 +10,7 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Capturar o ISBN do livro a ser removido
-        $cod_isbn = $_POST['cod_isbn'];
+        $cod_isbn = $_POST['isbn'];
 
         // Verificar se o livro existe
         $sql_check = "SELECT cod_isbn FROM livros WHERE cod_isbn = :cod_isbn";
