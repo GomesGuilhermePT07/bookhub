@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -106,6 +106,35 @@
         </section>
 
         <section class="second-section">
+            <?php
+                // Exibir mensagens de feedback
+                if (isset($_SESSION['message'])) {
+                    echo "<p>" . $_SESSION['message'] . "</p>";
+                    unset($_SESSION['message']); // Limpar a mensagem após exibição
+                }
+
+                // Incluir o arquivo de configuração da base de dados
+                include "config.php";
+
+                // Consulta para obter todos os livros
+                $sql = "SELECT * FROM livros";
+                $stmt = $conn->query($sql);
+                $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                if (count($livros) > 0) {
+                    foreach ($livros as $livro) {
+                        echo "<div class='livro-item'>";
+                        echo "<h3>" . htmlspecialchars($livro['titulo']) . "</h3>";
+                        echo "<p><strong>Autor:</strong> " . htmlspecialchars($livro['autor']) . "</p>";
+                        echo "<p><strong>ISBN:</strong> " . htmlspecialchars($livro['cod_isbn']) . "</p>";
+                        echo "<p><strong>Quantidade:</strong> " . htmlspecialchars($livro['quantidade']) . "</p>";
+                        echo "<button class='btn-remover' data-isbn='" . htmlspecialchars($livro['cod_isbn']) . "'>Remover</button>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<p>Nenhum livro cadastrado.</p>";
+                }
+            ?>
             <!-- <p>esta é a parte </p> -->
         </section>
 
