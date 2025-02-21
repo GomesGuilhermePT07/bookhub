@@ -194,10 +194,10 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
-    // Remover livro
-    bookListContainer.addEventListener("click", (event) => {
-        if (event.target.classList.contains("remove-book")) {
-            event.target.closest(".book-item").remove();
-        }
-    });
+    // // Remover livro
+    // bookListContainer.addEventListener("click", (event) => {
+    //     if (event.target.classList.contains("remove-book")) {
+    //         event.target.closest(".book-item").remove();
+    //     }
+    // });
 });
