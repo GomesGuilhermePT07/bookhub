@@ -103,6 +103,7 @@
             </form>
             <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
             <script src="../ModuloProjeto/assets/js/carregar_livros.js"></script>
+            <script src="../ModuloProjeto/assets/js/remover_livros.js"></script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
 
