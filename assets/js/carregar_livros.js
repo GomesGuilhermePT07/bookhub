@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para carregar os livros
     async function loadBooks() {
         try {
-            const response = await fetch('listar_livros.php');
+            const response = await fetch('../php/listar_livros.php');
             if (!response.ok) {
                 throw new Error("Erro na requisição: " + response.statusText);
             }

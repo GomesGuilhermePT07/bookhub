@@ -41,7 +41,6 @@
         <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
             <button id="openModal">Adicionar Livro</button>
-            <div id="book-list" class="book-list"></div>
             <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
             <dialog class="modal">
                 <h2>Adicionar Livro</h2>
@@ -103,43 +102,7 @@
             </dialog>
             </form>
             <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    // Função para carregar os livros
-                    function loadBooks() {
-                        fetch('./assets/php/listar_livros.php') // Faz uma requisição ao listar_livros.php
-                            .then(response => response.json()) // Converte a resposta para JSON
-                            .then(data => {
-                                const bookListContainer = document.getElementById("book-list");
-                                if (bookListContainer) {
-                                    bookListContainer.innerHTML = ""; // Limpa o conteúdo atual
-
-                                    if (data.error) {
-                                        // Se houver um erro, exibe uma mensagem
-                                        alert(data.error);
-                                        return;
-                                    }
-
-                                    // Itera sobre os livros e os adiciona ao container
-                                    data.forEach(book => {
-                                        const bookHtml = `
-                                            <div class="book-item">
-                                                <img src="${book.thumbnail}" alt="Capa do Livro" class="book-thumbnail">
-                                                <h5>${book.titulo}</h5>
-                                                <p>Autor: ${book.autor}</p>
-                                                <button class="remove-book">Remover</button>
-                                            </div>`;
-                                        bookListContainer.innerHTML += bookHtml;
-                                    });
-                                }
-                            })
-                            .catch(error => console.error('Erro ao carregar livros:', error));
-                    }
-
-                    // Carregar os livros quando a página é carregada
-                    loadBooks();
-                });
-            </script>
+            <script src="../ModuloProjeto/assets/js/carregar_livros.js"></script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
 
