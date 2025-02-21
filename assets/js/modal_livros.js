@@ -179,17 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.error(e);
                 }
 
-
-                const bookHtml = `
-                <div class="book-item">
-                    <img src="${thumbnail}" alt="Capa do Livro" class="book-thumbnail">
-                    <h5>${title}</h5>
-                    <p>Autor: ${author}</p>
-                    <button class="remove-book">Remover</button>
-                </div>`;
-
-                bookListContainer.innerHTML += bookHtml;
-                alert("Livro adicionado com sucesso!");
                 modal.close();
 
                 bookTitleInput.value = "";
