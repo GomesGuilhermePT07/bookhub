@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (bookImage) bookImage.src = "https://via.placeholder.com/128x186";
             if (quantity) quantity.value = 1;
             modal.showModal();
-            console.log("O modal foi aberto");
         };
     }
 
