@@ -102,6 +102,7 @@
             </dialog>
             </form>
             <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
+            <script src="../ModuloProjeto/assets/js/listar_livros.js"></script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
 
