@@ -41,6 +41,7 @@
         <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
             <button id="openModal">Adicionar Livro</button>
+            <div id="book-list" class="book-list"></div>
             <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
             <dialog class="modal">
                 <h2>Adicionar Livro</h2>
@@ -103,64 +104,44 @@
             </form>
             <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
             <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Função para carregar os livros
-        function loadBooks() {
-            fetch('listar_livros.php')
-                .then(response => response.json())
-                .then(data => {
-                    const bookListContainer = document.getElementById("book-list");
-                    if (bookListContainer) {
-                        bookListContainer.innerHTML = ""; // Limpa o conteúdo atual
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Função para carregar os livros
+                    function loadBooks() {
+                        fetch('listar_livros.php') // Faz uma requisição ao listar_livros.php
+                            .then(response => response.json()) // Converte a resposta para JSON
+                            .then(data => {
+                                const bookListContainer = document.getElementById("book-list");
+                                if (bookListContainer) {
+                                    bookListContainer.innerHTML = ""; // Limpa o conteúdo atual
 
-                        if (data.error) {
-                            alert(data.error);
-                            return;
-                        }
+                                    if (data.error) {
+                                        // Se houver um erro, exibe uma mensagem
+                                        alert(data.error);
+                                        return;
+                                    }
 
-                        data.forEach(book => {
-                            const bookHtml = `
-                                <div class="book-item">
-                                    <h5>${book.titulo}</h5>
-                                    <p>Autor: ${book.autor}</p>
-                                    <p>Edição: ${book.edicao}</p>
-                                    <p>Páginas: ${book.numero_paginas}</p>
-                                    <p>Quantidade: ${book.quantidade}</p>
-                                    <p>Resumo: ${book.resumo}</p>
-                                    <button class="remove-book" data-isbn="${book.cod_isbn}">Remover</button>
-                                </div>`;
-                            bookListContainer.innerHTML += bookHtml;
-                        });
+                                    // Itera sobre os livros e os adiciona ao container
+                                    data.forEach(book => {
+                                        const bookHtml = `
+                                            <div class="book-item">
+                                                <h5>${book.titulo}</h5>
+                                                <p>Autor: ${book.autor}</p>
+                                                <p>Edição: ${book.edicao}</p>
+                                                <p>Páginas: ${book.numero_paginas}</p>
+                                                <p>Quantidade: ${book.quantidade}</p>
+                                                <p>Resumo: ${book.resumo}</p>
+                                            </div>`;
+                                        bookListContainer.innerHTML += bookHtml;
+                                    });
+                                }
+                            })
+                            .catch(error => console.error('Erro ao carregar livros:', error));
                     }
-                })
-                .catch(error => console.error('Erro ao carregar livros:', error));
-        }
 
-        // Carregar os livros quando a página é carregada
-        loadBooks();
-
-        // Adicionar evento de clique para remover livros
-        document.addEventListener("click", function (event) {
-            if (event.target.classList.contains("remove-book")) {
-                const isbn = event.target.getAttribute("data-isbn");
-                if (confirm("Tem certeza que deseja remover este livro?")) {
-                    fetch(`remover_livro-teste.php?isbn=${isbn}`, {
-                        method: "DELETE"
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            loadBooks(); // Recarregar a lista de livros após remover
-                        } else {
-                            alert(data.error);
-                        }
-                    })
-                    .catch(error => console.error('Erro ao remover livro:', error));
-                }
-            }
-        });
-    });
-</script>
+                    // Carregar os livros quando a página é carregada
+                    loadBooks();
+                });
+            </script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
 
