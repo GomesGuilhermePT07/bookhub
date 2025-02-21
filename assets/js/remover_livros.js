@@ -1,7 +1,7 @@
 // Função para remover livro
 async function removeBook(isbn) {
     try {
-        const response = await fetch("https://localhost:8080/ModuloProjeto/assets/php/remover_livro.php", {
+        const response = await fetch("assets/php/remover_livro.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -12,7 +12,8 @@ async function removeBook(isbn) {
         if (response.ok) {
             alert("Livro removido com sucesso!");
             // Atualizar a lista de livros ou recarregar a página
-            window.location.reload();
+            // window.location.reload();
+            document.querySelector(`[data-isbn="${isbn}"]`).remove();
         } else {
             alert("Erro ao remover o livro.");
         }
