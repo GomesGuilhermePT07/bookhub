@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para carregar os livros
     async function loadBooks() {
         try {
-            const response = await fetch('../php/listar_livros.php');
+            const response = await fetch('assets/php/listar_livros.php');
             if (!response.ok) {
                 throw new Error("Erro na requisição: " + response.statusText);
             }
@@ -40,10 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img src="${coverUrl}" alt="Capa do livro ${book.titulo}" class="book-cover">
                             <h5>${book.titulo}</h5>
                             <p>Autor: ${book.autor}</p>
-                            <p>Edição: ${book.edicao}</p>
-                            <p>Páginas: ${book.numero_paginas}</p>
-                            <p>Quantidade: ${book.quantidade}</p>
-                            <p>Resumo: ${book.resumo}</p>
                         </div>`;
                     bookListContainer.innerHTML += bookHtml;
                 }
