@@ -107,7 +107,7 @@
                 document.addEventListener("DOMContentLoaded", function () {
                     // Função para carregar os livros
                     function loadBooks() {
-                        fetch('listar_livros.php') // Faz uma requisição ao listar_livros.php
+                        fetch('./assets/php/listar_livros.php') // Faz uma requisição ao listar_livros.php
                             .then(response => response.json()) // Converte a resposta para JSON
                             .then(data => {
                                 const bookListContainer = document.getElementById("book-list");
@@ -124,12 +124,10 @@
                                     data.forEach(book => {
                                         const bookHtml = `
                                             <div class="book-item">
+                                                <img src="${book.thumbnail}" alt="Capa do Livro" class="book-thumbnail">
                                                 <h5>${book.titulo}</h5>
                                                 <p>Autor: ${book.autor}</p>
-                                                <p>Edição: ${book.edicao}</p>
-                                                <p>Páginas: ${book.numero_paginas}</p>
-                                                <p>Quantidade: ${book.quantidade}</p>
-                                                <p>Resumo: ${book.resumo}</p>
+                                                <button class="remove-book">Remover</button>
                                             </div>`;
                                         bookListContainer.innerHTML += bookHtml;
                                     });
