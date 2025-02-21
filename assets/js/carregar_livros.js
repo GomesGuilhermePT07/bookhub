@@ -35,8 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Itera sobre os livros e os adiciona ao container
                 for (const book of data) {
                     const coverUrl = await fetchBookCover(book.cod_isbn); // Busca a capa do livro
+
                     const bookHtml = `
-                        <div class="book-item">
+                        <div class="book-item" data-isbn="${book.cod_isbn}">
                             <img src="${coverUrl}" alt="Capa do livro ${book.titulo}" class="book-cover">
                             <h5>${book.titulo}</h5>
                             <p><b>Autor: </b>${book.autor}</p>
