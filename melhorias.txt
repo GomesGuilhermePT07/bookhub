@@ -1,0 +1,2 @@
+- adiciono livro ao site e tenho de fazer refresh para aparecer
+- login com senha errada passa para uma pagina à parte
