@@ -6,7 +6,7 @@ async function removeBook(isbn) {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: `isbn=${isbn}`,
+            body: `isbn=${encodeURIComponent(isbn)}`,
         });
 
         if (response.ok) {
