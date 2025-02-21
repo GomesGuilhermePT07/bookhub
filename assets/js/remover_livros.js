@@ -1,7 +1,7 @@
 // Função para remover livro
 async function removeBook(isbn) {
     try {
-        const response = await fetch("http://localhost:8080/ModuloProjeto/assets/php/remover_livro.php", {
+        const response = await fetch("https://localhost:8080/ModuloProjeto/assets/php/remover_livro.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
