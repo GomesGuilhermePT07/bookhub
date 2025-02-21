@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (bookListContainer) {
         bookListContainer.addEventListener("click", (event) => {
             if (event.target.classList.contains("remove-book")) {
-                const isbn = event.target.getAttribute("data-isbn");
+                const bookItem = event.target.closest(".book-item");
+                const isbn = bookItem.getAttribute("data-isbn");
                 if (isbn) {
                     removeBook(isbn);
                 }
