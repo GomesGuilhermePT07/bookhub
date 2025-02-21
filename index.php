@@ -144,7 +144,7 @@
             if (event.target.classList.contains("remove-book")) {
                 const isbn = event.target.getAttribute("data-isbn");
                 if (confirm("Tem certeza que deseja remover este livro?")) {
-                    fetch(`remover_livro.php?isbn=${isbn}`, {
+                    fetch(`remover_livro-teste.php?isbn=${isbn}`, {
                         method: "DELETE"
                     })
                     .then(response => response.json())
