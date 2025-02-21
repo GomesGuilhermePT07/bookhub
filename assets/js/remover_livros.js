@@ -19,7 +19,7 @@ async function removeBook(isbn) {
         }
     } catch (error) {
         console.error("Erro ao remover o livro:", error);
-        alert("Erro ao remover o livro. Tente novamente.");
+        // alert("Erro ao remover o livro. Tente novamente.");
     }
 }
 
