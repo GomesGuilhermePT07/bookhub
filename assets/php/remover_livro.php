@@ -1,5 +1,8 @@
 <?php
 
+header("Access-Control-Allow-Origin: * ");
+header("Content-Type: application/json");
+
     session_start();
 
     include "config.php";
@@ -8,6 +11,11 @@
         // Conexão com a base de dados 
         $conn = new PDO("mysql:host=$host;port=3307;dbname=$dbname", $dbusername, $dbpassword);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        if (!isset($_POST['isbn']) || empty($_POST['isbn'])) {
+            echo json_encode(["error" => "ISBN não fornecido."]);
+            exit();
+        }
 
         // Capturar o ISBN do livro a ser removido
         $cod_isbn = $_POST['isbn'];
@@ -34,5 +42,5 @@
     }
 
     // Redirecionar de volta para a página principal
-    header("Location: index.php");
-    exit();
+    // header("Location: index.php");
+    // exit();
