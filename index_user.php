@@ -7,5 +7,6 @@
 </head>
 <body>
     <h1>Esta é a página dos utilizadores</h1>
+    <p>ainda em desenvolvimento</p>
 </body>
 </html>
