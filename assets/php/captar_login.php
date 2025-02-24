@@ -41,7 +41,7 @@ try{
                     $updateSql = "UPDATE utilizadores SET admin = 0 WHERE email = :email;";
                     $updateStmt = $pdo->prepare($updateSql);
                     $updateStmt->execute([":email" => $utilizador["email"]]);
-                    header("Location: ../../index.php"); // Redireciona para o site normal como utilizador comum
+                    header("Location: ../../index_user.php"); // Redireciona para o site normal como utilizador comum
                 }
             } else {
                 echo "Senha incorreta. Tente novamente.";
