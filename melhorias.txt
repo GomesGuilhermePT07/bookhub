@@ -4,4 +4,4 @@
 
 PARTE DO ADMIN E COMMON USER
 
-- "captar_login.php" linha 44, criar o projeto novo para o utilizador normal
+✅ - "captar_login.php" linha 44, criar o projeto novo para o utilizador normal
