@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
+    <link rel="stylesheet" href="../ModuloProjeto/assets/css/apresentar_livro.css">
     <title>BOOKhub</title>
 </head>
 <body>
@@ -31,13 +32,13 @@
     <main>
         <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
-            <button id="openModal">Adicionar Livro</button>
+            <!-- <button id="openModal">Adicionar Livro</button> -->
             <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
-            <dialog class="modal">
+            <!-- <dialog class="modal">
                 <h2>Adicionar Livro</h2>
                 <div class="modal-content">
                     <div class="modal-left"> <!--Coluna da esquerda-->
-                        <div class="book-image-container">
+                        <!--<div class="book-image-container">
                             <img id="bookImage" src="https://via.placeholder.com/128x186" alt="Imagem do Livro">
                         </div>
                         <div class="book-summary">
@@ -90,10 +91,10 @@
                         </div>
                     </div>
                 </div>                
-            </dialog>
+            </dialog> -->
             </form>
             <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
-            <script src="../ModuloProjeto/assets/js/carregar_livros.js"></script>
+            <script src="../ModuloProjeto/assets/js/carregar_livros_user.js"></script>
             <script src="../ModuloProjeto/assets/js/remover_livros.js"></script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
