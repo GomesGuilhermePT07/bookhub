@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+require_once '../assets/php/captar_login'; // Verifica se o utilizador está logado
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
