@@ -24,7 +24,7 @@ session_start();
             <a href="#" class="nav-links">Livros</a>
             <a href="#" class="nav-links">Lista de desejos</a>
             <a href="#" class="nav-links">Workshops</a>
-            <a href="./web-pages/cart.php" class="nav-links">Carrinho (<span id="cart-count"><?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?></span>)</a>
+            <a href="./cart.php" class="nav-links">Carrinho (<span id="cart-count"><?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?></span>)</a>
         </nav>
         <?php if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true): ?>
             <a href="logins/registo_com_validacao.php" class="btn-action-ref">Registar</a>
