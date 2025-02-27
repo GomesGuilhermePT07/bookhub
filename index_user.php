@@ -57,6 +57,6 @@
         <!-- <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>  -->
     </footer>
 
-    <p>isto é um teste</p>
+    <!-- <p>isto é um teste</p> -->
 </body>
 </html>
