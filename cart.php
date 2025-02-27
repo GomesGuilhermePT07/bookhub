@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once '../assets/php/captar_login'; // Verifica se o utilizador está logado
+require_once 'assets/php/captar_login'; // Verifica se o utilizador está logado
 
 ?>
 
