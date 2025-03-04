@@ -1,0 +1,37 @@
+.slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .slide {
+    display: none;
+    width: 100%;
+  }
+  .slide.active {
+    display: block;
+  }
+  .caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+  }
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .prev {
+    left: 10px;
+  }
+  .next {
+    right: 10px;
+  }
+  

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Personalizado</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; }
+
+        .slider {
+            position: relative;
+            max-width: 1200px;
+            height: 500px;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slides {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="https://via.placeholder.com/1200x500/ff7f7f/333333?text=Slide+1" alt="Slide 1">
+                <div class="caption">Legenda do Slide 1</div>
+            </div>
+            <div class="slide">
+                <img src="./assets/img/Logotipo_Bookhub.png" alt="Slide 2">
+                <div class="caption">Legenda do Slide 2</div>
+            </div>
+            <div class="slide">
+                <img src="./assets/img/bandeiras.png" alt="Slide 3">
+                <div class="caption">Legenda do Slide 3</div>
+            </div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <script>
+        let index = 0;
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        document.querySelector('.next').addEventListener('click', () => moveSlide(1));
+        document.querySelector('.prev').addEventListener('click', () => moveSlide(-1));
+
+        function moveSlide(direction) {
+            index = (index + direction + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        setInterval(() => moveSlide(1), 4000); // Alterna automaticamente a cada 4 segundos
+    </script>
+</body>
+</html>
