@@ -38,7 +38,7 @@ require_once 'assets/php/check_login.php'; // Verifica se o utilizador está log
                             $total = 0;
                             foreach($_SESSION['cart'] as $id => $item):
                             $subtotal = $item['price'] * $item['quantity'];
-                            $total += subtotal;
+                            $total += $subtotal;
                         ?>
                     <tr>
                         <td><?= $item['title'] ?></td>
