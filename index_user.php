@@ -11,6 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/apresentar_livro.css">
+    <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_slider.css">
     <title>BOOKhub</title>
 </head>
 <body>
@@ -35,6 +36,25 @@ session_start();
         <?php endif; ?>
     </header>
 
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img src="./assets/img/imagem_teste_slider1.jpg" alt="Slide 1">
+                <div class="caption">Legenda do Slide 1</div>
+            </div>
+            <div class="slide">
+                <img src="./assets/img/imagem_teste_slider2.jpg" alt="Slide 2">
+                <div class="caption">Legenda do Slide 2</div>
+            </div>
+            <div class="slide">
+                <img src="./assets/img/imagem_teste_slider3.jpg" alt="Slide 3">
+                <div class="caption">Legenda do Slide 3</div>
+            </div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div> <!-- slider -->
+
     <main>
         <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
@@ -43,6 +63,7 @@ session_start();
             <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
             <script src="../ModuloProjeto/assets/js/carregar_livros_user.js"></script>
             <script src="../ModuloProjeto/assets/js/remover_livros.js"></script>
+            <script src="../ModuloProjeto/assets/js/slider.js"></script>
             <!-- <p>esta é a parte dos livros</p> -->
         </section>
 
