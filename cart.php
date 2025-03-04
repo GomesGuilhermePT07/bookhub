@@ -10,7 +10,7 @@ require_once 'assets/php/check_login.php'; // Verifica se o utilizador está log
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/cart_style.css">
+    <link rel="stylesheet" href="./assets/css/cart_style.css">
     <title>BOOKhub | Carrinho</title>
 </head>
 <body>
@@ -44,7 +44,7 @@ require_once 'assets/php/check_login.php'; // Verifica se o utilizador está log
                         <td><?= $item['title'] ?></td>
                         <td>€<?= number_format($item['price'], 2) ?></td>
                         <td>
-                            <form action="update_cart.php" method="POST">
+                            <form action="./assets/php/update_cart.php" method="POST">
                                 <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1">
                                 <input type="hidden" name="book_id" value="<?= $id ?>">
                                 <button type="submit">Atualizar</button>
@@ -52,7 +52,7 @@ require_once 'assets/php/check_login.php'; // Verifica se o utilizador está log
                         </td>
                         <td>€<?= number_format($subtotal, 2) ?></td>
                         <td>
-                            <a href="remove_from_cart.php?id=<?= $id ?>" class="btn-remove">Remover</a>
+                            <a href="./assets/php/remove_from_cart.php?id=<?= $id ?>" class="btn-remove">Remover</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
