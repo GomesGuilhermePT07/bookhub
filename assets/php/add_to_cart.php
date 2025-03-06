@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'captar_login.php';
+// require 'captar_login.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isbn = $_POST['isbn'];

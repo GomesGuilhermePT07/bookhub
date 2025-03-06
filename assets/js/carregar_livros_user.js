@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img src="${coverUrl}" alt="Capa do livro ${book.titulo}" class="book-cover">
                             <h5>${book.titulo}</h5>
                             <p><b>Autor: </b>${book.autor}</p>
-                            <form action="../php/add_to_cart.php" method="POST">
+                            <form action="../ModuloProjeto/assets/php/add_to_cart.php" method="POST">
                                 <input type="hidden" name="isbn" value="${book.cod_isbn}">
                                 <input type="hidden" name="title" value="${book.titulo}">
                                 <button class="add-to-cart">Adicionar ao carrinho</button>
