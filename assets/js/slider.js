@@ -11,4 +11,4 @@ function moveSlide(direction) {
     slides.style.transform = `translateX(-${index * 100}%)`;
 }
 
-setInterval(() => moveSlide(1), 2000); // Alterna automaticamente a cada 4 segundos
+setInterval(() => moveSlide(1), 2000); // Alterna automaticamente a cada 2 segundos
