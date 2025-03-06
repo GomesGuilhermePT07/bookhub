@@ -11,11 +11,29 @@ require_once 'assets/php/check_login.php'; // Verifica se o utilizador está log
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/cart_style.css">
+    <link rel="stylesheet" href="./assets/css/index_style.css">
     <title>BOOKhub | Carrinho</title>
 </head>
 <body>
     <header>
-        <!-- Mesmo header do index_user.php -->
+        <div class="box-img-header">
+            <a href="index.php">
+                <img class="img-logo" src="assets/img/Logotipo_Bookhub.png" alt="Logo BOOKhub">
+            </a>
+        </div>
+        <nav>
+            <a href="#" class="nav-links">Livros</a>
+            <a href="#" class="nav-links">Lista de desejos</a>
+            <a href="#" class="nav-links">Workshops</a>
+            <a href="./cart.php" class="nav-links">Carrinho (<span id="cart-count"><?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?></span>)</a>
+        </nav>
+        <?php if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true): ?>
+            <a href="logins/registo_com_validacao.php" class="btn-action-ref">Registar</a>
+            <a href="logins/login.php" class="btn-action-ref1">Entrar</a>
+        <?php else: ?>
+            <a href="detalhes_conta.html" class="btn-action-ref">Ver Conta</a>
+            <a href="logins/logout.php" class="btn-action-logout">Sair</a>
+        <?php endif; ?>
     </header>
 
     <main class ="cart-container">
