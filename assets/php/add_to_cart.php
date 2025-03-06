@@ -3,7 +3,7 @@ session_start();
 require_once 'captar_login.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $book_id = $_POST['book_id'];
+    $book_id = $_POST['isbn'];
     $title = $_POST['title'];
     $price = $_POST['price'];
 
