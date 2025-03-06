@@ -10,6 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['cart'][$isbn]['quantity'] = $quantity;
     }
 
-    header('Location: cart.php');
+    header('Location: ../../cart.php');
     exit;
 }
