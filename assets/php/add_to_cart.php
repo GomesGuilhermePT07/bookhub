@@ -3,20 +3,20 @@ session_start();
 require_once 'captar_login.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $book_id = $_POST['isbn'];
+    $isbn = $_POST['isbn'];
     $title = $_POST['title'];
-    $price = $_POST['price'];
+    // $price = $_POST['author'];
 
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
-    if (isset($_SESSION['cart'][$book_id])) {
-        $_SESSION['cart'][$book_id]['quantity']++;
+    if (isset($_SESSION['cart'][$isbn])) {
+        $_SESSION['cart'][$isbn]['quantity']++;
     } else {
-        $_SESSION['cart'][$book_id] = [
+        $_SESSION['cart'][$isbn] = [
             'title' => $title,
-            'price' => $price,
+            // 'price' => $price,
             'quantity' => 1
         ];
     }
