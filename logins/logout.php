@@ -20,5 +20,5 @@ if (isset($_SESSION["loggedin"])) {
 }
 
 // Redireciona para a página inicial ou página de login
-header("Location: ../index.php");
+header("Location: ../index_user.php");
 exit; // Certifique-se de sair após o redirecionamento
