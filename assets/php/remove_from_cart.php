@@ -10,5 +10,5 @@ if (isset($_GET['isbn'])) {
     }
 }
 
-header('Location: cart.php');
+header('Location: ../../cart.php');
 exit;
