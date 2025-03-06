@@ -94,10 +94,6 @@ session_start();
                             <input type="number" id="quantity" name="quantity" class="modal-input" min="1" value="1" required>
                             <label for="quantity" class="labelInput">Quantidade</label>
                         </div>
-
-                        <div class="inputUser">
-                            <input type="hidden" name="price" value="100.00">
-                        </div>
     
                         <div class="modal-buttons-container">
                             <button type="submit" name="submit" id="saveBook" class="modal-buttons">Guardar livro</button>
