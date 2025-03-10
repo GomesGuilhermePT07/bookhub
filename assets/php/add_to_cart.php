@@ -1,26 +1,43 @@
 <?php
 session_start();
-// require 'captar_login.php';
+// require_once 'check_login.php';
+require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isbn = $_POST['isbn'];
-    $title = $_POST['title'];
-    // $price = $_POST['author'];
+    $userId = $_SESSION['id'];
 
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
+    // Verificar se o livro existe
+    $checkStmt = $conn->prepare("SELECT cod_isbn FROM livros WHERE cod_isbn = ?");
+    $checkStmt->bind_param("s", $isbn);
+    $checkStmt->execute();
+    $checkStmt->store_result();
+
+    if ($checkStmt->num_rows === 0) {
+        $_SESSION['error'] = "Livro não encontrado.";
+        $checkStmt->close();
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
     }
+    $checkStmt->close();
 
-    if (isset($_SESSION['cart'][$isbn])) {
-        $_SESSION['cart'][$isbn]['quantity']++;
+    // Adicionar ou atualizar o carrinho
+    $stmt = $conn->prepare("
+        INSERT INTO carrinho (id_utilizador, cod_isbn, quantidade) 
+        VALUES (?, ?, 1) 
+        ON DUPLICATE KEY UPDATE quantidade = quantidade + 1
+    ");
+    $stmt->bind_param("is", $userId, $isbn);
+    
+    if ($stmt->execute()) {
+        $_SESSION['success'] = "Livro adicionado ao carrinho!";
     } else {
-        $_SESSION['cart'][$isbn] = [
-            'title' => $title,
-            // 'price' => $price,
-            'quantity' => 1
-        ];
+        $_SESSION['error'] = "Erro ao adicionar ao carrinho: " . $stmt->error;
     }
-
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    
+    $stmt->close();
+    $conn->close();
+    header("Location: " . $_SERVER['HTTP_REFERER']);
     exit;
 }
+?>

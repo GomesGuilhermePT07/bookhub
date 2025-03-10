@@ -1,14 +1,24 @@
 <?php
 session_start();
 require_once 'check_login.php';
+require_once 'config.php';
 
 if (isset($_GET['isbn'])) {
     $isbn = $_GET['isbn'];
-    
-    if (isset($_SESSION['cart'][$isbn])) {
-        unset($_SESSION['cart'][$isbn]);
-    }
-}
+    $userId = $_SESSION['id'];
 
-header('Location: ../../cart.php');
+    $stmt = $conn->prepare("DELETE FROM carrinho WHERE id_utilizador = ? AND cod_isbn = ?");
+    $stmt->bind_param("is", $userId, $isbn);
+    
+    if ($stmt->execute()) {
+        $_SESSION['success'] = "Livro removido do carrinho!";
+    } else {
+        $_SESSION['error'] = "Erro ao remover livro: " . $stmt->error;
+    }
+    
+    $stmt->close();
+    $conn->close();
+}
+header("Location: ../../cart.php");
 exit;
+?>

@@ -23,6 +23,7 @@ try{
                 session_start();
                 $_SESSION["loggedin"] = true;
                 $_SESSION["email"] = $utilizador["email"];
+                $_SESSION['id'] = $row['id']; // Adiciona o ID do usuário à sessão
 
                 // Verificar o código secreto
                 if ($codigo_secreto === "1234"){
