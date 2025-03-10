@@ -3,8 +3,6 @@
     // require_once 'assets/php/check_login.php';
     require_once 'assets/php/config.php';
 
-    var_dump($_SESSION);
-
     $userId = $_SESSION['id'];
     $cartItems = [];
     $cartCount = 0;
