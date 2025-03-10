@@ -1,6 +1,9 @@
 <?php
 
 include "config.php";
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 try{
 
@@ -24,6 +27,7 @@ try{
                 $_SESSION["loggedin"] = true;
                 $_SESSION["email"] = $utilizador["email"];
                 $_SESSION['id'] = $row['id']; // Adiciona o ID do usuário à sessão
+                
 
                 // Verificar o código secreto
                 if ($codigo_secreto === "1234"){
