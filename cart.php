@@ -56,7 +56,7 @@
             <a href="./index_user.php" class="nav-links">Livros</a>
             <a href="#" class="nav-links">Lista de desejos</a>
             <a href="#" class="nav-links">Workshops</a>
-            <a href="./cart.php" class="nav-links">Carrinho (<span id="cart-count"><? $cartCount?></span>)</a>
+            <a href="./cart.php" class="nav-links">Carrinho (<span id="cart-count"><? $cartCount ?></span>)</a>
         </nav>
         <?php if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true): ?>
             <a href="logins/registo_com_validacao.php" class="btn-action-ref">Registar</a>
