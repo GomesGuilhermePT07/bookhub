@@ -20,7 +20,7 @@ session_start();
 <body>
     <header>
         <div class="box-img-header">
-            <a href="index_user.php">
+            <a href="index.php">
                 <img class="img-logo" src="assets/img/Logotipo_Bookhub.png" alt="Logo BOOKhub">
             </a>
         </div>
