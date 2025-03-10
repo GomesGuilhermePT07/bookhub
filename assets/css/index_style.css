@@ -89,9 +89,9 @@ nav{
     text-decoration: none;
     color: var(--color-white);
     background-color: var(--color-blue1);
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 5px;
-    margin-left: -13rem;
+    margin-left: -14rem;
     margin-right: -6rem;
     display: inline-block;
     transition: background-color 0.3s ease;
