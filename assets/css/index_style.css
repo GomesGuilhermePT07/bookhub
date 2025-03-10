@@ -108,7 +108,7 @@ nav{
     background-color: var(--color-red1);
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: -13rem;
+    margin-left: -15rem;
     margin-right: -6rem;
     display: inline-block;
     transition: background-color 0.3s ease;
