@@ -20,7 +20,7 @@ session_start();
             </a>
         </div>
         <nav>
-            <a href="#" class="nav-links">Livros</a>
+            <a href="./index_user.php" class="nav-links">Livros</a>
             <a href="#" class="nav-links">Lista de desejos</a>
             <a href="#" class="nav-links">Workshops</a>
             <a href="./cart.php" class="nav-links">
