@@ -1,6 +1,9 @@
 <?php
 
     session_start(); // Iniciar a sessão
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
     // Incluir o arquivo de configuração da base de dados
     include "config.php";
