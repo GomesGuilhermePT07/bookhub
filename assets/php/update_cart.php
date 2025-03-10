@@ -6,7 +6,7 @@ require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isbn = $_POST['isbn'];
-    $quantity = (int)$_POST['quantity']
+    $quantity = (int)$_POST['quantity'];
     $userId = $_SESSION['id'];
 
     if ($quantity < 1) {
