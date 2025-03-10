@@ -1,7 +1,6 @@
 <?php
 session_start();
 // require_once 'check_login.php';
-var_dump($SESSION);
 require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
