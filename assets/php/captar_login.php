@@ -26,7 +26,7 @@ try{
                 session_start();
                 $_SESSION["loggedin"] = true;
                 $_SESSION["email"] = $utilizador["email"];
-                $_SESSION['id'] = $row['id']; // Adiciona o ID do usuário à sessão
+                $_SESSION['id'] = $utilizador['id']; // Adiciona o ID do usuário à sessão
                 
 
                 // Verificar o código secreto
