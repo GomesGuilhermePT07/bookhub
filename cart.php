@@ -1,14 +1,9 @@
 <?php
     session_start();
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    require_once 'assets/php/check_login.php';
+    // require_once 'assets/php/check_login.php';
     require_once 'assets/php/config.php';
 
-    echo "<pre>";
     var_dump($_SESSION);
-    echo"<pre>";
 
     $userId = $_SESSION['id'];
     $cartItems = [];
