@@ -5,14 +5,6 @@
 
     $userId = $_SESSION['id'];
 
-    // is_null($userID);
-
-    // if($userID==0){
-    //     header("Location: /ModuloProjeto/logins/login.php");
-    // } else {
-    //     header("Location: cart.php");
-    // }
-
     $cartItems = [];
     $cartCount = 0;
 
