@@ -68,7 +68,7 @@ session_start();
                     <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
                 </svg>
             </a>
-        <?php else: ?>
+            <?php else: ?>
             <!-- ACCOUNT DETAILS -->
             <a href="./detalhes_conta.php" class="btn-action-ref">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
