@@ -6,7 +6,7 @@
 - mensagens de erro e sucesso na interface do utilizador para uma melhor experiência 
 - slider não carrega a 2ª e a 3ª imagem
 - quantidade "0" no carrinho = remover livro do carrinho
-- utilizador só pode aceder ao carrinho se tiver sessão iniciada ("Inicie sessão para ver o carrinho")
+- utilizador só pode aceder ao carrinho se tiver sessão iniciada ("Inicie sessão para ver o seu carrinho")
 
 # Adicionar ao relatório
 
