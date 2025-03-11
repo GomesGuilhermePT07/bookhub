@@ -125,7 +125,7 @@ session_start();
     </main>
 
     <footer>
-        <!-- <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>  -->
+        <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p> 
     </footer>
 
 </body>
