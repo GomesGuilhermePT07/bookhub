@@ -21,3 +21,7 @@ edition
 author
 numero_paginas
 quantity
+
+## PRÓXIMA COISA A FAZER:
+
+- Número de artigos no carrinho
