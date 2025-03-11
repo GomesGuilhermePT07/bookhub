@@ -42,21 +42,6 @@
     color: var(--color-white);
 }
 
-.cart-total {
-    text-align: right;
-    margin-top: 2rem;
-}
-
-.btn-checkout {
-    background-color: var(--color-green);
-    color: var(--color-white);
-    padding: 1rem 2rem;
-    text-decoration: none;
-    border-radius: 4px;
-    display: inline-block;
-    margin-top: 1rem;
-}
-
 .empty-cart {
     text-align: center;
     font-size: 1.2rem;
