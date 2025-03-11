@@ -128,6 +128,5 @@ session_start();
         <!-- <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>  -->
     </footer>
 
-    <!-- <p>esta linha é um teste</p> -->
 </body>
 </html>
