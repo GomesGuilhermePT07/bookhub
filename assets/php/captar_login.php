@@ -47,6 +47,7 @@ try{
                 }
             } else {
                 echo "Senha incorreta. Tente novamente.";
+                header("Location: ../../logins/login.php");
             }
         } else {
             header("Location: ../../logins/login.php");
