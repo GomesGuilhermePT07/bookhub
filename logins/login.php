@@ -32,7 +32,7 @@
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key"></i>
-                    <input type="password" placeholder="Código Secreto" class="inputs" id="codigo_secreto" name="cod_secreto">
+                    <input type="password" placeholder="Código Secreto" class="inputs required" id="codigo_secreto" name="cod_secreto">
                 </div>
                 <div class="show-password">
                     <input type="checkbox" id="showSecretCode" onclick="toggleSecretCodeVisibility()">
