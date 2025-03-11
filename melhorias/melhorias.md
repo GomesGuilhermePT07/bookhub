@@ -12,16 +12,6 @@
 
 - problemas que enfrentei e como resolvi
 
-
-# Names
-
-isbn
-title
-edition
-author
-numero_paginas
-quantity
-
 ## PRÓXIMA COISA A FAZER:
 
 - Número de artigos no carrinho
