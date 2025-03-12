@@ -14,4 +14,4 @@
 
 ## PRÓXIMA COISA A FAZER:
 
-- Número de artigos no carrinho
+- página do carrinho mais bonita
