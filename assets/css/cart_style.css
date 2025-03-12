@@ -10,6 +10,10 @@
     --color-blue2: #0056b3;
 }
 
+main{
+    background-color: red;
+}
+
 main h1{
     font-family: 'Gill Sans MT';
     letter-spacing: 2px;
@@ -19,10 +23,10 @@ main h1{
 }
 
 .cart-container {
-    max-width: 1200px;
-    margin: 2rem auto;
+    /* max-width: 1200px;
+    margin: 2rem auto; */
     padding: 1.5rem;
-    background-color: var(--color-white2);
+    background-color: var(--color-white);
     border-radius: 1rem;
     border: 2px solid var(--color-blue1);
 }
@@ -54,7 +58,7 @@ main h1{
     display: flex;
     gap: 15px;
     padding: 15px;
-    border-bottom: 1px solid var(--color-white3);
+    border-bottom: 3px solid var(--color-white3);
     position: relative;
 }
 
@@ -87,13 +91,6 @@ main h1{
     color: var(--color-grey);
 }
 
-.quantidade-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-end;
-}
-
 .btn-remover {
     background: none;
     border: none;
@@ -122,10 +119,3 @@ main h1{
     cursor: pointer;
     font-size: 14px;
 }
-
-/* Opcional: manter os estilos antigos da tabela comentados */
-/*
-.cart-items table {
-    display: none; /* Esconder a tabela antiga 
-}
-*/
