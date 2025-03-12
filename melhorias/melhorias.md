@@ -7,6 +7,7 @@
 - slider não carrega a 2ª e a 3ª imagem
 - quantidade "0" no carrinho = remover livro do carrinho
 - utilizador só pode aceder ao carrinho se tiver sessão iniciada ("Inicie sessão para ver o seu carrinho")
+- ao clicar para ver o resumo todo no modal, vai parar a um caminho estranho
 
 # Adicionar ao relatório
 
