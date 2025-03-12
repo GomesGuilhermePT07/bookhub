@@ -103,7 +103,7 @@
     </header>
 
     <main class="cart-container">
-    <h1>O meu carrinho</h1>
+    <h1>Carrinho</h1>
 
         <?php if (!empty($cartItems)): ?>
         <div class="cart-items">
