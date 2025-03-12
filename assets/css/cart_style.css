@@ -43,19 +43,6 @@ main h1{
     background-color: var(--color-white2);
 }
 
-/* .btn-remove {
-    color: var(--color-red1);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--color-red1);
-    border-radius: 4px;
-}
-
-.btn-remove:hover {
-    background-color: var(--color-red1);
-    color: var(--color-white);
-} */
-
 .empty-cart {
     text-align: center;
     font-size: 1.2rem;
