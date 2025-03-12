@@ -17,3 +17,4 @@
 
 - acabar a página do carrinho
 - fazer a página em que mostra cada livro detalhadamente
+- criar sidebar para o carrinho, para quando passar o mouse por cima, aparecer um sidebar do lado direito da tela com os livros que estão no carrinho
