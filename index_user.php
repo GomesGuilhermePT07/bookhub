@@ -11,7 +11,7 @@ if (isset($_SESSION['id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    $cartCount = $row['total'] ?? 0;
+    $cartCount = isset($row['total']) ? $row['total'] : 0;
     $stmt->close();
     $conn->close();
 }
