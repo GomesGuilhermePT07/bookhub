@@ -43,7 +43,7 @@ main h1{
     background-color: var(--color-white2);
 }
 
-.btn-remove {
+/* .btn-remove {
     color: var(--color-red1);
     text-decoration: none;
     padding: 0.5rem 1rem;
@@ -54,7 +54,7 @@ main h1{
 .btn-remove:hover {
     background-color: var(--color-red1);
     color: var(--color-white);
-}
+} */
 
 .empty-cart {
     text-align: center;
@@ -63,7 +63,6 @@ main h1{
     margin: 4rem 0;
 }
 
-/* Novos estilos para o layout flexível */
 .carrinho-item {
     display: flex;
     gap: 15px;
