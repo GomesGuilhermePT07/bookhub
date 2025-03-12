@@ -10,7 +10,7 @@
 
     // Buscar itens do carrinho
     $stmt = $conn->prepare("
-        SELECT l.titulo, c.cod_isbn, c.quantidade 
+        SELECT l.titulo, l.autor, c.cod_isbn, c.quantidade 
         FROM carrinho c 
         JOIN livros l ON c.cod_isbn = l.cod_isbn 
         WHERE c.id_utilizador = ?
@@ -102,41 +102,75 @@
         <?php endif; ?>
     </header>
 
-    <main class ="cart-container">
+    <main class="cart-container">
     <h1>O teu carrinho</h1>
 
         <?php if (!empty($cartItems)): ?>
         <div class="cart-items">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Livro</th>
-                        <th>Quantidade</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($cartItems as $item): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($item['titulo']) ?></td>
-                            <td>
-                                <form action="./assets/php/update_cart.php" method="POST">
-                                    <input type="number" name="quantity" value="<?= $item['quantidade'] ?>" min="1">
-                                    <input type="hidden" name="isbn" value="<?= $item['cod_isbn'] ?>">
-                                    <button type="submit">Atualizar</button>
-                                </form>
-                            </td>
-                            <td>
-                                <a href="./assets/php/remove_from_cart.php?isbn=<?= $item['cod_isbn'] ?>" class="btn-remove">Remover</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <?php foreach ($cartItems as $item): ?>
+                <div class="carrinho-item" data-isbn="<?= $item['cod_isbn'] ?>">
+                    <div class="livro-esquerda">
+                        <img src="https://via.placeholder.com/60x80" 
+                            alt="Capa do livro" 
+                            class="capa-livro"
+                            data-isbn="<?= $item['cod_isbn'] ?>">
+                    </div>
+                    
+                    <div class="info-livro">
+                        <h3 class="titulo-livro"><?= htmlspecialchars($item['titulo']) ?></h3>
+                        <p class="autor-livro"><?= htmlspecialchars($item['autor']) ?></p>
+                    </div>
+
+                    <!-- <div class="quantidade-actions">
+                        <form action="./assets/php/update_cart.php" method="POST" class="quantity-form">
+                            <input type="number" name="quantity" value="<?= $item['quantidade'] ?>" min="1">
+                            <input type="hidden" name="isbn" value="<?= $item['cod_isbn'] ?>">
+                            <button type="submit" class="btn-update">Atualizar</button>
+                        </form> -->
+                        
+                        <a href="./assets/php/remove_from_cart.php?isbn=<?= $item['cod_isbn'] ?>" class="btn-remover">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18"/>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
         <?php else: ?>
             <p class="empty-cart">Seu carrinho está vazio.</p>
         <?php endif; ?>
     </main>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Função para buscar capas
+        async function fetchCartCovers() {
+            const items = document.querySelectorAll('.carrinho-item');
+            
+            for (const item of items) {
+                const isbn = item.dataset.isbn;
+                const img = item.querySelector('.capa-livro');
+                
+                try {
+                    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+                    const data = await response.json();
+                    
+                    if (data.items && data.items[0].volumeInfo.imageLinks) {
+                        img.src = data.items[0].volumeInfo.imageLinks.thumbnail;
+                        img.style.opacity = 1; // Remove placeholder effect
+                    }
+                } catch (error) {
+                    console.error(`Erro ao buscar capa para ISBN ${isbn}:`, error);
+                }
+            }
+        }
+
+        fetchCartCovers();
+    });
+    </script>
 </body>
 </html>
