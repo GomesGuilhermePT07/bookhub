@@ -15,4 +15,5 @@
 
 ## PRÓXIMA COISA A FAZER:
 
-- página do carrinho mais bonita
+- acabar a página do carrinho
+- fazer a página em que mostra cada livro detalhadamente
