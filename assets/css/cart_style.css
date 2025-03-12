@@ -14,17 +14,18 @@ main{
     background-color: red;
 }
 
-main h1{
+main p{
     font-family: 'Gill Sans MT';
+    font-size: 2rem;
+    font-weight: 900;
     letter-spacing: 2px;
     color: var(--color-dark1);
     padding: 10px;
-    border-bottom: 2px solid var(--color-blue1);
 }
 
 .cart-container {
-    /* max-width: 1200px;
-    margin: 2rem auto; */
+    max-width: 1200px;
+    margin: 2rem auto;
     padding: 1.5rem;
     background-color: var(--color-white);
     border-radius: 1rem;
