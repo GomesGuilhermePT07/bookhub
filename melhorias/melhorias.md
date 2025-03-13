@@ -9,14 +9,14 @@
 
 ### ----------------------------//ERROS E MELHORIAS\\-------------------------------
 
-- Detalhes da conta passa para "detalhes_conta.php" e o arquivo é ".html"
-- Inicío sessão numa conta, inicia automaticamente na outra aba na mesma conta (facilmente resolvido, apresento só e apenas numa aba)
-- login com senha errada passa para página à parte ("captar_login.php")
+<!-- - Detalhes da conta passa para "detalhes_conta.php" e o arquivo é ".html"
+- Inicío sessão numa conta, inicia automaticamente na outra aba na mesma conta (facilmente resolvido, apresento só e apenas numa aba) 
+- login com senha errada passa para página à parte ("captar_login.php") --> \\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\
 - slider não carrega a 2ª e a 3ª imagem
 - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho
 - só pode ter acesso ao carrinho se tiver sessão iniciada
-- logout passa diretamente para a página de login
-- tento entrar manualmente no "index.php", redireciona para o "index_user.php"
+<!-- - logout passa diretamente para a página de login 
+- tento entrar manualmente no "index.php", redireciona para o "index_user.php" -->
 - ao clicar para ver o resumo todo no modal, vai parar a um caminho estanho desconhecido
 - carrinho sem sessão iniciada ainda tem as palavras "registar" e "entrar" nos botões invés dos icons, tanto no user como no admin
 - aparece uma mensagem de erro na página de carrinho sem a sessão iniciada
@@ -31,3 +31,4 @@
 - fazer a página em que mostra cada livro detalhadamente
 - "detalhes_conta.php" não tem icon do home
 - "detalhes_conta.php" ainda está com os artigos entre "()"
+- só pode adicionar livro se estiver logado como administrador
