@@ -30,3 +30,4 @@
 - criar sidebar para o carrinho, para quando passar o mouse por cima, aparecer um sidebar do lado direito da tela com os livros que estão no carrinho
 - fazer a página em que mostra cada livro detalhadamente
 - "detalhes_conta.php" não tem icon do home
+- "detalhes_conta.php" ainda está com os artigos entre "()"
