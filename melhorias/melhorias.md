@@ -11,7 +11,10 @@
 
 <!-- - Detalhes da conta passa para "detalhes_conta.php" e o arquivo é ".html"
 - Inicío sessão numa conta, inicia automaticamente na outra aba na mesma conta (facilmente resolvido, apresento só e apenas numa aba) 
-- login com senha errada passa para página à parte ("captar_login.php") --> \\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\
+- login com senha errada passa para página à parte ("captar_login.php") --> 
+^
+|
+\\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\
 - slider não carrega a 2ª e a 3ª imagem
 - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho
 - só pode ter acesso ao carrinho se tiver sessão iniciada
