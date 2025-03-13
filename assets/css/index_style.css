@@ -10,6 +10,13 @@
     flex-wrap: wrap;
 }
 
+svg.bi.bi-box-arrow-right{
+    margin-left: 0px;
+    margin-bottom: -2.5px;
+    margin-top: 2.5px;
+    margin-right: 0px;
+}
+
 :root{
     --color-dark1: #181818;
     --color-dark2: #a4a4a4;
