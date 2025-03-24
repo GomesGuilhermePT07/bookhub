@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// require_once 'check_login.php';
 require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -22,12 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $checkStmt->close();
 
-    // Adicionar ou atualizar o carrinho
-    $stmt = $conn->prepare("
-        INSERT INTO carrinho (id_utilizador, cod_isbn, quantidade) 
-        VALUES (?, ?, 1) 
-        ON DUPLICATE KEY UPDATE quantidade = quantidade + 1
-    ");
+    // --- NOVO: Verificar se já está no carrinho ---
+    $cartCheckStmt = $conn->prepare("SELECT cod_isbn FROM carrinho WHERE id_utilizador = ? AND cod_isbn = ?");
+    $cartCheckStmt->bind_param("is", $userId, $isbn);
+    $cartCheckStmt->execute();
+    $cartCheckStmt->store_result();
+
+    if ($cartCheckStmt->num_rows > 0) {
+        $_SESSION['error'] = "Este livro já está no seu carrinho.";
+        $cartCheckStmt->close();
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+    $cartCheckStmt->close();
+
+    // --- Alterado: INSERT simples sem ON DUPLICATE ---
+    $stmt = $conn->prepare("INSERT INTO carrinho (id_utilizador, cod_isbn, quantidade) VALUES (?, ?, 1)");
     $stmt->bind_param("is", $userId, $isbn);
     
     if ($stmt->execute()) {
