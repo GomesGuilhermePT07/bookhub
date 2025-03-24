@@ -35,6 +35,6 @@
 <!-- - "detalhes_conta.php" não tem icon do home -->
 <!-- - "detalhes_conta.php" ainda está com os artigos entre "()" -->
 <!-- - "detalhes_conta.php" não mostra a quantidade de artigos -->
-- só pode adicionar livro ao site se estiver logado como administrador
+<!-- - só pode adicionar livro ao site se estiver logado como administrador -->
 - melhorar a aparência do slider
-- acertar o header com a cena da percentagem adicionada
+<!-- - acertar o header com a cena da percentagem adicionada -->
