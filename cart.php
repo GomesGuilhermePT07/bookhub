@@ -123,8 +123,7 @@
         <?php if (!$loggedIn): ?>
             <!-- Mensagem para o utilizador -->
             <p class="empty-cart">
-                Inicie sessão para seu o seu carrinho.
-                <a href="./logins/login.php" class="login-link">Login aqui!</a>
+            <a href="./logins/login.php" class="login-link">Inicie sessão</a> para ver o seu carrinho.
             </p>
             <?php elseif ($loggedIn): ?>
         <div class="cart-items">
