@@ -120,3 +120,20 @@ main p{
     cursor: pointer;
     font-size: 14px;
 }
+
+/* Mensagem de login */
+.empty-cart {
+    text-align: center;
+    margin: 2rem;
+    font-size: 1.2rem;
+}
+
+.login-link {
+    color: #007bff;
+    text-decoration: underline;
+    margin-left: 0.5rem;
+}
+
+.login-link:hover {
+    color: #0056b3;
+}

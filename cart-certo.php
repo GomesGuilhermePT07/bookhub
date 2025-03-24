@@ -123,10 +123,9 @@
         <?php if (!$loggedIn): ?>
             <!-- Mensagem para o utilizador -->
             <p class="empty-cart">
-                Inicie sessão para seu o seu carrinho.
+                Inicie sessão para o seu carrinho.
                 <a href="./logins/login.php" class="login-link">Login aqui!</a>
             </p>
-            <?php elseif ($loggedIn): ?>
         <div class="cart-items">
             <?php foreach ($cartItems as $item): ?>
                 <div class="carrinho-item" data-isbn="<?= $item['cod_isbn'] ?>">
@@ -141,13 +140,6 @@
                         <h3 class="titulo-livro"><?= htmlspecialchars($item['titulo']) ?></h3>
                         <p class="autor-livro"><?= htmlspecialchars($item['autor']) ?></p>
                     </div>
-
-                    <!-- <div class="quantidade-actions">
-                        <form action="./assets/php/update_cart.php" method="POST" class="quantity-form">
-                            <input type="number" name="quantity" value="<?= $item['quantidade'] ?>" min="1">
-                            <input type="hidden" name="isbn" value="<?= $item['cod_isbn'] ?>">
-                            <button type="submit" class="btn-update">Atualizar</button>
-                        </form> -->
                         
                         <a href="./assets/php/remove_from_cart.php?isbn=<?= $item['cod_isbn'] ?>" class="btn-remover">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
