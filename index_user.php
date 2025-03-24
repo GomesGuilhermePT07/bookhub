@@ -130,7 +130,6 @@ if (isset($_SESSION['id'])) {
     </div> <!-- slider -->
 
     <main>
-        <!-- <h2>ISTO É O MAIN</h2> -->
         <section class="first-section">
             <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
             </form>
