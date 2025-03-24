@@ -16,8 +16,8 @@
 |
 \\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\
 - slider não carrega a 2ª e a 3ª imagem
-- verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho
-- só pode ter acesso ao carrinho se tiver sessão iniciada
+<!-- - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho 
+- só pode ter acesso ao carrinho se tiver sessão iniciada-->
 <!-- - logout passa diretamente para a página de login 
 - tento entrar manualmente no "index.php", redireciona para o "index_user.php" 
 - ao clicar para ver o resumo todo no modal, vai parar a um caminho estanho desconhecido 
