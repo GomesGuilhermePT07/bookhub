@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $checkStmt->close();
 
-    // --- NOVO: Verificar se já está no carrinho ---
     $cartCheckStmt = $conn->prepare("SELECT cod_isbn FROM carrinho WHERE id_utilizador = ? AND cod_isbn = ?");
     $cartCheckStmt->bind_param("is", $userId, $isbn);
     $cartCheckStmt->execute();
