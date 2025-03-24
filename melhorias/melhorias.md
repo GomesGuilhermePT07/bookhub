@@ -4,7 +4,7 @@
 
 ## PRÓXIMA COISA A FAZER:
 
-- acabar a página do carrinho
+- verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho 
 - verificar todos os erros e melhorias a fazer antes de começar a desenvolver as abas do site
 
 ### ----------------------------//ERROS E MELHORIAS\\-------------------------------
