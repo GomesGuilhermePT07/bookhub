@@ -17,6 +17,13 @@ svg.bi.bi-box-arrow-right{
     margin-right: 0px;
 }
 
+svg.bi.bi-box-arrow-left{
+    margin-left: 0px;
+    margin-bottom: -2.5px;
+    margin-top: 2.5px;
+    margin-right: 0px;
+}
+
 :root{
     --color-dark1: #181818;
     --color-dark2: #a4a4a4;
@@ -114,7 +121,7 @@ nav{
     text-decoration: none;
     color: var(--color-white);
     background-color: var(--color-blue1);
-    padding: 10px 25px;
+    padding: 9px 25px;
     border-radius: 5px;
     margin-left: -14rem;
     margin-right: -6rem;
@@ -127,7 +134,6 @@ nav{
 }
 
 .btn-action-logout{
-    font-size: 14px;
     text-decoration: none;
     color: var(--color-white);
     background-color: var(--color-red1);
