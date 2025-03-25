@@ -16,7 +16,7 @@
 |
 \\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\
 - slider não carrega a 2ª e a 3ª imagem
-- adicionar funcionalidade das atividades feitas pelos utilizadores \\ ACABAR \\
+- adicionar funcionalidade das atividades feitas pelos utilizadores \\ TESTAR, CORRIGIR E ACABAR \\
 <!-- - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho 
 - só pode ter acesso ao carrinho se tiver sessão iniciada-->
 <!-- - logout passa diretamente para a página de login 
