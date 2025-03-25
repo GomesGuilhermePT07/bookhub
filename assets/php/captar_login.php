@@ -25,7 +25,26 @@ try{
                 $_SESSION["email"] = $utilizador["email"];
                 $_SESSION['id'] = $utilizador['id']; // Adiciona o ID do usuário à sessão
                 
+                // Registar atividades selecionadas 
+                if(isset($_POST['oquefazer']) && is_array($_POST['oquefazer'])) {
+                    $atividades = $_POST['oquefazer'];
+                    $data_registo = $_POST['data_entrada'] . ' ' . date('H:i:s'); // Combina data do formulário com a hora atual
 
+                    foreach ($atividades as $atividade) {
+                        // Validar se a atividade é permitida (evitar valores inválidos)
+                        $atividades = in_array($atividade, ['ler', 'estudar', 'fazer_trabalhos', 'requisitar_livros', 'outros']) ? $atividade : 'outros';
+
+                        $sqlInsert = "INSERT INTO atividades (id_utilizador, atividade, data_registo)
+                                      VALUES (:id_utilizador, :atividade, :data_registo);";
+                        $stmtInsert = $pdo->prepare($sqlInsert);
+                        $stmtInsert->execute([
+                            ':id_utilizador' => $utilizador['id'],
+                            ':atividade' => $atividade,
+                            'data_registo' => $data_registo
+                        ]);
+                    }
+                }
+                
                 // Verificar o código secreto
                 if ($codigo_secreto === "1234"){
                     $_SESSION["admin"] = true;
