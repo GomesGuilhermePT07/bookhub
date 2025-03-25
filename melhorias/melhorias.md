@@ -25,6 +25,7 @@
 - ao clicar para ver o resumo todo no modal, vai parar a um caminho estanho desconhecido 
 - carrinho sem sessão iniciada ainda tem as palavras "registar" e "entrar" nos botões invés dos icons, tanto no user como no admin -->
 <!-- - aparece uma mensagem de erro na página de carrinho sem a sessão iniciada -->
+- acertar a ordem de aparição dos elementos na página inicial
 - footer está acima dos livros
 - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar!
 <!-- - utilizador sem sessão iniciada tem de ter uma mensagem no carrinho ("Inicie sessão para ver o seu carrinho") -->
