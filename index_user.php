@@ -109,7 +109,6 @@ if (isset($_SESSION['id'])) {
             </a>
         <?php endif; ?>
     </header>
-
     <div class="slider">
         <div class="slides">
             <div class="slide">
@@ -148,11 +147,10 @@ if (isset($_SESSION['id'])) {
             <!-- <p>esta é a parte </p> -->
         </section>
     </main>
-
+    
     <footer>
-        
+        <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
     </footer>
-
-    <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p> 
+ 
 </body>
 </html>
