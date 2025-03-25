@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/index_style.css">
-    <title>BOOKhub | Estatísticas</title>
+    <title>BOOKhub | Livros</title>
 </head>
 <body>
 <header>
