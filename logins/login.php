@@ -41,23 +41,23 @@
                 <p class="tarefa">O que vem fazer à biblioteca?</p>
                 <div class="box-select">
                     <div>
-                        <input type="checkbox" id="ler" value="ler" name="oquefazer">
+                        <input type="checkbox" id="ler" value="ler" name="oquefazer[]">
                         <label for="ler" class="checkbox-label">Ler</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="estudar" value="estudar" name="oquefazer">
+                        <input type="checkbox" id="estudar" value="estudar" name="oquefazer[]">
                         <label for="estudar" class="checkbox-label">Estudar</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="fazer_trabalhos" value="fazer_trabalhos" name="oquefazer">
+                        <input type="checkbox" id="fazer_trabalhos" value="fazer_trabalhos" name="oquefazer[]">
                         <label for="fazer_trabalhos" class="checkbox-label">Fazer trabalhos</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="requisitar_livros" value="requisitar_livros" name="oquefazer">
+                        <input type="checkbox" id="requisitar_livros" value="requisitar_livros" name="oquefazer[]">
                         <label for="requisitar_livros" class="checkbox-label">Requisitar livros</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="outros" value="outros" name="oquefazer">
+                        <input type="checkbox" id="outros" value="outros" name="oquefazer[]">
                         <label for="outros" class="checkbox-label">Outros</label>
                     </div>
                 </div>

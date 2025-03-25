@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include "config.php";
 
 try{
@@ -32,15 +33,15 @@ try{
 
                     foreach ($atividades as $atividade) {
                         // Validar se a atividade é permitida (evitar valores inválidos)
-                        $atividades = in_array($atividade, ['ler', 'estudar', 'fazer_trabalhos', 'requisitar_livros', 'outros']) ? $atividade : 'outros';
+                        $atividade_valida = in_array($atividade, ['ler', 'estudar', 'fazer_trabalhos', 'requisitar_livros', 'outros']) ? $atividade : 'outros';
 
                         $sqlInsert = "INSERT INTO atividades (id_utilizador, atividade, data_registo)
                                       VALUES (:id_utilizador, :atividade, :data_registo);";
                         $stmtInsert = $pdo->prepare($sqlInsert);
                         $stmtInsert->execute([
                             ':id_utilizador' => $utilizador['id'],
-                            ':atividade' => $atividade,
-                            'data_registo' => $data_registo
+                            ':atividade' => $atividade_valida,
+                            ':data_registo' => $data_registo
                         ]);
                     }
                 }
