@@ -110,23 +110,24 @@ if (isset($_SESSION['id'])) {
         <?php endif; ?>
     </header>
 
-        <section class="first-section">
-            <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
-            </form>
-            <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
-            <script src="../ModuloProjeto/assets/js/carregar_livros_user.js"></script>
-            <script src="../ModuloProjeto/assets/js/remover_livros.js"></script>
-            <script src="../ModuloProjeto/assets/js/slider.js"></script>
-            <!-- <p>esta é a parte dos livros</p> -->
-        </section>
+    <section class="first-section">
+        <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
+        </form>
+        <script src="../ModuloProjeto/assets/js/modal_livros.js"></script>
+        <script src="../ModuloProjeto/assets/js/carregar_livros_user.js"></script>
+        <script src="../ModuloProjeto/assets/js/remover_livros.js"></script>
+        <script src="../ModuloProjeto/assets/js/slider.js"></script>
+        <p>esta é a parte 1</p> <!-- TESTE DA ORDEM DE APARIÇÃO DO CONTEÚDO NA PÁGINA -->
+    </section>
 
-        <section class="second-section">
-            <!-- <p>esta é a parte </p> -->
-        </section>
+    <section class="second-section">
+        <p>esta é a parte 2</p> <!-- TESTE DA ORDEM DE APARIÇÃO DO CONTEÚDO NA PÁGINA -->
+    </section>
 
-        <section class="third-section">
-            <!-- <p>esta é a parte </p> -->
-        </section>
+    <section class="third-section">
+        <p>esta é a parte 3</p> <!-- TESTE DA ORDEM DE APARIÇÃO DO CONTEÚDO NA PÁGINA -->
+    </section>
+
     <div class="slider">
         <div class="slides">
             <div class="slide">
@@ -145,8 +146,8 @@ if (isset($_SESSION['id'])) {
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
     </div> <!-- slider -->
-    
-        <p class="footer">&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
- 
+
+    <p class="footer">&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
+
 </body>
 </html>
