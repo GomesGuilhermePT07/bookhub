@@ -150,7 +150,7 @@ nav{
     background-color: var(--color-red2);
 }
 
-.footer{
+footer{
     padding: 1rem;
     display: flex;
     flex-direction: column;

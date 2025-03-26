@@ -25,9 +25,7 @@ if (isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
-    <link rel="stylesheet" href="../ModuloProjeto/assets/css/modal.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/apresentar_livro.css">
-    <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_slider.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <title>BOOKhub</title>
 </head>
