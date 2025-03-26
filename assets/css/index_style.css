@@ -157,6 +157,18 @@ nav{
 
 .book-item{
     margin: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* flex: 1; */
+    min-height: 23.2rem;
+    min-width: 8rem;
+}
+
+.book-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .footer{
