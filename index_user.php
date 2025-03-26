@@ -147,7 +147,7 @@ if (isset($_SESSION['id'])) {
         <button class="next">&#10095;</button>
     </div> <!-- slider -->
 
-    <p class="footer">&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
+    <!-- <p class="footer">&copy; 2025 BOOKhub. Todos os direitos reservados.</p> -->
 
 </body>
 </html>

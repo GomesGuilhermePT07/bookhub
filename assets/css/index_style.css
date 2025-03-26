@@ -165,12 +165,6 @@ nav{
     min-width: 8rem;
 }
 
-.book-container{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-}
-
 .footer{
     padding: 1rem;
     display: flex;
