@@ -39,7 +39,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* flex: 1; */
     min-height: 23.2rem;
     min-width: 8rem;
 }
