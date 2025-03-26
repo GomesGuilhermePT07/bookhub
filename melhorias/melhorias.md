@@ -5,7 +5,6 @@
 ## PRÓXIMA COISA A FAZER:
 
 - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho
-- criar as páginas e acertar os caminhos do header para as páginas 
 - verificar todos os erros e melhorias a fazer antes de começar a desenvolver as abas do site
 
 ### ----------------------------//ERROS E MELHORIAS\\-------------------------------
