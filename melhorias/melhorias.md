@@ -2,12 +2,12 @@
 
 - problemas que enfrentei e como resolvi
 
-## PRÓXIMA COISA A FAZER:
+# PRÓXIMA COISA A FAZER:
 
 - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho
 - verificar todos os erros e melhorias a fazer antes de começar a desenvolver as abas do site
 
-### ----------------------------//ERROS E MELHORIAS\\-------------------------------
+# ----------------------------//ERROS E MELHORIAS\\-------------------------------
 
 <!-- - Detalhes da conta passa para "detalhes_conta.php" e o arquivo é ".html"
 - Inicío sessão numa conta, inicia automaticamente na outra aba na mesma conta (facilmente resolvido, apresento só e apenas numa aba) 
@@ -46,9 +46,9 @@
 
 
 
-### ----------------------------//ERROS E MELHORIAS\\-------------------------------
+# ----------------------------//ERROS E MELHORIAS\\-------------------------------
 
-#### SISTEMA DE GERENCIAMENTO DE REQUISIÇÕES: 
+# SISTEMA DE GERENCIAMENTO DE REQUISIÇÕES: 
 
 1- aparece todas as requisições do site (nome do livro, id do utilizador, email, id da requisição, data da requisição e de entrega, estado da requisição(entregue ou por entregar));
 
@@ -62,7 +62,7 @@
 
 4- deletar a requisição da tabela "requisições" da base de dados e consequentemente, do site.
 
-##### DADOS A PREENCHER NA ENTREGA DO LIVRO:
+# DADOS A PREENCHER NA ENTREGA DO LIVRO:
 
 - nome do livro;
 - ISBN do livro;
