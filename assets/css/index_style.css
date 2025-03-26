@@ -4,8 +4,6 @@
 
 *{
     letter-spacing: 1px;
-    /* font-family: 'Merriweather', serif; */
-    font-family: 'Goblin One';
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
@@ -162,7 +160,8 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding-bottom: 1.5rem;
+    padding-top: 5rem;
     font-size: 1.5rem;
-    /* font-family: 'Gill Sans MT' ; */
+    font-family: 'Merriweather';
 }
