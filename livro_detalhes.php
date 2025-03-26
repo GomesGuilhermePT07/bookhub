@@ -25,7 +25,7 @@ function obterCapa($isbn) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-PT">
 <head>
     <title>BOOKhub | <?php echo isset($livro['titulo']) ? $livro['titulo'] : 'Livro não encontrado'; ?></title>
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/livro_detalhes.css">
