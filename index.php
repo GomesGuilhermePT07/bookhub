@@ -141,7 +141,6 @@ if (isset($_SESSION['id'])) {
 
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
-    
     </div> <!-- slider -->
     
     <div class="ultimo-lancamento">
