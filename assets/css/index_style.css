@@ -164,4 +164,5 @@ nav{
     padding-top: 5rem;
     font-size: 1.5rem;
     font-family: 'Merriweather';
+    background-color: red; /* Vermelho para testes */
 }
