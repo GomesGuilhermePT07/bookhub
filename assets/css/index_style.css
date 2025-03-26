@@ -165,7 +165,7 @@ nav{
     padding-top: 5rem;
     font-size: 1.5rem;
     font-family: 'Merriweather';
-    background-image: linear-gradient(0deg, var(--color-white), var(--color-light-blue)); /* Vermelho para testes */
+    background-image: linear-gradient(0deg, var(--color-white), var(--color-light-blue));
 }
 
 .ultimo-lancamento p{
