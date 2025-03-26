@@ -176,5 +176,22 @@ nav{
 }
 
 .add-books{
-    background-color: red; /* VERMELHO PARA TESTES */
+    background-color: var(--color-blue1);
+    color: var(--color-white); 
+    margin-left: 36rem;
+    margin-right: 36rem;
+    padding: 10px;
+    border: none;
+    border-radius: 15px
+}
+
+.add-books:hover{
+    background-color: var(--color-blue2);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.add-books:not(:hover){
+    background-color: var(--color-blue1);
+    transition: .3s;
 }
