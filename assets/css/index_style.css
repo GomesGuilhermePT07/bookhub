@@ -174,3 +174,7 @@ nav{
     color: var(--color-dark);
     font-weight: 600;
 }
+
+.add-books{
+    background-color: red; /* VERMELHO PARA TESTES */
+}
