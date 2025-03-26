@@ -131,15 +131,15 @@ if (isset($_SESSION['id'])) {
     <div class="slider">
         <div class="slides">
             <div class="slide">
-                <img src="./assets/img/imagem_teste_slider1.jpg" alt="Slide 1">
+                <img src="./assets/img/imagem_teste_slider1.png" alt="Slide 1">
                 <div class="caption">Legenda do Slide 1</div>
             </div>
             <div class="slide">
-                <img src="./assets/img/imagem_teste_slider2.jpg" alt="Slide 2">
+                <img src="./assets/img/imagem_teste_slider2.png" alt="Slide 2">
                 <div class="caption">Legenda do Slide 2</div>
             </div>
             <div class="slide">
-                <img src="./assets/img/imagem_teste_slider3.jpg" alt="Slide 3">
+                <img src="./assets/img/imagem_teste_slider3.png" alt="Slide 3">
                 <div class="caption">Legenda do Slide 3</div>
             </div>
         </div>
@@ -148,7 +148,7 @@ if (isset($_SESSION['id'])) {
     </div> <!-- slider -->
     
     <div class="ultimo-lancamento">
-        <p>Últimos registos:</p>
+        <p>Últimos livros adicionados:</p>
     </div>
 
     <!-- <p class="footer">&copy; 2025 BOOKhub. Todos os direitos reservados.</p> -->

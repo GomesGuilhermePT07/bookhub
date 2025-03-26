@@ -126,15 +126,15 @@ if (isset($_SESSION['id'])) {
     <div class="slider">
         <div class="slides">
             <div class="slide">
-                <img src="./assets/img/imagem_teste_slider1.jpg" alt="Slide 1">
+                <img src="./assets/img/imagem_teste_slider1.png" alt="Slide 1">
                 <div class="caption">Legenda do Slide 1</div>
             </div>
             <div class="slide">
-                <img src="./assets/img/imagem_teste_slider2.jpg" alt="Slide 2">
+                <img src="./assets/img/imagem_teste_slider2.png" alt="Slide 2">
                 <div class="caption">Legenda do Slide 2</div>
             </div>
             <div class="slide">
-                <img src="./assets/img/imagem_teste_slider3.jpg" alt="Slide 3">
+                <img src="./assets/img/imagem_teste_slider3.png" alt="Slide 3">
                 <div class="caption">Legenda do Slide 3</div>
             </div>
         </div>
@@ -143,10 +143,10 @@ if (isset($_SESSION['id'])) {
     </div> <!-- slider -->
     
     <div class="ultimo-lancamento">
-        <p>Últimos registos:</p>
+        <p>Últimos livros adicionados:</p>
     </div>
 
-    <button id="openModal" class="add-books">Adicionar Livro</button>
+    <button id="openModal" class="add-books">Adicionar livro</button>
         <form action="./assets/php/captar_livro.php" method="POST" id="bookForm">
         <dialog class="modal">
             <h2>Adicionar Livro</h2>
