@@ -27,6 +27,8 @@ function obterCapa($isbn) {
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOKhub | <?php echo isset($livro['titulo']) ? $livro['titulo'] : 'Livro não encontrado'; ?></title>
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/livro_detalhes.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
@@ -37,7 +39,7 @@ function obterCapa($isbn) {
             <img src="<?php echo obterCapa($livro['cod_isbn']); ?>" alt="Capa do livro">
             <h1><?php echo $livro['titulo']; ?></h1>
             <p>Autor: <?php echo $livro['autor']; ?></p>
-            <p>Descrição: <?php echo $livro['descricao']; ?></p>
+            <!-- <p>Descrição: <?php echo $livro['descricao']; ?></p> -->
         </div>
     <?php else: ?>
         <p>Livro não encontrado!</p>
