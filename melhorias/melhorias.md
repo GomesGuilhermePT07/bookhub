@@ -41,3 +41,33 @@
 <!-- - só pode adicionar livro ao site se estiver logado como administrador -->
 - melhorar a aparência do slider
 <!-- - acertar o header com a cena da percentagem adicionada -->
+
+
+
+
+
+### ----------------------------//ERROS E MELHORIAS\\-------------------------------
+
+#### SISTEMA DE GERENCIAMENTO DE REQUISIÇÕES: 
+
+1- aparece todas as requisições do site (nome do livro, id do utilizador, email, id da requisição, data da requisição e de entrega, estado da requisição(entregue ou por entregar));
+
+2- barra para pesquisar através do email ou do nome do utilizador;
+
+3- aparecer todas as requisições do utilizador (com os atributos já mencionados anteriormente) e aparecer um botão de "entregar" para o utilizador e um botão de "devolvido" para o administrador;
+
+    "entregar" --> notificação para o administrador --> botão "pode devolver" para o administrador --> notificação para o utilizador para ir à biblioteca.
+
+    "devolvido" --> modal para preencher os dados com o nome do livro e etc com base no código ISBN do mesmo (desta vez ligado à base de dados) --> "devolver livro".
+
+4- deletar a requisição da tabela "requisições" da base de dados e consequentemente, do site.
+
+##### DADOS A PREENCHER NA ENTREGA DO LIVRO:
+
+- nome do livro;
+- ISBN do livro;
+- autor do livro;
+- nº de páginas;
+- resumo;
+- quantidade;
+- nota do utilizador/feedback (opcional).
