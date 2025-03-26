@@ -149,22 +149,6 @@ nav{
     background-color: var(--color-red2);
 }
 
-#book-list{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.book-item{
-    margin: 1.3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* flex: 1; */
-    min-height: 23.2rem;
-    min-width: 8rem;
-}
-
 .footer{
     padding: 1rem;
     display: flex;
