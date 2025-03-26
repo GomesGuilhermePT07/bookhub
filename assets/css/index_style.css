@@ -24,6 +24,14 @@ svg.bi.bi-box-arrow-left{
     margin-right: 0px;
 }
 
+
+#book-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
 :root{
     --color-dark1: #181818;
     --color-dark2: #a4a4a4;
@@ -150,8 +158,9 @@ nav{
 }
 
 .footer{
-    padding: 4rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
 }
