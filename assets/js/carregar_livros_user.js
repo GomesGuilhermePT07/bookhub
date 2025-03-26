@@ -38,9 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     const bookHtml = `
                         <div class="book-item" data-isbn="${book.cod_isbn}">
-                            <img src="${coverUrl}" alt="Capa do livro ${book.titulo}" class="book-cover">
-                            <h5>${book.titulo}</h5>
-                            <p><b>Autor: </b>${book.autor}</p>
+                            <a href="livro_detalhes.php?isbn=${book.cod_isbn}" class="book-link">
+                                <img src="${coverUrl}" alt="Capa do livro ${book.titulo}" class="book-cover">
+                                <h5>${book.titulo}</h5>
+                                <p><b>Autor: </b>${book.autor}</p>
+                            </a>
                             <form action="assets/php/add_to_cart.php" method="POST">
                                 <input type="hidden" name="isbn" value="${book.cod_isbn}">
                                 <button type="submit" class="add-to-cart">Adicionar ao carrinho</button>
