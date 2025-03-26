@@ -156,6 +156,7 @@ footer{
     flex-direction: column;
     gap: 2rem;
     align-items: center;
+    border: 1px solid red; /* BORDA PARA TESTES */
 }
 
 .ultimo-lancamento{
