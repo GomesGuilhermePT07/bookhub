@@ -27,3 +27,8 @@
     margin-bottom: 15px;
     color: #333;
 }
+
+.livro-detalhes p strong{
+    color: #2c3e50;
+    font-weight: 600;
+}
