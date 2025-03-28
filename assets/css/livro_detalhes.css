@@ -1,1 +1,10 @@
 /* DESIGN DA PÁGINA DE CADA LIVRO */
+
+.livro-detalhes{
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    position: relative;
+}
