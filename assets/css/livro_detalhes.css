@@ -29,8 +29,8 @@
 }
 
 .livro-detalhes img{
-    width: 220px;
-    height: auto;
+    width: 290px;
+    height: 430px; 
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
     border-radius: 4px;
