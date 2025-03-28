@@ -37,7 +37,7 @@
 - melhorar a página em que mostra cada livro detalhadamente
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
+ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO 
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 <!-- - "detalhes_conta.php" não tem icon do home -->

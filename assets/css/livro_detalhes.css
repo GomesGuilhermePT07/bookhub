@@ -1,4 +1,7 @@
 /* DESIGN DA PÁGINA DE CADA LIVRO */
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goblin One');
 
 :root{
     --color-white: #FFFFFF;
@@ -10,6 +13,10 @@
     --color-red2: #c0392b;
     --color-blue: #007bff;
     --color-blue2: #0056b3;
+}
+
+*{
+    font-family: 'Lato';
 }
 
 .livro-detalhes{
@@ -37,7 +44,7 @@
     font-size: 2.5rem;
     margin-top: 0;
     margin-bottom: 15px;
-    color: #333;
+    color: var(--color-black);
 }
 
 .livro-detalhes p{
@@ -45,7 +52,7 @@
 }
 
 .livro-detalhes p strong{
-    color: #2c3e50;
+    color: var(--color-blue);
     font-weight: 600;
 }
 
@@ -80,7 +87,7 @@
 .resumo{
     margin-top: 30px;
     line-height: 1.7;
-    color: #555;
+    color: var(--color-grey);
     font-size: 1.1em;
     white-space: pre-wrap;
 }
@@ -99,7 +106,7 @@
     }
 
     .detalhes-adicionais{
-        /* position: static; */
+        position: static; 
         flex-direction: column;
         gap: 10px;
         background: #f8f9fa;
