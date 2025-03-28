@@ -55,3 +55,7 @@
 .detalhes-adicionais > div:first-child{
     text-align: left;
 }
+
+.detalhes-adicionais > div:last-child{
+    text-align: right;
+}
