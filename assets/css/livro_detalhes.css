@@ -59,3 +59,12 @@
 .detalhes-adicionais > div:last-child{
     text-align: right;
 }
+
+/* Estilos do resumo */
+.resumo{
+    margin-top: 30px;
+    line-height: 1.7;
+    color: #555;
+    font-size: 1.1em;
+    white-space: pre-wrap;
+}
