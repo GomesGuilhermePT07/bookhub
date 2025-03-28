@@ -133,7 +133,7 @@ function obterCapa($isbn) {
             <img src="<?php echo obterCapa($livro['cod_isbn']); ?>" alt="Capa do livro">
             <h1><?php echo $livro['titulo']; ?></h1>
             <p>Autor: <?php echo $livro['autor']; ?></p>
-            <p>Descrição: <?php echo $livro['descricao']; ?></p>
+            <!-- <p>Descrição: <?php echo $livro['descricao']; ?></p> -->
         </div>
     <?php else: ?>
         <p>Livro não encontrado!</p>
