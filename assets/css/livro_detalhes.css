@@ -21,6 +21,7 @@
 
 .livro-detalhes{
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     max-width: 1200px;
     margin: 40px auto;
