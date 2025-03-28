@@ -1,5 +1,16 @@
 /* DESIGN DA PÁGINA DE CADA LIVRO */
 
+:root{
+    --color-white: #FFFFFF;
+    --color-white2: #f7f7f7;
+    --color-black: #000000;
+    --color-grey: #333;
+    --color-grey2: #666;
+    --color-red: #e74c3c;
+    --color-red2: #c0392b;
+    --color-blue: #007bff;
+    --color-blue2: #0056b3;
+}
 .livro-detalhes{
     display: flex;
     gap: 40px;
@@ -29,7 +40,7 @@
 }
 
 .livro-detalhes p{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .livro-detalhes p strong{
