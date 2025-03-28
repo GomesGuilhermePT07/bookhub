@@ -51,3 +51,7 @@
     flex: 1;
     text-align: center;
 }
+
+.detalhes-adicionais > div:first-child{
+    text-align: left;
+}
