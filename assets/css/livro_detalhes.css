@@ -11,6 +11,7 @@
     --color-blue: #007bff;
     --color-blue2: #0056b3;
 }
+
 .livro-detalhes{
     display: flex;
     gap: 40px;
