@@ -131,14 +131,18 @@ function obterCapa($isbn) {
     <?php if ($livro): ?>
     <div class="livro-detalhes">
         <img src="<?php echo obterCapa($livro['cod_isbn']); ?>" alt="Capa do livro">
-        <h1><?= htmlspecialchars($livro['titulo']) ?></h1>
-        <p><strong>ISBN:</strong> <?= htmlspecialchars($livro['cod_isbn']) ?></p>
-        <p><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
-        <p><strong>Edição:</strong> <?= htmlspecialchars($livro['edicao']) ?></p>
-        <p><strong>Número de Páginas:</strong> <?= htmlspecialchars($livro['numero_paginas']) ?></p>
-        <p><strong>Resumo:</strong></p>
-        <div class="resumo"><?= nl2br(htmlspecialchars($livro['resumo'])) ?></div>
-    </div>
+        <div class="livro-info">
+            <h1><?= htmlspecialchars($livro['titulo']) ?></h1>
+            <p><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
+            <div class="resumo"><?= nl2br(htmlspecialchars($livro['resumo'])) ?></div>
+        </div> <!-- livro-info -->
+        
+        <div class="detalhes-adicionais">
+            <div><strong>ISBN:</strong> <?= htmlspecialchars($livro['cod_isbn']) ?></div>
+            <div><strong>Edição:</strong> <?= htmlspecialchars($livro['edicao']) ?></div>
+            <div><strong>Páginas:</strong> <?= htmlspecialchars($livro['numero_paginas']) ?></div>
+        </div> <!-- detalhes-adicionais -->
+    </div> <!-- livro-detalhes -->
 <?php else: ?>
     <p>Livro não encontrado!</p>
 <?php endif; ?>
