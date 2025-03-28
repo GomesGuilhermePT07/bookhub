@@ -53,13 +53,15 @@
 }
 
 .book-item p{
+    padding-top: 1rem;
+    padding-bottom: .3rem;
     font-size: .75rem;
     color: var(--color-grey2);
     margin: 2px 0;
 }
 
 .book-item .remove-book{
-    display: inline-block;
+    display: inline-block; 
     margin: 6px 0;
     padding: 5px 10px;
     background-color: var(--color-red);

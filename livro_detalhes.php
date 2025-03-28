@@ -129,14 +129,18 @@ function obterCapa($isbn) {
     </header>
 
     <?php if ($livro): ?>
-        <div class="livro-detalhes">
-            <img src="<?php echo obterCapa($livro['cod_isbn']); ?>" alt="Capa do livro">
-            <h1><?php echo $livro['titulo']; ?></h1>
-            <p>Autor: <?php echo $livro['autor']; ?></p>
-            <!-- <p>Descrição: <?php // echo $livro['descricao']; ?></p> -->
-        </div>
-    <?php else: ?>
-        <p>Livro não encontrado!</p>
-    <?php endif; ?>
+    <div class="livro-detalhes">
+        <img src="<?php echo obterCapa($livro['cod_isbn']); ?>" alt="Capa do livro">
+        <h1><?= htmlspecialchars($livro['titulo']) ?></h1>
+        <p><strong>ISBN:</strong> <?= htmlspecialchars($livro['cod_isbn']) ?></p>
+        <p><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
+        <p><strong>Edição:</strong> <?= htmlspecialchars($livro['edicao']) ?></p>
+        <p><strong>Número de Páginas:</strong> <?= htmlspecialchars($livro['numero_paginas']) ?></p>
+        <p><strong>Resumo:</strong></p>
+        <div class="resumo"><?= nl2br(htmlspecialchars($livro['resumo'])) ?></div>
+    </div>
+<?php else: ?>
+    <p>Livro não encontrado!</p>
+<?php endif; ?>
 </body>
 </html>
