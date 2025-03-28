@@ -68,3 +68,29 @@
     font-size: 1.1em;
     white-space: pre-wrap;
 }
+
+/* Layout responsivo */
+@media (max-width: 768px){
+    .livro-detalhes{
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .livro-detalhes img{
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .detalhes-adicionais{
+        position: static;
+        flex-direction: column;
+        gap: 10px;
+        background: #f8f9fa;
+        margin-top: 30px;
+    }
+
+    .detalhes-adicionais > div{
+        text-align: left !important;
+    }
+}
