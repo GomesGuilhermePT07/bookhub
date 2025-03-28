@@ -46,3 +46,8 @@
     justify-content: space-between;
     backdrop-filter: blur(5px);
 }
+
+.detalhes-adicionais > div{
+    flex: 1;
+    text-align: center;
+}
