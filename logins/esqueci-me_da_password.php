@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query->execute([$email, $token, $expira_em, $token, $expira_em]);
 
         // Enviar email ao usuário (simulação)
-        $reset_link = "http://seusite.com/reset_password.php?token=" . $token;
+        $reset_link = "http://localhost:8080/ModuloProjeto/logins/esqueci-me_da_password.php?token=" . $token;
         mail($email, "Redefinir sua senha", "Clique aqui para redefinir sua senha: $reset_link");
 
         echo "Um email foi enviado para redefinir sua senha.";
