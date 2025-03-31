@@ -28,7 +28,7 @@
                     <label for="showPassword">Mostrar password</label>
                 </div>
                 <div class="forgot-password">
-                    <a href="../logins/esqueci-me_da_password.html">Esqueci-me da password</a>
+                    <a href="../logins/esqueci-me_da_password.php">Esqueci-me da password</a>
                 </div>
                 <div class="input-container">
                     <i class="fa fa-key"></i>
