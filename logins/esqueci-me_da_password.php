@@ -1,3 +1,37 @@
+<?php
+
+include 'config.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+
+    // Verifica se o email existe
+    $query = $conn->prepare("SELECT id FROM utilizadores WHERE email = ?");
+    $query->execute([$email]);
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        // Gera um token único
+        $token = md5(uniqid(mt_rand(), true));
+        $expira_em = date("Y-m-d H:i:s", strtotime("+1 hour"));
+
+        // Insere ou atualiza o token na base de dados
+        $query = $conn->prepare("INSERT INTO password_resets (email, token, expira_em) 
+                                 VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE token = ?, expira_em = ?");
+        $query->execute([$email, $token, $expira_em, $token, $expira_em]);
+
+        // Enviar email ao usuário (simulação)
+        $reset_link = "http://seusite.com/reset_password.php?token=" . $token;
+        mail($email, "Redefinir sua senha", "Clique aqui para redefinir sua senha: $reset_link");
+
+        echo "Um email foi enviado para redefinir sua senha.";
+    } else {
+        echo "Email não encontrado!";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-PT">
     <head>
