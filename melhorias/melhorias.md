@@ -35,11 +35,18 @@
 - adicionar livro no site = fazer refresh para aparecer! \\ \\ CORRIGIR \\ \\ (adicionar refresh automatico)
 - criar sidebar para o carrinho, para quando passar o mouse por cima, aparecer um sidebar do lado direito da tela com os livros que estão no carrinho
 - melhorar a página em que mostra cada livro detalhadamente
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+## O BOTÃO "REMOVER LIVRO" NÃO ESTÁ A REMOVER DA BASE DE DADOS! CORRIGE ISSO AGORA!!!!!!
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO 
 
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 <!-- - "detalhes_conta.php" não tem icon do home -->
 <!-- - "detalhes_conta.php" ainda está com os artigos entre "()" -->
 <!-- - "detalhes_conta.php" não mostra a quantidade de artigos -->
