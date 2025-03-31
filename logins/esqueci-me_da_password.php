@@ -1,6 +1,6 @@
 <?php
 
-include_once 'config.php';
+include '../assets/php/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
