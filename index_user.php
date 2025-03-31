@@ -158,7 +158,9 @@ if (isset($_SESSION['id'])) {
         <p>Últimos livros adicionados:</p>
     </div>
 
-    <!-- <p class="footer">&copy; 2025 BOOKhub. Todos os direitos reservados.</p> -->
+    <footer>
+        <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
