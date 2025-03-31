@@ -42,6 +42,7 @@
 }
 
 .livro-detalhes h1{
+    /* background: rgba(255, 200, 255, 0.95); */
     font-size: 2.5rem;
     margin-top: 0;
     margin-bottom: 15px;
@@ -49,6 +50,7 @@
 }
 
 .livro-detalhes p{
+    /* background: rgba(255, 200, 255, 0.95); */
     font-size: 1.3rem;
 }
 
@@ -63,7 +65,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    /* background: rgba(255, 200, 255, 0.95); */
     padding: 20px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -88,7 +90,8 @@
 .resumo{
     margin-top: 30px;
     line-height: 1.7;
-    color: var(--color-grey);
+    /* color: var(--color-grey); */
+    /* background: rgba(255, 200, 255, 0.95); */
     font-size: 1.1em;
     white-space: pre-wrap;
 }
@@ -107,7 +110,7 @@
     }
 
     .detalhes-adicionais{
-        position: static; 
+        position: static;
         flex-direction: column;
         gap: 10px;
         background: #f8f9fa;
