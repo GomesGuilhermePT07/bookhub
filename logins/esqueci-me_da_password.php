@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->addAddress($email);
             $mail->isHTML(true);
             $mail->Subject = "Redefinição de Senha";
-            $reset_link = "http://seusite.com/reset_password.php?token=" . $token;
+            $reset_link = "http://localhost:8080/ModuloProjeto/logins/reset_password.php?token=" . $token;
             $mail->Body = "Clique no link para redefinir sua senha: <a href='$reset_link'>$reset_link</a>";
 
             $mail->send();
