@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img src="${coverUrl}" alt="Capa do livro ${book.titulo}" class="book-cover">
                             <h5>${book.titulo}</h5>
                             <p><b>Autor: </b>${book.autor}</p>
-                            <button <!--type="submit"--> class="add-to-cart">Adicionar ao carrinho</button>
+                            <button class="add-to-cart">Adicionar ao carrinho</button>
                             <button class="remove-book">Remover</button>
                         </div>`;
                     bookListContainer.innerHTML += bookHtml;
