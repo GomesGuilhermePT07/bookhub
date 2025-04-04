@@ -9,7 +9,7 @@ header("Content-Type: application/json");
 
     try{
         // Conexão com a base de dados 
-        $conn = new PDO("mysql:host=$host;port=3307;dbname=$dbname", $dbusername, $dbpassword);
+        $conn = new PDO("mysql:host=$host;port=3306;dbname=$dbname", $dbusername, $dbpassword);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if (!isset($_POST['isbn']) || empty($_POST['isbn'])) {
