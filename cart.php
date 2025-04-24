@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    // session_start();
+    require_once 'assets/php/check_login.php';
     require_once 'assets/php/config.php';
 
     // Verificar se o usuário está logado
