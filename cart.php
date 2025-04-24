@@ -1,7 +1,7 @@
 <?php
     // session_start();
-    require_once 'assets/php/check_login.php';
     require_once 'assets/php/config.php';
+    require_once 'assets/php/check_login.php';
 
     // Verificar se o usuário está logado
     $loggedIn = isset($_SESSION['id']);
