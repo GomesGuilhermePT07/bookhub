@@ -1,7 +1,3 @@
-# Adicionar ao relatório
-
-- problemas que enfrentei e como resolvi
-
 # PRÓXIMA COISA A FAZER:
 
 - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho
@@ -38,7 +34,7 @@
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-## O BOTÃO "REMOVER LIVRO" NÃO ESTÁ A REMOVER DA BASE DE DADOS! CORRIGE ISSO AGORA!!!!!!
+<!-- ## O BOTÃO "REMOVER LIVRO" NÃO ESTÁ A REMOVER DA BASE DE DADOS! CORRIGE ISSO AGORA!!!!!! -->
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
