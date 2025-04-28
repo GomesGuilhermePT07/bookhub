@@ -3,6 +3,11 @@ session_start();
 require_once 'check_login.php';
 require_once 'config.php';
 
+$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+    if ($conn->connect_error) {
+        die("Falha na conexão: " . $conn->connect_error);
+    }
+
 if (isset($_GET['isbn'])) {
     $isbn = $_GET['isbn'];
     $userId = $_SESSION['id'];
