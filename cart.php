@@ -3,11 +3,11 @@
     require_once 'assets/php/config.php';
     require_once 'assets/php/check_login.php';
 
-    $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-    if ($conn->connect_error) {
-        die("Falha na conexão: " . $conn->connect_error);
+    $pdo = new mysqli($host, $dbusername, $dbpassword, $dbname);
+    if ($pdo->connect_error) {
+        die("Falha na conexão: " . $pdo->connect_error);
     }
-    
+
     // Verificar se o usuário está logado
     $loggedIn = isset($_SESSION['id']);
     $cartItems = [];
