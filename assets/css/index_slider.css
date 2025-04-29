@@ -11,10 +11,18 @@ body {
 .slider {
     position: relative;
     width: 100%;
-    height: 400px; 
+    /* height: 400px;  */
+    height: auto;
     overflow: hidden;
     border-radius: 0px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    aspect-ratio: 16/9; /* Mantém proporção 16:9 */
+}
+
+@media (max-width: 768px) {
+    .slider {
+        aspect-ratio: 4/3; /* Proporção mais vertical para mobile */
+    }
 }
 
 .slides {
@@ -36,6 +44,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    object-position: center; /* Garante que o foco da imagem fique centralizado */
 }
 
 .caption {

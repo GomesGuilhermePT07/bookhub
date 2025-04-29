@@ -138,7 +138,7 @@ if (isset($_SESSION['id'])) {
     <div class="slider">
         <div class="slides">
             <div class="slide">
-                <img src="./assets/img/imagem_teste_slider1.png" alt="Slide 1">
+                <img src="./assets/img/Banner_Bookhub.png" alt="Slide 1">
                 <div class="caption">Legenda do Slide 1</div>
             </div>
             <div class="slide">
