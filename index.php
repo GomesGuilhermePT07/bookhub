@@ -135,14 +135,14 @@ if (isset($_SESSION['id'])) {
                 <img src="../ModuloProjeto/assets/img/imagem_teste_slider1.png" class="slide" alt="Slide 1">
                 <div class="caption">Legenda do Slide 1</div>
             </div>
-            <div class="slide">
+            <!-- <div class="slide">
                 <img src="../ModuloProjeto/assets/img/imagem_teste_slider2.png" class="slide" alt="Slide 2">
                 <div class="caption">Legenda do Slide 2</div>
             </div>
             <div class="slide">
                 <img src="../ModuloProjeto/assets/img/imagem_teste_slider3.png" class="slide" alt="Slide 3">
                 <div class="caption">Legenda do Slide 3</div>
-            </div>
+            </div> -->
         </div> <!-- slides -->
 
         <button class="prev">&#10094;</button>
