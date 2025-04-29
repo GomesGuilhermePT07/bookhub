@@ -13,7 +13,7 @@ body {
     width: 435.5px;
     height: 400px; 
     /* height: auto; */
-    overflow: hidden;
+    /* overflow: hidden; */
     border-radius: 0px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
     aspect-ratio: 16/9; /* Mantém proporção 16:9 */
