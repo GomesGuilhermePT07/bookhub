@@ -149,7 +149,7 @@ if (isset($_SESSION['id'])) {
                 <img src="./assets/img/imagem_teste_slider3.png" alt="Slide 3">
                 <div class="caption">Legenda do Slide 3</div>
             </div> COMENTADO TEMPORARIAMENTE -->
-        </div>
+        </div> <!-- slides -->
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
     </div> <!-- slider -->
