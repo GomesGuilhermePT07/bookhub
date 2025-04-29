@@ -20,5 +20,5 @@ function adjustSliderHeight() {
 }
 
 // Executar no carregamento e no redimensionamento da janela
-window.addEventListener('load', adjustSliderHeight);
-window.addEventListener('resize', adjustSliderHeight);
+// window.addEventListener('load', adjustSliderHeight);
+// window.addEventListener('resize', adjustSliderHeight);
