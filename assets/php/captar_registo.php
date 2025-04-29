@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = new PDO("mysql:host=$host;port=3306;dbname=$dbname", $dbusername, $dbpassword);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $hashedPassword = md5($password);
+        $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $query = "INSERT INTO utilizadores (nome_completo, email, password, genero)
                   VALUES (:nome_completo, :email, :password, :genero);";

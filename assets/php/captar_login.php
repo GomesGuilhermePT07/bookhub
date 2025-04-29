@@ -19,7 +19,7 @@ try{
         $utilizador = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($utilizador) {
-            if (md5($password) === $utilizador["password"]){
+            if (password_verify($password, $utilizador["password"])){
                 header("Location: ../../index.php");
                 session_start();
                 $_SESSION["loggedin"] = true;

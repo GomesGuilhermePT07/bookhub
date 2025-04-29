@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="success"><?= $success ?></div>
         <?php else: ?>
             <form method="POST">
-                <input type="hidden" name="token" value="<? = htmlspecialchars($_GET['token'] ?? '') ?>">
+                <input type="hidden" name="token" value="<?= htmlspecialchars($_GET['token'] ?? '') ?>">
                 <div class="input-container">
                     <i class="fa fa-lock"></i>
                     <input type="password" name="nova_password" placeholder="Nova password" required minlength="8">
