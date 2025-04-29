@@ -138,20 +138,9 @@ if (isset($_SESSION['id'])) {
     <div class="slider">
         <div class="slides">
             <div class="slide">
-                <img src="/ModuloProjeto/assets/img/Banner_Bookhub.jpg" alt="Slide 1">
-                <div class="caption">Legenda do Slide 1</div>
+                <img src="/ModuloProjeto/assets/img/Bookhub.gif" alt="Slide 1">
             </div>
-            <!-- <div class="slide">
-                <img src="./assets/img/imagem_teste_slider2.png" alt="Slide 2">
-                <div class="caption">Legenda do Slide 2</div>
-            </div>
-            <div class="slide">
-                <img src="./assets/img/imagem_teste_slider3.png" alt="Slide 3">
-                <div class="caption">Legenda do Slide 3</div>
-            </div> COMENTADO TEMPORARIAMENTE -->
         </div> <!-- slides -->
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
     </div> <!-- slider -->
     
     <div class="ultimo-lancamento">
