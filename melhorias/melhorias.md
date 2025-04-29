@@ -11,7 +11,7 @@
 ^
 |
 \\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\
-- slider não carrega a 2ª e a 3ª imagem
+<!-- - slider não carrega a 2ª e a 3ª imagem -->
 <!-- - adicionar funcionalidade das atividades feitas pelos utilizadores \\ TESTAR, CORRIGIR E ACABAR \\ -->
 <!-- - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho 
 - só pode ter acesso ao carrinho se tiver sessão iniciada-->
@@ -20,7 +20,7 @@
 - ao clicar para ver o resumo todo no modal, vai parar a um caminho estanho desconhecido 
 - carrinho sem sessão iniciada ainda tem as palavras "registar" e "entrar" nos botões invés dos icons, tanto no user como no admin -->
 <!-- - aparece uma mensagem de erro na página de carrinho sem a sessão iniciada -->
-- acertar o slider
+<!-- - acertar o slider -->
 - acertar a ordem de aparição dos elementos na página inicial
 - footer está acima dos livros
 - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar!
@@ -47,7 +47,7 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
 <!-- - "detalhes_conta.php" ainda está com os artigos entre "()" -->
 <!-- - "detalhes_conta.php" não mostra a quantidade de artigos -->
 <!-- - só pode adicionar livro ao site se estiver logado como administrador -->
-- melhorar a aparência do slider
+<!-- - melhorar a aparência do slider -->
 - botão de "adicionar ao carrinho" apenas na página de cada livro detalhadamente
 <!-- - acertar o header com a cena da percentagem adicionada -->
 
