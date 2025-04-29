@@ -15,7 +15,7 @@ body {
     /* height: auto; */
     /* overflow: hidden; */
     border-radius: 0px;
-    box-shadow: 430px 4px 8px rgba(0, 0, 0, 0.7);
+    box-shadow: 430px 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 @media (max-width: 768px) {
