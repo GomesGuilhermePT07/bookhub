@@ -23,6 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $token = bin2hex(random_bytes(32));
             $expira_em = date("Y-m-d H:i:s", strtotime("+1 hour"));
 
+            // Converter para o fuso horário
+            $timezone = new DateTimeZone('Europe/Lisbon');
+            $data = new DateTime('now +1 hour', $timezone);
+            $expira_em = $data->format('Y-m-d H:i:s');
+
             // Insere/atualiza token
             $stmt = $pdo->prepare("REPLACE INTO password_resets (email, token, expira_em) VALUES (?, ?, ?)");
             $stmt->execute([$email, $token, $expira_em]);

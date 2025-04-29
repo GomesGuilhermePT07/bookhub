@@ -8,7 +8,9 @@ try {
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['token'])) {
         $token = $_GET['token'];
         
-        $query = $pdo->prepare("SELECT email FROM password_resets WHERE token = ? AND expira_em > NOW()");
+        $query = $pdo->prepare("SELECT email FROM password_resets 
+                                WHERE token = ? 
+                                AND expira_em > UTC_TIMESTAMP()"); // Usar UTC
         $query->execute([$token]);
         $reset = $query->fetch();
 
