@@ -156,7 +156,8 @@ if (isset($_SESSION['id'])) {
     
     <div class="ultimo-lancamento">
         <p>Últimos livros adicionados:</p>
-    </div>
+        <!-- ADICIONAR CÓDIGO PARA METER AQUI OS ÚLTIMOS 3 A 5 LIVROS ADICIONADOS AO SITE -->
+    </div> <!-- ultimo-lancamento-->
 
     <footer>
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
