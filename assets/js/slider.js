@@ -12,3 +12,13 @@ function moveSlide(direction) {
 }
 
 setInterval(() => moveSlide(1), 2000); // Alterna automaticamente a cada 2 segundos
+
+function adjustSliderHeight() {
+    const slider = document.querySelector('.slider');
+    const width = slider.offsetWidth;
+    slider.style.height = (width * 0.5625) + 'px';
+}
+
+// Executar no carregamento e no redimensionamento da janela
+window.addEventListener('load', adjustSliderHeight);
+window.addEventListener('resize', adjustSliderHeight);
