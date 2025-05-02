@@ -42,6 +42,9 @@ $cartCount = 0;
     <title>BOOKhub | Conta</title>
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
     <style>
+        *{
+            font-family: 'Gill Sans MT';
+        }
         .conta-container {
             max-width: 800px;
             margin: 2rem auto;
