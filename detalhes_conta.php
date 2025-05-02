@@ -39,7 +39,7 @@ $cartCount = 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOOKhub | Minha Conta</title>
+    <title>BOOKhub | Conta</title>
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
     <style>
         .conta-container {
