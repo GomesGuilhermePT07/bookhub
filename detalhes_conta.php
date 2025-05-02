@@ -9,7 +9,7 @@ $dados = [];
 $erro = '';
 
 try {
-    $stmt = $pdo->prepare("SELECT nome_completo, email, genero, admin FROM utilizadores WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT nome_completo, email, password, genero, admin FROM utilizadores WHERE id = ?");
     $stmt->execute([$_SESSION['id']]);
     $dados = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -44,6 +44,26 @@ $cartCount = 0;
     <style>
         *{
             font-family: "Gill Sans MT";
+        }
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-password {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #7f8c8d;
+        }
+
+        .toggle-password:hover {
+            color: #3498db;
+        }
+
+        .password-mask {
+            letter-spacing: 2px;
         }
         .conta-container {
             max-width: 800px;
@@ -258,6 +278,28 @@ $cartCount = 0;
                 </div>
                 <div class="dado-valor"><?= htmlspecialchars($dados['email']) ?></div>
             </div>
+
+            <div class="dado-item">
+            <div class="dado-label">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/>
+                </svg>
+                Password
+            </div>
+                <div class="password-container">
+                    <span class="password-mask">••••••••</span>
+                    <span class="dado-valor" data-password="<?= htmlspecialchars($dados['password']) ?>" style="display: none;">
+                        <?= htmlspecialchars($dados['password']) ?>
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
+                        class="toggle-password" 
+                        viewBox="0 0 16 16"
+                        onclick="togglePasswordVisibility(this)">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8"/>
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                    </svg>
+                </div>
+            </div>
             
             <div class="dado-item">
                 <div class="dado-label">
@@ -298,5 +340,31 @@ $cartCount = 0;
     <footer>
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+    function togglePasswordVisibility(icon) {
+        const container = icon.closest('.password-container');
+        const mask = container.querySelector('.password-mask');
+        const realPassword = container.querySelector('.dado-valor');
+
+        // Verificar se o utilizador está autenticado
+        <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
+            if (mask.style.display === 'none') {
+                mask.style.display = 'inline';
+                realPassword.style.display = 'none';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                mask.style.display = 'none';
+                realPassword.style.display = 'inline';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        <?php else: ?>
+            alert('Por favor inicie sessão para ver a password!');
+            window.location.href = 'login.php';
+        <?php endif; ?>
+    }
+    </script>
 </body>
 </html>
