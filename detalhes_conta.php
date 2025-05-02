@@ -23,7 +23,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes da Conta</title>
+    <title>BOOKhub | Detalhes da Conta</title>
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
 </head>
 <body>

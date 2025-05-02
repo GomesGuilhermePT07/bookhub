@@ -27,7 +27,7 @@ if (isset($_SESSION['id'])) {
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/apresentar_livro.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-    <title>BOOKhub</title>
+    <title>BOOKhub | Requisições</title>
 </head>
 <body>
     <header>
