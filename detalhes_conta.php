@@ -173,7 +173,7 @@ $cartCount = 0;
     </header>
 
     <main class="conta-container">
-        <h2>Minha Conta 
+        <h2>Conta 
             <?php if($dados['admin']): ?>
                 <span class="admin-tag">ADMINISTRADOR</span>
             <?php endif; ?>
