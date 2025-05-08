@@ -43,7 +43,7 @@ $cartCount = 0;
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/detalhes_conta.css">
 </head>
-<body style="margin: 0; padding: 0;">
+<body>
     <!-- Manter o header original -->
     <header>
         <div class="box-img-header">
