@@ -117,7 +117,8 @@ body {
     margin-top: 0;
 }
 
-.detail-header {
+.detail-header,
+.detail-header-email {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -126,6 +127,12 @@ body {
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: center;
+}
+
+.detail-header-email {
+    align-items: center;
+    justify-content: center;
+    /* position: fixed; */
 }
 
 .detail-icon {
@@ -147,7 +154,10 @@ body {
     margin-bottom: 0.2rem;
 }
 
-.detail-content, .detail-content-genre {
+.detail-content, 
+.detail-content-genre,
+.detail-content-accountType,
+.detail-content-email {
     font-size: 1.1rem;
     color: var(--color-dark1);
     font-weight: 500;
@@ -160,14 +170,12 @@ body {
     margin-left: -2rem;
 }
 
+.detail-content-accountType {
+    margin-left: -1rem;
+}
+
 .detail-content-email {
-    font-size: 1.1rem;
-    color: var(--color-dark1);
-    font-weight: 500;
-    padding-left: 0;
-    /* margin-left: -20px; */
-    align-items: center;
-    justify-content: center;
+    margin-left: -3rem; 
 }
 
 /* Password Toggle Custom */
