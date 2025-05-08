@@ -15,6 +15,10 @@
     font-family: 'Gill Sans MT';
 }
 
+header {
+    background-color: var(--color-header2);
+}
+
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
