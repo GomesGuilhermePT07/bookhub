@@ -107,21 +107,30 @@ body {
     box-shadow: 0 5px 15px rgb(17, 115, 180, 0.7);
 }
 
+.details {
+    /* display: flex; */
+    gap: 10px;
+    margin-top: 0;
+}
+
 .detail-header {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
     margin-bottom: 1rem;
     color: var(--color-dark1);
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .detail-icon {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: var(--color-footer);
+    /* background: var(--color-footer); */
     display: flex;
-    align-items: center;
+    align-items: top;
     justify-content: center;
     color: var(--color-blue1);
 }
@@ -138,7 +147,9 @@ body {
     font-size: 1.1rem;
     color: var(--color-dark1);
     font-weight: 500;
-    padding-left: 0.5rem;
+    /* padding-left: 0.5rem; */
+    align-items: center;
+    justify-content: center;
 }
 
 .detail-content-email {
@@ -146,7 +157,9 @@ body {
     color: var(--color-dark1);
     font-weight: 500;
     padding-left: 0;
-    margin-left: -20px;
+    /* margin-left: -20px; */
+    align-items: center;
+    justify-content: center;
 }
 
 /* Password Toggle Custom */
