@@ -204,7 +204,7 @@ $cartCount = 0;
                 </div>
                 <div>
                     <div class="detail-title">Gênero</div>
-                    <div class="detail-content">
+                    <div class="detail-content-genre">
                         <?php 
                         switch($dados['genero']) {
                             case 'm': echo 'Masculino'; break;

@@ -147,13 +147,17 @@ body {
     margin-bottom: 0.2rem;
 }
 
-.detail-content {
+.detail-content, .detail-content-genre {
     font-size: 1.1rem;
     color: var(--color-dark1);
     font-weight: 500;
     /* padding-left: 0.5rem; */
     align-items: center;
     justify-content: center;
+}
+
+.detail-content-genre {
+    margin-left: -2rem;
 }
 
 .detail-content-email {
