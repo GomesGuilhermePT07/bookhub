@@ -41,118 +41,9 @@ $cartCount = 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOKhub | Conta</title>
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
-    <style>
-        *{
-            font-family: "Gill Sans MT";
-        }
-        .password-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .toggle-password {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #7f8c8d;
-        }
-
-        .toggle-password:hover {
-            color: #3498db;
-        }
-
-        .password-mask {
-            letter-spacing: 2px;
-        }
-        .conta-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 3rem;
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .conta-container h2 {
-            color: #2c3e50;
-            font-size: 2.2rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f2f5;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .dados-lista {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .dado-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            border-left: 4px solid #3498db;
-        }
-
-        .dado-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
-        }
-
-        .dado-label {
-            font-weight: 600;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .dado-label svg {
-            width: 18px;
-            height: 18px;
-            color: #3498db;
-        }
-
-        .dado-valor {
-            color: #2c3e50;
-            font-size: 1.1rem;
-            font-weight: 500;
-            word-break: break-word;
-        }
-
-        .admin-tag {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-left: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        @media (max-width: 768px) {
-            .conta-container {
-                margin: 1rem;
-                padding: 2rem;
-            }
-            
-            .dados-lista {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../ModuloProjeto/assets/css/detalhes_conta.css">
 </head>
-<body>
+<body style="margin: 0; padding: 0;">
     <!-- Manter o header original -->
     <header>
         <div class="box-img-header">
@@ -244,97 +135,107 @@ $cartCount = 0;
     </header>
 
     <main class="conta-container">
-    <h2>
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-        </svg>
-        Detalhes da Conta
-        <?php if($dados['admin']): ?>
-            <span class="admin-tag">ADMINISTRADOR</span>
-        <?php endif; ?>
-    </h2>
-    
-    <?php if ($erro): ?>
-        <p style="color: #e74c3c; margin: 1rem 0; padding: 1rem; background: #f8d7da; border-radius: 8px;"><?= $erro ?></p>
-    <?php else: ?>
-        <div class="dados-lista">
-            <div class="dado-item">
-                <div class="dado-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-                    </svg>
-                    Nome Completo
-                </div>
-                <div class="dado-valor"><?= htmlspecialchars($dados['nome_completo']) ?></div>
-            </div>
-            
-            <div class="dado-item">
-                <div class="dado-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
-                    </svg>
-                    Email
-                </div>
-                <div class="dado-valor"><?= htmlspecialchars($dados['email']) ?></div>
-            </div>
+    <section class="profile-section">
+        <div class="user-avatar">
+            <?= strtoupper(substr(htmlspecialchars($dados['nome_completo']), 0, 1)) ?>
+        </div>
+        <h2 class="user-name"><?= htmlspecialchars($dados['nome_completo']) ?></h2>
+        <p class="user-role">
+            <?= ($dados['admin'] ? 'Administrador' : 'Membro') ?>
+            <?php if($dados['admin']): ?>
+                <span class="admin-tag">VIP</span>
+            <?php endif; ?>
+        </p>
+    </section>
 
-            <div class="dado-item">
-            <div class="dado-label">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
-                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/>
-                </svg>
-                Password
+    <section class="details-section">
+        <!-- Email -->
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="detail-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="detail-title">Email</div>
+                    <div class="detail-content"><?= htmlspecialchars($dados['email']) ?></div>
+                </div>
             </div>
-                <div class="password-container">
-                    <span class="password-mask">••••••••</span>
-                    <span class="dado-valor" data-password="<?= htmlspecialchars($dados['password']) ?>" style="display: none;">
-                        <?= htmlspecialchars($dados['password']) ?>
-                    </span>
+        </div>
+
+        <!-- Password -->
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="detail-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+                    </svg>
+                </div>
+                <div class="password-field">
+                    <div>
+                        <div class="detail-title">Password</div>
+                        <div class="detail-content">
+                            <span class="password-mask">••••••••</span>
+                            <span class="real-password" style="display: none;">
+                                <?= htmlspecialchars($dados['password']) ?>
+                            </span>
+                        </div>
+                    </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
-                        class="toggle-password" 
-                        viewBox="0 0 16 16"
-                        onclick="togglePasswordVisibility(this)">
+                         class="toggle-password" 
+                         viewBox="0 0 16 16"
+                         onclick="togglePasswordVisibility(this)">
                         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8"/>
                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
                     </svg>
                 </div>
             </div>
-            
-            <div class="dado-item">
-                <div class="dado-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16">
+        </div>
+
+        <!-- Gênero -->
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="detail-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gender-ambiguous" viewBox="0 0 16 16">
                         <path d="M11.5 1a.5.5 0 0 1 0-1h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.45 4.45A4 4 0 1 1 10.5 8H9V6.5a.5.5 0 0 1 1 0V8h1.5a5 5 0 1 0-1.479-3.536l.647-.646z"/>
                         <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5z"/>
                     </svg>
-                    Gênero
                 </div>
-                <div class="dado-valor">
-                    <?php 
-                    switch($dados['genero']) {
-                        case 'm': echo 'Masculino'; break;
-                        case 'f': echo 'Feminino'; break;
-                        case 'o': echo 'Outro'; break;
-                        default: echo 'Não especificado';
-                    }
-                    ?>
-                </div>
-            </div>
-            
-            <div class="dado-item">
-                <div class="dado-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
-                        <path d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 0 5.072.56"/>
-                        <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415"/>
-                    </svg>
-                    Tipo de Conta
-                </div>
-                <div class="dado-valor">
-                    <?= ($dados['admin'] ? 'Administrador' : 'Utilizador Regular') ?>
+                <div>
+                    <div class="detail-title">Gênero</div>
+                    <div class="detail-content">
+                        <?php 
+                        switch($dados['genero']) {
+                            case 'm': echo 'Masculino'; break;
+                            case 'f': echo 'Feminino'; break;
+                            case 'o': echo 'Outro'; break;
+                            default: echo 'Não especificado';
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
-    <?php endif; ?>
+
+        <!-- Tipo de Conta -->
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="detail-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
+                        <path d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 0 5.072.56"/>
+                        <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="detail-title">Tipo de Conta</div>
+                    <div class="detail-content">
+                        <?= ($dados['admin'] ? 'Administrador' : 'Utilizador Regular') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
     <footer>
