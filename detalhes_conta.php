@@ -45,7 +45,7 @@ $cartCount = 0;
 </head>
 <body>
     <!-- Manter o header original -->
-    <header>
+    <header class="main-header">
         <div class="box-img-header">
             <a href="index_user.php">
                 <img class="img-logo" src="assets/img/Logotipo_Bookhub.png" alt="Logo BOOKhub">
@@ -243,29 +243,29 @@ $cartCount = 0;
     </footer>
 
     <script>
-    function togglePasswordVisibility(icon) {
-        const container = icon.closest('.password-container');
-        const mask = container.querySelector('.password-mask');
-        const realPassword = container.querySelector('.dado-valor');
+        function togglePasswordVisibility(icon) {
+            const container = icon.closest('.password-container');
+            const mask = container.querySelector('.password-mask');
+            const realPassword = container.querySelector('.dado-valor');
 
-        // Verificar se o utilizador está autenticado
-        <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
-            if (mask.style.display === 'none') {
-                mask.style.display = 'inline';
-                realPassword.style.display = 'none';
-                icon.classList.remove('bi-eye-slash');
-                icon.classList.add('bi-eye');
-            } else {
-                mask.style.display = 'none';
-                realPassword.style.display = 'inline';
-                icon.classList.remove('bi-eye');
-                icon.classList.add('bi-eye-slash');
-            }
-        <?php else: ?>
-            alert('Por favor inicie sessão para ver a password!');
-            window.location.href = 'login.php';
-        <?php endif; ?>
-    }
+            // Verificar se o utilizador está autenticado
+            <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?>
+                if (mask.style.display === 'none') {
+                    mask.style.display = 'inline';
+                    realPassword.style.display = 'none';
+                    icon.classList.remove('bi-eye-slash');
+                    icon.classList.add('bi-eye');
+                } else {
+                    mask.style.display = 'none';
+                    realPassword.style.display = 'inline';
+                    icon.classList.remove('bi-eye');
+                    icon.classList.add('bi-eye-slash');
+                }
+            <?php else: ?>
+                alert('Por favor inicie sessão para ver a password!');
+                window.location.href = 'login.php';
+            <?php endif; ?>
+        }
     </script>
 </body>
 </html>

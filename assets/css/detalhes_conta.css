@@ -15,15 +15,15 @@
     font-family: 'Gill Sans MT';
 }
 
-header {
-    background-color: var(--color-header2);
-}
-
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     background: linear-gradient(-180deg, var(--color-blue1) 0%, #fff 100%);
     min-height: 100vh;
+}
+
+.main-header {
+    background-color: var(--color-header2); 
 }
 
 .conta-container {
