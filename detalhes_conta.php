@@ -159,7 +159,7 @@ $cartCount = 0;
                 </div>
                 <div>
                     <div class="detail-title">Email</div>
-                    <div class="detail-content"><?= htmlspecialchars($dados['email']) ?></div>
+                    <div class="detail-content-email"><?= htmlspecialchars($dados['email']) ?></div>
                 </div>
             </div>
         </div>

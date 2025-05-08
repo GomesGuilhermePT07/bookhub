@@ -86,8 +86,8 @@ body {
 .details-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
+    gap: .5rem;
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -139,6 +139,14 @@ body {
     color: var(--color-dark1);
     font-weight: 500;
     padding-left: 0.5rem;
+}
+
+.detail-content-email {
+    font-size: 1.1rem;
+    color: var(--color-dark1);
+    font-weight: 500;
+    padding-left: 0;
+    margin-left: -20px;
 }
 
 /* Password Toggle Custom */
