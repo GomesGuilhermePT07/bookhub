@@ -134,7 +134,7 @@ if (isset($_SESSION['id'])) {
             <div class="slide">
                 <img src="/ModuloProjeto/assets/img/Bookhub_v3.gif" alt="Slide 1">
             </div>
-        </div> <!-- slides -->
+        </div>  <!-- slides -->
     </div> <!-- slider -->
     
     <div class="ultimo-lancamento">
