@@ -48,7 +48,7 @@ $cartCount = 0;
     <header class="main-header">
         <div class="box-img-header">
             <a href="index_user.php">
-                <img class="img-logo" src="assets/img/Logotipo_Bookhub.png" alt="Logo BOOKhub">
+                <img class="img-logo" src="assets/img/bookhubFavicon.png" height="80" width="80" alt="Logo BOOKhub">
             </a>
         </div>
         <nav>
