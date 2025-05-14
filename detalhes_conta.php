@@ -143,7 +143,7 @@ $cartCount = 0;
         <p class="user-role">
             <?= ($dados['admin'] ? 'Administrador' : 'Membro') ?>
             <?php if($dados['admin']): ?>
-                <span class="admin-tag">VIP</span>
+                <span class="admin-tag"></span>
             <?php endif; ?>
         </p>
     </section>
@@ -230,7 +230,7 @@ $cartCount = 0;
                 <div>
                     <div class="detail-title">Tipo de Conta</div>
                     <div class="detail-content-accountType">
-                        <?= ($dados['admin'] ? 'Administrador' : 'Utilizador Regular') ?>
+                        <?= ($dados['admin'] ? 'Administrador' : 'Utilizador') ?>
                     </div>
                 </div>
             </div>
