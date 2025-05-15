@@ -30,7 +30,7 @@ if (isset($_SESSION['id'])) {
 <body>
     <header>
         <div class="box-img-header">
-            <a href="index_user.php">
+            <a href="index.php">
                 <img class="img-logo" src="assets/img/bookhubFavicon.png" height="80" width="80" alt="Logo BOOKhub">
             </a>
         </div>
