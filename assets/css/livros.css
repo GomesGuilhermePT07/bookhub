@@ -18,7 +18,10 @@
     --color-light-blue: #76b1db;
 }
 
-/* Estilos Compactos */
+body {
+    background: linear-gradient(-180deg, var(--color-blue1) 0%, #fff 100%);
+}
+
 .book-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
