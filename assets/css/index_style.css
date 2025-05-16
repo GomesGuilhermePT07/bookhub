@@ -93,6 +93,7 @@ nav{
 }
 
 .cart-badge {
+    font-family: 'Gill Sans MT';
     position: absolute;
     top: -12px;
     right: -12px;

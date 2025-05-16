@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Gill Sans MT';
 }
 
 :root {
@@ -66,9 +66,8 @@
     margin-bottom: 0.8rem;
 }
 
-.add-to-cart {
-    background-color: var(--color-blue1);
-    color: var(--color-white);
+.add-to-cart,
+.remove-book {
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 15px;
@@ -83,8 +82,23 @@
     align-self: center;
 }
 
+.add-to-cart {
+    background-color: var(--color-blue1);
+    color: var(--color-white);
+}
+
 .add-to-cart:hover {
     background-color: var(--color-blue2);
+    transform: scale(0.98);
+}
+
+.remove-book {
+    background-color: var(--color-red1);
+    color: var(--color-white);
+}
+
+.remove-book:hover {
+    background-color: var(--color-red2);
     transform: scale(0.98);
 }
 

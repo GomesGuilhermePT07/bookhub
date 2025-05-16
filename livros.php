@@ -148,6 +148,11 @@
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="./assets/js/carregar_livros_user.js"></script>
+    <?php if ($_SESSION['admin'] == 0): ?>
+        <script src="./assets/js/carregar_livros_user.js"></script>
+    <?php elseif ($_SESSION['admin'] == 1): ?>
+        <script src="./assets/js/carregar_livros.js"></script>
+    <?php endif; ?>
+    
 </body>
 </html>
