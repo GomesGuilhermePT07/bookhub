@@ -23,6 +23,22 @@ svg.bi.bi-box-arrow-left{
     margin-right: 0px;
 }
 
+::-webkit-scrollbar{
+    width: 15px;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--color-header2);
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--color-light-blue);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: var(--color-light-blue2);
+}
+
 :root{
     --color-dark1: #181818;
     --color-dark2: #a4a4a4;
@@ -34,6 +50,7 @@ svg.bi.bi-box-arrow-left{
     --color-blue1: #007bff;
     --color-blue2: #0056b3;
     --color-light-blue: #76b1db;
+    --color-light-blue2: #6da2c9;
 }
 
 body{
