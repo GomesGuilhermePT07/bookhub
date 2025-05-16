@@ -24,6 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/index_style.css">
+    <link rel="stylesheet" href="./assets/css/livros.css">
     <title>BOOKhub | Livros</title>
 </head>
 <body>
@@ -140,12 +141,13 @@
     </header>
 
     <main>
-        <p>Aqui é onde vão ficar todos os livros registados no site.</p>
-        <sub>Loading...</sub>
+        <div class="book-list-container" id="book-list"></div>
     </main>
 
     <footer>
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
     </footer>
+
+    <script src="./assets/js/carregar_livros_user.js"></script>
 </body>
 </html>

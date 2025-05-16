@@ -1,6 +1,7 @@
 <?php
 include "config.php";
 session_start();
+header('Content-Type: application/json');
 
 try {
     $conn = new PDO("mysql:host=$host;port=3306;dbname=$dbname", $dbusername, $dbpassword);
