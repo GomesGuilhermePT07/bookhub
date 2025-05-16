@@ -42,8 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             <h5>${book.titulo}</h5>
                             <p><b>Autor: </b>${book.autor}</p>
                             
-                            <button class="add-to-cart">Adicionar ao carrinho</button>
-                            
                             <form action="../ModuloProjeto/assets/php/remover_livro.php">
                                 <button class="remove-book">Remover</button>
                             </form>
