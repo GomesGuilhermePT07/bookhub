@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
+    font-family: 'Gill Sans MT';
 }
 
 svg.bi.bi-box-arrow-right{
@@ -110,7 +111,7 @@ nav{
 }
 
 .cart-badge {
-    font-family: 'Gill Sans MT';
+    /* font-family: 'Gill Sans MT'; */
     position: absolute;
     top: -12px;
     right: -12px;
@@ -189,7 +190,7 @@ footer{
     padding-bottom: 1.5rem;
     padding-top: 5rem;
     font-size: 1.5rem;
-    font-family: 'Merriweather';
+    /* font-family: 'Merriweather'; */
     background-image: linear-gradient(0deg, var(--color-white), var(--color-light-blue));
 }
 
