@@ -29,6 +29,10 @@
 VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar)
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+O MESMO LIVRO NÃO PODE SER ADICIONADO A CARRINHOS DIFERENTES PORQUE SÓ HÁ UM DE QUANTIDADE DISPONÍVEL!!
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 <!-- - utilizador sem sessão iniciada tem de ter uma mensagem no carrinho ("Inicie sessão para ver o seu carrinho") -->
 <!-- - "index.php" sem sessão iniciada ainda está com a palavra "registar" invés do icon -->
 <!-- - "index.php" -> carrinho -> home -> "index_user.php"! \\ \\ CORRIGIR \\ \\  -->
@@ -83,5 +87,4 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
 - autor do livro;
 - nº de páginas;
 - resumo;
-- quantidade;
 - nota do utilizador/feedback (opcional).
