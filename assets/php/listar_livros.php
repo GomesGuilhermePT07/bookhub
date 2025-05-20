@@ -7,7 +7,7 @@ try {
     $conn = new PDO("mysql:host=$host;port=3306;dbname=$dbname", $dbusername, $dbpassword);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT cod_isbn, titulo, edicao, autor, numero_paginas, quantidade, resumo FROM livros";
+    $sql = "SELECT cod_isbn, titulo, edicao, autor, numero_paginas, quantidade, resumo, disponivel FROM livros";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 
