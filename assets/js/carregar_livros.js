@@ -42,10 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             <h5>${book.titulo}</h5>
                             <p><b>Autor: </b>${book.autor}</p>
                             
-                            <form action="../ModuloProjeto/assets/php/remover_livro.php">
-                                <button class="remove-book">Remover</button>
+                            <form method="POST" action="assets/php/remover_livro.php">
+                                <input type="hidden" name="isbn" value="${book.cod_isbn}">
+                                <button type="submit" class="remove-book">Remover</button>
                             </form>
-
                         </div>`;
                     bookListContainer.innerHTML += bookHtml;
                 }

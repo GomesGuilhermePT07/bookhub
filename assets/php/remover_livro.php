@@ -1,11 +1,9 @@
 <?php
-
+session_start();
 header("Access-Control-Allow-Origin: * ");
 header("Content-Type: application/json");
 
-    session_start();
-
-    include "config.php";
+include "config.php";
 
     try{
         // Conexão com a base de dados 
@@ -42,5 +40,5 @@ header("Content-Type: application/json");
     }
 
     // Redirecionar de volta para a página principal
-    // header("Location: index.php");
-    // exit();
+    header("Location: ../../livros.php");
+    exit();
