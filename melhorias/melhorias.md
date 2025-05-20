@@ -1,6 +1,6 @@
 # PRÓXIMA COISA A FAZER:
 
-- verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho
+<!-- - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho -->
 - verificar todos os erros e melhorias a fazer antes de começar a desenvolver as abas do site
 
 # ----------------------------//ERROS E MELHORIAS\\-------------------------------
@@ -21,20 +21,20 @@
 - carrinho sem sessão iniciada ainda tem as palavras "registar" e "entrar" nos botões invés dos icons, tanto no user como no admin -->
 <!-- - aparece uma mensagem de erro na página de carrinho sem a sessão iniciada -->
 <!-- - acertar o slider -->
-- acertar a ordem de aparição dos elementos na página inicial
-- footer está acima dos livros
+<!-- - acertar a ordem de aparição dos elementos na página inicial
+- footer está acima dos livros -->
 - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar!
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-VER A PÁGINA DE ACCOUNT DETAILS
+VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar)
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 <!-- - utilizador sem sessão iniciada tem de ter uma mensagem no carrinho ("Inicie sessão para ver o seu carrinho") -->
 <!-- - "index.php" sem sessão iniciada ainda está com a palavra "registar" invés do icon -->
-- "index.php" -> carrinho -> home -> "index_user.php"! \\ \\ CORRIGIR \\ \\ 
+<!-- - "index.php" -> carrinho -> home -> "index_user.php"! \\ \\ CORRIGIR \\ \\  -->
 - adicionar mensagens de erro na interface do utilizador e não no servidor (mensagens mais amigáveis)
 - adicionar livro no site = fazer refresh para aparecer! \\ \\ CORRIGIR \\ \\ (adicionar refresh automatico)
-- criar sidebar para o carrinho, para quando passar o mouse por cima, aparecer um sidebar do lado direito da tela com os livros que estão no carrinho
+<!-- - criar sidebar para o carrinho, para quando passar o mouse por cima, aparecer um sidebar do lado direito da tela com os livros que estão no carrinho -->
 - melhorar a página em que mostra cada livro detalhadamente
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
