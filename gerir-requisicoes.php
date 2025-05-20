@@ -1,20 +1,37 @@
 <?php
 
-require_once 'assets/php/config.php';
-require_once 'assets/php/check_login.php';
+    require_once 'assets/php/config.php';
+    require_once 'assets/php/check_login.php';
 
-$cartCount = 0;
-if (isset($_SESSION['id'])) {
-    $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-    $stmt = $conn->prepare("SELECT SUM(quantidade) AS total FROM carrinho WHERE id_utilizador = ?");
-    $stmt->bind_param("i", $_SESSION['id']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $cartCount = isset($row['total']) ? $row['total'] : 0;
-    $stmt->close();
-    $conn->close();
-}
+    $cartCount = 0;
+    if (isset($_SESSION['id'])) {
+        $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+        $stmt = $conn->prepare("SELECT SUM(quantidade) AS total FROM carrinho WHERE id_utilizador = ?");
+        $stmt->bind_param("i", $_SESSION['id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $cartCount = isset($row['total']) ? $row['total'] : 0;
+        $stmt->close();
+        $conn->close();
+    }
+
+    // Apenas admin pode acessar
+    if ($_SESSION['admin'] != 1) {
+        header("Location: index.php");
+        exit();
+    }
+
+    // Buscar todas as requisições
+    $stmt = $pdo->query("
+        SELECT r.*, u.nome AS usuario, l.titulo 
+        FROM requisicoes r
+        JOIN utilizadores u ON r.id_utilizador = u.id
+        JOIN livros l ON r.cod_isbn = l.cod_isbn
+        ORDER BY r.data_requisicao DESC
+    ");
+    $requisicoes = $stmt->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +43,7 @@ if (isset($_SESSION['id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
     <link rel="stylesheet" href="../ModuloProjeto/assets/css/apresentar_livro.css">
+    <link rel="stylesheet" href="../ModuloProjeto/assets/css/requisicoes.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <title>BOOKhub | Requisições</title>
 </head>
@@ -73,13 +91,6 @@ if (isset($_SESSION['id'])) {
                     </svg>
                 </a>
             <?php endif; ?>
-
-            <!-- <a href="./workshops.php" class="nav-links">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
-                    <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/>
-                    <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>
-                </svg>
-            </a> -->
 
             <?php if ($_SESSION['admin'] == 1): ?>
                 <a href="./estatisticas.php" class="nav-links">
@@ -143,8 +154,35 @@ if (isset($_SESSION['id'])) {
     </header>
     
     <main>
-        <p>Aqui é onde vão ficar todas as requisições dos utilizadores para serem geridas.</p>
-        <sub>Loading...</sub>
+        <h1>Requisições Ativas</h1>
+        <table class="requests-table">
+            <tr>
+                <th>Utilizador</th>
+                <th>Livro</th>
+                <th>Data Requisição</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach ($requisicoes as $req): ?>
+            <tr>
+                <td><?= htmlspecialchars($req['usuario']) ?></td>
+                <td><?= htmlspecialchars($req['titulo']) ?></td>
+                <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
+                <td>
+                    <span class="status-<?= $req['status'] ?>">
+                        <?= ucfirst(str_replace('_', ' ', $req['status'])) ?>
+                    </span>
+                </td>
+                <td>
+                    <?php if ($req['status'] == 'pronto_para_levantar'): ?>
+                        <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-notify">
+                            Notificar Devolução
+                        </a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
     </main>
 
     <footer>

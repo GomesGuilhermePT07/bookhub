@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo->commit();
         $_SESSION['success'] = "Livro adicionado ao carrinho!";
     } catch (PDOException $e) {
-        $pdo->rollBack();
         $_SESSION['error'] = "Erro: " . $e->getMessage();
     }
     header("Location: " . $_SERVER['HTTP_REFERER']);

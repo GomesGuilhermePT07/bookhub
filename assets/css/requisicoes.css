@@ -1,0 +1,47 @@
+.requests-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.requests-table th, .requests-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.requests-table th {
+    background-color: #f8f9fa;
+}
+
+.status-pendente {
+    background-color: #ffeb3b;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.status-pronto_para_levantar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.status-devolvido {
+    background-color: #2196F3;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.btn-notify {
+    background: #2196F3;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-notify:hover {
+    opacity: 0.8;
+}
