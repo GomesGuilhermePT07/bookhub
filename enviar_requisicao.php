@@ -27,7 +27,7 @@ try {
 
     if (empty($itens)) {
         $_SESSION['error'] = "Carrinho vazio!";
-        header("Location: ../../cart.php");
+        header("Location: ./cart.php");
         exit;
     }
 
@@ -68,11 +68,11 @@ try {
         $_SESSION['error'] = "Erro ao enviar requisição. Tente novamente.";
     }
 
-    header("Location: ../cart.php");
+    header("Location: ./cart.php");
     exit;
 
 } catch (Exception $e) {
     $_SESSION['error'] = "Erro: " . $e->getMessage();
-    header("Location: ../cart.php");
+    header("Location: ./cart.php");
     exit;
 }
