@@ -203,6 +203,14 @@
         <?php else: ?>
             <p class="empty-cart">Seu carrinho está vazio.</p>
         <?php endif; ?>
+        
+        <?php if ($loggedIn && !empty($cartItems)): ?>
+            <form action="assets/php/enviar_requisicao.php" method="POST" class="requisitar-form">
+                <button type="submit" class="btn-requisitar">
+                    Requisitar Livros
+                </button>
+            </form>
+        <?php endif; ?>
     </main>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
