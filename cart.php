@@ -201,7 +201,7 @@
         <?php endif; ?>
         
         <?php if ($loggedIn && !empty($cartItems)): ?>
-            <form action="./enviar_requisicao.php" method="POST" class="requisitar-form">
+            <form action="./assets/php/enviar_requisicao.php" method="POST" class="requisitar-form">
                 <button type="submit" class="btn-requisitar">
                     Requisitar Livros
                 </button>

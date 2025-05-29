@@ -1,16 +1,18 @@
 <?php
 session_start();
-require_once '../config.php';
+require_once 'config.php';
 
-// Verificar admin
-if ($_SESSION['admin'] != 1) die("Acesso negado.");
+// Verificação de admin
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
+    die("Acesso negado.");
+}
 
 $idRequisicao = $_GET['id'];
 
 try {
-    // Buscar dados da requisição
+    // Buscar dados
     $stmt = $pdo->prepare("
-        SELECT u.email, u.nome, l.titulo, l.autor, l.cod_isbn 
+        SELECT u.email, u.nome, l.titulo, l.cod_isbn 
         FROM requisicoes r 
         JOIN utilizadores u ON u.id = r.id_utilizador 
         JOIN livros l ON l.cod_isbn = r.cod_isbn 
@@ -19,22 +21,33 @@ try {
     $stmt->execute([$idRequisicao]);
     $dados = $stmt->fetch();
 
-    // Enviar email com botão de devolução
-    $linkDevolucao = "http://localhost:8080/ModuloProjeto/assets/php/iniciar_devolucao.php?id=" . $idRequisicao;
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
-    // ... (configuração SMTP igual ao add_to_cart.php)
-    $mail->setFrom('bookhub.adm1@gmail.com', 'BOOKhub');
+    // Configurar PHPMailer
+    require '../../vendor/autoload.php';
+    
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = SMTP_HOST;
+    $mail->SMTPAuth = true;
+    $mail->Username = SMTP_USER;
+    $mail->Password = SMTP_PASS;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = SMTP_PORT;
+    
+    $mail->setFrom(SMTP_USER, 'BOOKhub');
     $mail->addAddress($dados['email']);
+    
+    $linkDevolucao = SITE_URL . "/iniciar_devolucao.php?id=" . $idRequisicao;
+    
+    $mail->isHTML(true);
     $mail->Subject = 'Devolução do Livro: ' . $dados['titulo'];
     $mail->Body = "
         <h3>Olá {$dados['nome']},</h3>
         <p>Por favor, devolva o livro <strong>{$dados['titulo']}</strong> (ISBN: {$dados['cod_isbn']}).</p>
-        <a href='$linkDevolucao' style='background: #4CAF50; color: white; padding: 10px; text-decoration: none;'>Confirmar Devolução</a>
+        <a href='$linkDevolucao'>Confirmar Devolução</a>
     ";
-    $mail->send();
 
-    header("Location: ../gerir-requisicoes.php?success=2");
+    $mail->send();
+    header("Location: " . SITE_URL . "../../gerir-requisicoes.php?success=2");
 } catch (Exception $e) {
     die("Erro: " . $e->getMessage());
 }
-?>

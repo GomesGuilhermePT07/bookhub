@@ -1,20 +1,22 @@
 <?php
+session_start();
 require_once 'config.php';
 
-// Verificar se é admin via sessão (adicione isso)
-session_start();
-if ($_SESSION['admin'] != 1) die("Acesso negado.");
+// Verificação robusta de admin
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
+    die("Acesso negado.");
+}
 
 $idRequisicao = $_GET['id'];
 
 try {
     $pdo->beginTransaction();
 
-    // 1. Atualizar status da requisição
+    // 1. Atualizar status
     $stmt = $pdo->prepare("UPDATE requisicoes SET status = 'pronto_para_levantar', data_conclusao = NOW() WHERE id = ?");
     $stmt->execute([$idRequisicao]);
 
-    // 2. Enviar email para o utilizador
+    // 2. Buscar dados para email
     $stmt = $pdo->prepare("
         SELECT u.email, u.nome, l.titulo 
         FROM requisicoes r 
@@ -25,19 +27,32 @@ try {
     $stmt->execute([$idRequisicao]);
     $dados = $stmt->fetch();
 
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
-    // ... (configuração SMTP igual ao add_to_cart.php)
-    $mail->setFrom('bookhub.adm1@gmail.com', 'BOOKhub');
+    // 3. Configurar PHPMailer corretamente
+    require 'vendor/autoload.php';
+    
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    
+    $mail->isSMTP();
+    $mail->Host = SMTP_HOST;
+    $mail->SMTPAuth = true;
+    $mail->Username = SMTP_USER;
+    $mail->Password = SMTP_PASS;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = SMTP_PORT;
+    
+    $mail->setFrom(SMTP_USER, 'BOOKhub');
     $mail->addAddress($dados['email']);
+    $mail->isHTML(true);
     $mail->Subject = 'Livro Pronto para Levantamento';
     $mail->Body = "
         <h3>Olá {$dados['nome']},</h3>
         <p>O livro <strong>{$dados['titulo']}</strong> está disponível para levantamento na biblioteca.</p>
     ";
-    $mail->send();
 
+    $mail->send();
     $pdo->commit();
-    header("Location: gerir-requisicoes.php?success=1");
+    
+    header("Location: " . SITE_URL . "../../gerir-requisicoes.php?success=1");
 } catch (Exception $e) {
     $pdo->rollBack();
     die("Erro: " . $e->getMessage());
