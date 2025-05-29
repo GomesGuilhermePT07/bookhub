@@ -19,6 +19,6 @@ if (!$user) {
 }
 
 // Definir flag de admin na sessão
-// $_SESSION['admin'] = $user['admin'] ?? 0;
-// $_SESSION['username'] = $user['username'] ?? '';
-// $_SESSION['email'] = $user['email'] ?? '';
+$_SESSION['admin'] = isset($user['admin']) ? $user['admin'] : 0;
+$_SESSION['username'] = isset($user['username']) ? $user['username'] : '';
+$_SESSION['email'] = isset($user['email']) ? $user['email'] : '';
