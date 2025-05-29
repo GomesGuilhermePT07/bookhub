@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 $isbn = isset($_POST['isbn']) ? $_POST['isbn'] : null;
-$quantity = isset($_POST['quantity']) ? $_POST['quantity'] : 1;
+$quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
 
 if (!$isbn) {
     echo "invalid_isbn";

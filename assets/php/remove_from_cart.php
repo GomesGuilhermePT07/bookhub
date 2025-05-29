@@ -15,6 +15,7 @@ $userId = $_SESSION['id'];
 $isbn = $_GET['isbn'];
 
 try {
+    // Adaptação para chave primária composta
     $stmt = $pdo->prepare("
         DELETE FROM carrinho 
         WHERE id_utilizador = ? AND cod_isbn = ?

@@ -20,26 +20,23 @@ try {
     ");
     $stmt->execute([$idRequisicao]);
 
-    // Buscar ISBN e quantidade
+    // Buscar ISBN (como não temos quantidade na requisição, assumimos 1 unidade)
     $stmt = $pdo->prepare("
-        SELECT cod_isbn, quantidade 
+        SELECT cod_isbn 
         FROM requisicoes 
         WHERE id = ?
     ");
     $stmt->execute([$idRequisicao]);
     $requisicao = $stmt->fetch();
 
-    // Atualizar estoque
+    // Atualizar estoque (assumindo 1 unidade)
     if ($requisicao) {
         $updateStmt = $pdo->prepare("
             UPDATE livros 
-            SET disponivel = disponivel + ? 
+            SET disponivel = disponivel + 1 
             WHERE cod_isbn = ?
         ");
-        $updateStmt->execute([
-            $requisicao['quantidade'],
-            $requisicao['cod_isbn']
-        ]);
+        $updateStmt->execute([$requisicao['cod_isbn']]);
     }
 
     $pdo->commit();

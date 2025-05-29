@@ -20,8 +20,9 @@
     if ($loggedIn) {
         $userId = $_SESSION['id'];
 
+        // Consulta corrigida
         $stmt = $conn->prepare("
-            SELECT l.titulo, l.autor, c.cod_isbn, c.quantidade 
+            SELECT c.cod_isbn, c.quantidade, l.titulo, l.autor 
             FROM carrinho c 
             JOIN livros l ON c.cod_isbn = l.cod_isbn 
             WHERE c.id_utilizador = ?
