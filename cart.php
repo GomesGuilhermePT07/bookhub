@@ -1,27 +1,24 @@
 <?php
-    // session_start();
+    // session_start(); // Remover duplicado
     require_once 'assets/php/config.php';
     require_once 'assets/php/check_login.php';
-    var_dump($loggedIn); 
-    var_dump($cartItems); 
-    var_dump($_SESSION);
 
     $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
     if ($conn->connect_error) {
         die("Falha na conexão: " . $conn->connect_error);
     }
-    
+
     // Verificar se o usuário está logado
     $loggedIn = isset($_SESSION['id']);
     $cartItems = [];
     $cartCount = 0;
 
-    // Buscar itens do carrinho apenas se estiver logado
     if ($loggedIn) {
         $userId = $_SESSION['id'];
 
+        // Consulta corrigida para usar apenas colunas existentes
         $stmt = $conn->prepare("
-            SELECT l.titulo, l.autor, c.cod_isbn, c.quantidade 
+            SELECT c.cod_isbn, c.quantidade, l.titulo, l.autor 
             FROM carrinho c 
             JOIN livros l ON c.cod_isbn = l.cod_isbn 
             WHERE c.id_utilizador = ?
@@ -159,30 +156,29 @@
 
     </header>
 
-    <main class="cart-container">
-    <p>| Carrinho</p>
-
-        <?php if (!$loggedIn): ?>
-            <!-- Mensagem para o utilizador -->
+    <?php if (!$loggedIn): ?>
             <p class="empty-cart">
-            <a href="./logins/login.php" class="login-link">Inicie sessão</a> para ver o seu carrinho.
+                <a href="./logins/login.php" class="login-link">Inicie sessão</a> para ver o seu carrinho.
             </p>
-            <?php elseif ($loggedIn): ?>
-        <div class="cart-items">
-            <?php foreach ($cartItems as $item): ?>
-                <div class="carrinho-item" data-isbn="<?= $item['cod_isbn'] ?>">
-                    <div class="livro-esquerda">
-                        <img src="https://via.placeholder.com/60x80" 
-                            alt="Capa do livro" 
-                            class="capa-livro"
-                            data-isbn="<?= $item['cod_isbn'] ?>">
-                    </div>
-                    
-                    <div class="info-livro">
-                        <h3 class="titulo-livro"><?= htmlspecialchars($item['titulo']) ?></h3>
-                        <p class="autor-livro"><?= htmlspecialchars($item['autor']) ?></p>
-                    </div>
+        <?php elseif (empty($cartItems)): ?>
+            <p class="empty-cart">Seu carrinho está vazio.</p>
+        <?php else: ?>
+            <div class="cart-items">
+                <?php foreach ($cartItems as $item): ?>
+                    <div class="carrinho-item" data-isbn="<?= $item['cod_isbn'] ?>">
+                        <div class="livro-esquerda">
+                            <img src="https://via.placeholder.com/60x80" 
+                                alt="Capa do livro" 
+                                class="capa-livro"
+                                data-isbn="<?= $item['cod_isbn'] ?>">
+                        </div>
                         
+                        <div class="info-livro">
+                            <h3 class="titulo-livro"><?= htmlspecialchars($item['titulo']) ?></h3>
+                            <p class="autor-livro"><?= htmlspecialchars($item['autor']) ?></p>
+                            <p class="quantidade">Quantidade: <?= $item['quantidade'] ?></p>
+                        </div>
+                            
                         <a href="./assets/php/remove_from_cart.php?isbn=<?= $item['cod_isbn'] ?>" class="btn-remover">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M3 6h18"/>
@@ -193,14 +189,9 @@
                             </svg>
                         </a>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <?php else: ?>
-            <p class="empty-cart">Seu carrinho está vazio.</p>
-        <?php endif; ?>
-        
-        <?php if ($loggedIn && !empty($cartItems)): ?>
+                <?php endforeach; ?>
+            </div>
+            
             <form action="./assets/php/enviar_requisicao.php" method="POST" class="requisitar-form">
                 <button type="submit" class="btn-requisitar">
                     Requisitar Livros

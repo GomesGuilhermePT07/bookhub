@@ -7,10 +7,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || !isset($_
     exit;
 }
 
-// Verificar se é admin
-$stmt = $pdo->prepare("SELECT admin FROM utilizadores WHERE id = ?;");
+// Buscar dados do usuário incluindo admin
+$stmt = $pdo->prepare("SELECT * FROM utilizadores WHERE id = ?");
 $stmt->execute([$_SESSION['id']]);
 $user = $stmt->fetch();
 
-$_SESSION['admin'] = (isset($user['admin'])) ? $user['admin'] : 0;
-?>
+if (!$user) {
+    session_destroy();
+    header("Location: /ModuloProjeto/logins/login.php");
+    exit;
+}
+
+// Definir flag de admin na sessão
+// $_SESSION['admin'] = $user['admin'] ?? 0;
+// $_SESSION['username'] = $user['username'] ?? '';
+// $_SESSION['email'] = $user['email'] ?? '';

@@ -2,7 +2,7 @@
 session_start();
 require_once 'config.php';
 
-// Verificação robusta de admin
+// Verificar admin
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     die("Acesso negado.");
 }
@@ -12,11 +12,15 @@ $idRequisicao = $_GET['id'];
 try {
     $pdo->beginTransaction();
 
-    // 1. Atualizar status
-    $stmt = $pdo->prepare("UPDATE requisicoes SET status = 'pronto_para_levantar', data_conclusao = NOW() WHERE id = ?");
+    // Atualizar status
+    $stmt = $pdo->prepare("
+        UPDATE requisicoes 
+        SET status = 'pronto_para_levantar', data_conclusao = NOW() 
+        WHERE id = ?
+    ");
     $stmt->execute([$idRequisicao]);
 
-    // 2. Buscar dados para email
+    // Buscar dados para email
     $stmt = $pdo->prepare("
         SELECT u.email, u.nome, l.titulo 
         FROM requisicoes r 
@@ -27,7 +31,6 @@ try {
     $stmt->execute([$idRequisicao]);
     $dados = $stmt->fetch();
 
-    // 3. Configurar PHPMailer corretamente
     require 'vendor/autoload.php';
     
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
@@ -51,8 +54,9 @@ try {
 
     $mail->send();
     $pdo->commit();
-    
-    header("Location: " . SITE_URL . "../../gerir-requisicoes.php?success=1");
+
+    $pdo->commit();
+    header("Location: /ModuloProjeto/gerir-requisicoes.php?success=1");
 } catch (Exception $e) {
     $pdo->rollBack();
     die("Erro: " . $e->getMessage());

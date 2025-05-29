@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once '../config.php';
+require_once 'config.php';
 
-// Verificação de admin
+// Verificar admin
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     die("Acesso negado.");
 }
@@ -12,21 +12,38 @@ $idRequisicao = $_GET['id'];
 try {
     $pdo->beginTransaction();
 
-    // 1. Atualizar status
-    $stmt = $pdo->prepare("UPDATE requisicoes SET status = 'devolvido', data_devolucao = NOW() WHERE id = ?");
-    $stmt->execute([$idRequisicao]);
-
-    // 2. Liberar livro (correção crítica)
+    // Atualizar status
     $stmt = $pdo->prepare("
-        UPDATE livros l
-        JOIN requisicoes r ON l.cod_isbn = r.cod_isbn
-        SET l.disponivel = l.disponivel + r.quantidade
-        WHERE r.id = ?
+        UPDATE requisicoes 
+        SET status = 'devolvido', data_devolucao = NOW() 
+        WHERE id = ?
     ");
     $stmt->execute([$idRequisicao]);
 
+    // Buscar ISBN e quantidade
+    $stmt = $pdo->prepare("
+        SELECT cod_isbn, quantidade 
+        FROM requisicoes 
+        WHERE id = ?
+    ");
+    $stmt->execute([$idRequisicao]);
+    $requisicao = $stmt->fetch();
+
+    // Atualizar estoque
+    if ($requisicao) {
+        $updateStmt = $pdo->prepare("
+            UPDATE livros 
+            SET disponivel = disponivel + ? 
+            WHERE cod_isbn = ?
+        ");
+        $updateStmt->execute([
+            $requisicao['quantidade'],
+            $requisicao['cod_isbn']
+        ]);
+    }
+
     $pdo->commit();
-    header("Location: " . SITE_URL . "../../gerir-requisicoes.php?success=3");
+    header("Location: /ModuloProjeto/gerir-requisicoes.php?success=3");
 } catch (Exception $e) {
     $pdo->rollBack();
     die("Erro: " . $e->getMessage());

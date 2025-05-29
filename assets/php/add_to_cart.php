@@ -2,39 +2,50 @@
 session_start();
 require_once 'config.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $isbn = $_POST['isbn'];
-    $userId = $_SESSION['id'];
-
-    try{
-        $pdo->beginTransaction(); // Inicia a transação
-
-        // Passo 1: Verificar disponibilidade
-        $checkLivro = $pdo->prepare("SELECT disponivel FROM livros WHERE cod_isbn = ? FOR UPDATE;");
-        $checkLivro->execute([$isbn]);
-        $livro = $checkLivro->fetch();
-
-        if (!$livro || !$livro['disponivel']) {
-            $_SESSION['error'] = "Livro indisponível";
-            $pdo->rollBack();
-            header("Location: " . $_SESSION['HTTP_REFERER']);
-            exit;
-        }
-
-        // Passo 2: Marcar como indisponivel
-        $updateStmt = $pdo->prepare("UPDATE livros SET disponivel = FALSE WHERE cod_isbn = ?");
-        $updateStmt->execute([$isbn]);
-
-        // Passo 3: Adicionar ao carrinho
-        $insertStmt = $pdo->prepare("INSERT INTO carrinho (id_utilizador, cod_isbn, quantidade) VALUES (?, ?, 1)");
-        $insertStmt->execute([$userId, $isbn]);
-
-        $pdo->commit();
-        $_SESSION['success'] = "Livro adicionado ao carrinho!";
-    } catch (PDOException $e) {
-        $_SESSION['error'] = "Erro: " . $e->getMessage();
-    }
-    header("Location: " . $_SERVER['HTTP_REFERER']);
+if (!isset($_SESSION['id'])) {
+    echo "not_logged_in";
     exit;
 }
-?>
+
+// $isbn = $_POST['isbn'] ?? null;
+// $quantity = $_POST['quantity'] ?? 1;
+
+if (!$isbn) {
+    echo "invalid_isbn";
+    exit;
+}
+
+$userId = $_SESSION['id'];
+
+try {
+    // Verificar se já está no carrinho
+    $checkStmt = $pdo->prepare("
+        SELECT quantidade 
+        FROM carrinho 
+        WHERE id_utilizador = ? AND cod_isbn = ?
+    ");
+    $checkStmt->execute([$userId, $isbn]);
+    $existing = $checkStmt->fetch();
+
+    if ($existing) {
+        // Atualizar quantidade
+        $newQuantity = $existing['quantidade'] + $quantity;
+        $stmt = $pdo->prepare("
+            UPDATE carrinho 
+            SET quantidade = ? 
+            WHERE id_utilizador = ? AND cod_isbn = ?
+        ");
+        $stmt->execute([$newQuantity, $userId, $isbn]);
+    } else {
+        // Inserir novo item
+        $stmt = $pdo->prepare("
+            INSERT INTO carrinho (id_utilizador, cod_isbn, quantidade) 
+            VALUES (?, ?, ?)
+        ");
+        $stmt->execute([$userId, $isbn, $quantity]);
+    }
+
+    echo "success";
+} catch (PDOException $e) {
+    echo "error: " . $e->getMessage();
+}

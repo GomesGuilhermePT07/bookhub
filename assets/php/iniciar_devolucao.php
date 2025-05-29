@@ -2,16 +2,15 @@
 session_start();
 require_once 'config.php';
 
-// Verificação de login
 if (!isset($_SESSION['id'])) {
-    header("Location: " . SITE_URL . "../../logins/login.php");
+    header("Location: /ModuloProjeto/logins/login.php");
     exit;
 }
 
 $idRequisicao = $_GET['id'];
 
 try {
-    // Verificar se o usuário tem permissão
+    // Verificar se o usuário é o dono da requisição
     $stmt = $pdo->prepare("
         SELECT id_utilizador 
         FROM requisicoes 
@@ -24,7 +23,7 @@ try {
         die("Acesso negado.");
     }
 
-    // Buscar dados
+    // Buscar dados para email
     $stmt = $pdo->prepare("
         SELECT u.nome AS usuario, l.titulo, l.cod_isbn 
         FROM requisicoes r 
@@ -62,7 +61,8 @@ try {
     ";
 
     $mail->send();
-    header("Location: " . SITE_URL . "/confirmacao_devolucao.php");
+
+    header("Location: /ModuloProjeto/confirmacao_devolucao.php");
 } catch (Exception $e) {
     die("Erro: " . $e->getMessage());
 }

@@ -2,7 +2,7 @@
 session_start();
 require_once 'config.php';
 
-// Verificação de admin
+// Verificar admin
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     die("Acesso negado.");
 }
@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
 $idRequisicao = $_GET['id'];
 
 try {
-    // Buscar dados
+    // Buscar dados do utilizador
     $stmt = $pdo->prepare("
         SELECT u.email, u.nome, l.titulo, l.cod_isbn 
         FROM requisicoes r 
@@ -21,7 +21,6 @@ try {
     $stmt->execute([$idRequisicao]);
     $dados = $stmt->fetch();
 
-    // Configurar PHPMailer
     require '../../vendor/autoload.php';
     
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
@@ -47,7 +46,8 @@ try {
     ";
 
     $mail->send();
-    header("Location: " . SITE_URL . "../../gerir-requisicoes.php?success=2");
+
+    header("Location: /ModuloProjeto/gerir-requisicoes.php?success=2");
 } catch (Exception $e) {
     die("Erro: " . $e->getMessage());
 }
