@@ -16,6 +16,20 @@
     $cartItems = [];
     $cartCount = 0;
 
+    // Mensagens de feedback
+    $error_message = '';
+    $success_message = '';
+
+    if (isset($_SESSION['cart_error'])) {
+        $error_message = $_SESSION['cart_error'];
+        unset($_SESSION['cart_error']);
+    }
+
+    if (isset($_SESSION['cart_success'])) {
+        $success_message = $_SESSION['cart_success'];
+        unset($_SESSION['cart_success']);
+    }
+
     // Buscar itens do carrinho apenas se estiver logado
     if ($loggedIn) {
         $userId = $_SESSION['id'];
@@ -162,12 +176,21 @@
     <main class="cart-container">
     <p>| Carrinho</p>
 
+        <!-- Mensagens de feedback -->
+        <?php if ($error_message): ?>
+            <div class="alert alert-danger"><?= $error_message ?></div>
+        <?php endif; ?>
+        
+        <?php if ($success_message): ?>
+            <div class="alert alert-success"><?= $success_message ?></div>
+        <?php endif; ?>
+
         <?php if (!$loggedIn): ?>
             <!-- Mensagem para o utilizador -->
             <p class="empty-cart">
             <a href="./logins/login.php" class="login-link">Inicie sessão</a> para ver o seu carrinho.
             </p>
-            <?php elseif ($loggedIn): ?>
+        <?php elseif ($loggedIn): ?>
         <div class="cart-items">
             <?php foreach ($cartItems as $item): ?>
                 <div class="carrinho-item" data-isbn="<?= $item['cod_isbn'] ?>">
@@ -233,6 +256,73 @@
         }
 
         fetchCartCovers();
+    });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para atualizar badge do carrinho
+        function updateCartBadge(count) {
+            const badge = document.querySelector('.cart-badge');
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'block' : 'none';
+            }
+        }
+
+        // Remover item do carrinho
+        document.querySelectorAll('.btn-remover').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isbn = this.closest('.carrinho-item').dataset.isbn;
+                
+                if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
+                    fetch(`assets/php/remove_from_cart.php?isbn=${isbn}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            // Remover item visualmente
+                            this.closest('.carrinho-item').remove();
+                            updateCartBadge(data.cartCount);
+                            
+                            // Recarregar página se carrinho estiver vazio
+                            if (document.querySelectorAll('.carrinho-item').length === 0) {
+                                location.reload();
+                            }
+                        } else {
+                            alert(data.message);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Requisitar livros
+        const requisitarBtn = document.querySelector('.btn-requisitar');
+        if (requisitarBtn) {
+            requisitarBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (confirm('Tem certeza que deseja finalizar a requisição?')) {
+                    const form = this.closest('form');
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams(new FormData(form))
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            location.reload();
+                        } else {
+                            alert(data.message);
+                        }
+                    });
+                }
+            });
+        }
     });
     </script>
     <footer>

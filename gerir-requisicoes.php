@@ -1,5 +1,5 @@
 <?php
-
+    // session_start();
     require_once 'assets/php/config.php';
     require_once 'assets/php/check_login.php';
 
@@ -18,8 +18,10 @@
 
     // Apenas admin pode acessar
     if ($_SESSION['admin'] != 1) {
-        header("Location: index.php");
+        header("Location: gerir-requisicoes.php");
         exit();
+    } else if($_SESSION['admin'] == 1) {
+        header("Location: gerir-requisicoes.php");
     }
 
     // Buscar todas as requisições
