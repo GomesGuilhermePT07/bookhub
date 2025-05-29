@@ -1,7 +1,7 @@
 # PRÓXIMA COISA A FAZER:
 
 <!-- - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho -->
-- verificar todos os erros e melhorias a fazer antes de começar a desenvolver as abas do site
+<!-- - verificar todos os erros e melhorias a fazer antes de começar a desenvolver as abas do site -->
 
 # ----------------------------//ERROS E MELHORIAS\\-------------------------------
 
@@ -31,6 +31,10 @@ VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar)
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 O MESMO LIVRO NÃO PODE SER ADICIONADO A CARRINHOS DIFERENTES PORQUE SÓ HÁ UM DE QUANTIDADE DISPONÍVEL!!
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+ACABAR **URGENTEMENTE** A MERDA DO FLUXO DE COMUNICAÇÃO ENTRE AS REQUISIÇÕES E AS DEVOLUÇÕES DOS LIVROS VIA EMAIL
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 <!-- - utilizador sem sessão iniciada tem de ter uma mensagem no carrinho ("Inicie sessão para ver o seu carrinho") -->

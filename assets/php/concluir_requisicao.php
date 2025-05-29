@@ -20,7 +20,7 @@ try {
     ");
     $stmt->execute([$idRequisicao]);
 
-    // Buscar dados para email
+    // Buscar dados do usuário
     $stmt = $pdo->prepare("
         SELECT u.email, u.nome, l.titulo 
         FROM requisicoes r 
@@ -31,32 +31,23 @@ try {
     $stmt->execute([$idRequisicao]);
     $dados = $stmt->fetch();
 
-    require 'vendor/autoload.php';
-    
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-    
-    $mail->isSMTP();
-    $mail->Host = SMTP_HOST;
-    $mail->SMTPAuth = true;
-    $mail->Username = SMTP_USER;
-    $mail->Password = SMTP_PASS;
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = SMTP_PORT;
-    
-    $mail->setFrom(SMTP_USER, 'BOOKhub');
-    $mail->addAddress($dados['email']);
-    $mail->isHTML(true);
-    $mail->Subject = 'Livro Pronto para Levantamento';
-    $mail->Body = "
-        <h3>Olá {$dados['nome']},</h3>
-        <p>O livro <strong>{$dados['titulo']}</strong> está disponível para levantamento na biblioteca.</p>
-    ";
-
-    $mail->send();
-    $pdo->commit();
+    // Enviar email para o usuário
+    if ($dados) {
+        $to = $dados['email'];
+        $subject = "Livro Pronto para Levantamento";
+        $message = "Olá {$dados['nome']},\n\n";
+        $message .= "O livro '{$dados['titulo']}' está pronto para levantamento na biblioteca.\n\n";
+        $message .= "Por favor, dirija-se à biblioteca para recolher o livro.\n\n";
+        $message .= "Atenciosamente,\nEquipe BOOKhub";
+        
+        $headers = "From: bookhub.adm1@gmail.com" . "\r\n" .
+                   "Reply-To: bookhub.adm1@gmail.com";
+        
+        mail($to, $subject, $message, $headers);
+    }
 
     $pdo->commit();
-    header("Location: /ModuloProjeto/gerir-requisicoes.php?success=1");
+    header("Location: ../../gerir-requisicoes.php?success=1");
 } catch (Exception $e) {
     $pdo->rollBack();
     die("Erro: " . $e->getMessage());

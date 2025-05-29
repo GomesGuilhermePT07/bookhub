@@ -1,57 +1,89 @@
 <?php
-    // session_start();
-    require_once 'assets/php/config.php';
-    require_once 'assets/php/check_login.php';
+session_start();
+require_once 'assets/php/config.php';
+require_once 'assets/php/check_login.php';
 
-    $cartCount = 0;
-    if (isset($_SESSION['id'])) {
-        $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-        $stmt = $conn->prepare("SELECT SUM(quantidade) AS total FROM carrinho WHERE id_utilizador = ?");
-        $stmt->bind_param("i", $_SESSION['id']);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $cartCount = isset($row['total']) ? $row['total'] : 0;
-        $stmt->close();
-        $conn->close();
-    }
+// Verificar se é admin
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
+    header("Location: index.php");
+    exit;
+}
 
-    // Apenas admin pode acessar
-    if ($_SESSION['admin'] != 1) {
-        header("Location: gerir-requisicoes.php");
-        exit();
-    } else if($_SESSION['admin'] == 1) {
-        header("Location: gerir-requisicoes.php");
-    }
-
-    // Buscar todas as requisições
-    $stmt = $pdo->query("
-        SELECT r.*, u.nome AS usuario, l.titulo 
+// Buscar todas as requisições
+try {
+    $stmt = $pdo->prepare("
+        SELECT r.id, u.nome AS utilizador, l.titulo, r.data_requisicao, r.status 
         FROM requisicoes r
         JOIN utilizadores u ON r.id_utilizador = u.id
         JOIN livros l ON r.cod_isbn = l.cod_isbn
         ORDER BY r.data_requisicao DESC
     ");
-    $requisicoes = $stmt->fetchAll();
-
+    $stmt->execute();
+    $requisicoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erro ao buscar requisições: " . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../ModuloProjeto/assets/css/index_style.css">
-    <link rel="stylesheet" href="../ModuloProjeto/assets/css/apresentar_livro.css">
-    <link rel="stylesheet" href="../ModuloProjeto/assets/css/requisicoes.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-    <title>BOOKhub | Requisições</title>
+    <title>BOOKhub | Gerir Requisições</title>
+    <link rel="stylesheet" href="./assets/css/index_style.css">
+    <style>
+        .requisicoes-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .status-pendente {
+            color: #e67e22;
+        }
+        
+        .status-pronto {
+            color: #27ae60;
+        }
+        
+        .status-devolvido {
+            color: #7f8c8d;
+        }
+        
+        .btn-acao {
+            padding: 6px 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <header>
-
         <div class="box-img-header">
             <?php if ($_SESSION['admin'] == 1): ?>
                 <a href="index.php">
@@ -152,43 +184,71 @@
                 </svg>
             </a>
         <?php endif; ?>
-
     </header>
-    
-    <main>
-        <h1>Requisições Ativas</h1>
-        <table class="requests-table">
-            <tr>
-                <th>Utilizador</th>
-                <th>Livro</th>
-                <th>Data Requisição</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-            <?php foreach ($requisicoes as $req): ?>
-            <tr>
-                <td><?= htmlspecialchars($req['usuario']) ?></td>
-                <td><?= htmlspecialchars($req['titulo']) ?></td>
-                <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
-                <td>
-                    <span class="status-<?= $req['status'] ?>">
-                        <?= ucfirst(str_replace('_', ' ', $req['status'])) ?>
-                    </span>
-                </td>
-                <td>
-                    <?php if ($req['status'] == 'pronto_para_levantar'): ?>
-                        <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-notify">
-                            Notificar Devolução
-                        </a>
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
+
+    <main class="requisicoes-container">
+        <h1>Gerir Requisições</h1>
+        
+        <?php if (isset($_GET['success'])): ?>
+            <div class="alert alert-success">
+                <?php
+                switch ($_GET['success']) {
+                    case '1': echo "Requisição marcada como pronta para levantamento!"; break;
+                    case '2': echo "Notificação de devolução enviada ao utilizador!"; break;
+                    case '3': echo "Devolução registrada com sucesso!"; break;
+                    default: echo "Operação realizada com sucesso!";
+                }
+                ?>
+            </div>
+        <?php endif; ?>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Utilizador</th>
+                    <th>Livro</th>
+                    <th>Data Requisição</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($requisicoes as $req): ?>
+                    <tr>
+                        <td><?= $req['id'] ?></td>
+                        <td><?= $req['utilizador'] ?></td>
+                        <td><?= $req['titulo'] ?></td>
+                        <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
+                        <td class="status-<?= str_replace('_', '', $req['status']) ?>">
+                            <?php
+                            switch ($req['status']) {
+                                case 'pendente': echo "Pendente"; break;
+                                case 'pronto_para_levantar': echo "Pronto para Levantar"; break;
+                                case 'devolvido': echo "Devolvido"; break;
+                                default: echo $req['status'];
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php if ($req['status'] == 'pendente'): ?>
+                                <a href="assets/php/concluir_requisicao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                    Preparar Livro
+                                </a>
+                            <?php elseif ($req['status'] == 'pronto_para_levantar'): ?>
+                                <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                    Solicitar Devolução
+                                </a>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </main>
 
     <footer>
-        <p>&copy; 2025 BOOKhub. Todos os direitos reservados.</p>
+        <p>&copy; 2025 BOOKhub. Todos os direitos reservados</p>
     </footer>
 </body>
 </html>

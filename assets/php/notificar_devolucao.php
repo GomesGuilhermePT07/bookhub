@@ -10,9 +10,9 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
 $idRequisicao = $_GET['id'];
 
 try {
-    // Buscar dados do utilizador
+    // Buscar dados do usuário
     $stmt = $pdo->prepare("
-        SELECT u.email, u.nome, l.titulo, l.cod_isbn 
+        SELECT u.email, u.nome, l.titulo 
         FROM requisicoes r 
         JOIN utilizadores u ON u.id = r.id_utilizador 
         JOIN livros l ON l.cod_isbn = r.cod_isbn 
@@ -21,33 +21,22 @@ try {
     $stmt->execute([$idRequisicao]);
     $dados = $stmt->fetch();
 
-    require '../../vendor/autoload.php';
-    
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = SMTP_HOST;
-    $mail->SMTPAuth = true;
-    $mail->Username = SMTP_USER;
-    $mail->Password = SMTP_PASS;
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = SMTP_PORT;
-    
-    $mail->setFrom(SMTP_USER, 'BOOKhub');
-    $mail->addAddress($dados['email']);
-    
-    $linkDevolucao = SITE_URL . "/iniciar_devolucao.php?id=" . $idRequisicao;
-    
-    $mail->isHTML(true);
-    $mail->Subject = 'Devolução do Livro: ' . $dados['titulo'];
-    $mail->Body = "
-        <h3>Olá {$dados['nome']},</h3>
-        <p>Por favor, devolva o livro <strong>{$dados['titulo']}</strong> (ISBN: {$dados['cod_isbn']}).</p>
-        <a href='$linkDevolucao'>Confirmar Devolução</a>
-    ";
+    // Enviar email para o usuário
+    if ($dados) {
+        $to = $dados['email'];
+        $subject = "Solicitação de Devolução de Livro";
+        $message = "Olá {$dados['nome']},\n\n";
+        $message .= "O prazo para o livro '{$dados['titulo']}' está terminando.\n";
+        $message .= "Por favor, devolva o livro na biblioteca o mais breve possível.\n\n";
+        $message .= "Atenciosamente,\nEquipe BOOKhub";
+        
+        $headers = "From: bookhub.adm1@gmail.com" . "\r\n" .
+                   "Reply-To: bookhub.adm1@gmail.com";
+        
+        mail($to, $subject, $message, $headers);
+    }
 
-    $mail->send();
-
-    header("Location: /ModuloProjeto/gerir-requisicoes.php?success=2");
+    header("Location: ../../gerir-requisicoes.php?success=2");
 } catch (Exception $e) {
     die("Erro: " . $e->getMessage());
 }
