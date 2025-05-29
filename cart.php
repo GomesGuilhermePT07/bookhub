@@ -20,7 +20,6 @@
     if ($loggedIn) {
         $userId = $_SESSION['id'];
 
-        // Consulta corrigida
         $stmt = $conn->prepare("
             SELECT c.cod_isbn, c.quantidade, l.titulo, l.autor 
             FROM carrinho c 
