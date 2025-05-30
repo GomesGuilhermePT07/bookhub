@@ -49,6 +49,11 @@ try {
         'cartCount' => $cartCount,
         'message' => 'Item removido do carrinho'
     ]);
+
+    // Atualizar disponibilidade do livro
+    $atualizarDisponibilidade = $conn->prepare("UPDATE livros SET disponivel = 1 WHERE cod_isbn = ?");
+    $atualizarDisponibilidade->bind_param("s", $cod_isbn);
+    $atualizarDisponibilidade->execute();
 } catch (PDOException $e) {
     echo json_encode(['status' => 'error', 'message' => 'Erro ao remover item']);
 }
