@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'config.php';
+require_once '../../vendor/autoload.php';
 
 if (!isset($_SESSION['id'])) {
     header("Location: /ModuloProjeto/logins/login.php");
@@ -59,40 +60,72 @@ try {
             SET disponivel = disponivel - ? 
             WHERE cod_isbn = ?
         ");
-        $updateStmt->execute([
-            $item['quantidade'],
-            $item['cod_isbn']
-        ]);
+        $updateStmt->execute([$item['quantidade'], $item['cod_isbn']]);
     }
 
     // Limpar carrinho
     $stmt = $pdo->prepare("DELETE FROM carrinho WHERE id_utilizador = ?");
     $stmt->execute([$userId]);
 
-    // Enviar email para o admin
-    $userStmt = $pdo->prepare("SELECT nome, email FROM utilizadores WHERE id = ?");
+    // Buscar dados do usuário - CORREÇÃO: usando nome_completo
+    $userStmt = $pdo->prepare("SELECT nome_completo, email FROM utilizadores WHERE id = ?");
     $userStmt->execute([$userId]);
     $user = $userStmt->fetch();
     
+    // Preparar lista de livros
     $livrosLista = array_map(function($item) {
-        return "{$item['titulo']} (ISBN: {$item['cod_isbn']}) - {$item['quantidade']} unidade(s)";
+        return "• {$item['titulo']} - {$item['autor']} (ISBN: {$item['cod_isbn']}) - {$item['quantidade']} unidade(s)";
     }, $cartItems);
     
     $livrosTexto = implode("\n", $livrosLista);
     
-    $to = "bookhub.adm1@gmail.com";
-    $subject = "Nova Requisição de Livros";
-    $message = "O utilizador {$user['nome']} ({$user['email']}) realizou uma nova requisição:\n\n";
-    $message .= "Livros requisitados:\n";
-    $message .= $livrosTexto . "\n\n";
-    $message .= "Total de itens: " . count($requisicoes) . "\n";
-    $message .= "ID das Requisições: " . implode(", ", $requisicoes);
+    // Configurar PHPMailer
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
     
-    $headers = "From: bookhub.adm1@gmail.com" . "\r\n" .
-               "Reply-To: bookhub.adm1@gmail.com" . "\r\n" .
-               "X-Mailer: PHP/" . phpversion();
+    // Configurações do servidor SMTP
+    $mail->isSMTP();
+    $mail->Host = SMTP_HOST;
+    $mail->SMTPAuth = true;
+    $mail->Username = SMTP_USER;
+    $mail->Password = SMTP_PASS;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = SMTP_PORT;
+    
+    // Configurações adicionais necessárias para o Gmail
+    $mail->SMTPOptions = [
+        'ssl' => [
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        ]
+    ];
+    
+    // Remetente
+    $mail->setFrom(SMTP_USER, 'BOOKhub - Suporte');
+    
+    // Destinatário (admin)
+    $mail->addAddress('bookhub.adm1@gmail.com', 'Administrador BOOKhub');
+    
+    // Assunto
+    $mail->Subject = 'Nova Requisição de Livros';
+    
+    // Corpo do email
+    $mail->Body = "
+        Nova requisição realizada por:
+        Nome: {$user['nome_completo']}
+        Email: {$user['email']}
+        
+        Livros requisitados:
+        {$livrosTexto}
+        
+        Total de itens: " . count($requisicoes) . "
+        IDs das Requisições: " . implode(", ", $requisicoes) . "
+    ";
 
-    mail($to, $subject, $message, $headers);
+    // Tentar enviar email
+    if(!$mail->send()) {
+        throw new Exception('Erro ao enviar email: ' . $mail->ErrorInfo);
+    }
 
     $pdo->commit();
     $_SESSION['cart_success'] = "Requisição realizada com sucesso! Um email foi enviado para o administrador.";

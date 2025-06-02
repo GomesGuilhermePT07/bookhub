@@ -206,7 +206,7 @@
                         <p class="autor-livro"><?= htmlspecialchars($item['autor']) ?></p>
                     </div>
                         
-                        <a href="./assets/php/remove_from_cart.php?isbn=<?= $item['cod_isbn'] ?>" class="btn-remover">
+                        <a href="#" class="btn-remover" data-isbn="<?= $item['cod_isbn'] ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M3 6h18"/>
                                 <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
@@ -269,11 +269,10 @@
             }
         }
 
-        // Remover item do carrinho
         document.querySelectorAll('.btn-remover').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
-                const isbn = this.closest('.carrinho-item').dataset.isbn;
+                const isbn = this.dataset.isbn;
                 
                 if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
                     fetch(`assets/php/remove_from_cart.php?isbn=${isbn}`)
@@ -282,7 +281,15 @@
                         if (data.status === 'success') {
                             // Remover item visualmente
                             this.closest('.carrinho-item').remove();
-                            updateCartBadge(data.cartCount);
+                            
+                            // Atualizar badge
+                            const badge = document.querySelector('.cart-badge');
+                            if (badge) {
+                                badge.textContent = data.cartCount;
+                                if (data.cartCount <= 0) {
+                                    badge.style.display = 'none';
+                                }
+                            }
                             
                             // Recarregar página se carrinho estiver vazio
                             if (document.querySelectorAll('.carrinho-item').length === 0) {
