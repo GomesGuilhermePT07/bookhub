@@ -111,15 +111,15 @@ try {
     
     // Corpo do email
     $mail->Body = "
-        Nova requisição realizada por:
-        Nome: {$user['nome_completo']}
-        Email: {$user['email']}
+        <h3> Nova requisição realizada por: </h3>
+        <b>Nome:</b> {$user['nome_completo']}
+        <b>Email:</b> {$user['email']}
         
-        Livros requisitados:
+        <h4> Livros requisitados: </h4>
         {$livrosTexto}
         
-        Total de itens: " . count($requisicoes) . "
-        IDs das Requisições: " . implode(", ", $requisicoes) . "
+        <h5><b> Total de itens: </b></h5> " . count($requisicoes) . "
+        <h5><b> IDs das Requisições: </b></h5>" . implode(", ", $requisicoes) . "
     ";
 
     // Tentar enviar email
