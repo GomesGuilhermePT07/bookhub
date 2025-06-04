@@ -77,7 +77,7 @@ try {
         return "• {$item['titulo']} - {$item['autor']} (ISBN: {$item['cod_isbn']}) - {$item['quantidade']} unidade(s)";
     }, $cartItems);
     
-    $livrosTexto = implode("\n", $livrosLista);
+    $livrosTexto = implode("<br>", $livrosLista);
     
     // Configurar PHPMailer
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
@@ -90,6 +90,7 @@ try {
     $mail->Password = SMTP_PASS;
     $mail->SMTPSecure = 'tls';
     $mail->Port = SMTP_PORT;
+    $mail->CharSet = 'UTF-8';
     
     // Configurações adicionais necessárias para o Gmail
     $mail->SMTPOptions = [
@@ -108,18 +109,45 @@ try {
     
     // Assunto
     $mail->Subject = 'Nova Requisição de Livros';
+
+    // Dizer ao PHPMailer que o corpo é HTML (LINHA CRÍTICA!)
+    $mail->isHTML(true);
     
     // Corpo do email
     $mail->Body = "
-        <h3> Nova requisição realizada por: </h3>
-        <b>Nome:</b> {$user['nome_completo']}
-        <b>Email:</b> {$user['email']}
-        
-        <h4> Livros requisitados: </h4>
-        {$livrosTexto}
-        
-        <h5><b> Total de itens: </b></h5> " . count($requisicoes) . "
-        <h5><b> IDs das Requisições: </b></h5>" . implode(", ", $requisicoes) . "
+        <html>
+        <head>
+            <style>
+                body {
+                    font-family: Gill Sans MT;
+                }
+                
+                h2, h3, h4 {
+                    color: #007bff;
+                }
+
+                ul {
+                    list-style-type: none;
+                    padding: 0;
+                }
+
+                li {
+                    margin-bottom: 8px;
+                }
+            </style>
+        </head>
+        <body>
+            <h2>Nova Requisição realizada por:</h2>
+            <p><b>Nome:</b> {$user['nome_completo']}</p>
+            <p><b>Email:</b> {$user['email']}</p>
+
+            <h3>Livros Requisitados:</h3>
+            {$livrosTexto}
+
+            <h4><b>Total de itens:</h4></b> " . count($requisicoes) . "
+            <h4><b>IDs das Requisições:</h4></b> " . implode(", ", $requisicoes) . "
+        </body>
+        </html>
     ";
 
     // Tentar enviar email
