@@ -168,10 +168,9 @@ function obterCapa($isbn) {
         <div class="livro-info">
             <h1><?= htmlspecialchars($livro['titulo']) ?></h1>
             <p><strong>Autor:</strong> <?= htmlspecialchars($livro['autor']) ?></p>
+            <button type="submit" class="add-to-cart">Adicionar ao carrinho</button>
             <div class="resumo"><?= nl2br(htmlspecialchars($livro['resumo'])) ?></div>
         </div> <!-- livro-info -->
-
-        <button type="submit" class="add-to-cart">Adicionar ao carrinho</button>
         
         <div class="detalhes-adicionais">
             <div><strong>ISBN:</strong> <?= htmlspecialchars($livro['cod_isbn']) ?></div>
