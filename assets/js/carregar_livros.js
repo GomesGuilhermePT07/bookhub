@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             
                             <form method="POST" action="assets/php/remover_livro.php">
                                 <input type="hidden" name="isbn" value="${book.cod_isbn}">
-                                <button type="submit" class="remove-book">Remover</button>
+                                <!--<button type="submit" class="remove-book">Remover</button>-->
                             </form>
                         </div>`;
                     bookListContainer.innerHTML += bookHtml;
