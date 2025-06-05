@@ -22,7 +22,7 @@ try {
 
     // Buscar dados do usuário
     $stmt = $pdo->prepare("
-        SELECT u.email, u.nome, l.titulo 
+        SELECT u.email, u.nome_completo, l.titulo 
         FROM requisicoes r 
         JOIN utilizadores u ON u.id = r.id_utilizador 
         JOIN livros l ON l.cod_isbn = r.cod_isbn 
@@ -35,7 +35,7 @@ try {
     if ($dados) {
         $to = $dados['email'];
         $subject = "Livro Pronto para Levantamento";
-        $message = "Olá {$dados['nome']},\n\n";
+        $message = "Olá {$dados['nome_completo']},\n\n";
         $message .= "O livro '{$dados['titulo']}' está pronto para levantamento na biblioteca.\n\n";
         $message .= "Por favor, dirija-se à biblioteca para recolher o livro.\n\n";
         $message .= "Atenciosamente,\nEquipe BOOKhub";

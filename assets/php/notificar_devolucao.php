@@ -12,7 +12,7 @@ $idRequisicao = $_GET['id'];
 try {
     // Buscar dados do usuário
     $stmt = $pdo->prepare("
-        SELECT u.email, u.nome, l.titulo 
+        SELECT u.email, u.nome_completo, l.titulo 
         FROM requisicoes r 
         JOIN utilizadores u ON u.id = r.id_utilizador 
         JOIN livros l ON l.cod_isbn = r.cod_isbn 
@@ -25,7 +25,7 @@ try {
     if ($dados) {
         $to = $dados['email'];
         $subject = "Solicitação de Devolução de Livro";
-        $message = "Olá {$dados['nome']},\n\n";
+        $message = "Olá {$dados['nome_completo']},\n\n";
         $message .= "O prazo para o livro '{$dados['titulo']}' está terminando.\n";
         $message .= "Por favor, devolva o livro na biblioteca o mais breve possível.\n\n";
         $message .= "Atenciosamente,\nEquipe BOOKhub";

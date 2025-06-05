@@ -4,15 +4,15 @@ require_once 'assets/php/config.php';
 require_once 'assets/php/check_login.php';
 
 // Verificar se é admin
-if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
-    header("Location: index.php");
-    exit;
-}
+// if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
+//     header("Location: index_user.php");
+//     exit;
+// }
 
 // Buscar todas as requisições
 try {
     $stmt = $pdo->prepare("
-        SELECT r.id, u.nome AS utilizador, l.titulo, r.data_requisicao, r.status 
+        SELECT r.id, u.nome_completo AS utilizador, l.titulo, r.data_requisicao, r.status 
         FROM requisicoes r
         JOIN utilizadores u ON r.id_utilizador = u.id
         JOIN livros l ON r.cod_isbn = l.cod_isbn
