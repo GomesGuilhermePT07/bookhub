@@ -11,12 +11,17 @@
     --color-grey2: #666;
     --color-red: #e74c3c;
     --color-red2: #c0392b;
+    --color-blue3: #699fbb;
     --color-blue: #007bff;
     --color-blue2: #0056b3;
 }
 
 *{
     font-family: 'Lato';
+}
+
+body{
+    background: linear-gradient(-50deg, var(--color-blue3) 10%, var(--color-white) 100%);
 }
 
 .livro-detalhes{
