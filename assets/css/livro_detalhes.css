@@ -101,35 +101,6 @@ body{
     white-space: pre-wrap;
 }
 
-.add-to-cart{
-    display: inline-block;
-    background-color: var(--color-blue);
-    color: var(--color-white);
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: .75rem;    
-    padding: 0.5rem 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    transition: all 0.2s ease;
-    margin-top: 10px;
-    margin-bottom: -10px;
-}
-
-.add-to-cart:hover{
-    background-color: var(--color-blue2);
-    transform: scale(0.98);
-    transition: .2s;
-}
-
-.add-to-cart:not(:hover){
-    background-color: var(--color-blue);
-    transform: scale(1);
-    transition: .2s;
-}
-
 /* Layout responsivo */
 @media (max-width: 768px){
     .livro-detalhes{

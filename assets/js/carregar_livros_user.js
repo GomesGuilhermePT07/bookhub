@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             ${book.disponivel ? 
                                 `<form action="assets/php/add_to_cart.php" method="POST">
                                     <input type="hidden" name="isbn" value="${book.cod_isbn}">
-                                    <!--<button type="submit" class="add-to-cart">Adicionar ao carrinho</button>-->
+                                    <button type="submit" class="add-to-cart">Adicionar ao carrinho</button>
                                 </form>` : 
                                 `<button class="add-to-cart disabled" disabled>Indisponível</button>`
                             }
