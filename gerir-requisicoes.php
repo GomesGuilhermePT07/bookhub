@@ -210,7 +210,9 @@ try {
                     <th>Livro</th>
                     <th>Data Requisição</th>
                     <th>Status</th>
-                    <th>Ações</th>
+                    <?php if($_SESSION['admin'] == 1): ?>
+                        <th>Ações</th>
+                    <?php endif ?>
                 </tr>
             </thead>
             <tbody>
@@ -230,17 +232,19 @@ try {
                             }
                             ?>
                         </td>
-                        <td>
-                            <?php if ($req['status'] == 'pendente'): ?>
-                                <a href="assets/php/concluir_requisicao.php?id=<?= $req['id'] ?>" class="btn-acao">
-                                    Preparar Livro
-                                </a>
-                            <?php elseif ($req['status'] == 'pronto_para_levantar'): ?>
-                                <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
-                                    Solicitar Devolução
-                                </a>
-                            <?php endif; ?>
-                        </td>
+                        <?php if($_SESSION['admin'] == 1): ?>
+                            <td>
+                                <?php if ($req['status'] == 'pendente'): ?>
+                                    <a href="assets/php/concluir_requisicao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                        Preparar Livro
+                                    </a>
+                                <?php elseif ($req['status'] == 'pronto_para_levantar'): ?>
+                                    <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                        Solicitar Devolução
+                                    </a>
+                                <?php endif; ?>
+                            </td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
