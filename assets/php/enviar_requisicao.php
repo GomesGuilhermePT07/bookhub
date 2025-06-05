@@ -134,6 +134,17 @@ try {
                 li {
                     margin-bottom: 8px;
                 }
+
+                .button {
+                    display: inline-block;
+                    background-color: #007bff;
+                    color: white;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    margin-top: 15px;
+                }
             </style>
         </head>
         <body>
@@ -146,6 +157,15 @@ try {
 
             <h4><b>Total de itens:</h4></b> " . count($requisicoes) . "
             <h4><b>IDs das Requisições:</h4></b> " . implode(", ", $requisicoes) . "
+
+            <!-- BOTÃO PARA NOTIFICAR O UTILIZADOR -->
+            
+            <p>
+                <a class='button' href='localhost:8080/ModuloProjeto/assets/php/notificar_requisicao.php?user_id=$userId&req_ids=".implode(',', $requisicoes)."'>
+                    LIVROS PRONTOS PARA LEVANTAR
+                </a>
+            </p>
+        
         </body>
         </html>
     ";
