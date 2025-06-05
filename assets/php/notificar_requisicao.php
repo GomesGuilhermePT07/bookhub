@@ -11,6 +11,18 @@ if (isset($_GET['id']) && isset($_GET['id_requisicao'])) {
     $reqIds = explode(',', $_GET['id_requisicao']);
 
     try {
+
+        $pdo->beginTransaction();
+
+        // Atualizar status das requisicoes para "pronto_para_levantar"
+        $placeholders = str_repeat('?,', count($id_requisicao) - 1) . '?';
+        $updateStmt = $pdo->prepare("
+            UPDATE requisicoes
+            SET status = 'pronto_para_levantar', data_conclusao = NOW()
+            WHERE id IN ($placeholders)
+        ");
+        $updateStmt->execute($id_requisicao);
+        
         // Buscar dados do utilizador
         $stmt = $pdo->prepare("SELECT nome_completo, email FROM utilizadores WHERE id = ?");
         $stmt->execute([$userId]);

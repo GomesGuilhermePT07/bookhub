@@ -161,7 +161,7 @@ try {
             <!-- BOTÃO PARA NOTIFICAR O UTILIZADOR -->
             
             <p>
-                <a class='button' href='localhost:8080/ModuloProjeto/assets/php/notificar_requisicao.php?user_id=$userId&req_ids=".implode(',', $requisicoes)."'>
+                <a class='button' href='".SITE_URL."/ModuloProjeto/assets/php/notificar_requisicao.php?id=$userId&id_requisicao=".implode(',', $requisicoes)."'>
                     LIVROS PRONTOS PARA LEVANTAR
                 </a>
             </p>
