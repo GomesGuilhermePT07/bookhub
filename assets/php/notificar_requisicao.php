@@ -22,22 +22,35 @@ if (isset($_GET['id']) && isset($_GET['id_requisicao'])) {
             WHERE id IN ($placeholders)
         ");
         $updateStmt->execute($id_requisicao);
-        
+
         // Buscar dados do utilizador
         $stmt = $pdo->prepare("SELECT nome_completo, email FROM utilizadores WHERE id = ?");
         $stmt->execute([$userId]);
         $user = $stmt->fetch();
 
+        if (!user) {
+            throw new Exception("Utilizador não encontrado!");
+        }
+
         // Buscar detalhes dos livros
-        $placeholders = str_repeat('?,', count($reqIds) - 1) . '?';
-        $stmt = $pdo->prepare("
-            SELECT l.titulo 
+        // $placeholders = str_repeat('?,', count($reqIds) - 1) . '?';
+        // $stmt = $pdo->prepare("
+        //     SELECT l.titulo 
+        //     FROM requisicoes r
+        //     JOIN livros l ON r.cod_isbn = l.cod_isbn
+        //     WHERE r.id IN ($placeholders)
+        // ");
+        // $stmt->execute($reqIds);
+        // $livros = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        $livrosStmt = $pdo->prepare("
+            SELECT DISTINCT l.titulo
             FROM requisicoes r
             JOIN livros l ON r.cod_isbn = l.cod_isbn
             WHERE r.id IN ($placeholders)
         ");
-        $stmt->execute($reqIds);
-        $livros = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        $livrosStmt->execute($id_requisicao);
+        $livros = $livrosStmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
         // Preparar mensagem
         $livrosLista = implode("<br>• ", $livros);
@@ -57,7 +70,7 @@ if (isset($_GET['id']) && isset($_GET['id_requisicao'])) {
         
         $mail->setFrom(SMTP_USER, 'BOOKhub - Biblioteca');
         $mail->addAddress($user['email'], $user['nome_completo']);
-        $mail->Subject = 'Seus livros estão prontos para levantar!';
+        $mail->Subject = 'Os seus livros estão prontos para levantar!';
         $mail->isHTML(true);
         
         $mail->Body = "
@@ -65,23 +78,37 @@ if (isset($_GET['id']) && isset($_GET['id_requisicao'])) {
             <head>
                 <style>
                     body { font-family: Gill Sans MT; }
+                    h2 { color: #28a745; }
                 </style>
             </head>
             <body>
                 <h2>Olá, {$user['nome_completo']}!</h2>
-                <p>Os seguintes livros estão prontos para serem levantados:</p>
+                <p>Os seguintes livros estão prontos para serem levantados na biblioteca:</p>
                 <p>$livrosTexto</p>
                 <p>Por favor, dirija-se à biblioteca para recolhê-los.</p>
-                <p><b>Prazo de levantamento:</b> 5 dias úteis</p>
+                <p>Apresente este email para a sua identificação ser verificada.</p>
+                <p>Atenciosamente, <br>Equipa BOOKhub</p>
             </body>
             </html>
         ";
 
         $mail->send();
-        echo "E-mail enviado com sucesso para {$user['email']}!";
+        $pdo->commit();
+
+        // Redirecionar com mensagem de sucesso
+        $_SESSION['admin_message'] = "Utilizador notificado com sucesso!";
+        header("Location: ../../gerir-requisicoes.php?success=5");
+        // echo "E-mail enviado com sucesso para {$user['email']}!";
     } catch (Exception $e) {
-        die("Erro: " . $e->getMessage());
+        $pdo->rollBack();
+        $_SESSION['admin_error'] = "Erro ao notificar utilizador: " . $e->getMessage();
+        header("Location: ../../gerir-requisicoes.php?error=1");
+        exit;
+        // die("Erro: " . $e->getMessage());
     }
 } else {
-    die("Parâmetros inválidos.");
+    $_SESSION['admin_error'] = "Parâmetros inválidos.";
+    header("Location: ../../gerir-requisicoes.php?error=2");
+    exit;
+    // die("Parâmetros inválidos.");
 }
