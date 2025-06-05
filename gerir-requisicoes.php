@@ -80,6 +80,24 @@ try {
             text-decoration: none;
             font-size: 14px;
         }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+            color: #3c763d;
+        }
+
+        .alert-danger {
+            background-color: #f2dede;
+            border-color: #ebccd1;
+            color: #a94442;
+        }
     </style>
 </head>
 <body>
@@ -196,9 +214,17 @@ try {
                     case '1': echo "Requisição marcada como pronta para levantamento!"; break;
                     case '2': echo "Notificação de devolução enviada ao utilizador!"; break;
                     case '3': echo "Devolução registrada com sucesso!"; break;
+                    case '5': echo "Utilizador notificado com sucesso!"; break;
                     default: echo "Operação realizada com sucesso!";
                 }
                 ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['admin_error'])): ?>
+            <div class="alert alert-danger">
+                <?= $_SESSION['admin_error']; 
+                unset($_SESSION['admin_error']); // Limpa a mensagem após exibir ?>
             </div>
         <?php endif; ?>
         
