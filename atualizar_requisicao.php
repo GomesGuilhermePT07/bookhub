@@ -2,14 +2,14 @@
 session_start();
 
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
-    header("Location: login.php");
+    header("Location: ./logins/login.php");
     exit();
 }
 
-require_once 'conexao.php';
+require_once './assets/php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
+
     $id = isset($_POST['id']) ? $_POST['id'] : null;
     $novo_estado = isset($_POST['novo_estado']) ? $_POST['novo_estado'] : null;
 
