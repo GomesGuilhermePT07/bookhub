@@ -112,6 +112,8 @@ try {
 
     // Dizer ao PHPMailer que o corpo é HTML (LINHA CRÍTICA!)
     $mail->isHTML(true);
+
+    $notifyUrl = SITE_URL . "/assets/php/notificar_requisicao.php?user_id=$userId&req_ids=" . implode(', ', $requisicoes);
     
     // Corpo do email
     $mail->Body = "
@@ -158,14 +160,14 @@ try {
             <h4><b>Total de itens:</h4></b> " . count($requisicoes) . "
             <h4><b>IDs das Requisições:</h4></b> " . implode(", ", $requisicoes) . "
 
-            <!-- BOTÃO PARA NOTIFICAR O UTILIZADOR -->
+            <!-- LINK PARA NOTIFICAR O UTILIZADOR -->
             
             <p>
-                <button class='button' onclick='notificarUtilizador($userId, \"".implode(',', $requisicoes)."\")'>
-                    LIVROS PRONTOS PARA LEVANTAR
-                </button>
+                <a class='button' href='$notifyUrl'>
+                    CLIQUE AQUI PARA NOTIFICAR O UTILIZADOR
+                </a>
             </p>
-        
+            
         </body>
             <script>
                 function notificarUtilizador(userId, reqIds) {
