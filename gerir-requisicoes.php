@@ -234,35 +234,43 @@ try {
                     <th>ID</th>
                     <th>Utilizador</th>
                     <th>Livro</th>
-                    <th>Data</th>
+                    <th>Data Requisição</th>
                     <th>Status</th>
-                    <th>Ações</th>
+                    <?php if($_SESSION['admin'] == 1): ?>
+                        <th>Ações</th>
+                    <?php endif ?>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($requisicoes as $req): ?>
                     <tr>
-                        <td><?= htmlspecialchars($req['id']) ?></td>
-                        <td><?= htmlspecialchars($req['utilizador']) ?></td>
-                        <td><?= htmlspecialchars($req['titulo']) ?></td>
-                        <td><?= htmlspecialchars(date('d/m/Y', strtotime($req['data_requisicao']))) ?></td>
-                        <td class="status-<?= strtolower($req['status']) ?>">
-                            <?= htmlspecialchars(ucfirst($req['status'])) ?>
+                        <td><?= $req['id'] ?></td>
+                        <td><?= $req['utilizador'] ?></td>
+                        <td><?= $req['titulo'] ?></td>
+                        <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
+                        <td class="status-<?= str_replace('_', '', $req['status']) ?>">
+                            <?php
+                                switch ($req['status']) {
+                                    case 'pendente': echo "Pendente"; break;
+                                    case 'pronto_para_levantar': echo "Pronto para Levantar"; break;
+                                    case 'devolvido': echo "Devolvido"; break;
+                                    default: echo $req['status'];
+                                }
+                            ?>
                         </td>
-                        <td>
-                            <form method="POST" action="atualizar_requisicao.php" style="display:inline-block;">
-                                <input type="hidden" name="id_requisicao" value="<?= htmlspecialchars($req['id']) ?>">
-                                
+                        <?php if($_SESSION['admin'] == 1): ?>
+                            <td>
                                 <?php if ($req['status'] == 'pendente'): ?>
-                                    <button type="submit" name="acao" value="pronto" class="btn-acao">Marcar como Pronto</button>
-                                <?php elseif ($req['status'] == 'pronto'): ?>
-                                    <button type="submit" name="acao" value="devolvido" class="btn-acao">Marcar como Devolvido</button>
-                                <?php else: ?>
-                                    <!-- Sem botão se o estado for devolvido -->
-                                    <span>Sem ações</span>
+                                    <a href="assets/php/concluir_requisicao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                        Preparar Livro
+                                    </a>
+                                <?php elseif ($req['status'] == 'pronto_para_levantar'): ?>
+                                    <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                        Solicitar Devolução
+                                    </a>
                                 <?php endif; ?>
-                            </form>
-                        </td>
+                            </td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
