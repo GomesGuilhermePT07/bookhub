@@ -161,12 +161,33 @@ try {
             <!-- BOTÃO PARA NOTIFICAR O UTILIZADOR -->
             
             <p>
-                <a class='button' href='".SITE_URL."/ModuloProjeto/assets/php/notificar_requisicao.php?id=$userId&id_requisicao=".implode(',', $requisicoes)."'>
+                <button class='button' onclick='notificarUtilizador($userId, \"".implode(',', $requisicoes)."\")'>
                     LIVROS PRONTOS PARA LEVANTAR
-                </a>
+                </button>
             </p>
         
         </body>
+            <script>
+                function notificarUtilizador(userId, reqIds) {
+                    fetch('".SITE_URL."/ModuloProjeto/assets/php/notificar_requisicao.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            user_id: userId,
+                            req_ids: reqIds.split(',')
+                        })
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        alert(result);
+                    })
+                    .catch(error => {
+                        alert('Erro: ' + error);
+                    });
+                }
+            </script>
         </html>
     ";
 
