@@ -1,126 +1,98 @@
 <?php
-session_start();
 require_once 'config.php';
 require_once '../../vendor/autoload.php';
 
-// Verificar se é uma requisição autorizada (opcional)
-// if (!isset($_SESSION['admin_id'])) { ... }
-
-// Receber dados via POST
+// Token de segurança (adicione no config.php: define('API_TOKEN', 'seu_token_secreto'))
 $data = json_decode(file_get_contents('php://input'), true);
-$userId = isset($data['id']) ? $data['id'] : null;
-$reqIds = isset($data['id_requisicao']) ? $data['id_requisicao'] : array();
+
+// Verificação básica de segurança
+if (!isset($data['token']) || $data['token'] !== API_TOKEN) {
+    http_response_code(403);
+    die("Acesso não autorizado.");
+}
+
+$userId = isset($data['user_id']) ? $data['user_id'] : null;
+$reqIds = isset($data['req_ids']) ? $data['req_ids'] : array();
 
 if (!$userId || empty($reqIds)) {
+    http_response_code(400);
     die("Parâmetros inválidos.");
 }
 
-// if (isset($_GET['id']) && isset($_GET['id_requisicao'])) {
-//     $userId = $_GET['id'];
-//     $reqIds = explode(',', $_GET['id_requisicao']);
+try {
+    // 1. Atualizar status das requisições
+    $placeholders = str_repeat('?,', count($reqIds) - 1) . '?';
+    
+    $updateStmt = $pdo->prepare("
+        UPDATE requisicoes 
+        SET status = 'pronto_para_levantar', data_conclusao = NOW() 
+        WHERE id IN ($placeholders)
+    ");
+    $updateStmt->execute($reqIds);
 
-    try {
+    // 2. Buscar dados do utilizador
+    $userStmt = $pdo->prepare("SELECT nome_completo, email FROM utilizadores WHERE id = ?");
+    $userStmt->execute([$userId]);
+    $user = $userStmt->fetch();
 
-        // $pdo->beginTransaction();
-
-        // Atualizar status das requisicoes para "pronto_para_levantar"
-        $placeholders = str_repeat('?,', count($reqIds) - 1) . '?';
-        $updateStmt = $pdo->prepare("
-            UPDATE requisicoes
-            SET status = 'pronto_para_levantar', data_conclusao = NOW()
-            WHERE id IN ($placeholders)
-        ");
-        $updateStmt->execute($reqIds);
-
-        // Buscar dados do utilizador
-        $userStmt = $pdo->prepare("SELECT nome_completo, email FROM utilizadores WHERE id = ?");
-        $userStmt->execute([$userId]);
-        $user = $userStmt->fetch();
-
-        if (!user) {
-            throw new Exception("Utilizador não encontrado!");
-        }
-
-        // $placeholders = str_repeat('?,', count($reqIds) - 1) . '?';
-        // $stmt = $pdo->prepare("
-        //     SELECT l.titulo 
-        //     FROM requisicoes r
-        //     JOIN livros l ON r.cod_isbn = l.cod_isbn
-        //     WHERE r.id IN ($placeholders)
-        // ");
-        // $stmt->execute($reqIds);
-        // $livros = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-        // Buscar detalhes dos livros
-        $livrosStmt = $pdo->prepare("
-            SELECT DISTINCT l.titulo
-            FROM requisicoes r
-            JOIN livros l ON r.cod_isbn = l.cod_isbn
-            WHERE r.id IN ($placeholders)
-        ");
-        $livrosStmt->execute($reqIds);
-        $livros = $livrosStmt->fetchAll(PDO::FETCH_COLUMN, 0);
-
-        // Preparar mensagem
-        $livrosLista = implode("<br>• ", $livros);
-        $livrosTexto = "• " . $livrosLista;
-
-        // Enviar e-mail para o utilizador
-        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-        
-        $mail->isSMTP();
-        $mail->Host = SMTP_HOST;
-        $mail->SMTPAuth = true;
-        $mail->Username = SMTP_USER;
-        $mail->Password = SMTP_PASS;
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = SMTP_PORT;
-        $mail->CharSet = 'UTF-8';
-        
-        $mail->setFrom(SMTP_USER, 'BOOKhub - Biblioteca');
-        $mail->addAddress($user['email'], $user['nome_completo']);
-        $mail->Subject = 'Os seus livros estão prontos para levantar!';
-        $mail->isHTML(true);
-
-        $livrosTexto = "• " . implode("<br>• ", $livros);
-        
-        $mail->Body = "
-            <html>
-            <head>
-                <style>
-                    body { font-family: Gill Sans MT; }
-                    h2 { color: #28a745; }
-                </style>
-            </head>
-            <body>
-                <h2>Olá, {$user['nome_completo']}!</h2>
-                <p>Os seguintes livros estão prontos para serem levantados na biblioteca:</p>
-                <p>$livrosTexto</p>
-                <p>Por favor, dirija-se à biblioteca para recolhê-los.</p>
-                <p>Apresente este email para a sua identificação ser verificada.</p>
-                <p>Atenciosamente, <br>Equipa BOOKhub</p>
-            </body>
-            </html>
-        ";
-
-        $mail->send();
-        // $pdo->commit();
-
-        // Redirecionar com mensagem de sucesso
-        // $_SESSION['admin_message'] = "Utilizador notificado com sucesso!";
-        // header("Location: ../../gerir-requisicoes.php?success=5");
-        echo "E-mail enviado com sucesso para {$user['email']}!";
-    } catch (Exception $e) {
-        // $pdo->rollBack();
-        // $_SESSION['admin_error'] = "Erro ao notificar utilizador: " . $e->getMessage();
-        // header("Location: ../../gerir-requisicoes.php?error=1");
-        // exit;
-        http_response_code(500);
-        die("Erro: " . $e->getMessage());
+    if (!$user) {
+        throw new Exception("Utilizador não encontrado!");
     }
-// } else {
-//     $_SESSION['admin_error'] = "Parâmetros inválidos.";
-//     header("Location: ../../gerir-requisicoes.php?error=2");
-//     exit;
-    // die("Parâmetros inválidos.");
-// }
+
+    // 3. Buscar detalhes dos livros (usando novo array para os parâmetros)
+    $livrosStmt = $pdo->prepare("
+        SELECT DISTINCT l.titulo 
+        FROM requisicoes r
+        JOIN livros l ON r.cod_isbn = l.cod_isbn
+        WHERE r.id IN ($placeholders)
+    ");
+    $livrosStmt->execute($reqIds); // Usando o mesmo array
+    $livros = $livrosStmt->fetchAll(PDO::FETCH_COLUMN);
+
+    // 4. Enviar e-mail para o utilizador
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    
+    $mail->isSMTP();
+    $mail->Host = SMTP_HOST;
+    $mail->SMTPAuth = true;
+    $mail->Username = SMTP_USER;
+    $mail->Password = SMTP_PASS;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = SMTP_PORT;
+    $mail->CharSet = 'UTF-8';
+    $mail->SMTPDebug = 2; // Ativa debug - REMOVER APÓS TESTES!
+    $mail->Debugoutput = function($str, $level) {
+        error_log("SMTP: $str");
+    };
+    
+    $mail->setFrom(SMTP_USER, 'BOOKhub - Biblioteca');
+    $mail->addAddress($user['email'], $user['nome_completo']);
+    $mail->Subject = 'Seus livros estão prontos para levantar!';
+    $mail->isHTML(true);
+    
+    $livrosTexto = "• " . implode("<br>• ", $livros);
+    
+    $mail->Body = "
+        <html>
+        <body>
+            <h2>Olá, {$user['nome_completo']}!</h2>
+            <p>Os seguintes livros estão prontos para serem levantados na biblioteca:</p>
+            <p>$livrosTexto</p>
+            <p><b>Local:</b> Biblioteca Central BOOKhub</p>
+            <p><b>Horário:</b> 09:00 - 18:00 (Segunda a Sexta)</p>
+            <p>Por favor, traga um documento de identificação quando vier recolher os livros.</p>
+        </body>
+        </html>
+    ";
+
+    if(!$mail->send()) {
+        throw new Exception("Erro ao enviar email: " . $mail->ErrorInfo);
+    }
+    
+    echo "E-mail enviado com sucesso para {$user['email']}!";
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    error_log($e->getMessage());
+    die("Erro: " . $e->getMessage());
+}

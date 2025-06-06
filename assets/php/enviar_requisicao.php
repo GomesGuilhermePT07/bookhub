@@ -169,14 +169,15 @@ try {
         </body>
             <script>
                 function notificarUtilizador(userId, reqIds) {
-                    fetch('".SITE_URL."/ModuloProjeto/assets/php/notificar_requisicao.php', {
+                    fetch('<?= BASE_URL ?>/assets/php/notificar_requisicao.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
                             user_id: userId,
-                            req_ids: reqIds.split(',')
+                            req_ids: reqIds,
+                            token: 'bookhub_secret_token_123' // Mesmo token do config.php
                         })
                     })
                     .then(response => response.text())

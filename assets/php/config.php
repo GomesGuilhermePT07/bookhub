@@ -16,11 +16,15 @@ define('SMTP_PORT', 587);
 define('SMTP_USER', 'suporte.bookhub@gmail.com');
 define('SMTP_PASS', 'mxmkqzyajniojvpa'); // Senha de app
 
-if($_SESSION['admin'] == 1){
-    define('SITE_URL', 'http://localhost:8080/ModuloProjeto/index.php');
-} elseif ($_SESSION['admin'] == 0) {
-    define('SITE_URL', 'http://localhost:8080/ModuloProjeto/index_user.php');
-}
+// if($_SESSION['admin'] == 1){
+//     define('SITE_URL', 'http://localhost:8080/ModuloProjeto/index.php');
+// } elseif ($_SESSION['admin'] == 0) {
+//     define('SITE_URL', 'http://localhost:8080/ModuloProjeto/index_user.php');
+// }
+
+define('SITE_URL', 'http://localhost:8080/ModuloProjeto/index_user.php');
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+define('API_TOKEN', 'bookhub_secret_token_123');
