@@ -250,12 +250,12 @@ try {
                         <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
                         <td class="status-<?= str_replace('_', '', $req['status']) ?>">
                             <?php
-                            switch ($req['status']) {
-                                case 'pendente': echo "Pendente"; break;
-                                case 'pronto_para_levantar': echo "Pronto para Levantar"; break;
-                                case 'devolvido': echo "Devolvido"; break;
-                                default: echo $req['status'];
-                            }
+                                switch ($req['status']) {
+                                    case 'pendente': echo "Pendente"; break;
+                                    case 'pronto_para_levantar': echo "Pronto para Levantar"; break;
+                                    case 'devolvido': echo "Devolvido"; break;
+                                    default: echo $req['status'];
+                                }
                             ?>
                         </td>
                         <?php if($_SESSION['admin'] == 1): ?>
