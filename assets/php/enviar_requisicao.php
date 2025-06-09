@@ -113,7 +113,7 @@ try {
     // Dizer ao PHPMailer que o corpo é HTML (LINHA CRÍTICA!)
     $mail->isHTML(true);
 
-    $notifyUrl = SITE_URL . "/assets/php/notificar_requisicao.php?user_id=$userId&req_ids=" . implode(', ', $requisicoes);
+    $notifyUrl = BASE_URL . "/assets/php/notificar_requisicao.php?user_id=$userId&req_ids=" . implode(', ', $requisicoes);
     
     // Corpo do email
     $mail->Body = "
