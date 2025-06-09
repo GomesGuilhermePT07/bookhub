@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notificar Utilizador</title>
+    <title>BOOKhub | Notificar Utilizador</title>
     <style>
         body {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>Você está prestes a notificar o utilizador que os livros estão prontos para levantamento.</p>
         
         <form method="POST">
-            <button type="submit" class="btn">Confirmar e Enviar Notificação</button>
+            <button type="submit" class="btn">✔ Confirmar e Enviar Notificação</button>
         </form>
     </div>
 </body>
