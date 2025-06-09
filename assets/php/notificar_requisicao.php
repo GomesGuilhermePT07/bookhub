@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h2>Olá, {$user['nome_completo']}!</h2>
                 <p>Os seguintes livros estão prontos para serem levantados na biblioteca:</p>
                 <p>$livrosTexto</p>
-                <p><b>Local:</b> Biblioteca Central BOOKhub</p>
+                <p><b>Local:</b> Biblioteca Escolar</p>
                 <p><b>Horário:</b> 09:00 - 18:00 (Segunda a Sexta)</p>
                 <p>Por favor, traga um documento de identificação quando vier recolher os livros.</p>
             </body>
