@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $mail->setFrom(SMTP_USER, 'BOOKhub - Biblioteca');
         $mail->addAddress($user['email'], $user['nome_completo']);
-        $mail->Subject = 'Seus livros estão prontos para levantar!';
+        $mail->Subject = 'Os seus livros estão prontos para levantar!';
         $mail->isHTML(true);
         
         $livrosTexto = "• " . implode("<br>• ", $livros);
