@@ -22,7 +22,7 @@ define('SMTP_PASS', 'mxmkqzyajniojvpa'); // Senha de app
 //     define('SITE_URL', 'http://localhost:8080/ModuloProjeto/index_user.php');
 // }
 
-define('SITE_URL', 'http://localhost:8080/ModuloProjeto/index_user.php');
+define('BASE_URL', 'http://localhost:8080/ModuloProjeto');
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
