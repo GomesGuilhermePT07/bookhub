@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isbnInput) {
         isbnInput.addEventListener("input", () => {
             const isbn = isbnInput.value.trim();
-            if (isbn.length >= 10) {
+            if (isbn.length >= 15) {
                 fetchBookDetails(isbn);
             } else {
                 if (bookTitleInput) bookTitleInput.value = "";
