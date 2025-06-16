@@ -1,7 +1,7 @@
 <?php 
 
     require_once 'config.php';
-    $isbn = $_GET['isbn'] ?? '';
+    $isbn = isset($_GET['isbn']) ? $_GET['isbn'] : '';
 
     try {
         $stmt = $pdo->prepare("SELECT titulo, autor FROM livros WHERE cod_isbn = ?");
