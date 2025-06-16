@@ -265,6 +265,12 @@ try {
                                         Preparar Livro
                                     </a>
                                 <?php elseif ($req['status'] == 'pronto_para_levantar'): ?>
+                                    <button class="btn-acao entregar-livro" 
+                                            data-id="<?= $req['id'] ?>" 
+                                            data-isbn="<?= $req['cod_isbn'] ?>">
+                                        Entregar Livro ao Aluno
+                                    </button>
+                                <?php elseif ($req['status'] == 'com_o_aluno'): ?>
                                     <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
                                         Solicitar Devolução
                                     </a>
