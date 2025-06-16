@@ -23,7 +23,7 @@
 <!-- - acertar o slider -->
 <!-- - acertar a ordem de aparição dos elementos na página inicial
 - footer está acima dos livros -->
-- página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar!
+- página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar! (APENAS SE TIVER TEMPO)
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar) <!-- COMENTAR A PARTE DA PASSWORD -->
