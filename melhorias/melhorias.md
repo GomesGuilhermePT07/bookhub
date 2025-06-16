@@ -26,7 +26,7 @@
 - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar!
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar)
+VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar) <!-- COMENTAR A PARTE DA PASSWORD -->
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -61,7 +61,7 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
 <!-- - "detalhes_conta.php" não mostra a quantidade de artigos -->
 <!-- - só pode adicionar livro ao site se estiver logado como administrador -->
 <!-- - melhorar a aparência do slider -->
-- botão de "adicionar ao carrinho" apenas na página de cada livro detalhadamente
+<!-- - botão de "adicionar ao carrinho" apenas na página de cada livro detalhadamente -->
 <!-- - acertar o header com a cena da percentagem adicionada -->
 
 
