@@ -281,12 +281,121 @@ try {
                 <?php endforeach; ?>
             </tbody>
         </table>
+
+        <dialog id="entregaModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+            <div style="background-color: #fff; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 50%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); position: relative;">
+                <span id="closeEntregaModal" style="position: absolute; top: 10px; right: 15px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+                
+                <h2>Entregar Livro ao Aluno</h2>
+                
+                <div style="display: flex; gap: 20px; margin: 20px 0;">
+                    <img id="capaLivro" src="" alt="Capa do Livro" style="max-width: 150px; max-height: 200px; border: 1px solid #ddd; border-radius: 4px;">
+                    <div>
+                        <p><strong>Título:</strong> <span id="tituloLivro"></span></p>
+                        <p><strong>Autor:</strong> <span id="autorLivro"></span></p>
+                        <p><strong>ISBN:</strong> <span id="isbnLivro"></span></p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                    <button id="btnCancelarEntrega" style="padding: 8px 16px; background-color: #e0e0e0; border: none; border-radius: 4px; cursor: pointer;">Cancelar</button>
+                    <button id="btnConfirmarEntrega" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">Confirmar Entrega</button>
+                </div>
+            </div>
+        </dialog>
+
+        <script>
+            // Elementos do modal
+            const entregaModal = document.getElementById('entregaModal');
+            const closeEntregaModal = document.getElementById('closeEntregaModal');
+            const btnCancelarEntrega = document.getElementById('btnCancelarEntrega');
+            const btnConfirmarEntrega = document.getElementById('btnConfirmarEntrega');
+            
+            // Variáveis para armazenar dados da requisição
+            let requisicaoId = null;
+
+            // Função para abrir o modal de entrega
+            function abrirModalEntrega(id, isbn) {
+                requisicaoId = id;
+                
+                // Buscar detalhes do livro do banco de dados
+                fetch(`assets/php/buscar_livro.php?isbn=${isbn}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('tituloLivro').textContent = data.titulo;
+                        document.getElementById('autorLivro').textContent = data.autor;
+                        document.getElementById('isbnLivro').textContent = isbn;
+                        
+                        // Buscar capa do livro na Google Books API
+                        fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+                            .then(res => res.json())
+                            .then(googleData => {
+                                if (googleData.items && googleData.items[0].volumeInfo.imageLinks) {
+                                    document.getElementById('capaLivro').src = 
+                                        googleData.items[0].volumeInfo.imageLinks.thumbnail;
+                                } else {
+                                    document.getElementById('capaLivro').src = 'https://via.placeholder.com/128x186';
+                                }
+                            })
+                            .catch(() => {
+                                document.getElementById('capaLivro').src = 'https://via.placeholder.com/128x186';
+                            });
+                        
+                        entregaModal.style.display = 'block';
+                    });
+            }
+
+            // Fechar modal
+            closeEntregaModal.onclick = function() {
+                entregaModal.style.display = 'none';
+            }
+            
+            btnCancelarEntrega.onclick = function() {
+                entregaModal.style.display = 'none';
+            }
+
+            // Confirmar entrega
+            btnConfirmarEntrega.onclick = function() {
+                if (requisicaoId) {
+                    fetch(`assets/php/entregar_livro.php?id=${requisicaoId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Livro entregue com sucesso!');
+                                location.reload();
+                            } else {
+                                alert('Erro ao entregar livro: ' + data.error);
+                            }
+                        });
+                }
+                entregaModal.style.display = 'none';
+            }
+
+            // Fechar modal se clicar fora
+            window.onclick = function(event) {
+                if (event.target == entregaModal) {
+                    entregaModal.style.display = 'none';
+                }
+            }
+
+            // Adicionar event listeners aos botões de entrega
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.entregar-livro').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        const isbn = this.dataset.isbn;
+                        abrirModalEntrega(id, isbn);
+                    });
+                });
+            });
+        </script>
+
     </main>
     <footer>
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados</p>
     </footer>
 
-    <script>
+    <!-- <script>
         // Elementos do modal
         const modal = document.getElementById('entregaModal');
         const closeModal = document.querySelector('.close-modal');
@@ -363,6 +472,6 @@ try {
                 modal.style.display = 'none';
             }
         }
-    </script>
+    </script> -->
 </body>
 </html>
