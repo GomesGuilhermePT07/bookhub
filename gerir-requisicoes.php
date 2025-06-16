@@ -143,6 +143,7 @@ try {
                     </svg>
                 </a>
             <?php endif; ?> -->
+            <!-- isto é um teste -->
 
             <!-- <?php if ($_SESSION['admin'] == 1): ?>
                 <a href="./estatisticas.php" class="nav-links">
