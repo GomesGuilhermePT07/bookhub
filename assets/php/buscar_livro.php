@@ -3,6 +3,12 @@ require_once 'config.php';
 
 $isbn = isset($_GET['isbn']) ? $_GET['isbn'] : '';
 
+if (empty($isbn)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'ISBN não especificado']);
+    exit;
+}
+
 try {
     $stmt = $pdo->prepare("SELECT titulo, autor FROM livros WHERE cod_isbn = ?");
     $stmt->execute([$isbn]);
