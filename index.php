@@ -233,7 +233,7 @@ if (isset($_SESSION['id'])) {
                         <button type="button" name="submit" id="closeModal" class="modal-buttons1">Fechar</button>
                     </div>
                 </div>
-            </div>                
+            </div>
         </dialog>
         </form>
     <footer>
