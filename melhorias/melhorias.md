@@ -23,6 +23,7 @@
 <!-- - acertar o slider -->
 <!-- - acertar a ordem de aparição dos elementos na página inicial
 - footer está acima dos livros -->
+- modal do resumo completo não abre (CORRIGIR URGENTEMENTE, mas não tão urgentemente)
 - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar! (APENAS SE TIVER TEMPO)
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
