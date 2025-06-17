@@ -158,8 +158,8 @@ try {
         }
 
         .book-cover {
-            max-width: 150px;
-            max-height: 200px;
+            max-width: 160px;
+            max-height: 220px;
             border-radius: 5px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             border: 1px solid #ddd;
@@ -194,15 +194,18 @@ try {
         .modal-footer {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
+            gap: 20px;
             margin-top: 20px;
             padding-top: 15px;
             border-top: 1px solid #eee;
         }
 
         .modal-btn {
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 30px;
+            border-radius: 1.1rem;
+            border-radius: 6px;
+            min-width: 150px;
+            font-size: .9rem;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
