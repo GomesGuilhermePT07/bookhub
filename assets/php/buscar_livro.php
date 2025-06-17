@@ -1,7 +1,7 @@
 <?php 
 require_once 'config.php';
 
-$isbn = isset($_GET['isbn']) ? $_GET['isbn'] : '';
+$isbn = isset($_GET['isbn']) ? trim($_GET['isbn']) : '';
 
 if (empty($isbn)) {
     http_response_code(400);
