@@ -253,6 +253,7 @@ try {
                                 switch ($req['status']) {
                                     case 'pendente': echo "Pendente"; break;
                                     case 'pronto_para_levantar': echo "Pronto para Levantar"; break;
+                                    case 'com_o_aluno': echo "Com o Aluno"; break;
                                     case 'devolvido': echo "Devolvido"; break;
                                     default: echo $req['status'];
                                 }
