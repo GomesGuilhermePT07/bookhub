@@ -1,24 +1,24 @@
 <?php 
+require_once 'config.php';
 
-    require_once 'config.php';
-    $isbn = isset($_GET['isbn']) ? $_GET['isbn'] : '';
+$isbn = isset($_GET['isbn']) ? $_GET['isbn'] : '';
 
-    try {
-        $stmt = $pdo->prepare("SELECT titulo, autor FROM livros WHERE cod_isbn = ?");
-        $stmt->execute([$isbn]);
-        $livro = $stmt->fetch(PDO::FETCH_ASSOC);
+try {
+    $stmt = $pdo->prepare("SELECT titulo, autor FROM livros WHERE cod_isbn = ?");
+    $stmt->execute([$isbn]);
+    $livro = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($livro) {
-            header('Content-Type: application/json');
-            echo json_encode([
-                'titulo' => $livro['titulo'],
-                'autor' => $livro['autor']
-            ]);
-        } else {
-            http_response_code(404);
-            echo json_encode(['error' => 'Livro não encontrado']);
-        }
-    } catch (PDOException $e) {
-        http_response_code(500);
-        echo json_encode(['error' => 'Erro no servidor: ' . $e->getMessage()]);
+    if ($livro) {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'titulo' => $livro['titulo'],
+            'autor' => $livro['autor']
+        ]);
+    } else {
+        http_response_code(404);
+        echo json_encode(['error' => 'Livro não encontrado']);
     }
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Erro no servidor: ' . $e->getMessage()]);
+}
