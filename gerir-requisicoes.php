@@ -242,10 +242,11 @@ try {
                 </div>
             </div>
         </dialog>
-
     </main>
     <footer>
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados</p>
     </footer>
+
+    <script src="./assets/js/gerir-requisicoes.js"></script>
 </body>
 </html>
