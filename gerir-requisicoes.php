@@ -12,7 +12,7 @@ require_once 'assets/php/check_login.php';
 // Buscar todas as requisições
 try {
     $stmt = $pdo->prepare("
-        SELECT r.id, u.nome_completo AS utilizador, l.titulo, r.data_requisicao, r.status 
+        SELECT r.id, u.nome_completo AS utilizador, l.titulo, l.cod_isbn, r.data_requisicao, r.status 
         FROM requisicoes r
         JOIN utilizadores u ON r.id_utilizador = u.id
         JOIN livros l ON r.cod_isbn = l.cod_isbn
@@ -321,7 +321,12 @@ try {
                 
                 // Buscar detalhes do livro do banco de dados
                 fetch(`assets/php/buscar_livro.php?isbn=${isbn}`)
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na rede');
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         document.getElementById('tituloLivro').textContent = data.titulo;
                         document.getElementById('autorLivro').textContent = data.autor;
@@ -331,7 +336,7 @@ try {
                         fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
                             .then(res => res.json())
                             .then(googleData => {
-                                if (googleData.items && googleData.items[0].volumeInfo.imageLinks) {
+                                if (googleData.items && googleData.items[0]?.volumeInfo?.imageLinks?.thumbnail) {
                                     document.getElementById('capaLivro').src = 
                                         googleData.items[0].volumeInfo.imageLinks.thumbnail;
                                 } else {
@@ -343,6 +348,10 @@ try {
                             });
                         
                         entregaModal.style.display = 'block';
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar livro:', error);
+                        alert('Erro ao carregar detalhes do livro');
                     });
             }
 
