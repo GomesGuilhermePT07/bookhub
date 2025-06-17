@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
 
 $id = isset($_GET['id']) ? trim($_GET['id']) : '';
 
-if (!$id) {
+if (empty($id)) {
     die(json_encode(['success' => false, 'error' => 'ID não especificado.']));
 }
 
