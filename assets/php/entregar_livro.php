@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     die(json_encode(['success' => false, 'error' => 'Acesso negado.']));
 }
 
-$id = isset($_GET['id']) ? $_GET['id'] : '';
+$id = isset($_GET['id']) ? trim($_GET['id']) : '';
 
 if (!$id) {
     die(json_encode(['success' => false, 'error' => 'ID não especificado.']));
