@@ -411,24 +411,28 @@ try {
             </tbody>
         </table>
 
-        <dialog id="entregaModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-            <div style="background-color: #fff; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 50%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); position: relative;">
-                <span id="closeEntregaModal" style="position: absolute; top: 10px; right: 15px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <dialog id="entregaModal" class="modal-overlay">
+            <div class="modal-content">
+                <span id="closeEntregaModal" class="modal-close">&times;</span>
                 
-                <h2>Entregar Livro ao Aluno</h2>
+                <div class="modal-header">
+                    <h2>Entregar Livro ao Aluno</h2>
+                </div>
                 
-                <div style="display: flex; gap: 20px; margin: 20px 0;">
-                    <img id="capaLivro" src="" alt="Capa do Livro" style="max-width: 150px; max-height: 200px; border: 1px solid #ddd; border-radius: 4px;">
-                    <div>
+                <div class="modal-body">
+                    <div class="book-cover">
+                        <img id="capaLivro" src="" alt="Capa do Livro">
+                    </div>
+                    <div class="book-details">
                         <p><strong>Título:</strong> <span id="tituloLivro"></span></p>
                         <p><strong>Autor:</strong> <span id="autorLivro"></span></p>
                         <p><strong>ISBN:</strong> <span id="isbnLivro"></span></p>
                     </div>
                 </div>
                 
-                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
-                    <button id="btnCancelarEntrega" style="padding: 8px 16px; background-color: #e0e0e0; border: none; border-radius: 4px; cursor: pointer;">Cancelar</button>
-                    <button id="btnConfirmarEntrega" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">Confirmar Entrega</button>
+                <div class="modal-footer">
+                    <button id="btnCancelarEntrega" class="modal-btn modal-btn-cancel">Cancelar</button>
+                    <button id="btnConfirmarEntrega" class="modal-btn modal-btn-confirm">Confirmar Entrega</button>
                 </div>
             </div>
         </dialog>
