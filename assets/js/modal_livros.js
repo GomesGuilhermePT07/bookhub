@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     bookImage.src = "https://via.placeholder.com/128x186";
                 }
             } else {
-                alert("Nenhum livro encontrado com este ISBN.");
+                // alert("Nenhum livro encontrado com este ISBN.");
             }
         } catch (error) {
             console.error("Erro ao buscar os detalhes do livro:", error);
