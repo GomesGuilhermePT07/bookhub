@@ -212,9 +212,15 @@ try {
                                         Entregar Livro ao Aluno
                                     </button>
                                 <?php elseif ($req['status'] == 'com_o_aluno'): ?>
-                                    <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
-                                        Solicitar Devolução
-                                    </a>
+                                    <?php if ($req['data_devolucao'] == '0000-00-00 00:00:00'): ?>
+                                        <a href="assets/php/concluir_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                            Confirmar Entrega
+                                        </a>
+                                    <?php else: ?>
+                                        <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
+                                            Solicitar Devolução
+                                        </a>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </td>
                         <?php endif; ?>
