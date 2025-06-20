@@ -12,6 +12,11 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     die("Acesso negado.");
 }
 
+// Verificar se o ID foi fornecido
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    die("ID da requisição não especificado.");
+}
+
 $idRequisicao = $_GET['id'];
 
 try {
