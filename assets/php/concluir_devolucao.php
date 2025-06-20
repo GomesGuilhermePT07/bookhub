@@ -13,7 +13,13 @@ try {
     $pdo->beginTransaction();
 
     // Verificar se a devolução foi solicitada
-    
+    $checkStmt = $pdo->prepare("
+        SELECT cod_isbn
+        FROM requisicoes
+        WHERE id = ?
+        AND status = 'com_o_aluno'
+        AND data_devolucao = '0000-00-00 00:00:00'
+    ");
 
     // Atualizar status
     $stmt = $pdo->prepare("
