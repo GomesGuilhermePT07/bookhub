@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
 $idRequisicao = $_GET['id'];
 
 try {
-    // Buscar dados do usuário
+    // Buscar dados do utilizador
     $stmt = $pdo->prepare("
         SELECT u.email, u.nome_completo, l.titulo 
         FROM requisicoes r 
@@ -21,7 +21,7 @@ try {
     $stmt->execute([$idRequisicao]);
     $dados = $stmt->fetch();
 
-    // Enviar email para o usuário
+    // Enviar email para o utilizador
     if ($dados) {
         $to = $dados['email'];
         $subject = "Solicitação de Devolução de Livro";
