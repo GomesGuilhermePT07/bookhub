@@ -18,7 +18,7 @@ try {
         FROM requisicoes
         WHERE id = ?
         AND status = 'com_o_aluno'
-        AND data_devolucao = '0000-00-00 00:00:00'
+        AND data_devolucao = '1970-01-01 00:00:01'
     ");
     $checkStmt->execute([$idRequisicao]);
     $requisicao = $checkStmt->fetch();
