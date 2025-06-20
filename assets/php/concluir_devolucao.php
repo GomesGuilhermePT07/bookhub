@@ -21,6 +21,7 @@ try {
         AND data_devolucao = '0000-00-00 00:00:00'
     ");
     $checkStmt->execute([$idRequisicao]);
+    $requisicao = $checkStmt->fetch();
 
     // Atualizar status
     $stmt = $pdo->prepare("
