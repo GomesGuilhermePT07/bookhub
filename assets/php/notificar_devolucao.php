@@ -39,7 +39,7 @@ try {
     // Marcar como devolução solicitada
     $updateStmt = $pdo->prepare("
         UPDATE requisicoes
-        SET data_devolucao = '0000-00-00 00:00:00'
+        SET data_devolucao = '1970-01-01 00:00:01'
         WHERE id = ?
     ");
     $updateStmt->execute([$idRequisicao]);
