@@ -26,8 +26,8 @@ try {
         $to = $dados['email'];
         $subject = "Solicitação de Devolução de Livro";
         $message = "Olá {$dados['nome_completo']},\n\n";
-        $message .= "O prazo para o livro '{$dados['titulo']}' está terminando.\n";
-        $message .= "Por favor, devolva o livro na biblioteca o mais breve possível.\n\n";
+        $message .= "O prazo para o livro '{$dados['titulo']}' está a acabar.\n";
+        $message .= "Por favor, devolva o livro na biblioteca o mais brevemente possível.\n\n";
         $message .= "Atenciosamente,\nEquipe BOOKhub";
         
         $headers = "From: bookhub.adm1@gmail.com" . "\r\n" .
@@ -35,6 +35,9 @@ try {
         
         mail($to, $subject, $message, $headers);
     }
+
+    // Marcar como devolução solicitada
+    
 
     header("Location: ../../gerir-requisicoes.php?success=2");
 } catch (Exception $e) {
