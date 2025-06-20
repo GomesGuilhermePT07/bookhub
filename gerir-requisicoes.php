@@ -186,7 +186,7 @@ try {
                         <td class="status-<?= str_replace('_', '', $req['status']) ?>">
                             <?php
                                 // Verificar se é uma devolução solicitada
-                                if ($req['status'] == 'com_o_aluno' && $req['data_devolucao'] == '0000-00-00 00:00:00') {
+                                if ($req['status'] == 'com_o_aluno' && $req['data_devolucao'] == '1970-01-01 00:00:01') {
                                     echo "Devolução Solicitada!";
                                 } else {
                                     switch ($req['status']) {
