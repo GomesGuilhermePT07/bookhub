@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'config.php';
+require_once '../../vendor/autoload.php';
 
 // Verificar admin
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
