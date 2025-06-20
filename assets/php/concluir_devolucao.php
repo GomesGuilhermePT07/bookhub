@@ -12,6 +12,9 @@ $idRequisicao = $_GET['id'];
 try {
     $pdo->beginTransaction();
 
+    // Verificar se a devolução foi solicitada
+    
+
     // Atualizar status
     $stmt = $pdo->prepare("
         UPDATE requisicoes 
