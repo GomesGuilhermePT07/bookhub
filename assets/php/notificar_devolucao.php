@@ -37,7 +37,11 @@ try {
     }
 
     // Marcar como devolução solicitada
-    
+    $updateStmt = $pdo->prepare("
+        UPDATE requisicoes
+        SET data_devolucao = '0000-00-00 00:00:00'
+        WHERE id = ?
+    ");
 
     header("Location: ../../gerir-requisicoes.php?success=2");
 } catch (Exception $e) {
