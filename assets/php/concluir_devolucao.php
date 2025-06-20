@@ -59,6 +59,7 @@ try {
         SET disponivel = disponivel + 1 
         WHERE cod_isbn = ?   
     ");
+    $updateStmt->execute([$idRequisicao['cod_isbn']]);
 
     $pdo->commit();
     header("Location: /ModuloProjeto/gerir-requisicoes.php?success=3");
