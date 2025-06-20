@@ -23,6 +23,10 @@ try {
     $checkStmt->execute([$idRequisicao]);
     $requisicao = $checkStmt->fetch();
 
+    if (!$requisicao) {
+        die("Não é possível concluir: devolução não solicitada ou já processada.");
+    }
+
     // Atualizar status
     $stmt = $pdo->prepare("
         UPDATE requisicoes 
