@@ -155,11 +155,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="box-img-header">
             <?php if ($_SESSION['admin'] == 1): ?>
                 <a href="index.php">
-                    <img class="img-logo" src="assets/img/bookhubFavicon.png" height="80" width="80" alt="Logo BOOKhub">
+                    <img class="img-logo" src="../img/bookhubFavicon.png" height="80" width="80" alt="Logo BOOKhub">
                 </a>
             <?php elseif ($_SESSION['admin'] == 0): ?>
                 <a href="index_user.php">
-                    <img class="img-logo" src="assets/img/bookhubFavicon.png" height="80" width="80" alt="Logo BOOKhub">
+                    <img class="img-logo" src="../img/bookhubFavicon.png" height="80" width="80" alt="Logo BOOKhub">
                 </a>
             <?php endif; ?>
         </div>
