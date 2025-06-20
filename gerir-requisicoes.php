@@ -12,7 +12,8 @@ require_once 'assets/php/check_login.php';
 // Buscar todas as requisições
 try {
     $stmt = $pdo->prepare("
-        SELECT r.id, u.nome_completo AS utilizador, l.titulo, l.cod_isbn, r.data_requisicao, r.status 
+        SELECT r.id, u.nome_completo AS utilizador, l.titulo, l.cod_isbn, 
+               r.data_requisicao, r.status, r.data_devolucao 
         FROM requisicoes r
         JOIN utilizadores u ON r.id_utilizador = u.id
         JOIN livros l ON r.cod_isbn = l.cod_isbn
@@ -184,12 +185,17 @@ try {
                         <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
                         <td class="status-<?= str_replace('_', '', $req['status']) ?>">
                             <?php
-                                switch ($req['status']) {
-                                    case 'pendente': echo "Pendente"; break;
-                                    case 'pronto_para_levantar': echo "Pronto para Levantar"; break;
-                                    case 'com_o_aluno': echo "Com o Aluno"; break;
-                                    case 'devolvido': echo "Devolvido"; break;
-                                    default: echo $req['status'];
+                                // Verificar se é uma devolução solicitada
+                                if ($req['status'] == 'com_o_aluno' && $req['data_devolucao'] == '0000-00-00 00:00:00') {
+                                    echo "Devolução Solicitada!";
+                                } else {
+                                    switch ($req['status']) {
+                                        case 'pendente': echo "Pendente"; break;
+                                        case 'pronto_para_levantar': echo "Pronto para Levantar"; break;
+                                        case 'com_o_aluno': echo "Com o Aluno"; break;
+                                        case 'devolvido': echo "Devolvido"; break;
+                                        default: echo $req['status'];
+                                    }
                                 }
                             ?>
                         </td>
