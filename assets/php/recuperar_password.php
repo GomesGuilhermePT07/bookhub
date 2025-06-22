@@ -17,9 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Inserir token na base de dados
             $stmt = $pdo->prepare("REPLACE INTO password_resets (email, token, expira_em) VALUES (?, ?, ?)");
             $stmt->execute([$email, $token, $expira_em]);
-
-            // Enviar email (configure o PHPMailer corretamente)
-            // ... [seu código de email aqui]
             
             echo "Um link de redefinição foi enviado para " . htmlspecialchars($email);
         } else {
