@@ -110,40 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index_style.css">
+    <link rel="stylesheet" href="../css/notificar_requisicao.css">
     <title>BOOKhub | Notificar Utilizador</title>
-    <style>
-        body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-            margin: 0 auto;
-        }
-        .container {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        .btn {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn:hover {
-            background-color: #218838;
-        }
-        .error {
-            color: #dc3545;
-            padding: 10px;
-            background: #f8d7da;
-            border-radius: 4px;
-        }
-    </style>
 </head>
 <body>
     <header>
