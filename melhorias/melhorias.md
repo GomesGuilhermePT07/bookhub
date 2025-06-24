@@ -72,6 +72,7 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
  -> adicionar modal na confirmação da devolução do livro
  -> adicionar prazo de 20 minutos na requisição do livro
  -> registo sem dados nenhuns passa para "assets/php/captar_registo.php" com mensagem de erro "Query failed: SQLSTATE[23000]: Integrity constraint violation: 1048 Unknown error 1048"
+ -> modal do resumo completo não abre quando os detalhes do livro são buscados pela API 
  
 
 
