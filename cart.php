@@ -271,7 +271,7 @@
                 e.preventDefault();
                 const isbn = this.dataset.isbn;
                 
-                if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
+                // if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
                     fetch(`assets/php/remove_from_cart.php?isbn=${isbn}`)
                     .then(response => response.json())
                     .then(data => {
@@ -296,7 +296,7 @@
                             alert(data.message);
                         }
                     });
-                }
+                // }
             });
         });
 
