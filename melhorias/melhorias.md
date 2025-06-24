@@ -65,7 +65,13 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
 <!-- - botão de "adicionar ao carrinho" apenas na página de cada livro detalhadamente -->
 <!-- - acertar o header com a cena da percentagem adicionada -->
 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+ <!-- -> adicionar livro ao carrinho passa para outra página com a mensagem de sucesso (feito) -->
+ <!-- -> palavra passe errada no login passa para uma página a dizer palavra passe errada (feito) -->
+ -> adicionar modal na confirmação da devolução do livro
+ -> adicionar prazo de 20 minutos na requisição do livro
+ 
 
 
 
