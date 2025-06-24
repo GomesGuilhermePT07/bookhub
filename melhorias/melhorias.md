@@ -78,8 +78,6 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
  -> botão "salvar alterações" submete logo o modal e guarda logo o livro
  
 
-
-
 # ----------------------------//ERROS E MELHORIAS\\-------------------------------
 
 # SISTEMA DE GERENCIAMENTO DE REQUISIÇÕES: 
