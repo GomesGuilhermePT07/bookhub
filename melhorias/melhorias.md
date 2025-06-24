@@ -75,6 +75,7 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
  <!-- -> modal do resumo completo não abre quando os detalhes do livro são buscados pela API  -->
  -> erros do servidor no modal do livro é para serem removidos 
  -> modal do resumo completo tem 2 botões iguais de "Salvar alterações"
+ -> botão "salvar alterações" submete logo o modal e guarda logo o livro
  
 
 
