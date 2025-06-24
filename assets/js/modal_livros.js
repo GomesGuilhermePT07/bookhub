@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const editableTextarea = document.getElementById("editableTextarea");
             if (editableTextarea && textarea) {
                 textarea.value = editableTextarea.value;
-                alert("Resumo atualizado com sucesso!");
+                // alert("Resumo atualizado com sucesso!");
                 textModal.close();
             }
         });
@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     bookImage.src = "https://via.placeholder.com/128x186";
                 }
             } else {
-                alert("Nenhum livro encontrado com este ISBN.");
+                // alert("Nenhum livro encontrado com este ISBN.");
             }
         } catch (error) {
             console.error("Erro ao buscar os detalhes do livro:", error);
-            alert("Erro ao buscar os detalhes do livro. Tente novamente.");
+            // alert("Erro ao buscar os detalhes do livro. Tente novamente.");
         }
     }
 
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     fullTextContent.appendChild(editableTextarea);
                     textModal.showModal();
                 } else {
-                    alert("O campo de resumo está vazio!");
+                    // alert("O campo de resumo está vazio!");
                 }
             }
         });
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 bookImage.src = "https://via.placeholder.com/128x186";
                 quantity.value = 1;
             } else {
-                alert("Por favor, preencha todos os campos.");
+                // alert("Por favor, preencha todos os campos.");
             }
         };
     }
