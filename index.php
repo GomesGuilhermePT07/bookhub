@@ -187,7 +187,7 @@ if (isset($_SESSION['id'])) {
                     <div class="book-summary">
                         <label for="summary" class="summary-label">Resumo</label>
                         <textarea id="summary" name="summary" rows="4" placeholder="Resumo..." required></textarea>
-                        <button id="viewFullText" class="view-icon-btn" title="Ver resumo completo">
+                        <button type="button" id="viewFullText" class="view-icon-btn" title="Ver resumo completo">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
