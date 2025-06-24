@@ -20,7 +20,7 @@ form.addEventListener("submit", (event) => {
     // Se algum campo for invalido, provine o envio
     if (!formIsValid) {
         event.preventDefault();
-        alert("Por favor, corrija os campos destacados em vermelho!");
+        // alert("Por favor, corrija os campos destacados em vermelho!");
     }
 });
 
