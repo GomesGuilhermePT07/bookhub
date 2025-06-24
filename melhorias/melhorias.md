@@ -71,7 +71,7 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
  <!-- -> palavra passe errada no login passa para uma página a dizer palavra passe errada (feito) -->
  -> adicionar modal na confirmação da devolução do livro
  -> adicionar prazo de 20 minutos na requisição do livro
- -> registo sem dados nenhuns passa para "assets/php/captar_registo.php" com mensagem de erro "Query failed: SQLSTATE[23000]: Integrity constraint violation: 1048 Unknown error 1048"
+ <!-- -> registo sem dados nenhuns passa para "assets/php/captar_registo.php" com mensagem de erro "Query failed: SQLSTATE[23000]: Integrity constraint violation: 1048 Unknown error 1048" -->
  -> modal do resumo completo não abre quando os detalhes do livro são buscados pela API 
  -> erros no modal do livro é para serem removidos 
  
