@@ -65,7 +65,8 @@ try {
     echo json_encode([
         'status' => 'success', 
         'cartCount' => $cartCount,
-        'message' => 'Livro adicionado ao carrinho'
+        'message' => 'Livro adicionado ao carrinho',
+        header("Location: ../../livros.php")
     ]);
 } catch (PDOException $e) {
     echo json_encode(['status' => 'error', 'message' => 'Erro ao adicionar ao carrinho']);
