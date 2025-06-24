@@ -5,6 +5,8 @@ const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 const passwordFields = document.querySelectorAll('input[type="password"]');
 const toggleIcons = document.querySelectorAll('.password-toggle-icon i');
 
+let formIsValid = true;
+
 form.addEventListener("submit", (event) => {
     nameValidate();
     emailValidate();
