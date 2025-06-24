@@ -8,10 +8,20 @@ const toggleIcons = document.querySelectorAll('.password-toggle-icon i');
 let formIsValid = true;
 
 form.addEventListener("submit", (event) => {
+    // Reseta o estado de validação
+    formIsValid = true;
+
+    // Executa todas as validações
     nameValidate();
     emailValidate();
     mainPasswordValidate();
     comparePassword();
+
+    // Se algum campo for invalido, provine o envio
+    if (!formIsValid) {
+        event.preventDefault();
+        alert("Por favor, corrija os campos destacados em vermelho!");
+    }
 });
 
 toggleIcons.forEach((icon, index) => {
