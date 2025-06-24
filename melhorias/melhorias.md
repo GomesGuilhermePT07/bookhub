@@ -24,14 +24,14 @@
 <!-- - acertar a ordem de aparição dos elementos na página inicial
 - footer está acima dos livros -->
 - modal do resumo completo não abre (CORRIGIR URGENTEMENTE, mas não tão urgentemente)
-- página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar! (APENAS SE TIVER TEMPO)
+<!-- - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar! (APENAS SE TIVER TEMPO) -->
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar) <!-- COMENTAR A PARTE DA PASSWORD -->
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-O MESMO LIVRO NÃO PODE SER ADICIONADO A CARRINHOS DIFERENTES PORQUE SÓ HÁ UM DE QUANTIDADE DISPONÍVEL!!
+<!-- O MESMO LIVRO NÃO PODE SER ADICIONADO A CARRINHOS DIFERENTES PORQUE SÓ HÁ UM DE QUANTIDADE DISPONÍVEL!! -->
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
