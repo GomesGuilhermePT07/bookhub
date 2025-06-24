@@ -41,6 +41,7 @@ toggleIcons.forEach((icon, index) => {
 function setError(index){
     campos[index].style.border = '2px solid #e63636';
     spans[index].style.display = 'block';
+    formIsValid = false; // Marca o formulário como inválido
 }
 
 function removeError(index){
