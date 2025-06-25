@@ -55,6 +55,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>BOOKhub | Nova Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/login_style.css">
 </head>
 <body>
@@ -71,14 +72,29 @@ try {
             <form method="POST" class="password-reset-form"> <!-- Adicionar classe -->
                 <input type="hidden" name="token" value="<?php echo htmlspecialchars(isset($_GET['token']) ? $_GET['token'] : '', ENT_QUOTES, 'UTF-8'); ?>">
                 
-                <div class="password-input-group"> <!-- Alterar classe -->
-                    <i class="fa fa-lock"></i>
-                    <input type="password" name="nova_password" placeholder="Nova password" required minlength="8">
+                <div class="password-input-group">
+                    <i class="fas fa-lock"></i>
+                    <input id="nova_password" type="password" name="nova_password" placeholder="Nova password" required minlength="8">
+                    <span id="togglePassword" style="position:absolute; top:50%; right:60px; transform:translateY(-50%); cursor:pointer;">
+                        <i class="fas fa-eye"></i>
+                    </span>
                 </div>
                 
                 <button type="submit" class="password-reset-btn">Alterar Password</button> <!-- Adicionar classe -->
             </form>
         <?php endif; ?>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('nova_password');
+            const toggle = document.getElementById('togglePassword');
+            toggle.addEventListener('click', () => {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                toggle.querySelector('i').classList.toggle('fa-eye');
+                toggle.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        });
+    </script>
 </body>
 </html>
