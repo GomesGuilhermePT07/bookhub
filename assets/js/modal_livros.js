@@ -21,18 +21,29 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(bookListContainer);
 
     // Criar botão para salvar alterações do resumo
-    if (textModal) {
-        const saveTextModalBtn = document.createElement("button");
-        saveTextModalBtn.textContent = "Salvar alterações";
-        saveTextModalBtn.classList.add("modal-save-btn");
-        saveTextModalBtn.style.marginTop = "10px";
-        textModal.appendChild(saveTextModalBtn);
+    // if (textModal) {
+    //     const saveTextModalBtn = document.createElement("button");
+    //     saveTextModalBtn.textContent = "Salvar alterações";
+    //     saveTextModalBtn.classList.add("modal-save-btn");
+    //     saveTextModalBtn.style.marginTop = "10px";
+    //     textModal.appendChild(saveTextModalBtn);
 
+    //     saveTextModalBtn.addEventListener("click", () => {
+    //         const editableTextarea = document.getElementById("editableTextarea");
+    //         if (editableTextarea && textarea) {
+    //             textarea.value = editableTextarea.value;
+    //             // alert("Resumo atualizado com sucesso!");
+    //             textModal.close();
+    //         }
+    //     });
+    // }
+
+    const saveTextModalBtn = document.getElementById("saveTextModal"); // Adicione este ID no HTML
+    if (saveTextModalBtn) {
         saveTextModalBtn.addEventListener("click", () => {
             const editableTextarea = document.getElementById("editableTextarea");
             if (editableTextarea && textarea) {
                 textarea.value = editableTextarea.value;
-                // alert("Resumo atualizado com sucesso!");
                 textModal.close();
             }
         });
