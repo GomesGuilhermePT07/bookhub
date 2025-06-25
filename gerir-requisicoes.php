@@ -7,7 +7,7 @@ require_once 'assets/php/check_login.php';
 try {
     $stmt = $pdo->prepare(
         "SELECT r.id, u.nome_completo AS utilizador, l.titulo, l.cod_isbn, 
-               r.data_requisicao, r.status, r.data_devolucao 
+               r.data_requisicao, r.status, r.data_devolucao, r.prazo_devolucao 
         FROM requisicoes r
         JOIN utilizadores u ON r.id_utilizador = u.id
         JOIN livros l ON r.cod_isbn = l.cod_isbn
