@@ -49,17 +49,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Conteúdo
                 $mail->isHTML(true);
-                $mail->Subject = 'Redefinir Senha';
+                $mail->Subject = 'Redefinir password';
                 $reset_link = "http://" . $_SERVER['HTTP_HOST'] . "/ModuloProjeto/logins/reset_password.php?token=" . $token;
                 $mail->Body = "
                     <h3>Redefinição de Password</h3>
-                    <p>Clique no link abaixo para redefinir sua password:</p>
+                    <p>Clique no link abaixo para redefinir a sua password:</p>
                     <p><a href='$reset_link'>Redefinir Password</a></p>
                     <p><small>Este link expira em 1 hora</small></p>
                 ";
 
                 if ($mail->send()) {
-                    $message = "<div class='success'>Email enviado! Verifique sua caixa de entrada.</div>";
+                    $message = "<div class='success'>Email enviado! Verifique a sua caixa de entrada.</div>";
                 }
             } catch (Exception $e) {
                 $message = "<div class='error'>Erro no envio: " . $mail->ErrorInfo . "</div>";
@@ -76,21 +76,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <title>Recuperar Senha</title>
+    <title>BOOKhub | Recuperar password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/login_style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>Recuperação de Senha</h1>
+    <div class="logo">
+        <img src="../assets/img/Logotipo_Bookhub.png" alt="Bookhub Logo" class="logo-img">
+    </div>
+    
+    <div class="password-container">
+        <div class="password-header">
+            <h1>Recuperação de password</h1>
+            <p>Digite o seu email para receber instruções de redefinição de password</p>
+        </div>
+        
         <?= $message ?>
-        <form method="POST" action="">
-            <div class="input-container">
-                <i class="fa fa-envelope"></i>
-                <input type="email" name="email" placeholder="Seu email" required>
+        
+        <form class="password-form" method="POST" action="">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Seu endereço de email" required>
             </div>
-            <button type="submit">Enviar Link</button>
+            <button type="submit" class="btn-submit">Enviar Link de Recuperação</button>
         </form>
-        <p class="registo"><a href="login.php">Voltar ao Login</a></p>
+        
+        <div class="password-links">
+            <p><a href="login.php">Voltar ao Login</a></p>
+        </div>
     </div>
 </body>
 </html>
