@@ -194,6 +194,7 @@ if (isset($_SESSION['id'])) {
                     <dialog id="textModal" class="text-modal">
                         <h2>Resumo completo do livro</h2>
                         <p id="fullTextContent"></p>
+                        <button id="saveTextModal" class="modal-save-btn">Salvar alterações</button>
                         <button id="closeTextModal" class="modal-close-btn">Fechar</button>
                     </dialog>
                 </div>
