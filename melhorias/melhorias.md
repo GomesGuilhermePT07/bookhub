@@ -27,7 +27,7 @@
 <!-- - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar! (APENAS SE TIVER TEMPO) -->
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar) <!-- COMENTAR A PARTE DA PASSWORD -->
+<!-- VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar) COMENTAR A PARTE DA PASSWORD -->
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -41,10 +41,10 @@ VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar) <!-- C
 <!-- - utilizador sem sessão iniciada tem de ter uma mensagem no carrinho ("Inicie sessão para ver o seu carrinho") -->
 <!-- - "index.php" sem sessão iniciada ainda está com a palavra "registar" invés do icon -->
 <!-- - "index.php" -> carrinho -> home -> "index_user.php"! \\ \\ CORRIGIR \\ \\  -->
-- adicionar mensagens de erro na interface do utilizador e não no servidor (mensagens mais amigáveis)
-- adicionar livro no site = fazer refresh para aparecer! \\ \\ CORRIGIR \\ \\ (adicionar refresh automatico)
+<!-- - adicionar mensagens de erro na interface do utilizador e não no servidor (mensagens mais amigáveis) -->
+<!-- - adicionar livro no site = fazer refresh para aparecer! \\ \\ CORRIGIR \\ \\ (adicionar refresh automatico) -->
 <!-- - criar sidebar para o carrinho, para quando passar o mouse por cima, aparecer um sidebar do lado direito da tela com os livros que estão no carrinho -->
-- melhorar a página em que mostra cada livro detalhadamente
+<!-- - melhorar a página em que mostra cada livro detalhadamente -->
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -82,27 +82,27 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
  -> ver todo o fluxo da apresentação e tirar todo o tipo de erros do sistema e meter do lado do utilizador
  
 
-# ----------------------------//ERROS E MELHORIAS\\-------------------------------
-
+# -------------------------//ERROS E MELHORIAS\\-------------------------------
+ 
 # SISTEMA DE GERENCIAMENTO DE REQUISIÇÕES: 
-
+<!-- 
 1- aparece todas as requisições do site (nome do livro, id do utilizador, email, id da requisição, data da requisição e de entrega, estado da requisição(entregue ou por entregar));
 
 2- barra para pesquisar através do email ou do nome do utilizador;
 
 3- aparecer todas as requisições do utilizador (com os atributos já mencionados anteriormente) e aparecer um botão de "entregar" para o utilizador e um botão de "devolvido" para o administrador;
 
-    "entregar" --> notificação para o administrador --> botão "pode devolver" para o administrador --> notificação para o utilizador para ir à biblioteca.
+    "entregar" notificação para o administrador  botão "pode devolver" para o administrador notificação para o utilizador para ir à biblioteca.
 
-    "devolvido" --> modal para preencher os dados com o nome do livro e etc com base no código ISBN do mesmo (desta vez ligado à base de dados) --> "devolver livro".
+    "devolvido"  modal para preencher os dados com o nome do livro e etc com base no código ISBN do mesmo (desta vez ligado à base de dados) "devolver livro".
 
-4- deletar a requisição da tabela "requisições" da base de dados e consequentemente, do site.
+4- deletar a requisição da tabela "requisições" da base de dados e consequentemente, do site. -->
 
 # DADOS A PREENCHER NA ENTREGA DO LIVRO:
-
+<!--
 - nome do livro;
 - ISBN do livro;
 - autor do livro;
 - nº de páginas;
 - resumo;
-- nota do utilizador/feedback (opcional).
+- nota do utilizador/feedback (opcional). -->
