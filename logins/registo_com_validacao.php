@@ -28,7 +28,7 @@
                     <?= htmlspecialchars($erro_email) ?>
                 </div>
             <?php endif; ?>
-            
+
             <form id="form" action="../assets/php/captar_registo.php" method="POST"> 
                 <div>
                     <input type="text" placeholder="Nome Completo" class="inputs required" oninput="nameValidate()" name="nome_completo">
@@ -37,6 +37,7 @@
                 <div>
                     <input type="email" placeholder="Email" class="inputs required" oninput="emailValidate()" name="email">
                     <span class="span-required">Digite um email válido</span>
+                    <!-- Mensagem de erro específica será exibida aqui -->
                 </div>
                 <div style="position: relative;">
                     <input type="password" placeholder="Password" class="inputs required" oninput="mainPasswordValidate()" id="password" name="password">
