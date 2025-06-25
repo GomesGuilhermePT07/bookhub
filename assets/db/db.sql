@@ -30,3 +30,10 @@ CREATE TABLE carrinho(
     FOREIGN KEY (cod_isbn) REFERENCES livros(cod_isbn)
 );
 
+CREATE TABLE atividades(
+    id_atividade INT(11) PRIMARY KEY,
+    id_utilizador INT(11),
+    atividade ENUM('ler', 'estudar', 'fazer_trabalhos', 'requisitar_livros', 'outros'),
+    data_registo DATETIME
+    FOREIGN KEY (id_utilizador) REFERENCES utilizadores(id)
+);
