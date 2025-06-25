@@ -301,32 +301,43 @@
         });
 
         // Requisitar livros
-        const requisitarBtn = document.querySelector('.btn-requisitar');
-        if (requisitarBtn) {
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal      = document.getElementById('confirmModal');
+            const btnYes     = document.getElementById('confirmYes');
+            const btnNo      = document.getElementById('confirmNo');
+            const requisitarBtn = document.querySelector('.btn-requisitar');
+            
+            if (!requisitarBtn) return;
+
             requisitarBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                if (confirm('Tem certeza que deseja finalizar a requisição?')) {
-                    const form = this.closest('form');
-                    
-                    fetch(form.action, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: new URLSearchParams(new FormData(form))
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 'success') {
-                            location.reload();
-                        } else {
-                            alert(data.message);
-                        }
-                    });
-                }
+                // mostra o modal
+                modal.style.display = 'flex';
             });
-        }
+
+            btnNo.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            btnYes.addEventListener('click', () => {
+                modal.style.display = 'none';
+                const form = requisitarBtn.closest('form');
+                fetch(form.action, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: new URLSearchParams(new FormData(form))
+                })
+                .then(res => res.json())
+                .then(data => {
+                if (data.status === 'success') {
+                    location.reload();
+                } else {
+                    alert(data.message);
+                }
+                })
+                .catch(() => alert('Erro ao enviar requisição.'));
+            });
+        });
     });
     </script>
     <footer>
