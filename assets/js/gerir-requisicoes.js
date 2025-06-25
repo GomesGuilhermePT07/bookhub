@@ -44,15 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
   btnConfirmarEntrega.onclick = () => {
     if (requisicaoId) {
       fetch(`assets/php/entregar_livro.php?id=${requisicaoId}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            alert('Livro entregue com sucesso!');
-            location.reload();
-          } else {
-            alert('Erro ao entregar livro: ' + data.error);
-          }
-        });
+      .then(res => res.json())
+      .then(data => {
+        // simplesmente recarrega a página
+        location.reload();
+      })
+      .catch(err => {
+        console.error('Erro ao entregar livro:', err);
+        location.reload();
+      });
     }
     entregaModal.style.display = 'none';
   };
