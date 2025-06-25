@@ -8,9 +8,9 @@
 <!-- - Detalhes da conta passa para "detalhes_conta.php" e o arquivo é ".html"
 - Inicío sessão numa conta, inicia automaticamente na outra aba na mesma conta (facilmente resolvido, apresento só e apenas numa aba) 
 - login com senha errada passa para página à parte ("captar_login.php") --> 
-^
-|
-\\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\
+<!-- ^ -->
+<!-- | -->
+<!-- \\ ADICIONAR ERROS NA INTERFACE DO UTILIZADOR \\ -->
 <!-- - slider não carrega a 2ª e a 3ª imagem -->
 <!-- - adicionar funcionalidade das atividades feitas pelos utilizadores \\ TESTAR, CORRIGIR E ACABAR \\ -->
 <!-- - verificar se já tem o livro no carrinho antes de adicionar para não haver repetições no carrinho 
@@ -23,7 +23,7 @@
 <!-- - acertar o slider -->
 <!-- - acertar a ordem de aparição dos elementos na página inicial
 - footer está acima dos livros -->
-- modal do resumo completo não abre (CORRIGIR URGENTEMENTE, mas não tão urgentemente)
+<!-- - modal do resumo completo não abre (CORRIGIR URGENTEMENTE, mas não tão urgentemente) -->
 <!-- - página de registo com os icons de ver password ficam em baixo com o erro ativado. Centrar! (APENAS SE TIVER TEMPO) -->
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -35,7 +35,7 @@ VER A PÁGINA DE ACCOUNT DETAILS (toggle password não está a funcionar) <!-- C
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-ACABAR **URGENTEMENTE** A MERDA DO FLUXO DE COMUNICAÇÃO ENTRE AS REQUISIÇÕES E AS DEVOLUÇÕES DOS LIVROS VIA EMAIL
+<!-- ACABAR **URGENTEMENTE** A MERDA DO FLUXO DE COMUNICAÇÃO ENTRE AS REQUISIÇÕES E AS DEVOLUÇÕES DOS LIVROS VIA EMAIL -->
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 <!-- - utilizador sem sessão iniciada tem de ter uma mensagem no carrinho ("Inicie sessão para ver o seu carrinho") -->
