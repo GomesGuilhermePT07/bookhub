@@ -6,9 +6,12 @@ require_once 'assets/php/check_login.php';
 // Buscar todas as requisições
 try {
     $stmt = $pdo->prepare(
-        "SELECT r.id, u.nome_completo AS utilizador, l.titulo, l.cod_isbn, \
-               r.data_requisicao, r.status, r.data_devolucao \
-        FROM requisicoes r\n        JOIN utilizadores u ON r.id_utilizador = u.id\n        JOIN livros l ON r.cod_isbn = l.cod_isbn\n        ORDER BY r.data_requisicao DESC"
+        "SELECT r.id, u.nome_completo AS utilizador, l.titulo, l.cod_isbn, 
+               r.data_requisicao, r.status, r.data_devolucao 
+        FROM requisicoes r
+        JOIN utilizadores u ON r.id_utilizador = u.id
+        JOIN livros l ON r.cod_isbn = l.cod_isbn
+        ORDER BY r.data_requisicao DESC"
     );
     $stmt->execute();
     $requisicoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
