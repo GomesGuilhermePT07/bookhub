@@ -67,9 +67,23 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.btn-confirmar-devolucao').forEach(btn => {
     btn.addEventListener('click', () => {
       devolucaoId = btn.dataset.id;
+      const isbn = btn.dataset.isbn;
       document.getElementById('tituloLivroDevolucao').textContent = btn.dataset.titulo;
       document.getElementById('autorLivroDevolucao').textContent  = btn.dataset.autor;
       document.getElementById('isbnLivroDevolucao').textContent   = btn.dataset.isbn;
+
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+      .then(res => res.json())
+      .then(googleData => {
+        const thumb = googleData.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
+        document.getElementById('capaLivroDevolucao')
+                .src = thumb || 'https://via.placeholder.com/128x186';
+      })
+      .catch(() => {
+        document.getElementById('capaLivroDevolucao')
+                .src = 'https://via.placeholder.com/128x186';
+      });
+
       devolucaoModal.style.display = 'block';
     });
   });
