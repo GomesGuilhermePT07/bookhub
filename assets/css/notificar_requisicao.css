@@ -1,31 +1,69 @@
+/* 1) Estilos globais e fundo suave */
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-    margin: 0 auto;
+  font-family: 'Merriweather', serif;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center; 
 }
+
+/* 2) Container centralizado com sombra e cantos arredondados */
 .container {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  background: #fff;
+  max-width: 500px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
-h1 {
-    color: #333;
+
+/* 3) Cabeçalho interno */
+.container h1 {
+  font-family: 'Goblin One', cursive;
+  font-size: 1.8rem;
+  color: #1f4e79;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
-.btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+
+/* 4) Texto explicativo */
+.container p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #455a64;
 }
-.btn:hover {
-    background-color: #218838;
+
+/* 5) Botão principal */
+.container .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #1f4e79;
+  color: #fff;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
+
+.container .btn:hover {
+  background-color: #163d5a;
+  transform: translateY(-2px);
+}
+
+/* 6) Mensagem de erro destacada */
 .error {
-    color: #dc3545;
-    padding: 10px;
-    background: #f8d7da;
-    border-radius: 4px;
+  background-color: #fdecea;
+  border: 1px solid #f8c1c2;
+  color: #b71c1c;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
 }
