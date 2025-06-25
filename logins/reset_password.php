@@ -54,7 +54,7 @@ try {
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <title>Nova Password</title>
+    <title>BOOKhub | Nova Password</title>
     <link rel="stylesheet" href="../assets/css/login_style.css">
 </head>
 <body>
