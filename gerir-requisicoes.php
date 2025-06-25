@@ -180,6 +180,9 @@ if (isset($_SESSION['id'])) {
                     <td><?= $req['utilizador'] ?></td>
                     <td><?= $req['titulo'] ?></td>
                     <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
+                    <td>
+                        <?= $req['prazo_devolucao'] ? date('d/m/Y H:i', strtotime($req['prazo_devolucao'])) : '&mdash;'; ?>
+                    </td>
                     <td class="status-<?= str_replace('_', '', $req['status']) ?>">
                         <?php
                             if ($req['status'] == 'com_o_aluno' && $req['data_devolucao'] == '1970-01-01 00:00:01') {
