@@ -21,25 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bookListContainer.id = "book-list";
     document.body.appendChild(bookListContainer);
 
-    // Criar botão para salvar alterações do resumo
-    // if (textModal) {
-    //     const saveTextModalBtn = document.createElement("button");
-    //     saveTextModalBtn.textContent = "Salvar alterações";
-    //     saveTextModalBtn.classList.add("modal-save-btn");
-    //     saveTextModalBtn.style.marginTop = "10px";
-    //     textModal.appendChild(saveTextModalBtn);
-
-    //     saveTextModalBtn.addEventListener("click", () => {
-    //         const editableTextarea = document.getElementById("editableTextarea");
-    //         if (editableTextarea && textarea) {
-    //             textarea.value = editableTextarea.value;
-    //             // alert("Resumo atualizado com sucesso!");
-    //             textModal.close();
-    //         }
-    //     });
-    // }
-
-    const saveTextModalBtn = document.getElementById("saveTextModal"); // Adicione este ID no HTML
+    const saveTextModalBtn = document.getElementById("saveTextModal"); 
     if (saveTextModalBtn) {
         saveTextModalBtn.addEventListener("click", () => {
             const editableTextarea = document.getElementById("editableTextarea");
@@ -60,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (bookForm) {
         bookForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-            saveBookHandler(); // Mova a lógica de salvamento para uma função separada
+            saveBookHandler(); 
         });
     }
 
@@ -201,72 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
             resetForm();
         }
     }
-
-    // Fechar modal de resumo
-    // if (closeTextModalBtn && textModal) {
-    //     closeTextModalBtn.addEventListener("click", () => {
-    //         textModal.close();
-    //     });
-    // }
-
-    // Salvar livro
-    // if (saveBook) {
-        
-    //     saveBook.onclick = async function (e) {
-    //         e.preventDefault();
-
-    //         if (!bookTitleInput || !bookAuthorInput || !bookEditionInput || !bookPagesInput || !textarea || !bookImage || !quantity) return;
-
-    //         const title = bookTitleInput.value;
-    //         const author = bookAuthorInput.value;
-    //         const edition = bookEditionInput.value;
-    //         const pages = bookPagesInput.value;
-    //         const summary = textarea.value;
-    //         const thumbnail = bookImage.src;
-    //         const quantityValue = quantity.value;
-
-    //         if (title && author && edition && pages && summary) {
-    //             // Fazer POST SERVER
-    //             const isbn = document.querySelector("#isbn").value
-    //             const formData = new FormData();
-    //             formData.append("isbn", isbn);
-    //             formData.append("title", title);
-    //             formData.append("edition", edition);
-    //             formData.append("author", author);
-    //             formData.append("numero_paginas", pages);
-    //             formData.append("quantity", quantityValue);
-    //             formData.append("summary", summary);
-
-    //             try {
-    //                 const response = await fetch("http://localhost:8080//ModuloProjeto/assets/php/captar_livro.php", {
-    //                   method: "POST",
-    //                   body: formData,
-    //                 });
-
-    //                 if (response.ok && response.status == 200) {
-    //                     console.log("Criado com sucesso!")
-    //                 } else {
-    //                     console.log("Algum erro ocorreu!")
-    //                 }
-
-    //             } catch (e) {
-    //                 console.error(e);
-    //             }
-
-    //             modal.close();
-
-    //             bookTitleInput.value = "";
-    //             bookAuthorInput.value = "";
-    //             bookEditionInput.value = "";
-    //             bookPagesInput.value = "";
-    //             textarea.value = "";
-    //             bookImage.src = "https://via.placeholder.com/128x186";
-    //             quantity.value = 1;
-    //         } else {
-    //             // alert("Por favor, preencha todos os campos.");
-    //         }
-    //     };
-    // }
 
     // Remover livro
     bookListContainer.addEventListener("click", (event) => {
