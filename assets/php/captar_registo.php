@@ -48,4 +48,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     header("Location: ../../logins/registo_com_validacao.php");
+    exit();
 }
