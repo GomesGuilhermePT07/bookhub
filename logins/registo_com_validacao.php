@@ -9,11 +9,26 @@
         <title>BOOKhub - Registo</title>
     </head>
     <body>
+        <?php
+            session_start();
+            $erro_email = $_SESSION['erro_email'] ?? '';
+            unset($_SESSION['erro_email']);
+        ?>
+
         <div class="logo">
             <img src="../assets/img/Logotipo_Bookhub.png" alt="Logotipo" class="logo-img">
         </div>
+
         <div class="content">
             <h1>Registo📚</h1>
+
+            <!-- div para mostrar erros -->
+            <?php if ($erro_email): ?>
+                <div class="error-message" styke="color: red; margin-bottom: 15px;">
+                    <?= htmlspecialchars($erro_email) ?>
+                </div>
+            <?php endif; ?>
+            
             <form id="form" action="../assets/php/captar_registo.php" method="POST"> 
                 <div>
                     <input type="text" placeholder="Nome Completo" class="inputs required" oninput="nameValidate()" name="nome_completo">
