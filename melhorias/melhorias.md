@@ -77,6 +77,7 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
  <!-- -> modal do resumo completo tem 2 botões iguais de "Salvar alterações" (feito) -->
  <!-- -> botão "salvar alterações" submete logo o modal e guarda logo o livro -->
  <!-- -> no registo, quando tento registar um utilizador que já está registado, passa para uma página aparte || CORRIGIR (feito) -->
+ -> quando um livro não está numa requisição tem de ficar disponível automaticamente
  -> ver todo o fluxo da apresentação e tirar todo o tipo de erros do sistema e meter do lado do utilizador
  
 
