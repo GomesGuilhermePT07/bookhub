@@ -1,7 +1,5 @@
 CREATE DATABASE bookhubjb;
-
 USE bookhubjb;
-
 CREATE TABLE utilizadores(
     id INT(11) PRIMARY KEY AUTO_INCREMENT,
     nome_completo VARCHAR(100) NOT NULL,
@@ -10,7 +8,6 @@ CREATE TABLE utilizadores(
     genero ENUM('m', 'f', 'o') NOT NULL,
     admin TINYINT(1) DEFAULT 0 NOT NULL
 );
-
 CREATE TABLE livros(
     cod_isbn VARCHAR(15) PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -20,7 +17,6 @@ CREATE TABLE livros(
     quantidade INT NOT NULL,
     resumo TEXT
 );
-
 CREATE TABLE carrinho(
     id_utilizador INT(11) NOT NULL,
     cod_isbn VARCHAR(15) NOT NULL,
@@ -29,7 +25,6 @@ CREATE TABLE carrinho(
     FOREIGN KEY (id_utilizador) REFERENCES utilizadores(id),
     FOREIGN KEY (cod_isbn) REFERENCES livros(cod_isbn)
 );
-
 CREATE TABLE atividades(
     id_atividade INT(11) PRIMARY KEY,
     id_utilizador INT(11),
@@ -37,13 +32,11 @@ CREATE TABLE atividades(
     data_registo DATETIME
     FOREIGN KEY (id_utilizador) REFERENCES utilizadores(id)
 );
-
 CREATE TABLE password_resets(
     email VARCHAR(100) PRIMARY KEY NOT NULL,
     token VARCHAR(255) NOT NULL,
     expira_em DATETIME
 );
-
 CREATE TABLE requisicoes(
     id INT(11) PRIMARY KEY AUTO_INCREMENT,
     id_utilizador INT(11) NOT NULL,
@@ -53,7 +46,6 @@ CREATE TABLE requisicoes(
     data_devolucao DATETIME NULL,
     prazo_devolucao DATETIME NULL,
     status ENUM('pendente', 'pronto_para_levantar', 'com_o_aluno', 'devolvido') DEFAULT pendente,
-
     FOREIGN KEY (id_utilizador) REFERENCES utilizadores(id),
     FOREIGN KEY (cod_isbn) REFERENCES livros(cod_isbn)
 );
