@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const bookImage = document.getElementById("bookImage");
     const quantity = document.getElementById("quantity");
     const bookListContainer = document.createElement("div");
+    const bookForm = document.getElementById("bookForm");
 
     bookListContainer.id = "book-list";
     document.body.appendChild(bookListContainer);
@@ -49,16 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    if (closeTextModalBtn) {
+        closeTextModalBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            textModal.close();
+        });
+    }
+
+    if (bookForm) {
+        bookForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            saveBookHandler(); // Mova a lógica de salvamento para uma função separada
+        });
+    }
+
     if (button && modal) {
         button.onclick = function () {
-            if (isbnInput) isbnInput.value = "";
-            if (bookTitleInput) bookTitleInput.value = "";
-            if (bookAuthorInput) bookAuthorInput.value = "";
-            if (bookEditionInput) bookEditionInput.value = "";
-            if (bookPagesInput) bookPagesInput.value = "";
-            if (textarea) textarea.value = "";
-            if (bookImage) bookImage.src = "https://via.placeholder.com/128x186";
-            if (quantity) quantity.value = 1;
+            resetForm();
             modal.showModal();
         };
     }
@@ -68,6 +76,18 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.close();
             if (quantity) quantity.value = 1;
         };
+    }
+
+    // Função para resetar o formulário
+    function resetForm() {
+        if (isbnInput) isbnInput.value = "";
+        if (bookTitleInput) bookTitleInput.value = "";
+        if (bookAuthorInput) bookAuthorInput.value = "";
+        if (bookEditionInput) bookEditionInput.value = "";
+        if (bookPagesInput) bookPagesInput.value = "";
+        if (textarea) textarea.value = "";
+        if (bookImage) bookImage.src= "https://via.placeholder.com/128x186";
+        if (quantity) quantity.value = 1;
     }
 
     // Buscar detalhes do livro
