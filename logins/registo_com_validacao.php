@@ -11,7 +11,10 @@
     <body>
         <?php
             session_start();
-            $erro_email = $_SESSION['erro_email'] ?? '';
+            $erro_email = '';
+            if (isset($_SESSION['erro_email'])) {
+                $erro_email = $_SESSION['erro_email'];
+            }
             unset($_SESSION['erro_email']);
         ?>
 
