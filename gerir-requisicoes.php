@@ -175,7 +175,7 @@ if (isset($_SESSION['id'])) {
             </thead>
             <tbody>
                 <?php foreach ($requisicoes as $req): ?>
-                <tr data-prazo="<?= $req['prazo-devolucao'] ?>">
+                <tr data-prazo="<?= $req['prazo_devolucao'] ? date('c', strtotime($req['prazo_devolucao'])) : '' ?>">
                     <td><?= $req['id'] ?></td>
                     <td><?= $req['utilizador'] ?></td>
                     <td><?= $req['titulo'] ?></td>
