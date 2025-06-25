@@ -51,5 +51,8 @@ CREATE TABLE requisicoes(
     data_requisicao DATETIME DEFAULT CURRENT_TIMESTAMP,
     data_conclusao DATETIME DEFAULT NULL,
     data_devolucao DATETIME DEFAULT NULL,
-    status ENUM('pendente', 'pronto_para_levantar', 'com_o_aluno', 'devolvido') DEFAULT pendente
+    status ENUM('pendente', 'pronto_para_levantar', 'com_o_aluno', 'devolvido') DEFAULT pendente,
+
+    FOREIGN KEY (id_utilizador) REFERENCES utilizadores(id),
+    FOREIGN KEY (cod_isbn) REFERENCES livros(cod_isbn)
 );
