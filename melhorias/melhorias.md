@@ -76,7 +76,7 @@ ACABAR OS ESTILOS DA PÁGINA DOS DETALHES DO LIVRO
  <!-- -> erros do servidor no modal do livro é para serem removidos (feito) -->
  <!-- -> modal do resumo completo tem 2 botões iguais de "Salvar alterações" (feito) -->
  <!-- -> botão "salvar alterações" submete logo o modal e guarda logo o livro -->
- -> no registo, quando tento registar um utilizador que já está registado, passa para uma página aparte || CORRIGIR
+ <!-- -> no registo, quando tento registar um utilizador que já está registado, passa para uma página aparte || CORRIGIR (feito) -->
  
 
 # ----------------------------//ERROS E MELHORIAS\\-------------------------------
