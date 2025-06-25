@@ -159,6 +159,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Função para salvar o livro
+    async function saveBookHandler() {
+        if (!bookTitleInput || !bookAuthorInput || !bookEditionInput || !bookPagesInput || !textarea || !bookImage || !quantity) return;
+
+        const title = bookTitleInput.value;
+        const author = bookAuthorInput.value;
+        const edition = bookEditionInput.value;
+        const pages = bookPagesInput.value;
+        const summary = textarea.value;
+        const thumbnail = bookImage.src;
+        const quantityValue = quantity.value;
+    }
+
     // Fechar modal de resumo
     if (closeTextModalBtn && textModal) {
         closeTextModalBtn.addEventListener("click", () => {
