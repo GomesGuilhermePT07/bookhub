@@ -168,6 +168,7 @@ if (isset($_SESSION['id'])) {
                     <th>Utilizador</th>
                     <th>Livro</th>
                     <th>Data Requisição</th>
+                    <th>Prazo de Devolução</th>
                     <th>Status</th>
                     <?php if ($_SESSION['admin'] == 1): ?><th>Ações</th><?php endif; ?>
                 </tr>
