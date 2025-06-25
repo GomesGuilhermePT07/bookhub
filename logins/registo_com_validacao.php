@@ -11,11 +11,11 @@
     <body>
         <?php
             session_start();
-            $erro_email = 'Este email já está registado!';
-            if (isset($_SESSION['erro_email'])) {
+            $erro_email = '';
+            if (!empty($_SESSION['erro_email'])) {
                 $erro_email = $_SESSION['erro_email'];
+                unset($_SESSION['erro_email']);
             }
-            unset($_SESSION['erro_email']);
         ?>
 
         <div class="logo">
