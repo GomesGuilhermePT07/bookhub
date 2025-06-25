@@ -107,14 +107,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('tr[data-prazo-ms]').forEach(row => {
     const prazoMs = parseInt(row.dataset.prazoMs, 10);
+    if (!prazoMs) return;        // <— se não tiver prazo definido, sai
     if (Date.now() > prazoMs) {
-        row.classList.add('prazo-expirado');
-        const btn = row.querySelector('.btn-confirmar-devolucao');
-        if (btn) {
+      row.classList.add('prazo-expirado');
+      const btn = row.querySelector('.btn-confirmar-devolucao');
+      if (btn) {
         btn.disabled = true;
         btn.classList.add('prazo-expirado');
         btn.textContent = 'Prazo Expirado';
-        }
+      }
     }
   });
 });
