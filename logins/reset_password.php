@@ -24,7 +24,7 @@ try {
         $nova_password = $_POST['nova_password'];
         
         if (strlen($nova_password) < 8) {
-            $error = "Senha deve ter mínimo 8 caracteres";
+            $error = "Password deve ter mínimo 8 caracteres";
         } else {
             $query = $pdo->prepare("SELECT email FROM password_resets WHERE token = ? AND expira_em > NOW()");
             $query->execute([$token]);
@@ -33,14 +33,14 @@ try {
             if ($reset) {
                 $hash = password_hash($nova_password, PASSWORD_DEFAULT);
                 
-                // Atualizar senha
+                // Atualizar password
                 $query = $pdo->prepare("UPDATE utilizadores SET password = ? WHERE email = ?");
                 $query->execute([$hash, $reset['email']]);
                 
                 // Remover token
                 $pdo->prepare("DELETE FROM password_resets WHERE email = ?")->execute([$reset['email']]);
                 
-                $success = "Senha alterada com sucesso!";
+                $success = "Password alterada com sucesso!";
             } else {
                 $error = "Token inválido!";
             }
