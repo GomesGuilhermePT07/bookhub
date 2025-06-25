@@ -226,9 +226,15 @@ $cartCount = 0;
                                     </button>
                                 <?php elseif ($req['status'] == 'com_o_aluno'): ?>
                                     <?php if ($req['data_devolucao'] == '1970-01-01 00:00:01'): ?>
-                                        <a href="assets/php/concluir_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
-                                            Confirmar Entrega
-                                        </a>
+                                        <button
+                                            class="btn-acao btn-confirmar-devolucao"
+                                            data-id="<?= $req['id'] ?>"
+                                            data-isbn="<?= $req['cod_isbn'] ?>"
+                                            data-titulo="<?= htmlspecialchars($req['titulo'], ENT_QUOTES) ?>"
+                                            data-autor="<?= htmlspecialchars($req['utilizador'], ENT_QUOTES) ?>"
+                                        >
+                                            Confirmar Devolução
+                                        </button>
                                     <?php else: ?>
                                         <a href="assets/php/notificar_devolucao.php?id=<?= $req['id'] ?>" class="btn-acao">
                                             Solicitar Devolução
@@ -264,6 +270,29 @@ $cartCount = 0;
                 <div class="modal-footer">
                     <button id="btnCancelarEntrega" class="modal-btn modal-btn-cancel">Cancelar</button>
                     <button id="btnConfirmarEntrega" class="modal-btn modal-btn-confirm">Confirmar Entrega</button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="devolucaoModal" class="modal-overlay">
+            <div class="modal-content">
+                <span id="closeDevolucaoModal" class="modal-close">&times;</span>
+                <div class="modal-header">
+                <h2>Confirmar Devolução</h2>
+                </div>
+                <div class="modal-body">
+                <div class="book-cover">
+                    <img id="capaLivroDevolucao" src="" alt="Capa do Livro">
+                </div>
+                <div class="book-details">
+                    <p><strong>Título:</strong> <span id="tituloLivroDevolucao"></span></p>
+                    <p><strong>Autor:</strong> <span id="autorLivroDevolucao"></span></p>
+                    <p><strong>ISBN:</strong> <span id="isbnLivroDevolucao"></span></p>
+                </div>
+                </div>
+                <div class="modal-footer">
+                <button id="btnCancelarDevolucao" class="modal-btn modal-btn-cancel">Cancelar</button>
+                <button id="btnConfirmarDevolucao" class="modal-btn modal-btn-confirm">Confirmar Devolução</button>
                 </div>
             </div>
         </dialog>
