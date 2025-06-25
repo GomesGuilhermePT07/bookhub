@@ -1,122 +1,93 @@
-// Elementos do modal
-const entregaModal = document.getElementById('entregaModal');
-const closeEntregaModal = document.getElementById('closeEntregaModal');
-const btnCancelarEntrega = document.getElementById('btnCancelarEntrega');
-const btnConfirmarEntrega = document.getElementById('btnConfirmarEntrega');
-
-// Variáveis para armazenar dados da requisição
-let requisicaoId = null;
-
-// Função para abrir o modal de entrega
-function abrirModalEntrega(id, isbn) {
-    requisicaoId = id;
-    
-    // Buscar detalhes do livro do banco de dados
-    fetch(`assets/php/buscar_livro.php?isbn=${isbn}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro na rede');
-            }
-            return response.json();
-        })
-        .then(data => {
-            document.getElementById('tituloLivro').textContent = data.titulo;
-            document.getElementById('autorLivro').textContent = data.autor;
-            document.getElementById('isbnLivro').textContent = isbn;
-            
-            // Buscar capa do livro na Google Books API
-            fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
-                .then(res => res.json())
-                .then(googleData => {
-                    if (googleData.items && googleData.items[0]?.volumeInfo?.imageLinks?.thumbnail) {
-                        document.getElementById('capaLivro').src = 
-                            googleData.items[0].volumeInfo.imageLinks.thumbnail;
-                    } else {
-                        document.getElementById('capaLivro').src = 'https://via.placeholder.com/128x186';
-                    }
-                })
-                .catch(() => {
-                    document.getElementById('capaLivro').src = 'https://via.placeholder.com/128x186';
-                });
-            
-            entregaModal.style.display = 'block';
-        })
-        .catch(error => {
-            console.error('Erro ao buscar livro:', error);
-            alert('Erro ao carregar detalhes do livro');
-        });
-}
-
-// Fechar modal
-closeEntregaModal.onclick = function() {
-    entregaModal.style.display = 'none';
-}
-
-btnCancelarEntrega.onclick = function() {
-    entregaModal.style.display = 'none';
-}
-
-// Confirmar entrega
-btnConfirmarEntrega.onclick = function() {
-    if (requisicaoId) {
-        fetch(`assets/php/entregar_livro.php?id=${requisicaoId}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Livro entregue com sucesso!');
-                    location.reload();
-                } else {
-                    alert('Erro ao entregar livro: ' + data.error);
-                }
-            });
-    }
-    entregaModal.style.display = 'none';
-}
-
-// Fechar modal se clicar fora
-window.onclick = function(event) {
-    if (event.target == entregaModal) {
-        entregaModal.style.display = 'none';
-    }
-}
-
-// Adicionar event listeners aos botões de entrega
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.entregar-livro').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const id = this.dataset.id;
-            const isbn = this.dataset.isbn;
-            abrirModalEntrega(id, isbn);
-        });
-    });
-});
+  // --- Modal de Entrega ---
+  const entregaModal       = document.getElementById('entregaModal');
+  const closeEntregaModal  = document.getElementById('closeEntregaModal');
+  const btnCancelarEntrega = document.getElementById('btnCancelarEntrega');
+  const btnConfirmarEntrega= document.getElementById('btnConfirmarEntrega');
+  let requisicaoId = null;
 
-// --- CONTROLE DO MODAL DE DEVOLUÇÃO ---
-const devolucaoModal       = document.getElementById('devolucaoModal');
-const closeDevolucaoModal  = document.getElementById('closeDevolucaoModal');
-const btnCancelarDevolucao = document.getElementById('btnCancelarDevolucao');
-const btnConfirmarDevolucao= document.getElementById('btnConfirmarDevolucao');
-
-let devolucaoId = null;
-
-document.querySelectorAll('.btn-confirmar-devolucao').forEach(btn => {
-  btn.addEventListener('click', () => {
-    devolucaoId = btn.dataset.id;
-    document.getElementById('tituloLivroDevolucao').textContent = btn.dataset.titulo;
-    document.getElementById('autorLivroDevolucao').textContent  = btn.dataset.autor;
-    document.getElementById('isbnLivroDevolucao').textContent   = btn.dataset.isbn;
-    // opcional: carregar capa via Google Books igual ao entregaModal
-    devolucaoModal.showModal();
-  });
-});
-
-[closeDevolucaoModal, btnCancelarDevolucao].forEach(el =>
-  el.addEventListener('click', () => devolucaoModal.close())
-);
-
-btnConfirmarDevolucao.addEventListener('click', () => {
-  if (devolucaoId) {
-    window.location.href = `assets/php/concluir_devolucao.php?id=${devolucaoId}`;
+  function abrirModalEntrega(id, isbn) {
+    requisicaoId = id;
+    fetch(`assets/php/buscar_livro.php?isbn=${isbn}`)
+      .then(response => {
+        if (!response.ok) throw new Error('Erro na rede');
+        return response.json();
+      })
+      .then(data => {
+        document.getElementById('tituloLivro').textContent = data.titulo;
+        document.getElementById('autorLivro').textContent  = data.autor;
+        document.getElementById('isbnLivro').textContent   = isbn;
+        // Capa via Google Books
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
+          .then(res => res.json())
+          .then(googleData => {
+            const thumb = googleData.items?.[0]?.volumeInfo?.imageLinks?.thumbnail;
+            document.getElementById('capaLivro').src = thumb || 'https://via.placeholder.com/128x186';
+          })
+          .catch(() => { document.getElementById('capaLivro').src = 'https://via.placeholder.com/128x186'; });
+        entregaModal.style.display = 'block';
+      })
+      .catch(err => {
+        console.error('Erro ao buscar livro:', err);
+        alert('Erro ao carregar detalhes do livro');
+      });
   }
-  devolucaoModal.close();
+
+  document.querySelectorAll('.entregar-livro').forEach(btn => {
+    btn.addEventListener('click', function() {
+      abrirModalEntrega(this.dataset.id, this.dataset.isbn);
+    });
+  });
+
+  closeEntregaModal.onclick = () => entregaModal.style.display = 'none';
+  btnCancelarEntrega.onclick = () => entregaModal.style.display = 'none';
+  btnConfirmarEntrega.onclick = () => {
+    if (requisicaoId) {
+      fetch(`assets/php/entregar_livro.php?id=${requisicaoId}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            alert('Livro entregue com sucesso!');
+            location.reload();
+          } else {
+            alert('Erro ao entregar livro: ' + data.error);
+          }
+        });
+    }
+    entregaModal.style.display = 'none';
+  };
+
+  // --- Modal de Devolução ---
+  const devolucaoModal       = document.getElementById('devolucaoModal');
+  const closeDevolucaoModal  = document.getElementById('closeDevolucaoModal');
+  const btnCancelarDevolucao = document.getElementById('btnCancelarDevolucao');
+  const btnConfirmarDevolucao= document.getElementById('btnConfirmarDevolucao');
+  let devolucaoId = null;
+
+  document.querySelectorAll('.btn-confirmar-devolucao').forEach(btn => {
+    btn.addEventListener('click', () => {
+      devolucaoId = btn.dataset.id;
+      document.getElementById('tituloLivroDevolucao').textContent = btn.dataset.titulo;
+      document.getElementById('autorLivroDevolucao').textContent  = btn.dataset.autor;
+      document.getElementById('isbnLivroDevolucao').textContent   = btn.dataset.isbn;
+      devolucaoModal.style.display = 'block';
+    });
+  });
+
+  [closeDevolucaoModal, btnCancelarDevolucao].forEach(el =>
+    el.addEventListener('click', () => devolucaoModal.style.display = 'none')
+  );
+
+  btnConfirmarDevolucao.addEventListener('click', () => {
+    if (devolucaoId) {
+      window.location.href = `assets/php/concluir_devolucao.php?id=${devolucaoId}`;
+    }
+    devolucaoModal.style.display = 'none';
+  });
+
+  // Fecha ambos modais ao clicar fora
+  window.addEventListener('click', event => {
+    if (event.target === entregaModal) entregaModal.style.display = 'none';
+    if (event.target === devolucaoModal) devolucaoModal.style.display = 'none';
+  });
 });
