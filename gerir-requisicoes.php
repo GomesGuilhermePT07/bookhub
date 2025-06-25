@@ -175,13 +175,15 @@ if (isset($_SESSION['id'])) {
             </thead>
             <tbody>
                 <?php foreach ($requisicoes as $req): ?>
-                <tr data-prazo="<?= $req['prazo_devolucao'] ? date('c', strtotime($req['prazo_devolucao'])) : '' ?>">
+                <tr data-prazo-ms="<?= ($req['prazo_devolucao']) * 1000 ?>">
                     <td><?= $req['id'] ?></td>
                     <td><?= $req['utilizador'] ?></td>
                     <td><?= $req['titulo'] ?></td>
                     <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
                     <td>
-                        <?= $req['prazo_devolucao'] ? date('d/m/Y H:i', strtotime($req['prazo_devolucao'])) : '&mdash;'; ?>
+                        <?= $req['prazo_devolucao']
+                            ? date('d/m/Y H:i', strtotime($req['prazo_devolucao']))
+                            : '&mdash;'; ?>
                     </td>
                     <td class="status-<?= str_replace('_', '', $req['status']) ?>">
                         <?php
