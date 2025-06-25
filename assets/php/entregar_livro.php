@@ -14,7 +14,12 @@ if (empty($id)) {
 }
 
 try {
-    $stmt = $pdo->prepare("UPDATE requisicoes SET status = 'com_o_aluno' WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE requisicoes 
+                             SET 
+                                 status = 'com_o_aluno',
+                                 prazo_devolucao = DATE_ADD(NOW(), INTERVAL 5 MINUTE)
+                            WHERE id = ?
+                         ");
     $stmt->execute([$id]);
 
     if ($stmt->rowCount() > 0) {
