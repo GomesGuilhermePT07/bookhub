@@ -33,7 +33,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         die();
     } catch (PDOException $e) {
-        die("Query failed: " . $e->getMessage());
+
+        // Verifica se é erro de email duplicado
+        if ($e->getCode() == '23000') {
+            $_SESSION['erro_email'] = "Este email já está registado!";
+        } else {
+            $_SESSION['erro_geral'] = "Ocorreu um erro: " . $e->getMessage();
+        }
+
+        // Redireciona de volta para o formulário
+        header("Location: ../../logins/registo_com_validacao.php");
+        exit();
+        // die("Query failed: " . $e->getMessage());
     }
 } else {
     header("Location: ../../logins/registo_com_validacao.php");
