@@ -259,7 +259,7 @@ body {
 }
 
 /* ================================
-   ESTILOS EXISTENTES (mantidos para compatibilidade)
+   ESTILOS EXISTENTES
    ================================ */
 .login-container {
     background-color: rgba(0, 0, 0, 0.8);
@@ -486,4 +486,233 @@ button:hover {
 .logo-img {
     width: 280px;
     height: auto;
+}
+
+/* ===================================================================
+   ESTILOS ESPECÍFICOS PARA PÁGINA DE REDEFINIÇÃO DE SENHA 
+   =================================================================== */
+.password-reset-container {
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 450px;
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    margin: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.password-reset-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+        rgba(66, 104, 119, 0.15) 0%, 
+        rgba(229, 43, 75, 0.1) 100%);
+    z-index: -1;
+    transform: rotate(30deg);
+    animation: rotateBackground 20s linear infinite;
+}
+
+.password-reset-header {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.password-reset-header h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--color-white);
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.password-reset-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--color-red1), var(--color-blue2));
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(229, 43, 75, 0.4);
+}
+
+/* Mensagens */
+.password-message {
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    animation: fadeIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.password-success {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid var(--color-success);
+    color: #d1ffd4;
+}
+
+.password-error {
+    background: rgba(244, 67, 54, 0.2);
+    border: 1px solid var(--color-error);
+    color: #ffd1d1;
+}
+
+/* Formulário */
+.password-reset-form {
+    margin-bottom: 30px;
+}
+
+.password-input-group {
+    position: relative;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.password-input-group:hover {
+    transform: translateY(-3px);
+}
+
+.password-input-group i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-blue2);
+    font-size: 20px;
+    text-shadow: 0 0 10px rgba(131, 208, 240, 0.7);
+}
+
+.password-input-group input {
+    width: 100%;
+    padding: 16px 25px 16px 60px;
+    border-radius: 12px;
+    border: 2px solid rgba(66, 104, 119, 0.4);
+    background: rgba(20, 20, 20, 0.7);
+    color: var(--color-white);
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    letter-spacing: 1.2px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3),
+                0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.password-input-group input:focus {
+    outline: none;
+    border-color: var(--color-blue2);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3),
+                0 0 0 4px rgba(131, 208, 240, 0.25);
+    background: rgba(25, 25, 25, 0.8);
+}
+
+.password-input-group input::placeholder {
+    color: var(--color-light-grey);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.password-reset-btn {
+    background: linear-gradient(135deg, var(--color-blue1), var(--color-blue2));
+    color: white;
+    border: none;
+    padding: 18px;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 7px 20px rgba(66, 104, 119, 0.4);
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.password-reset-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(66, 104, 119, 0.6);
+    background: linear-gradient(135deg, #3a5c68, #6bc5e8);
+}
+
+.password-reset-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.password-reset-btn::after {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    transform: rotate(20deg);
+    transition: all 0.8s ease;
+}
+
+.password-reset-btn:hover::after {
+    top: -50%;
+    left: 0;
+}
+
+/* Animations */
+@keyframes rotateBackground {
+    0% { transform: rotate(30deg); }
+    100% { transform: rotate(390deg); }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-20px) scale(0.95);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Glow Effect */
+.glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(131, 208, 240, 0.1) 0%,
+        rgba(229, 43, 75, 0.05) 50%,
+        transparent 70%
+    );
+    z-index: -1;
+    animation: pulseGlow 4s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.7; }
 }
