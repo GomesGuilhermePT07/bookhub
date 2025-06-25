@@ -49,8 +49,8 @@ CREATE TABLE requisicoes(
     id_utilizador INT(11) NOT NULL,
     cod_isbn VARCHAR(15) NOT NULL,
     data_requisicao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    data_conclusao DATETIME DEFAULT NULL,
-    data_devolucao DATETIME DEFAULT NULL,
+    data_conclusao DATETIME NULL,
+    data_devolucao DATETIME NULL,
     prazo_devolucao DATETIME NULL,
     status ENUM('pendente', 'pronto_para_levantar', 'com_o_aluno', 'devolvido') DEFAULT pendente,
 
