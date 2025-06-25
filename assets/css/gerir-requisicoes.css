@@ -211,3 +211,7 @@ button.prazo-expirado {
   cursor: not-allowed;
   opacity: 0.6;
 }
+
+.linha-atrasada {
+  background-color: #f8d7da !important;  /* vermelho claro */
+}

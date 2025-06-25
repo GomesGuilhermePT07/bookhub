@@ -174,8 +174,13 @@ if (isset($_SESSION['id'])) {
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($requisicoes as $req): ?>
-                <tr data-prazo-ms="<?= strtotime($req['prazo_devolucao']) * 1000 ?>">
+                <?php foreach ($requisicoes as $req): 
+                    // determina se foi devolvido com atraso ou não 
+                    $late = ($req['status'] === 'devolvido'
+                            && strtotime($req['data_devolucao']) > strtotime($req['prazo_devolucao']));
+                ?>
+                <tr data-prazo-ms="<?= strtotime($req['prazo_devolucao']) * 1000 ?>"
+                <?= $late ? 'class="linha-atrasada"' : '' ?> >
                     <td><?= $req['id'] ?></td>
                     <td><?= $req['utilizador'] ?></td>
                     <td><?= $req['titulo'] ?></td>
