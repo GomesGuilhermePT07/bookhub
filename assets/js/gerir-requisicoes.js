@@ -90,3 +90,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// --- CONTROLE DO MODAL DE DEVOLUÇÃO ---
+const devolucaoModal       = document.getElementById('devolucaoModal');
+const closeDevolucaoModal  = document.getElementById('closeDevolucaoModal');
+const btnCancelarDevolucao = document.getElementById('btnCancelarDevolucao');
+const btnConfirmarDevolucao= document.getElementById('btnConfirmarDevolucao');
+
+let devolucaoId = null;
+
+document.querySelectorAll('.btn-confirmar-devolucao').forEach(btn => {
+  btn.addEventListener('click', () => {
+    devolucaoId = btn.dataset.id;
+    document.getElementById('tituloLivroDevolucao').textContent = btn.dataset.titulo;
+    document.getElementById('autorLivroDevolucao').textContent  = btn.dataset.autor;
+    document.getElementById('isbnLivroDevolucao').textContent   = btn.dataset.isbn;
+    // opcional: carregar capa via Google Books igual ao entregaModal
+    devolucaoModal.showModal();
+  });
+});
+
+[closeDevolucaoModal, btnCancelarDevolucao].forEach(el =>
+  el.addEventListener('click', () => devolucaoModal.close())
+);
+
+btnConfirmarDevolucao.addEventListener('click', () => {
+  if (devolucaoId) {
+    window.location.href = `assets/php/concluir_devolucao.php?id=${devolucaoId}`;
+  }
+  devolucaoModal.close();
+});
