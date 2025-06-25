@@ -332,5 +332,18 @@
     <footer>
         <p>&copy; 2025 BOOKhub. Todos os direitos reservados</p>
     </footer>
+
+    <!-- Modal de confirmação -->
+    <div id="confirmModal" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+        <h2>Confirmação</h2>
+        <p id="confirmText">Tem certeza que deseja finalizar a requisição?</p>
+        <div class="modal-buttons">
+        <button id="confirmYes" class="btn-confirm-yes">Sim</button>
+        <button id="confirmNo" class="btn-confirm-no">Cancelar</button>
+        </div>
+    </div>
+    </div>
+
 </body>
 </html>
