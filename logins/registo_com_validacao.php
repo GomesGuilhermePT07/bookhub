@@ -11,7 +11,7 @@
     <body>
         <?php
             session_start();
-            $erro_email = '';
+            $erro_email = 'Este email já está registado!';
             if (isset($_SESSION['erro_email'])) {
                 $erro_email = $_SESSION['erro_email'];
             }

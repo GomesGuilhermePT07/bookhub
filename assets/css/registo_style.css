@@ -166,7 +166,7 @@ h1{
 }
 
 .error-message {
-    background-color: #ffdddd;
+    background-color: #ff0755;
     border: 1px solid #ff0000;
     border-radius: 5px;
     padding: 10px;
