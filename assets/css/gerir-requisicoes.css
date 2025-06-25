@@ -200,3 +200,14 @@ th {
 .modal-btn-confirm:hover {
     background-color: #27ae60;
 }
+
+/* realça linha com prazo expirado */
+tr.prazo-expirado {
+  background-color: #f8d7da;
+}
+
+/* estilo de botão desativado por prazo */
+button.prazo-expirado {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
