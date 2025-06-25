@@ -105,21 +105,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target === devolucaoModal) devolucaoModal.style.display = 'none';
   });
 
-  document.querySelectorAll('tr[data-prazo]').forEach(row => {
-    const prazo = row.dataset.prazo;
-    if (!prazo) return;
-
-    const deadline = new Date(prazo);
-    const now = new Date();
-
-    if (now > deadline) {
-      row.classList.add('prazo-expirado');
-      const btn = row.querySelector('.btn-confirmar-devolucao');
-      if (btn) {
+  document.querySelectorAll('tr[data-prazo-ms]').forEach(row => {
+    const prazoMs = parseInt(row.dataset.prazoMs, 10);
+    if (Date.now() > prazoMs) {
+        row.classList.add('prazo-expirado');
+        const btn = row.querySelector('.btn-confirmar-devolucao');
+        if (btn) {
         btn.disabled = true;
         btn.classList.add('prazo-expirado');
         btn.textContent = 'Prazo Expirado';
-      }
+        }
     }
   });
 });
