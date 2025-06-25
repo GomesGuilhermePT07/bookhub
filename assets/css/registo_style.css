@@ -164,3 +164,13 @@ h1{
     width: 280px;
     height: auto;
 }
+
+.error-message {
+    background-color: #ffdddd;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
