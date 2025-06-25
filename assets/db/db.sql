@@ -37,3 +37,19 @@ CREATE TABLE atividades(
     data_registo DATETIME
     FOREIGN KEY (id_utilizador) REFERENCES utilizadores(id)
 );
+
+CREATE TABLE password_resets(
+    email VARCHAR(100) PRIMARY KEY NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    expira_em DATETIME
+);
+
+CREATE TABLE requisicoes(
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    id_utilizador INT(11) NOT NULL,
+    cod_isbn VARCHAR(15) NOT NULL,
+    data_requisicao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_conclusao DATETIME DEFAULT NULL,
+    data_devolucao DATETIME DEFAULT NULL,
+    status ENUM('pendente', 'pronto_para_levantar', 'com_o_aluno', 'devolvido') DEFAULT pendente
+);
